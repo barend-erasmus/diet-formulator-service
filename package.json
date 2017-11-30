@@ -1,0 +1,41 @@
+{
+  "name": "diet-formulator-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "tsc & mocha ./src/**/*.test.js",
+    "coverage": "tsc & istanbul cover node_modules/mocha/bin/_mocha --root ./src ./src/**/*.test.js",
+    "start": "tsc & node ./src/app.js",
+    "docs": "apidoc -i src/routes/ -o apidoc/",
+    "lint": "tslint ./src/**/*.ts --exclude ./src/**/*.d.ts",
+    "sync": "tsc & node ./src/sync.js",
+    "deploy": "tsc & apidoc -i src/routes/ -o apidoc/ & istanbul cover node_modules/mocha/bin/_mocha --root ./src ./src/**/*.test.js & ssh-deployer -f deploy.json --host survey.openservices.co.za --username username --password password --workspace ./"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/barend-erasmus/diet-formulator-service.git"
+  },
+  "author": "Barend Erasmus",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/barend-erasmus/diet-formulator-service/issues"
+  },
+  "homepage": "https://github.com/barend-erasmus/diet-formulator-service#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "pg": "^7.3.0",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^4.16.0",
+    "yargs": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.0.4",
+    "@types/express": "^4.0.39",
+    "@types/mocha": "^2.2.44",
+    "@types/sequelize": "^4.0.77",
+    "chai": "^4.1.2",
+    "mocha": "^4.0.1"
+  }
+}

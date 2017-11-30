@@ -1,0 +1,12 @@
+{
+    "name": "Survey Service",
+    "version": "0.0.1",
+    "description": "",
+    "title": "Survey Service",
+    "url" : "https://survey.openservices.co.za",
+    "sampleUrl": "https://survey.openservices.co.za",
+    "template": {
+      "withCompare": false,
+      "withGenerator": false
+    }
+  }

@@ -1,0 +1,40 @@
+{
+    "machine": {
+        "host": "$host",
+        "username": "$username",
+        "password": "$password"
+    },
+    "commands": [
+        "sudo apt-get update",
+        "curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -",
+        "sudo apt-get install -y nodejs",
+
+        "npm install pm2 -g",
+
+        "mkdir /logs",
+        "npm --prefix /opt/diet-formulator-service install",
+        "pm2 stop diet-formulator-service",
+        "pm2 start /opt/diet-formulator-service/src/app.js --name diet-formulator-service -- --prod --port 9015",
+        "sudo service nginx reload"
+    ],
+    "directories": [
+        {
+            "source": "$workspace/src",
+            "destination": "/opt/diet-formulator-service/src"
+        },
+        {
+            "source": "$workspace/coverage",
+            "destination": "/opt/diet-formulator-service/coverage"
+        }
+    ],
+    "files": [
+        {
+            "source": "$workspace/package.json",
+            "destination": "/opt/diet-formulator-service/package.json"
+        },
+        {
+            "source": "$workspace/nginx.conf",
+            "destination": "/etc/nginx/sites-enabled/diet-formulator-service"
+        }
+    ]
+}
