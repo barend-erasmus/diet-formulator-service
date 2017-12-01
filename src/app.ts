@@ -3,17 +3,9 @@ import * as express from 'express';
 import * as path from 'path';
 import * as yargs from 'yargs';
 import { config } from './config';
-
-// Import Repositories
-import { BaseRepository } from './repositories/sequelize/base';
-// import { SurveyRepository } from './repositories/sequelize/survey';
-
-// Imports middleware
 import * as bodyParser from 'body-parser';
-
-// Imports routes
-// import { SurveyRouter } from './routes/survey';
-// import { UIRouter } from './routes/ui';
+import { DietGroupRouter } from './routes/diet-group';
+import { ApplicationRouter } from './routes/application';
 
 const argv = yargs.argv;
 const app = express();
@@ -22,14 +14,10 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json({ limit: '50mb' }));
 
-app.use('/static', express.static(path.join(__dirname, 'public')));
+app.post('/api/application/create', ApplicationRouter.create);
 
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'handlebars');
-
-
-// app.post('/api/survey/create', requireUser, SurveyRouter.create);
-
+app.post('/api/dietgroup/create', DietGroupRouter.create);
+app.get('/api/dietgroup/list', DietGroupRouter.list);
 
 app.use('/api/docs', express.static(path.join(__dirname, './../apidoc')));
 app.use('/api/coverage', express.static(path.join(__dirname, './../coverage/lcov-report')));
