@@ -4,6 +4,7 @@ import * as path from 'path';
 import * as yargs from 'yargs';
 import { config } from './config';
 import * as bodyParser from 'body-parser';
+import * as request from 'request-promise';
 import { DietGroupRouter } from './routes/diet-group';
 import { ApplicationRouter } from './routes/application';
 
@@ -21,6 +22,21 @@ app.get('/api/dietgroup/list', DietGroupRouter.list);
 
 app.use('/api/docs', express.static(path.join(__dirname, './../apidoc')));
 app.use('/api/coverage', express.static(path.join(__dirname, './../coverage/lcov-report')));
+
+function requireUser(req: express.Request, res: express.Response, next: express.NextFunction): void {
+    request({
+        uri: 'https://developersworkspace.auth0.com/userinfo',
+        headers: {
+            'Authorization': req.get('Authorization'),
+        },
+        json: true,
+    }).then((result) => {
+        req['user'] = result;
+        next();
+    }).catch(function (err) {
+        res.status(401).end();
+    });
+}
 
 app.listen(argv.port || 3000, () => {
     console.log(`listening on port ${argv.port || 3000}`);
