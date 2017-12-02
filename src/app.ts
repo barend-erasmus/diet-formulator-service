@@ -8,6 +8,7 @@ import * as cors from 'cors';
 import * as request from 'request-promise';
 import { DietGroupRouter } from './routes/diet-group';
 import { ApplicationRouter } from './routes/application';
+import { NutrientRouter } from './routes/nutrient';
 
 const argv = yargs.argv;
 const app = express();
@@ -19,6 +20,11 @@ app.use(bodyParser.json({ limit: '50mb' }));
 app.use(cors());
 
 app.post('/api/application/create', requireUser, ApplicationRouter.create);
+
+app.post('/api/nutrient/create', requireUser, NutrientRouter.create);
+app.get('/api/nutrient/find', requireUser, NutrientRouter.find);
+app.get('/api/nutrient/list', requireUser, NutrientRouter.list);
+app.post('/api/nutrient/update', requireUser, NutrientRouter.update);
 
 app.post('/api/dietgroup/create', requireUser, DietGroupRouter.create);
 app.get('/api/dietgroup/find', requireUser, DietGroupRouter.find);

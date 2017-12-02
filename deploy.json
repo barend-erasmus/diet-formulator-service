@@ -14,17 +14,13 @@
         "mkdir /logs",
         "npm --prefix /opt/diet-formulator-service install",
         "pm2 stop diet-formulator-service",
-        "pm2 start /opt/diet-formulator-service/src/app.js --name diet-formulator-service -- --prod --port 9015",
+        "pm2 start /opt/diet-formulator-service/src/app.js --name diet-formulator-service -- --prod --port 9002",
         "sudo service nginx reload"
     ],
     "directories": [
         {
             "source": "$workspace/src",
             "destination": "/opt/diet-formulator-service/src"
-        },
-        {
-            "source": "$workspace/coverage",
-            "destination": "/opt/diet-formulator-service/coverage"
         }
     ],
     "files": [

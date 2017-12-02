@@ -11,7 +11,7 @@
     "lint": "tslint ./src/**/*.ts --exclude ./src/**/*.d.ts",
     "init": "tsc & node ./src/init.js",
     "importer": "tsc & node ./src/importer/app.js",
-    "deploy": "tsc & apidoc -i src/routes/ -o apidoc/ & istanbul cover node_modules/mocha/bin/_mocha --root ./src ./src/**/*.test.js & ssh-deployer -f deploy.json --host survey.openservices.co.za --username username --password password --workspace ./"
+    "deploy": "tsc & apidoc -i src/routes/ -o apidoc/ & istanbul cover node_modules/mocha/bin/_mocha --root ./src ./src/**/*.test.js & ssh-deployer -f deploy.json --host api.suite.worldofrations.com --username username --password password --workspace ./"
   },
   "repository": {
     "type": "git",

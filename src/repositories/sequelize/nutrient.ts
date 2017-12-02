@@ -40,6 +40,63 @@ export class NutrientRepository extends BaseRepository implements INutrientRepos
             },
         });
 
-      return new Nutrient(result.id, result.name, result.description, result.code, result.abbreviation, result.unit, result.sortOrder);
+        return new Nutrient(result.id, result.name, result.description, result.code, result.abbreviation, result.unit, result.sortOrder);
+    }
+
+    public async findById(applicationId: number, nutrientId: number): Promise<Nutrient> {
+
+        const result: any = await BaseRepository.models.Nutrient.find({
+            where: {
+                applicationId: {
+                    [Sequelize.Op.eq]: applicationId,
+                },
+                id: {
+                    [Sequelize.Op.eq]: nutrientId,
+                },
+            },
+        });
+
+        return new Nutrient(result.id, result.name, result.description, result.code, result.abbreviation, result.unit, result.sortOrder);
+    }
+
+    public async list(applicationId: number): Promise<Nutrient[]> {
+
+        const result: any[] = await BaseRepository.models.Nutrient.findAll({
+            order: [
+                ['sortOrder', 'ASC'],
+            ],
+            where: {
+                applicationId: {
+                    [Sequelize.Op.eq]: applicationId,
+                },
+            },
+        });
+
+        return result.map((x) => new Nutrient(x.id, x.name, x.description, x.code, x.abbreviation, x.unit, x.sortOrder));
+    }
+
+    public async update(applicationId: number, nutrient: Nutrient): Promise<Nutrient> {
+
+        const result: any = await BaseRepository.models.Nutrient.find({
+            where: {
+                applicationId: {
+                    [Sequelize.Op.eq]: applicationId,
+                },
+                id: {
+                    [Sequelize.Op.eq]: nutrient.id,
+                },
+            },
+        });
+
+        result.abbreviation = nutrient.abbreviation;
+        result.code = nutrient.code;
+        result.description = nutrient.description;
+        result.name = nutrient.name;
+        result.sortOrder = nutrient.sortOrder;
+        result.unit = nutrient.unit;
+
+        await result.save();
+
+        return nutrient;
     }
 }

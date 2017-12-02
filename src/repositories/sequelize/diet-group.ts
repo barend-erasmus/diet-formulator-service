@@ -106,6 +106,8 @@ export class DietGroupRepository extends BaseRepository implements IDietGroupRep
         result.name = dietGroup.name;
         result.dietGroupId = dietGroup.parent ? dietGroup.parent.id : null;
 
+        await result.save();
+
         return dietGroup;
     }
 

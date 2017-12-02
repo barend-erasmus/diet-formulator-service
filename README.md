@@ -1,1 +1,1 @@
-# diet-formulator-service
+# Diet Formulator Service
