@@ -26,7 +26,7 @@ export class DietGroupRouter {
     public static async list(req: express.Request, res: express.Response) {
         const appliationId: number = parseInt(req.get('x-application-id'));
 
-        const result: DietGroup[] = await DietGroupRouter.getDietGroupService().list(1, req.query.dietGroupId? req.query.dietGroupId : null);
+        const result: DietGroup[] = await DietGroupRouter.getDietGroupService().list(appliationId, req.query.dietGroupId? req.query.dietGroupId : null);
 
         res.json(result);
     }
@@ -34,7 +34,7 @@ export class DietGroupRouter {
     public static async listAll(req: express.Request, res: express.Response) {
         const appliationId: number = parseInt(req.get('x-application-id'));
 
-        const result: DietGroup[] = await DietGroupRouter.getDietGroupService().listAll(1);
+        const result: DietGroup[] = await DietGroupRouter.getDietGroupService().listAll(appliationId);
 
         res.json(result);
     }
