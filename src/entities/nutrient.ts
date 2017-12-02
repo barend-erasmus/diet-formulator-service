@@ -6,6 +6,7 @@ export class Nutrient {
         public code: string,
         public abbreviation: string,
         public unit: string,
+        public sortOrder: number,
     ) {
 
     }

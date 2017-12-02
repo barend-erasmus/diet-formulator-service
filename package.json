@@ -9,7 +9,7 @@
     "start": "tsc & node ./src/app.js",
     "docs": "apidoc -i src/routes/ -o apidoc/",
     "lint": "tslint ./src/**/*.ts --exclude ./src/**/*.d.ts",
-    "sync": "tsc & node ./src/sync.js",
+    "init": "tsc & node ./src/init.js",
     "importer": "tsc & node ./src/importer/app.js",
     "deploy": "tsc & apidoc -i src/routes/ -o apidoc/ & istanbul cover node_modules/mocha/bin/_mocha --root ./src ./src/**/*.test.js & ssh-deployer -f deploy.json --host survey.openservices.co.za --username username --password password --workspace ./"
   },
@@ -25,9 +25,12 @@
   "homepage": "https://github.com/barend-erasmus/diet-formulator-service#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
     "express": "^4.16.2",
     "pg": "^7.3.0",
     "pg-hstore": "^2.3.2",
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2",
     "sequelize": "^4.16.0",
     "yargs": "^9.0.1"
   },

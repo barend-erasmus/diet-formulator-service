@@ -48,6 +48,10 @@ export class BaseRepository {
                 allowNull: false,
                 type: Sequelize.STRING,
             },
+            sortOrder: {
+                allowNull: false,
+                type: Sequelize.INTEGER,
+            },
             unit: {
                 allowNull: false,
                 type: Sequelize.STRING,
@@ -267,6 +271,7 @@ export class BaseRepository {
 
     public close(): void {
         BaseRepository.sequelize.close();
+        BaseRepository.sequelize = null;
     }
 
     public sync(): Promise<void> {

@@ -8,15 +8,43 @@ import { DietGroup } from '../entities/diet-group';
 export class DietGroupRouter {
 
     public static async create(req: express.Request, res: express.Response) {
-        const result: DietGroup = await DietGroupRouter.getDietGroupService().create(1, req.body);
- 
+        const appliationId: number = parseInt(req.get('x-application-id'));
+
+        const result: DietGroup = await DietGroupRouter.getDietGroupService().create(appliationId, req.body);
+
         res.json(result);
-     }
+    }
+
+    public static async find(req: express.Request, res: express.Response) {
+        const appliationId: number = parseInt(req.get('x-application-id'));
+
+        const result: DietGroup = await DietGroupRouter.getDietGroupService().find(appliationId, req.query.id);
+
+        res.json(result);
+    }
 
     public static async list(req: express.Request, res: express.Response) {
-       const result: DietGroup[] = await DietGroupRouter.getDietGroupService().list(1);
+        const appliationId: number = parseInt(req.get('x-application-id'));
 
-       res.json(result);
+        const result: DietGroup[] = await DietGroupRouter.getDietGroupService().list(1, req.query.dietGroupId? req.query.dietGroupId : null);
+
+        res.json(result);
+    }
+
+    public static async listAll(req: express.Request, res: express.Response) {
+        const appliationId: number = parseInt(req.get('x-application-id'));
+
+        const result: DietGroup[] = await DietGroupRouter.getDietGroupService().listAll(1);
+
+        res.json(result);
+    }
+
+    public static async update(req: express.Request, res: express.Response) {
+        const appliationId: number = parseInt(req.get('x-application-id'));
+
+        const result: DietGroup = await DietGroupRouter.getDietGroupService().update(appliationId, req.body);
+
+        res.json(result);
     }
 
     protected static getDietGroupService(): DietGroupService {

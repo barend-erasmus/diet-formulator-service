@@ -18,11 +18,33 @@ export class DietGroupService {
         return this.dietGroupRepository.create(applicationId, dietGroup);
     }
 
+    public async find(
+        applicationId: number,
+        dietGroupId: number,
+    ): Promise<DietGroup> {
+
+        return this.dietGroupRepository.find(applicationId, dietGroupId);
+    }
+
     public async list(
+        applicationId: number,
+        dietGroupId: number,
+    ): Promise<DietGroup[]> {
+        return this.dietGroupRepository.listSubGroups(applicationId, dietGroupId);
+    }
+
+    public async listAll(
         applicationId: number,
     ): Promise<DietGroup[]> {
         return this.dietGroupRepository.list(applicationId);
     }
 
+    public async update(
+        applicationId: number,
+        dietGroup: DietGroup,
+    ): Promise<DietGroup> {
+
+        return this.dietGroupRepository.update(applicationId, dietGroup);
+    }
    
 }
