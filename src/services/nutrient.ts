@@ -17,6 +17,12 @@ export class NutrientService {
 
         nutrient.validate();
 
+        const existingNutrient: Nutrient = await this.nutrientRepository.find(applicationId, nutrient.code);
+
+        if (existingNutrient) {
+            throw new Error(`Nutrient with code '${nutrient.code}' already exist`);
+        }
+
         return this.nutrientRepository.create(applicationId, nutrient);
     }
 
