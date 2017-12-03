@@ -14,6 +14,9 @@ export class NutrientService {
         applicationId: number,
         nutrient: Nutrient,
     ): Promise<Nutrient> {
+
+        nutrient.validate();
+
         return this.nutrientRepository.create(applicationId, nutrient);
     }  
     
@@ -34,6 +37,9 @@ export class NutrientService {
         applicationId: number,
         nutrient: Nutrient,
     ): Promise<Nutrient> {
+
+        nutrient.validate();
+        
         return this.nutrientRepository.update(applicationId, nutrient);
     }
 }

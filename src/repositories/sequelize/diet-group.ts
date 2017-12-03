@@ -11,7 +11,7 @@ export class DietGroupRepository extends BaseRepository implements IDietGroupRep
     }
 
     public async create(applicationId: number, dietGroup: DietGroup): Promise<DietGroup> {
-
+        console.log(`Creating ${dietGroup.name}`);
         const result: any = await BaseRepository.models.DietGroup.create({
             applicationId: applicationId,
             description: dietGroup.description,
@@ -36,6 +36,10 @@ export class DietGroupRepository extends BaseRepository implements IDietGroupRep
                 },
             },
         });
+
+        if (!result) {
+            return null;
+        }
 
         let dietGroup: DietGroup = new DietGroup(result.id, result.name, result.description, result.dietGroupId ? new DietGroup(result.dietGroupId, null, null, null) : null);
 

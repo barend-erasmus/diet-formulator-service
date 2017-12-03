@@ -5,39 +5,66 @@ import { NutrientService } from '../services/nutrient';
 import { NutrientRepository } from '../repositories/sequelize/nutrient';
 import { INutrientRepository } from '../repositories/nutrient';
 
-
 export class NutrientRouter {
 
     public static async create(req: express.Request, res: express.Response) {
-        const applicationId: number = parseInt(req.get('x-application-id'));
+        try {
+            const applicationId: number = parseInt(req.get('x-application-id'));
 
-        const result: Nutrient = await NutrientRouter.getNutrientService().create(applicationId, req.body);
+            const result: Nutrient = await NutrientRouter.getNutrientService().create(applicationId, new Nutrient(null, req.body.name, req.body.description, req.body.code, req.body.abbreviation, req.body.unit, req.body.sortOrder));
 
-        res.json(result);
+            res.json(result);
+        } catch (err) {
+            res.status(500).json({
+                message: err.message,
+                stack: err.stack,
+            });
+        }
     }
 
     public static async find(req: express.Request, res: express.Response) {
-        const applicationId: number = parseInt(req.get('x-application-id'));
+        try {
+            const applicationId: number = parseInt(req.get('x-application-id'));
 
-        const result: Nutrient = await NutrientRouter.getNutrientService().find(applicationId, req.query.nutrientId);
+            const result: Nutrient = await NutrientRouter.getNutrientService().find(applicationId, req.query.nutrientId);
 
-        res.json(result);
+            res.json(result);
+        } catch (err) {
+            res.status(500).json({
+                message: err.message,
+                stack: err.stack,
+            });
+        }
     }
 
     public static async list(req: express.Request, res: express.Response) {
-        const applicationId: number = parseInt(req.get('x-application-id'));
+        try {
+            const applicationId: number = parseInt(req.get('x-application-id'));
 
-        const result: Nutrient[] = await NutrientRouter.getNutrientService().list(applicationId);
+            const result: Nutrient[] = await NutrientRouter.getNutrientService().list(applicationId);
 
-        res.json(result);
+            res.json(result);
+        } catch (err) {
+            res.status(500).json({
+                message: err.message,
+                stack: err.stack,
+            });
+        }
     }
 
     public static async update(req: express.Request, res: express.Response) {
-        const applicationId: number = parseInt(req.get('x-application-id'));
+        try {
+            const applicationId: number = parseInt(req.get('x-application-id'));
 
-        const result: Nutrient = await NutrientRouter.getNutrientService().update(applicationId, req.body);
+            const result: Nutrient = await NutrientRouter.getNutrientService().update(applicationId, new Nutrient(null, req.body.name, req.body.description, req.body.code, req.body.abbreviation, req.body.unit, req.body.sortOrder));
 
-        res.json(result);
+            res.json(result);
+        } catch (err) {
+            res.status(500).json({
+                message: err.message,
+                stack: err.stack,
+            });
+        }
     }
 
     protected static getNutrientService(): NutrientService {

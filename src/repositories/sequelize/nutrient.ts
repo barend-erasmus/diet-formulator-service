@@ -40,6 +40,10 @@ export class NutrientRepository extends BaseRepository implements INutrientRepos
             },
         });
 
+        if (!result) {
+            return null;
+        }
+
         return new Nutrient(result.id, result.name, result.description, result.code, result.abbreviation, result.unit, result.sortOrder);
     }
 
@@ -55,6 +59,10 @@ export class NutrientRepository extends BaseRepository implements INutrientRepos
                 },
             },
         });
+
+        if (!result) {
+            return null;
+        }
 
         return new Nutrient(result.id, result.name, result.description, result.code, result.abbreviation, result.unit, result.sortOrder);
     }

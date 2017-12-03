@@ -61,6 +61,7 @@ async function importFormulas() {
                 dietGroups = await dietGroupRepository.listSubGroups(applicationId, parentDietGroupId);
             } else {
                 parentDietGroupId = dietGroups.find((x) => x.name === item['Group 1']).id;
+                dietGroups = await dietGroupRepository.listSubGroups(applicationId, parentDietGroupId);
             }
         }
 
@@ -73,6 +74,7 @@ async function importFormulas() {
                 dietGroups = await dietGroupRepository.listSubGroups(applicationId, parentDietGroupId);
             } else {
                 parentDietGroupId = dietGroups.find((x) => x.name === item['Group 2']).id;
+                dietGroups = await dietGroupRepository.listSubGroups(applicationId, parentDietGroupId);
             }
         }
 
@@ -85,6 +87,7 @@ async function importFormulas() {
                 dietGroups = await dietGroupRepository.listSubGroups(applicationId, parentDietGroupId);
             } else {
                 parentDietGroupId = dietGroups.find((x) => x.name === item['Group 3']).id;
+                dietGroups = await dietGroupRepository.listSubGroups(applicationId, parentDietGroupId);
             }
         }
 
@@ -97,6 +100,7 @@ async function importFormulas() {
                 dietGroups = await dietGroupRepository.listSubGroups(applicationId, parentDietGroupId);
             } else {
                 parentDietGroupId = dietGroups.find((x) => x.name === item['Group 4']).id;
+                dietGroups = await dietGroupRepository.listSubGroups(applicationId, parentDietGroupId);
             }
         }
     }
@@ -121,4 +125,6 @@ importNutrients().then(() => {
     return importFormulas();
 }).then(() => {
 
-});
+}).catch((err) => {
+    console.log(err.stack);
+})
