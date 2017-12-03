@@ -9,6 +9,7 @@ import { config } from './config';
 import { ApplicationRouter } from './routes/application';
 import { DietGroupRouter } from './routes/diet-group';
 import { NutrientRouter } from './routes/nutrient';
+import { DietRouter } from './routes/diet';
 
 const argv = yargs.argv;
 const app = express();
@@ -31,6 +32,9 @@ app.get('/api/dietgroup/find', requireUser, DietGroupRouter.find);
 app.get('/api/dietgroup/list', requireUser, DietGroupRouter.list);
 app.get('/api/dietgroup/listAll', requireUser, DietGroupRouter.listAll);
 app.post('/api/dietgroup/update', requireUser, DietGroupRouter.update);
+
+app.post('/api/diet/create', requireUser, DietRouter.create);
+app.get('/api/diet/list', requireUser, DietRouter.list);
 
 app.use('/api/docs', express.static(path.join(__dirname, './../apidoc')));
 app.use('/api/coverage', express.static(path.join(__dirname, './../coverage/lcov-report')));
