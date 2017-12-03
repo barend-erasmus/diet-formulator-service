@@ -1,8 +1,7 @@
 import * as Sequelize from 'sequelize';
-import { BaseRepository } from "./base";
-import { INutrientRepository } from '../nutrient';
 import { Nutrient } from '../../entities/nutrient';
-import { reset } from 'continuation-local-storage';
+import { INutrientRepository } from '../nutrient';
+import { BaseRepository } from "./base";
 
 export class NutrientRepository extends BaseRepository implements INutrientRepository {
 
@@ -14,7 +13,7 @@ export class NutrientRepository extends BaseRepository implements INutrientRepos
 
         const result: any = await BaseRepository.models.Nutrient.create({
             abbreviation: nutrient.abbreviation,
-            applicationId: applicationId,
+            applicationId,
             code: nutrient.code,
             description: nutrient.description,
             name: nutrient.name,

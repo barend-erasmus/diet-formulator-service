@@ -1,17 +1,17 @@
 import * as csvtojson from 'csvtojson';
-import { config } from './../config';
-import { BaseRepository } from '../repositories/sequelize/base';
-import { IDietGroupRepository } from '../repositories/diet-group';
-import { DietGroupRepository } from '../repositories/sequelize/diet-group';
 import { DietGroup } from '../entities/diet-group';
-import { NutrientRepository } from '../repositories/sequelize/nutrient';
 import { Nutrient } from '../entities/nutrient';
+import { IDietGroupRepository } from '../repositories/diet-group';
+import { BaseRepository } from '../repositories/sequelize/base';
+import { DietGroupRepository } from '../repositories/sequelize/diet-group';
+import { NutrientRepository } from '../repositories/sequelize/nutrient';
+import { config } from './../config';
 
 async function importNutrients() {
 
     const applicationId: number = 1;
 
-    let data: any[] = await getData('./src/importer/nutrients.csv');
+    const data: any[] = await getData('./src/importer/nutrients.csv');
 
     const nutrientRepository: NutrientRepository = new NutrientRepository(config.database.host, config.database.username, config.database.password);
 
@@ -117,7 +117,7 @@ function getData(fileName: string): Promise<any[]> {
                 result.push(jsonObj);
             }).on('done', () => {
                 resolve(result);
-            })
+            });
     });
 }
 
@@ -127,4 +127,4 @@ importNutrients().then(() => {
 
 }).catch((err) => {
     console.log(err.stack);
-})
+});

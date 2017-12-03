@@ -1,6 +1,6 @@
-import { config } from './../config';
-import { INutrientRepository } from '../repositories/nutrient';
 import { Nutrient } from '../entities/nutrient';
+import { INutrientRepository } from '../repositories/nutrient';
+import { config } from './../config';
 
 export class NutrientService {
 
@@ -18,8 +18,8 @@ export class NutrientService {
         nutrient.validate();
 
         return this.nutrientRepository.create(applicationId, nutrient);
-    }  
-    
+    }
+
     public async find(
         applicationId: number,
         nutrientId: number,
@@ -39,7 +39,7 @@ export class NutrientService {
     ): Promise<Nutrient> {
 
         nutrient.validate();
-        
+
         return this.nutrientRepository.update(applicationId, nutrient);
     }
 }

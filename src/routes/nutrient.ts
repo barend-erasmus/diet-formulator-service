@@ -1,15 +1,15 @@
 import * as express from 'express';
-import { config } from './../config';
 import { Nutrient } from '../entities/nutrient';
-import { NutrientService } from '../services/nutrient';
-import { NutrientRepository } from '../repositories/sequelize/nutrient';
 import { INutrientRepository } from '../repositories/nutrient';
+import { NutrientRepository } from '../repositories/sequelize/nutrient';
+import { NutrientService } from '../services/nutrient';
+import { config } from './../config';
 
 export class NutrientRouter {
 
     public static async create(req: express.Request, res: express.Response) {
         try {
-            const applicationId: number = parseInt(req.get('x-application-id'));
+            const applicationId: number = parseInt(req.get('x-application-id'), undefined);
 
             const result: Nutrient = await NutrientRouter.getNutrientService().create(applicationId, new Nutrient(null, req.body.name, req.body.description, req.body.code, req.body.abbreviation, req.body.unit, req.body.sortOrder));
 
@@ -24,7 +24,7 @@ export class NutrientRouter {
 
     public static async find(req: express.Request, res: express.Response) {
         try {
-            const applicationId: number = parseInt(req.get('x-application-id'));
+            const applicationId: number = parseInt(req.get('x-application-id'), undefined);
 
             const result: Nutrient = await NutrientRouter.getNutrientService().find(applicationId, req.query.nutrientId);
 
@@ -39,7 +39,7 @@ export class NutrientRouter {
 
     public static async list(req: express.Request, res: express.Response) {
         try {
-            const applicationId: number = parseInt(req.get('x-application-id'));
+            const applicationId: number = parseInt(req.get('x-application-id'), undefined);
 
             const result: Nutrient[] = await NutrientRouter.getNutrientService().list(applicationId);
 
@@ -54,7 +54,7 @@ export class NutrientRouter {
 
     public static async update(req: express.Request, res: express.Response) {
         try {
-            const applicationId: number = parseInt(req.get('x-application-id'));
+            const applicationId: number = parseInt(req.get('x-application-id'), undefined);
 
             const result: Nutrient = await NutrientRouter.getNutrientService().update(applicationId, new Nutrient(null, req.body.name, req.body.description, req.body.code, req.body.abbreviation, req.body.unit, req.body.sortOrder));
 

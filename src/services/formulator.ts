@@ -1,7 +1,7 @@
 import * as solver from 'javascript-lp-solver';
-import { FormulationIngredient } from "../entities/formulation-ingredient";
 import { Diet } from "../entities/diet";
 import { Formulation } from '../entities/formulation';
+import { FormulationIngredient } from "../entities/formulation-ingredient";
 
 export class FormulatorService {
 
@@ -27,7 +27,6 @@ export class FormulatorService {
 
         return formulation;
     }
-
 
     private buildConstraintsForSolver(formulationIngredients: FormulationIngredient[], diet: Diet, resultWeight: number) {
         const constraints = {

@@ -1,13 +1,13 @@
 // Imports
-import * as express from 'express';
-import * as path from 'path';
-import * as yargs from 'yargs';
-import { config } from './config';
 import * as bodyParser from 'body-parser';
 import * as cors from 'cors';
+import * as express from 'express';
+import * as path from 'path';
 import * as request from 'request-promise';
-import { DietGroupRouter } from './routes/diet-group';
+import * as yargs from 'yargs';
+import { config } from './config';
 import { ApplicationRouter } from './routes/application';
+import { DietGroupRouter } from './routes/diet-group';
 import { NutrientRouter } from './routes/nutrient';
 
 const argv = yargs.argv;
@@ -55,5 +55,3 @@ function requireUser(req: express.Request, res: express.Response, next: express.
 app.listen(argv.port || 3000, () => {
     console.log(`listening on port ${argv.port || 3000}`);
 });
-
-

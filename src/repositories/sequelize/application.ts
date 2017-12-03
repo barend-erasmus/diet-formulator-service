@@ -1,7 +1,7 @@
 import * as Sequelize from 'sequelize';
-import { BaseRepository } from "./base";
-import { IApplicationRepository } from '../application';
 import { Application } from '../../entities/application';
+import { IApplicationRepository } from '../application';
+import { BaseRepository } from "./base";
 
 export class ApplicationRepository extends BaseRepository implements IApplicationRepository {
 

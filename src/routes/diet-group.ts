@@ -1,14 +1,14 @@
 import * as express from 'express';
-import { config } from './../config';
-import { DietGroupService } from '../services/diet-group';
-import { DietGroupRepository } from '../repositories/sequelize/diet-group';
-import { IDietGroupRepository } from '../repositories/diet-group';
 import { DietGroup } from '../entities/diet-group';
+import { IDietGroupRepository } from '../repositories/diet-group';
+import { DietGroupRepository } from '../repositories/sequelize/diet-group';
+import { DietGroupService } from '../services/diet-group';
+import { config } from './../config';
 
 export class DietGroupRouter {
 
     public static async create(req: express.Request, res: express.Response) {
-        const applicationId: number = parseInt(req.get('x-application-id'));
+        const applicationId: number = parseInt(req.get('x-application-id'), undefined);
 
         const result: DietGroup = await DietGroupRouter.getDietGroupService().create(applicationId, req.body);
 
@@ -16,7 +16,7 @@ export class DietGroupRouter {
     }
 
     public static async find(req: express.Request, res: express.Response) {
-        const applicationId: number = parseInt(req.get('x-application-id'));
+        const applicationId: number = parseInt(req.get('x-application-id'), undefined);
 
         const result: DietGroup = await DietGroupRouter.getDietGroupService().find(applicationId, req.query.id);
 
@@ -24,15 +24,15 @@ export class DietGroupRouter {
     }
 
     public static async list(req: express.Request, res: express.Response) {
-        const applicationId: number = parseInt(req.get('x-application-id'));
+        const applicationId: number = parseInt(req.get('x-application-id'), undefined);
 
-        const result: DietGroup[] = await DietGroupRouter.getDietGroupService().list(applicationId, req.query.dietGroupId? req.query.dietGroupId : null);
+        const result: DietGroup[] = await DietGroupRouter.getDietGroupService().list(applicationId, req.query.dietGroupId ? req.query.dietGroupId : null);
 
         res.json(result);
     }
 
     public static async listAll(req: express.Request, res: express.Response) {
-        const applicationId: number = parseInt(req.get('x-application-id'));
+        const applicationId: number = parseInt(req.get('x-application-id'), undefined);
 
         const result: DietGroup[] = await DietGroupRouter.getDietGroupService().listAll(applicationId);
 
@@ -40,7 +40,7 @@ export class DietGroupRouter {
     }
 
     public static async update(req: express.Request, res: express.Response) {
-        const applicationId: number = parseInt(req.get('x-application-id'));
+        const applicationId: number = parseInt(req.get('x-application-id'), undefined);
 
         const result: DietGroup = await DietGroupRouter.getDietGroupService().update(applicationId, req.body);
 

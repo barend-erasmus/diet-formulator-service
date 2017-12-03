@@ -1,6 +1,6 @@
-import { config } from './../config';
-import { IDietGroupRepository } from '../repositories/diet-group';
 import { DietGroup } from '../entities/diet-group';
+import { IDietGroupRepository } from '../repositories/diet-group';
+import { config } from './../config';
 
 export class DietGroupService {
 
@@ -46,5 +46,5 @@ export class DietGroupService {
 
         return this.dietGroupRepository.update(applicationId, dietGroup);
     }
-   
+
 }

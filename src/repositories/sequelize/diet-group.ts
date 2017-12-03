@@ -1,8 +1,7 @@
 import * as Sequelize from 'sequelize';
-import { BaseRepository } from "./base";
-import { IDietGroupRepository } from "../diet-group";
 import { DietGroup } from "../../entities/diet-group";
-import { reset } from 'continuation-local-storage';
+import { IDietGroupRepository } from "../diet-group";
+import { BaseRepository } from "./base";
 
 export class DietGroupRepository extends BaseRepository implements IDietGroupRepository {
 
@@ -11,9 +10,8 @@ export class DietGroupRepository extends BaseRepository implements IDietGroupRep
     }
 
     public async create(applicationId: number, dietGroup: DietGroup): Promise<DietGroup> {
-        console.log(`Creating ${dietGroup.name}`);
         const result: any = await BaseRepository.models.DietGroup.create({
-            applicationId: applicationId,
+            applicationId,
             description: dietGroup.description,
             dietGroupId: dietGroup.parent ? dietGroup.parent.id : null,
             name: dietGroup.name,
@@ -62,7 +60,7 @@ export class DietGroupRepository extends BaseRepository implements IDietGroupRep
 
         const dietGroups: DietGroup[] = result.map((x) => new DietGroup(x.id, x.name, x.description, x.dietGroupId ? new DietGroup(x.dietGroupId, null, null, null) : null));
 
-        for (let item of dietGroups) {
+        for (const item of dietGroups) {
             await this.loadDietGroupParent(applicationId, item);
         }
 
@@ -86,7 +84,7 @@ export class DietGroupRepository extends BaseRepository implements IDietGroupRep
 
         const dietGroups: DietGroup[] = result.map((x) => new DietGroup(x.id, x.name, x.description, x.dietGroupId ? new DietGroup(x.dietGroupId, null, null, null) : null));
 
-        for (let item of dietGroups) {
+        for (const item of dietGroups) {
             await this.loadDietGroupParent(applicationId, item);
         }
 
