@@ -1,0 +1,267 @@
+id;description;name;username;ingredientGroupId
+97;;Cys, as Cystine or DL-Cystine;;6
+103;;Fescue hay;;2
+108;;Folic, as Folic Acid (Vit B9);;8
+110;;Herring oil;;5
+113;;I, from Ethylene-diamino-dihydroiodide (EDDI);;11
+117;;K, as Potassium Bicarbonate (KHCO3);;10
+119;;K, as Potassium Chloride (KCl);;10
+98;;Di-Ammonium Phosphate;;4
+99;;Distillers grain, wet;;9
+102;;Feather meal, hydrolyzed;;9
+100;;Fababean (Broadbean) seeds;;9
+105;;Fish meal, menhaden;;9
+107;;Flaxseed oil;;5
+111;;His, as DL-Histidine;;6
+101;;Fe, from Ferrous sulphate;;11
+104;;Fish meal, herring;;9
+112;;His, as L-Histidine monohydochloride;;6
+120;;K, as Potassium Iodide (KI);;10
+106;;Fish meal, white;;9
+211;;Trace Mineral Premix for Cattle (Formulate using 1 kg);;12
+218;;Trace Mineral Premix for Poultry (Formulate using 1 kg);;12
+219;;Trace Mineral Premix for Rabbits (Formulate using 1 kg);;12
+226;;Urea 46% Nitrogen;;4
+232;;Vit A, from Vit A Palmitate 500;;8
+212;;Trace Mineral Premix for Deer (Formulate using 1 kg);;12
+213;;Trace Mineral Premix for Dogs (Formulate using 1 kg);;12
+214;;Trace Mineral Premix for Fish (Formulate using 2 kg);;12
+216;;Trace Mineral Premix for Horses (Formulate using 1 kg);;12
+224;;Trp, as L-Tryptophan;;6
+229;;Vit A, from Vit A Acetate 325;;8
+235;;Vit B1, from Thiamine mono-nitrate 98%;;8
+246;;Vit D, from Vit D3 Oil (Cholecalciferol);;8
+257;;Wheat straw, Ammoniated;;2
+259;;Wheat, grain (hard, red var);;7
+215;;Trace Mineral Premix for Goats (Formulate using 1 kg);;12
+223;;Triticale, grain;;7
+225;;Tyr, as L-Tyrosine;;6
+227;;Val, as L-Valine;;6
+236;;Vit B12, as the 1.0 % product (Cyanocobalamin);;8
+239;;Vit B2, as the 0.1% product (Riboflavin);;8
+249;;Vit D, from Vit D3 500;;8
+255;;Wheat Silage (dough stage);;3
+260;;Wheat, grain (soft, white var);;7
+261;;Wheat, middlings;;7
+264;;Zn, from Zinc chloride;;11
+217;;Trace Mineral Premix for Pigs (Formulate using 1 kg);;12
+221;;Trace Mineral Premix for Shrimp (Formulate using 2 kg);;12
+222;;Trace Mineral Premix for Zebra (Formulate using 1 kg);;12
+231;;Vit A, from Vit A Palmitate 250;;8
+233;;Vit B1, (Thiamine), from Vita-B1 supplied by Allivet;;8
+238;;Vit B12, as the 10.0% product (Cyanocobalamin);;8
+241;;Vit B6, (Pyridoxine);;8
+244;;Vit C, as an Ethylcellulose-coated Ascorbic Acid;;8
+253;;Vit K, from Vit K 5%;;8
+263;;Zn, from Zinc carbonate;;11
+265;;Zn, from Zinc oxide;;11
+220;;Trace Mineral Premix for Sheep (Formulate using 1 kg);;12
+228;;Vit A, from Vit A Acetate 250;;8
+230;;Vit A, from Vit A Acetate 500;;8
+234;;Vit B1, from Thiamine hydrochloride 98%;;8
+237;;Vit B12, as the 0.1% product (Cyanocobalamin);;8
+240;;Vit B2, as the 1% product (Riboflavin);;8
+242;;Vit C, as a Fat-coated Ascorbic Acid;;8
+243;;Vit C, as a Phosphorylated Ascorbic Acid;;8
+245;;Vit D, from Vit D2 Oil (Ergocalciferol);;8
+247;;Vit D, from Vit D3 100;;8
+248;;Vit D, from Vit D3 50;;8
+250;;Vit E, from Vit E Acetate 50%;;8
+251;;Vit E, from Vit E Acetate 500;;8
+252;;Vit K, from Vit K 1%;;8
+254;;Wheat hay;;2
+256;;Wheat straw;;2
+258;;Wheat, bran;;7
+262;;Whey, dried;;7
+266;;Zn, from Zinc sulphate monhydrate;;11
+1;;Acid Buf (calcified seaweed);;1
+2;;Alfalfa hay, dehy 17% CP;;2
+3;;Alfalfa hay, dehy 20% CP;;2
+4;;Alfalfa hay, early bloom;;2
+5;;Alfalfa hay, full bloom;;2
+6;;Alfalfa hay, late/post bloom;;2
+7;;Alfalfa hay, midbloom;;2
+8;;Alfalfa hay, pre bloom;;2
+9;;Alfalfa hay, very little or no leaves;;2
+10;;Alfalfa Silage, Early Bloom;;3
+11;;Alfalfa Silage, Full Bloom;;3
+12;;Alfalfa Silage, Mid Bloom;;3
+13;;Alfalfa, fresh;;3
+14;;Ammonium Chloride;;4
+15;;Ammonium Sulphate;;4
+16;;Anchovy oil;;5
+17;;Arg, as DL-Arginine hydrochloride;;6
+18;;Arg, as L-Arginine monohydrochloride;;6
+19;;Bakery waste, dehydrated;;7
+20;;Barley grain, steam flaked;;7
+21;;Barley grain, steam rolled;;7
+22;;Barley Silage (dough);;3
+23;;Barley straw;;2
+24;;Barley, grain;;7
+25;;Barley, grain (hulless);;7
+26;;Beef tallow;;5
+27;;Beet pulp (sugar), dried;;7
+28;;BIO-COX?? (SAL-Na ) ..120kg/ton;;1
+29;;Biotin, (Vit H2) 2.0%;;8
+30;;Biuret;;4
+31;;Blood meal, conventional;;9
+32;;Blood meal, flash dried;;9
+33;;Blood meal, spray or ring dried;;9
+34;;Bluegrass hay;;2
+35;;Bluegrass, fresh;;3
+36;;Brewer's yeast, dehy;;9
+37;;Brewers (Distillers) grain, dry;;9
+38;;Brome hay;;2
+39;;Brome, fresh;;3
+40;;Buckwheat grain;;7
+41;;Butter;;5
+42;;Ca and P, as Di-calcium phosphate;;10
+43;;Ca and P, as Mono-calcium phosphate;;10
+44;;Ca and P, as steamed Bone meal;;10
+45;;Ca, as pure Calcium carbonate;;10
+46;;Ca, as Dolomitic Limestone;;10
+47;;Ca, as ground Limestone;;10
+48;;Canary grass hay;;2
+49;;Canola (Rapeseed) oil;;5
+50;;Canola meal;;9
+51;;Casein, dehy;;9
+52;;Cassava (Tapioca) meal solv extr;;7
+53;;Choice white grease;;5
+54;;Cholest, as Feed Grade Cholesterol;;1
+55;;Choline, as Choline Chloride (Vit B4) 50%;;8
+56;;Choline, as Choline Chloride (Vit B4) 60%;;8
+57;;Citrus pulp, dehydrated;;7
+58;;Clover hay, Landino;;2
+59;;Clover hay, Red;;2
+60;;Clover Landino, fresh;;3
+61;;Co, from Cobalt Carbonate;;11
+62;;Co, from Cobalt Carbonate hexahydrate;;11
+63;;Co, from Cobalt dicloride hexahydrate;;11
+64;;Coconut (Copra) meal, mech extr;;9
+65;;Coconut (Copra) meal, solv extr;;9
+66;;Coconut oil;;5
+67;;Corn & Cob meal;;2
+68;;Corn gluten 22% CP;;9
+69;;Corn gluten 43% CP;;9
+70;;Corn gluten 60% CP;;9
+71;;Corn grain (maize), white;;7
+72;;Corn grain (maize), yellow;;7
+73;;Corn grain, white, flaked;;7
+74;;Corn grain, white, rolled;;7
+75;;Corn grain, yellow, flaked;;7
+76;;Corn grain, yellow, rolled;;7
+77;;Corn oil;;5
+78;;Corn Silage, Grain 25% mature;;3
+79;;Corn Silage, Grain 35% mature;;3
+80;;Corn Silage, Grain 45% mature;;3
+81;;Corn, grits by-prod (Hominy Feed);;7
+82;;Cottonseed hulls;;2
+83;;Cottonseed o/c meal, mech extr;;9
+84;;Cottonseed o/c meal, solv extr;;9
+85;;Cottonseed oil;;5
+86;;Cottonseed, delinted & ground;;9
+87;;Cottonseed, whole;;9
+88;;Cottonseed, whole, extruded;;9
+89;;Cr, from Chromium nicotinate;;11
+90;;Cr, from Chromium picolinate;;11
+91;;Cr, from Chromium yeast;;11
+92;;Crab Meal;;9
+93;;Crawfish waste meal;;9
+94;;Cu, from Cupric chloride dihydrate;;11
+95;;Cu, from Cupric oxide;;11
+96;;Cu, from Cupric sulphate pentahydrate;;11
+109;;Gly, as Glycine;;6
+114;;I, from Potassium iodide;;11
+115;;Inositol, as Myo-Inositol (previously known as Vit B8);;8
+116;;Iso-L, as L-Iso-Leucine;;6
+118;;K, as Potassium Carbonate (K2CO3);;10
+121;;K, as Potassium Sulpnate (K2SO4);;10
+122;;Lard (Pork);;5
+123;;Lentil seeds;;9
+124;;Leu, as L-Leucine;;6
+125;;Linseed (flaxseed);;9
+126;;Linseed meal, mech extr.;;9
+127;;Linseed meal, solv. extr.;;9
+128;;Lupin meal, (Sweet, White);;9
+129;;Lys, as L-Lysine;;6
+130;;Lys, as L-Lysine liquid concentrate;;6
+131;;Lys, as L-Lysine monohydrochloride;;6
+132;;Lys, as L-Lysine sulphate;;6
+133;;Meat meal, (Poultry/swine byproduct);;9
+134;;Meat meal, (Red-meat byproduct) without bones;;9
+135;;Menhaden oil;;5
+136;;Met, as DL-Methionine;;6
+137;;Met, as DL-Methionine liquid concentrate;;6
+138;;Mg, as Magnesium oxide (MgO);;10
+139;;MgO (magnesium oxide);;1
+140;;Millet, grain;;7
+141;;Mn, from Manganese carbonate;;11
+142;;Mn, from Manganese chloride;;11
+143;;Mn, from Manganese chloride tetrahydrate;;11
+144;;Mn, from Manganese oxide;;11
+145;;Mn, from Manganese sulphate monohydrate;;11
+146;;Mn, from Manganese sulphate pentahydrate;;11
+147;;Mo, from Ammonium molybdate;;11
+148;;Mo, from Molybdenum trioxide;;11
+149;;Mo, from Sodium Molybdate dihydrate;;11
+150;;Molasses meal (Voermol);;7
+151;;Molasses, sugarcane (syrup);;7
+152;;Mono- Ammonium Phosphate;;4
+153;;Na and Cl, as Salt;;10
+154;;Na, Cl and I, as Iodized salt;;10
+155;;Niacin, as Nicotinic Acid (Vit B3);;8
+156;;Oat hay;;2
+157;;Oat hulls;;2
+158;;Oat Silage (dough stage);;3
+159;;Oat straw;;2
+160;;Oats, (naked) grain;;7
+161;;Oats, grain;;7
+162;;Oats, groats;;7
+163;;Olive oil;;5
+164;;P, as Ammonium Di-phosphate;;10
+165;;P, as Ammonium Mono-phosphate;;10
+166;;P, as ground Rock Phosphate;;10
+167;;Palm Kernel oil;;5
+168;;Palm oil;;5
+169;;Pantot, as Pantothenic acid (Vit B5);;8
+170;;Pea seeds;;9
+171;;Peanut o/c meal, mech ext.;;9
+172;;Peanut o/c meal, solv ext.;;9
+173;;Peanut oil;;5
+174;;Phe, as DL-, D-, or L-Phenylalanine;;6
+175;;Poultry fat;;5
+176;;Proline, as Proline;;6
+177;;Restaurant grease;;5
+178;;Rice grain, groats;;7
+179;;Rice hulls;;2
+180;;Rye, grain;;7
+181;;S, as Ammonium Sulphate ((NH4)2SO4);;11
+182;;S, as Flowers Sulphur (S);;11
+183;;Safflower meal, solv ext.;;9
+184;;Safflower meal, w/o hulls;;9
+185;;Safflower oil;;5
+186;;Se, from Sodium Selenate decahydrate;;11
+187;;Se, from Sodium Selenite;;11
+188;;Ser, as L-Serine;;6
+189;;Sesame meal, mech ext.;;9
+190;;Sesame oil;;5
+191;;Sockeye Salmon oil;;5
+192;;Sorghum Silage;;3
+193;;Sorghum, grain;;7
+194;;Sorghum-Sudan Silage;;3
+195;;Soybean hulls;;2
+196;;Soybean meal, mech ext 42% CP;;9
+197;;Soybean meal, solv 44% CP;;9
+198;;Soybean meal, solv 49% CP;;9
+199;;Soybean oil;;5
+200;;Soybean Silage;;3
+201;;Sunflower o/c, w/o hulls;;9
+202;;Sunflower o/c, with hulls;;9
+203;;Sunflower oil;;5
+204;;Sunflower seed hulls;;2
+205;;Taurine, as Taurine;;6
+206;;Thr, as L-Threonine;;6
+207;;Timothy hay;;2
+208;;Trace Min Premix Alpacas & Llamas (Formulate using 1 kg);;12
+209;;Trace Mineral Premix for Antelope (Formulate using 1 kg);;12
+210;;Trace Mineral Premix for Cats (Formulate using 1 kg);;12

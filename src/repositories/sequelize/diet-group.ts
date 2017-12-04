@@ -98,7 +98,7 @@ export class DietGroupRepository extends BaseRepository implements IDietGroupRep
                 applicationId: {
                     [Sequelize.Op.eq]: applicationId,
                 },
-                dietGroupId: {
+                id: {
                     [Sequelize.Op.eq]: dietGroup.id,
                 },
             },
