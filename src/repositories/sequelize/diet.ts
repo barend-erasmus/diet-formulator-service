@@ -70,7 +70,10 @@ export class DietRepository extends BaseRepository implements IDietRepository {
 
         dietGroup = await this.loadDietGroupParent(dietGroup);
 
-        return new Diet(result.id, result.name, result.description, result.username, dietGroup, result.dietValues.map((value) => new DietValue(value.id, value.minimum, value.maximum, new Nutrient(value.nutrient.id, value.nutrient.name, value.nutrient.description, value.nutrient.code, value.nutrient.abbreviation, value.nutrient.unit, value.nutrient.sortOrder))));
+        return new Diet(result.id, result.name, result.description, result.username, dietGroup, 
+            result.dietValues.map((value) => 
+            new DietValue(value.id, value.minimum, value.maximum, new Nutrient(value.nutrient.id, value.nutrient.name, value.nutrient.description, value.nutrient.code, value.nutrient.abbreviation, value.nutrient.unit, value.nutrient.sortOrder))
+        ).sort((a, b) => a.nutrient.sortOrder - b.nutrient.sortOrder));
     }
 
     public async list(dietGroupId: number): Promise<Diet[]> {
