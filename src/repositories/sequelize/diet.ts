@@ -17,18 +17,23 @@ export class DietRepository extends BaseRepository implements IDietRepository {
             dietGroupId: diet.group.id,
             name: diet.name,
             username: diet.username,
-        });
+            dietValues: diet.values.map((value) => {
+                return {
+                    maximum: value.maximum,
+                    minimum: value.minimum,
+                    nutrientId: value.nutrient.id,
+                };
+            }),
+        }, {
+
+                include: [
+                    {
+                        model: BaseRepository.models.DietValue,
+                    },
+                ],
+            });
 
         diet.id = result.id;
-
-        for (const value of diet.values) {
-            await BaseRepository.models.DietValue.create({
-                maximum: value.maximum,
-                minimum: value.minimum,
-                dietId: diet.id,
-                nutrientId: value.nutrient.id,
-            });
-        }
 
         return diet;
     }

@@ -270,8 +270,10 @@ export class BaseRepository {
     }
 
     public close(): void {
-        BaseRepository.sequelize.close();
-        BaseRepository.sequelize = null;
+        if (BaseRepository.sequelize) {
+            BaseRepository.sequelize.close();
+            BaseRepository.sequelize = null;
+        }
     }
 
     public sync(): Promise<void> {
