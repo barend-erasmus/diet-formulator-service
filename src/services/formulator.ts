@@ -5,12 +5,12 @@ import { FormulationIngredient } from "../entities/formulation-ingredient";
 
 export class FormulatorService {
 
-    public async formulate(formulation: Formulation, username: string): Promise<Formulation> {
+    public async formulate(formulation: Formulation, username: string, resultWeight: number): Promise<Formulation> {
 
         let results: any;
 
         const model = {
-            constraints: this.buildConstraintsForSolver(formulation.formulationIngredients, formulation.diet, 1000),
+            constraints: this.buildConstraintsForSolver(formulation.formulationIngredients, formulation.diet, resultWeight),
             opType: "min",
             optimize: "cost",
             variables: this.buildVariablesForSolver(formulation.formulationIngredients),
@@ -18,11 +18,13 @@ export class FormulatorService {
 
         results = solver.Solve(model);
 
+        console.log(model);
+
         for (const formulationIngredient of formulation.formulationIngredients) {
             formulationIngredient.weight = results[formulationIngredient.id] === undefined ? 0 : results[formulationIngredient.id];
         }
 
-        formulation.cost = results.result / 1000;
+        formulation.cost = results.result / resultWeight;
         formulation.feasible = results.feasible;
 
         return formulation;
