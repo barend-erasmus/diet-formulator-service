@@ -8,16 +8,29 @@ import { config } from './../config';
 export class DietRouter {
 
     public static async create(req: express.Request, res: express.Response) {
+        try {
+            const result: Diet = await DietRouter.getDietService().create(req.body);
 
-        const result: Diet = await DietRouter.getDietService().create(req.body);
-
-        res.json(result);
+            res.json(result);
+        } catch (err) {
+            res.status(500).json({
+                message: err.message,
+                stack: err.stack,
+            });
+        }
     }
 
     public static async list(req: express.Request, res: express.Response) {
-        const result: Diet[] = await DietRouter.getDietService().list(req.query.dietGroupId);
+        try {
+            const result: Diet[] = await DietRouter.getDietService().list(req.query.dietGroupId);
 
-        res.json(result);
+            res.json(result);
+        } catch (err) {
+            res.status(500).json({
+                message: err.message,
+                stack: err.stack,
+            });
+        }
     }
 
     protected static getDietService(): DietService {

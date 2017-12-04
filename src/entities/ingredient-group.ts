@@ -6,4 +6,16 @@ export class IngredientGroup {
     ) {
 
     }
+
+    public validate(): void {
+        const messages: string[] = [];
+
+        if (!this.name) {
+            messages.push('Name cannot be empty');
+        }
+
+        if (messages.length > 0) {
+            throw new Error(messages.join(';'));
+        }
+    }
 }

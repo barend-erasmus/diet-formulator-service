@@ -8,10 +8,17 @@ import { config } from './../config';
 export class ApplicationRouter {
 
     public static async create(req: express.Request, res: express.Response) {
-        const result: Application = await ApplicationRouter.getApplicationService().create(req.body.name, req.body.description);
+        try {
+            const result: Application = await ApplicationRouter.getApplicationService().create(req.body.name, req.body.description);
 
-        res.json(result);
-     }
+            res.json(result);
+        } catch (err) {
+            res.status(500).json({
+                message: err.message,
+                stack: err.stack,
+            });
+        }
+    }
 
     protected static getApplicationService(): ApplicationService {
         const applicationRepository: IApplicationRepository = new ApplicationRepository(config.database.host, config.database.username, config.database.password);

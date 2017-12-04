@@ -10,6 +10,7 @@ import { ApplicationRouter } from './routes/application';
 import { DietGroupRouter } from './routes/diet-group';
 import { NutrientRouter } from './routes/nutrient';
 import { DietRouter } from './routes/diet';
+import { IngredientRouter } from './routes/ingredients';
 
 const argv = yargs.argv;
 const app = express();
@@ -35,6 +36,9 @@ app.post('/api/dietgroup/update', requireUser, DietGroupRouter.update);
 
 app.post('/api/diet/create', requireUser, DietRouter.create);
 app.get('/api/diet/list', requireUser, DietRouter.list);
+
+app.post('/api/ingredient/create', requireUser, IngredientRouter.create);
+app.get('/api/ingredient/list', requireUser, IngredientRouter.list);
 
 app.use('/api/docs', express.static(path.join(__dirname, './../apidoc')));
 app.use('/api/coverage', express.static(path.join(__dirname, './../coverage/lcov-report')));

@@ -8,43 +8,78 @@ import { config } from './../config';
 export class DietGroupRouter {
 
     public static async create(req: express.Request, res: express.Response) {
-        const applicationId: number = parseInt(req.get('x-application-id'), undefined);
+        try {
+            const applicationId: number = parseInt(req.get('x-application-id'), undefined);
 
-        const result: DietGroup = await DietGroupRouter.getDietGroupService().create(applicationId, req.body);
+            const result: DietGroup = await DietGroupRouter.getDietGroupService().create(applicationId, req.body);
 
-        res.json(result);
+            res.json(result);
+        } catch (err) {
+            res.status(500).json({
+                message: err.message,
+                stack: err.stack,
+            });
+        }
     }
 
     public static async find(req: express.Request, res: express.Response) {
-        const applicationId: number = parseInt(req.get('x-application-id'), undefined);
+        try {
+            const applicationId: number = parseInt(req.get('x-application-id'), undefined);
 
-        const result: DietGroup = await DietGroupRouter.getDietGroupService().find(applicationId, req.query.id);
+            const result: DietGroup = await DietGroupRouter.getDietGroupService().find(applicationId, req.query.id);
 
-        res.json(result);
+            res.json(result);
+        } catch (err) {
+            res.status(500).json({
+                message: err.message,
+                stack: err.stack,
+            });
+        }
     }
 
     public static async list(req: express.Request, res: express.Response) {
-        const applicationId: number = parseInt(req.get('x-application-id'), undefined);
+        try {
+            const applicationId: number = parseInt(req.get('x-application-id'), undefined);
 
-        const result: DietGroup[] = await DietGroupRouter.getDietGroupService().list(applicationId, req.query.dietGroupId ? req.query.dietGroupId : null);
+            const result: DietGroup[] = await DietGroupRouter.getDietGroupService().list(applicationId, req.query.dietGroupId ? req.query.dietGroupId : null);
 
-        res.json(result);
+            res.json(result);
+        } catch (err) {
+            res.status(500).json({
+                message: err.message,
+                stack: err.stack,
+            });
+        }
     }
 
     public static async listAll(req: express.Request, res: express.Response) {
-        const applicationId: number = parseInt(req.get('x-application-id'), undefined);
+        try {
+            const applicationId: number = parseInt(req.get('x-application-id'), undefined);
 
-        const result: DietGroup[] = await DietGroupRouter.getDietGroupService().listAll(applicationId);
+            const result: DietGroup[] = await DietGroupRouter.getDietGroupService().listAll(applicationId);
 
-        res.json(result);
+            res.json(result);
+        } catch (err) {
+            res.status(500).json({
+                message: err.message,
+                stack: err.stack,
+            });
+        }
     }
 
     public static async update(req: express.Request, res: express.Response) {
-        const applicationId: number = parseInt(req.get('x-application-id'), undefined);
+        try {
+            const applicationId: number = parseInt(req.get('x-application-id'), undefined);
 
-        const result: DietGroup = await DietGroupRouter.getDietGroupService().update(applicationId, req.body);
+            const result: DietGroup = await DietGroupRouter.getDietGroupService().update(applicationId, req.body);
 
-        res.json(result);
+            res.json(result);
+        } catch (err) {
+            res.status(500).json({
+                message: err.message,
+                stack: err.stack,
+            });
+        }
     }
 
     protected static getDietGroupService(): DietGroupService {

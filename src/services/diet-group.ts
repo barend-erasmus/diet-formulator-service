@@ -15,6 +15,8 @@ export class DietGroupService {
         dietGroup: DietGroup,
     ): Promise<DietGroup> {
 
+        dietGroup.validate();
+
         return this.dietGroupRepository.create(applicationId, dietGroup);
     }
 
@@ -44,6 +46,8 @@ export class DietGroupService {
         dietGroup: DietGroup,
     ): Promise<DietGroup> {
 
+        dietGroup.validate();
+        
         return this.dietGroupRepository.update(applicationId, dietGroup);
     }
 

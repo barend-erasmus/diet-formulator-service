@@ -14,6 +14,8 @@ export class DietService {
         diet: Diet,
     ): Promise<Diet> {
 
+        diet.validate();
+        
         return this.dietRepository.create(diet);
     }
 
