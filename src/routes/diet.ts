@@ -20,6 +20,19 @@ export class DietRouter {
         }
     }
 
+    public static async find(req: express.Request, res: express.Response) {
+        try {
+            const result: Diet = await DietRouter.getDietService().find(req.query.id);
+
+            res.json(result);
+        } catch (err) {
+            res.status(500).json({
+                message: err.message,
+                stack: err.stack,
+            });
+        }
+    }
+
     public static async list(req: express.Request, res: express.Response) {
         try {
             const result: Diet[] = await DietRouter.getDietService().list(req.query.dietGroupId);

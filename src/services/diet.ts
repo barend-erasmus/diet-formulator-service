@@ -19,6 +19,12 @@ export class DietService {
         return this.dietRepository.create(diet);
     }
 
+    public async find(
+        dietId: number,
+    ): Promise<Diet> {
+        return this.dietRepository.find(dietId);
+    }
+
     public async list(
         dietGroupId: number,
     ): Promise<Diet[]> {

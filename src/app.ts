@@ -35,6 +35,7 @@ app.get('/api/dietgroup/listAll', requireUser, DietGroupRouter.listAll);
 app.post('/api/dietgroup/update', requireUser, DietGroupRouter.update);
 
 app.post('/api/diet/create', requireUser, DietRouter.create);
+app.get('/api/diet/find', requireUser, DietRouter.find);
 app.get('/api/diet/list', requireUser, DietRouter.list);
 
 app.post('/api/ingredient/create', requireUser, IngredientRouter.create);
