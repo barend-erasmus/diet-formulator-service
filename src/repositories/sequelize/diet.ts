@@ -120,7 +120,11 @@ export class DietRepository extends BaseRepository implements IDietRepository {
             },
         });
 
-        // TODO
+        result.description = diet.description;
+        result.name = diet.name;
+
+
+        await result.save();
 
         return diet;
     }
