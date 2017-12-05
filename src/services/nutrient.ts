@@ -9,7 +9,7 @@ export class NutrientService extends BaseService {
         private nutrientRepository: INutrientRepository,
     ) {
         super();
-    } 
+    }
 
     public async create(
         applicationId: number,

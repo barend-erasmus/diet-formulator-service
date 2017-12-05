@@ -28,7 +28,7 @@ export class BaseService {
 
             permissions.push('create-diet-group');
             permissions.push('update-diet-group');
-            
+
             permissions.push('create-diet');
 
             permissions.push('create-ingredient');
