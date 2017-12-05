@@ -50,16 +50,16 @@ app.use('/api/coverage', express.static(path.join(__dirname, './../coverage/lcov
 
 function requireUser(req: express.Request, res: express.Response, next: express.NextFunction): void {
     request({
-        uri: 'http://localhost:3000/api/user/info',
         headers: {
-            'Authorization': req.get('Authorization'),
+            Authorization: req.get('Authorization'),
         },
         json: true,
+        uri: 'http://localhost:3000/api/user/info',
     }).then((result) => {
-        req['user'] = result;      
+        req['user'] = result;
 
         next();
-    }).catch(function (err) {
+    }).catch((err) => {
         res.status(401).end();
     });
 }

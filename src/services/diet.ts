@@ -1,9 +1,9 @@
 import { Diet } from '../entities/diet';
+import { DietGroup } from '../entities/diet-group';
 import { IDietRepository } from '../repositories/diet';
+import { IDietGroupRepository } from '../repositories/diet-group';
 import { config } from './../config';
 import { BaseService } from './base';
-import { DietGroup } from '../entities/diet-group';
-import { IDietGroupRepository } from '../repositories/diet-group';
 
 export class DietService extends BaseService {
 

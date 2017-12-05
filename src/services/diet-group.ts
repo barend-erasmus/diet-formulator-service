@@ -29,7 +29,7 @@ export class DietGroupService extends BaseService {
     public async find(
         applicationId: number,
         dietGroupId: number,
-        username: string
+        username: string,
     ): Promise<DietGroup> {
 
         if (!this.hasPermission(username, 'view-diet-group')) {

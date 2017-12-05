@@ -1,10 +1,10 @@
 import * as express from 'express';
 import * as request from 'request-promise';
-import { config } from './../config';
-import { UserService } from '../services/user';
-import { IUserRepository } from '../repositories/user';
-import { UserRepository } from '../repositories/sequelize/user';
 import { User } from '../entities/user';
+import { UserRepository } from '../repositories/sequelize/user';
+import { IUserRepository } from '../repositories/user';
+import { UserService } from '../services/user';
+import { config } from './../config';
 
 export class UserRouter {
 
@@ -18,11 +18,11 @@ export class UserRouter {
             if (!user) {
                 try {
                     const json: any = await request({
-                        uri: 'https://developersworkspace.auth0.com/userinfo',
                         headers: {
-                            'Authorization': req.get('Authorization'),
+                            Authorization: req.get('Authorization'),
                         },
                         json: true,
+                        uri: 'https://developersworkspace.auth0.com/userinfo',
                     });
 
                     user = await UserRouter.getUserService().create(new User(json.email, json.email_verified, json.picture), token);
@@ -35,7 +35,6 @@ export class UserRouter {
                 res.json(user);
             }
 
-            
         } catch (err) {
             res.status(500).json({
                 message: err.message,

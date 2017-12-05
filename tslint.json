@@ -5,6 +5,7 @@
     "quotemark": false,
     "max-line-length": 150,
     "no-console": false,
-    "no-unused-expression": false
+    "no-unused-expression": false,
+    "no-string-literal": false
   }
 }

@@ -1,5 +1,5 @@
-import { IUserRepository } from "../repositories/user";
 import { User } from "../entities/user";
+import { IUserRepository } from "../repositories/user";
 
 export class UserService {
     constructor(

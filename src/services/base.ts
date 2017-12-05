@@ -8,7 +8,6 @@ export class BaseService {
 
         const permissions: string[] = [];
 
-
         permissions.push('view-nutrient');
         permissions.push('view-diet-group');
         permissions.push('view-diet');
@@ -38,9 +37,9 @@ export class BaseService {
 
             permissions.push('view-diet-values');
             permissions.push('view-ingedient-values');
-            
+
         }
-    
+
         return permissions;
     }
 

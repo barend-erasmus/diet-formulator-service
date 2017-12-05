@@ -1,7 +1,7 @@
 import * as Sequelize from 'sequelize';
-import { BaseRepository } from "./base";
-import { IUserRepository } from '../user';
 import { User } from '../../entities/user';
+import { IUserRepository } from '../user';
+import { BaseRepository } from "./base";
 
 export class UserRepository extends BaseRepository implements IUserRepository {
 
@@ -26,11 +26,11 @@ export class UserRepository extends BaseRepository implements IUserRepository {
 
         const result: any = await BaseRepository.models.User.find({
             where: {
-                token: {
-                    [Sequelize.Op.eq]: token,
-                },
                 expiryTimestamp: {
                     [Sequelize.Op.gte]: new Date().getTime(),
+                },
+                token: {
+                    [Sequelize.Op.eq]: token,
                 },
             },
         });
@@ -38,7 +38,7 @@ export class UserRepository extends BaseRepository implements IUserRepository {
         if (!result) {
             return null;
         }
-        
+
         return new User(result.email, result.verified, result.picture);
     }
 }

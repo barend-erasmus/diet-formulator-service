@@ -4,11 +4,11 @@ import { DietGroup } from '../entities/diet-group';
 import { DietValue } from '../entities/diet-value';
 import { Nutrient } from '../entities/nutrient';
 import { IDietRepository } from '../repositories/diet';
+import { IDietGroupRepository } from '../repositories/diet-group';
 import { DietRepository } from '../repositories/sequelize/diet';
+import { DietGroupRepository } from '../repositories/sequelize/diet-group';
 import { DietService } from '../services/diet';
 import { config } from './../config';
-import { DietGroupRepository } from '../repositories/sequelize/diet-group';
-import { IDietGroupRepository } from '../repositories/diet-group';
 
 export class DietRouter {
 
