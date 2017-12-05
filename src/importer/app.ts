@@ -1,21 +1,21 @@
 import * as csvtojson from 'csvtojson';
+import { Diet } from '../entities/diet';
 import { DietGroup } from '../entities/diet-group';
+import { DietValue } from '../entities/diet-value';
+import { Ingredient } from '../entities/ingredient';
+import { IngredientGroup } from '../entities/ingredient-group';
+import { IngredientValue } from '../entities/ingredient-value';
 import { Nutrient } from '../entities/nutrient';
+import { SuggestedValue } from '../entities/suggested-value';
 import { IDietGroupRepository } from '../repositories/diet-group';
 import { BaseRepository } from '../repositories/sequelize/base';
-import { DietGroupRepository } from '../repositories/sequelize/diet-group';
-import { NutrientRepository } from '../repositories/sequelize/nutrient';
-import { config } from './../config';
 import { DietRepository } from '../repositories/sequelize/diet';
-import { Diet } from '../entities/diet';
-import { DietValue } from '../entities/diet-value';
-import { IngredientGroupRepository } from '../repositories/sequelize/ingredient-group';
-import { IngredientGroup } from '../entities/ingredient-group';
-import { Ingredient } from '../entities/ingredient';
-import { IngredientValue } from '../entities/ingredient-value';
+import { DietGroupRepository } from '../repositories/sequelize/diet-group';
 import { IngredientRepository } from '../repositories/sequelize/ingredient';
+import { IngredientGroupRepository } from '../repositories/sequelize/ingredient-group';
+import { NutrientRepository } from '../repositories/sequelize/nutrient';
 import { SuggestedValueRepository } from '../repositories/sequelize/suggested-value';
-import { SuggestedValue } from '../entities/suggested-value';
+import { config } from './../config';
 
 async function importNutrients() {
 
@@ -29,8 +29,8 @@ async function importNutrients() {
         const nutrient: Nutrient = await nutrientRepository.find(applicationId, item.Code);
 
         if (!nutrient) {
-            await nutrientRepository.create(applicationId, new Nutrient(null, item['Name'], item['Description'], item['Code'], item['Abbreviation'], item['Unit'], item['Sort Order']));
-            console.log(`Imported Nutrient '${item['Name']}'`);
+            await nutrientRepository.create(applicationId, new Nutrient(null, item.Name, item.Description, item.Code, item.Abbreviation, item.Unit, item['Sort Order']));
+            console.log(`Imported Nutrient '${item.Name}'`);
         }
     }
 
@@ -41,7 +41,7 @@ async function importRations() {
 
     const applicationId: number = 1;
 
-    let data: any[] = await getData('./src/importer/rations.csv');
+    const data: any[] = await getData('./src/importer/rations.csv');
 
     const rations: any[] = [];
 
@@ -51,13 +51,13 @@ async function importRations() {
             x.group2 === item['Group 2'] &&
             x.group3 === item['Group 3'] &&
             x.group4 === item['Group 4'] &&
-            x.name === item['Name']);
+            x.name === item.Name);
 
         if (ration) {
             ration.values.push({
-                maximum: item['Maximum'] ? parseFloat(item['Maximum']) : null,
-                minimum: item['Minimum'] ? parseFloat(item['Minimum']) : null,
-                nutrient: item['Nutrient'],
+                maximum: item.Maximum ? parseFloat(item.Maximum) : null,
+                minimum: item.Minimum ? parseFloat(item.Minimum) : null,
+                nutrient: item.Nutrient,
             });
         } else {
             rations.push({
@@ -65,15 +65,15 @@ async function importRations() {
                 group2: item['Group 2'],
                 group3: item['Group 3'],
                 group4: item['Group 4'],
-                name: item['Name'],
+                name: item.Name,
                 values: [
                     {
-                        maximum: item['Maximum'] ? parseFloat(item['Maximum']) : null,
-                        minimum: item['Minimum'] ? parseFloat(item['Minimum']) : null,
-                        nutrient: item['Nutrient'],
-                    }
+                        maximum: item.Maximum ? parseFloat(item.Maximum) : null,
+                        minimum: item.Minimum ? parseFloat(item.Minimum) : null,
+                        nutrient: item.Nutrient,
+                    },
                 ],
-            })
+            });
         }
     }
 
@@ -150,7 +150,7 @@ async function importRations() {
             null,
             null,
             new DietGroup(parentDietGroupId, null, null, null),
-            ration.values.map((x) => new DietValue(null, x.minimum, x.maximum, nutrients.find((y) => y.code === x.nutrient)))
+            ration.values.map((x) => new DietValue(null, x.minimum, x.maximum, nutrients.find((y) => y.code === x.nutrient))),
         ));
 
         console.log(`Imported Diet '${ration.name}'`);
@@ -166,31 +166,31 @@ async function importFeedstuffs() {
 
     const applicationId: number = 1;
 
-    let data: any[] = await getData('./src/importer/feedstuffs.csv');
+    const data: any[] = await getData('./src/importer/feedstuffs.csv');
 
     const feedstuffs: any[] = [];
 
     for (const item of data) {
         const feedstuff: any = feedstuffs.find((x) =>
-            x.group === item['Group'] &&
-            x.name === item['Name']);
+            x.group === item.Group &&
+            x.name === item.Name);
 
         if (feedstuff) {
             feedstuff.values.push({
-                nutrient: item['Nutrient'],
-                value: item['Value'] ? parseFloat(item['Value']) : null,
+                nutrient: item.Nutrient,
+                value: item.Value ? parseFloat(item.Value) : null,
             });
         } else {
             feedstuffs.push({
-                group: item['Group'],
-                name: item['Name'],
+                group: item.Group,
+                name: item.Name,
                 values: [
                     {
-                        nutrient: item['Nutrient'],
-                        value: item['Value'] ? parseFloat(item['Value']) : null,
-                    }
+                        nutrient: item.Nutrient,
+                        value: item.Value ? parseFloat(item.Value) : null,
+                    },
                 ],
-            })
+            });
         }
     }
 
@@ -217,7 +217,7 @@ async function importFeedstuffs() {
             null,
             null,
             ingredientGroup,
-            feedstuff.values.map((x) => new IngredientValue(null, x.value, nutrients.find((y) => y.code === x.nutrient)))
+            feedstuff.values.map((x) => new IngredientValue(null, x.value, nutrients.find((y) => y.code === x.nutrient))),
         ));
 
         console.log(`Imported Ingredient '${feedstuff.name}'`);
@@ -233,7 +233,7 @@ async function importSuggestedValues() {
 
     const applicationId: number = 1;
 
-    let data: any[] = await getData('./src/importer/suggested-values.csv');
+    const data: any[] = await getData('./src/importer/suggested-values.csv');
 
     const dietGroupRepository: DietGroupRepository = new DietGroupRepository(config.database.host, config.database.username, config.database.password);
     const ingredientRepository: IngredientRepository = new IngredientRepository(config.database.host, config.database.username, config.database.password);
@@ -256,11 +256,11 @@ async function importSuggestedValues() {
             dietGroups = await dietGroupRepository.listSubGroups(applicationId, parentDietGroupId);
         }
 
-        const ingredient: Ingredient = ingredients.find((x) => x.name === item['Feedstuff']);
+        const ingredient: Ingredient = ingredients.find((x) => x.name === item.Feedstuff);
 
-        await suggestedValeRepository.create(new SuggestedValue(null, null, new DietGroup(parentDietGroupId, null, null, null), ingredient, parseFloat(item['Minimum']), parseFloat(item['Maximum'])));
+        await suggestedValeRepository.create(new SuggestedValue(null, null, new DietGroup(parentDietGroupId, null, null, null), ingredient, parseFloat(item.Minimum), parseFloat(item.Maximum)));
 
-        console.log(`Imported Suggested Value '${item['Group 2']} - ${item['Feedstuff']}'`);
+        console.log(`Imported Suggested Value '${item['Group 2']} - ${item.Feedstuff}'`);
     }
 
     dietGroupRepository.close();

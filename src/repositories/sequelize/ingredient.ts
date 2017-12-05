@@ -1,8 +1,8 @@
 import * as Sequelize from 'sequelize';
-import { BaseRepository } from "./base";
-import { IIngredientRepository } from '../ingredient';
 import { Ingredient } from '../../entities/ingredient';
 import { IngredientGroup } from '../../entities/ingredient-group';
+import { IIngredientRepository } from '../ingredient';
+import { BaseRepository } from "./base";
 
 export class IngredientRepository extends BaseRepository implements IIngredientRepository {
 
@@ -48,7 +48,7 @@ export class IngredientRepository extends BaseRepository implements IIngredientR
                             [Sequelize.Op.eq]: applicationId,
                         },
                     },
-                }
+                },
             ],
             order: [
                 ['name', 'ASC'],

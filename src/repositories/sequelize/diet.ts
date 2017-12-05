@@ -1,10 +1,10 @@
 import * as Sequelize from 'sequelize';
-import { BaseRepository } from "./base";
-import { IDietRepository } from '../diet';
 import { Diet } from '../../entities/diet';
 import { DietGroup } from '../../entities/diet-group';
 import { DietValue } from '../../entities/diet-value';
 import { Nutrient } from '../../entities/nutrient';
+import { IDietRepository } from '../diet';
+import { BaseRepository } from "./base";
 
 export class DietRepository extends BaseRepository implements IDietRepository {
     constructor(host: string, username: string, password: string) {
@@ -16,8 +16,6 @@ export class DietRepository extends BaseRepository implements IDietRepository {
         const result: any = await BaseRepository.models.Diet.create({
             description: diet.description,
             dietGroupId: diet.group.id,
-            name: diet.name,
-            username: diet.username,
             dietValues: diet.values.map((value) => {
                 return {
                     maximum: value.maximum,
@@ -25,6 +23,8 @@ export class DietRepository extends BaseRepository implements IDietRepository {
                     nutrientId: value.nutrient.id,
                 };
             }),
+            name: diet.name,
+            username: diet.username,
         }, {
 
                 include: [
@@ -47,13 +47,13 @@ export class DietRepository extends BaseRepository implements IDietRepository {
                     include: [
                         {
                             model: BaseRepository.models.Nutrient,
-                        }
+                        },
                     ],
                     model: BaseRepository.models.DietValue,
                 },
                 {
                     model: BaseRepository.models.DietGroup,
-                }
+                },
             ],
             where: {
                 id: {
@@ -72,7 +72,7 @@ export class DietRepository extends BaseRepository implements IDietRepository {
 
         return new Diet(result.id, result.name, result.description, result.username, dietGroup,
             result.dietValues.map((value) =>
-                new DietValue(value.id, value.minimum, value.maximum, new Nutrient(value.nutrient.id, value.nutrient.name, value.nutrient.description, value.nutrient.code, value.nutrient.abbreviation, value.nutrient.unit, value.nutrient.sortOrder))
+                new DietValue(value.id, value.minimum, value.maximum, new Nutrient(value.nutrient.id, value.nutrient.name, value.nutrient.description, value.nutrient.code, value.nutrient.abbreviation, value.nutrient.unit, value.nutrient.sortOrder)),
             ).sort((a, b) => a.nutrient.sortOrder - b.nutrient.sortOrder));
     }
 
@@ -82,7 +82,7 @@ export class DietRepository extends BaseRepository implements IDietRepository {
             include: [
                 {
                     model: BaseRepository.models.DietGroup,
-                }
+                },
             ],
             order: [
                 ['name', 'ASC'],
@@ -105,13 +105,13 @@ export class DietRepository extends BaseRepository implements IDietRepository {
                     include: [
                         {
                             model: BaseRepository.models.Nutrient,
-                        }
+                        },
                     ],
                     model: BaseRepository.models.DietValue,
                 },
                 {
                     model: BaseRepository.models.DietGroup,
-                }
+                },
             ],
             where: {
                 id: {
@@ -157,7 +157,7 @@ export class DietRepository extends BaseRepository implements IDietRepository {
                 },
             });
 
-            let parent: DietGroup = new DietGroup(result.id, result.name, result.description, result.dietGroupId ? new DietGroup(result.dietGroupId, null, null, null) : null);
+            const parent: DietGroup = new DietGroup(result.id, result.name, result.description, result.dietGroupId ? new DietGroup(result.dietGroupId, null, null, null) : null);
 
             dietGroup.parent = await this.loadDietGroupParent(parent);
         }

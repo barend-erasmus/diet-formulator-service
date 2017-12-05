@@ -47,7 +47,7 @@ export class DietGroupService {
     ): Promise<DietGroup> {
 
         dietGroup.validate();
-        
+
         return this.dietGroupRepository.update(applicationId, dietGroup);
     }
 

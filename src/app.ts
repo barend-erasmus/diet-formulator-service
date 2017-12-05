@@ -7,10 +7,10 @@ import * as request from 'request-promise';
 import * as yargs from 'yargs';
 import { config } from './config';
 import { ApplicationRouter } from './routes/application';
-import { DietGroupRouter } from './routes/diet-group';
-import { NutrientRouter } from './routes/nutrient';
 import { DietRouter } from './routes/diet';
+import { DietGroupRouter } from './routes/diet-group';
 import { IngredientRouter } from './routes/ingredients';
+import { NutrientRouter } from './routes/nutrient';
 
 const argv = yargs.argv;
 const app = express();

@@ -1,9 +1,9 @@
 import * as solver from 'javascript-lp-solver';
 import { Diet } from "../entities/diet";
-import { Formulation } from '../entities/formulation';
-import { FormulationIngredient } from "../entities/formulation-ingredient";
-import { FormulationCompositionValue } from '../entities/formulation-composition-value';
 import { DietValue } from '../entities/diet-value';
+import { Formulation } from '../entities/formulation';
+import { FormulationCompositionValue } from '../entities/formulation-composition-value';
+import { FormulationIngredient } from "../entities/formulation-ingredient";
 
 export class FormulatorService {
 
@@ -35,7 +35,7 @@ export class FormulatorService {
         const result: FormulationCompositionValue[] = [];
 
         formulation.diet.values.map((value) => {
-            return
+            return;
         });
 
         for (const value of formulation.diet.values) {
@@ -54,7 +54,7 @@ export class FormulatorService {
         return result;
     }
 
-    private buildConstraintsForSolver(formulationIngredients: FormulationIngredient[], diet: Diet, mixWeight: number, ) {
+    private buildConstraintsForSolver(formulationIngredients: FormulationIngredient[], diet: Diet, mixWeight: number ) {
         const constraints = {
             weight: null,
         };

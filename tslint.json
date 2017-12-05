@@ -3,6 +3,8 @@
   "defaultSeverity": "error",
   "rules": {
     "quotemark": false,
-    "max-line-length": 150
+    "max-line-length": 150,
+    "no-console": false,
+    "no-unused-expression": false
   }
 }

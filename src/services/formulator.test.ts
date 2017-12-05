@@ -1,13 +1,13 @@
 import { expect } from 'chai';
 import 'mocha';
-import { FormulatorService } from './formulator';
-import { Formulation } from '../entities/formulation';
 import { Diet } from '../entities/diet';
 import { DietValue } from '../entities/diet-value';
-import { Nutrient } from '../entities/nutrient';
+import { Formulation } from '../entities/formulation';
+import { FormulationCompositionValue } from '../entities/formulation-composition-value';
 import { FormulationIngredient } from '../entities/formulation-ingredient';
 import { IngredientValue } from '../entities/ingredient-value';
-import { FormulationCompositionValue } from '../entities/formulation-composition-value';
+import { Nutrient } from '../entities/nutrient';
+import { FormulatorService } from './formulator';
 
 describe('FormulatorService', () => {
     describe('formulate', () => {

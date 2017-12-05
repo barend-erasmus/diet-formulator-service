@@ -1,9 +1,9 @@
 import * as express from 'express';
-import { config } from './../config';
 import { Ingredient } from '../entities/ingredient';
-import { IngredientService } from '../services/ingredient';
 import { IIngredientRepository } from '../repositories/ingredient';
 import { IngredientRepository } from '../repositories/sequelize/ingredient';
+import { IngredientService } from '../services/ingredient';
+import { config } from './../config';
 
 export class IngredientRouter {
 

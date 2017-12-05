@@ -1,7 +1,7 @@
 import * as Sequelize from 'sequelize';
-import { BaseRepository } from "./base";
-import { ISuggestedValueRepository } from '../suggested-value';
 import { SuggestedValue } from '../../entities/suggested-value';
+import { ISuggestedValueRepository } from '../suggested-value';
+import { BaseRepository } from "./base";
 
 export class SuggestedValueRepository extends BaseRepository implements ISuggestedValueRepository {
 
@@ -13,10 +13,10 @@ export class SuggestedValueRepository extends BaseRepository implements ISuggest
 
         const result: any = await BaseRepository.models.SuggestedValue.create({
             description: suggestedValue.description,
-            maximum: suggestedValue.maximum,
-            minimum: suggestedValue.minimum,
             dietGroupId: suggestedValue.dietGroup.id,
             ingredientId: suggestedValue.ingredient.id,
+            maximum: suggestedValue.maximum,
+            minimum: suggestedValue.minimum,
         });
 
         suggestedValue.id = result.id;

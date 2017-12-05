@@ -1,6 +1,6 @@
-import { config } from './../config';
-import { IIngredientRepository } from '../repositories/ingredient';
 import { Ingredient } from '../entities/ingredient';
+import { IIngredientRepository } from '../repositories/ingredient';
+import { config } from './../config';
 
 export class IngredientService {
 

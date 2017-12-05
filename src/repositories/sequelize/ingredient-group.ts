@@ -1,7 +1,7 @@
 import * as Sequelize from 'sequelize';
-import { BaseRepository } from "./base";
-import { IIngredientGroupRepository } from '../ingredient-group';
 import { IngredientGroup } from '../../entities/ingredient-group';
+import { IIngredientGroupRepository } from '../ingredient-group';
+import { BaseRepository } from "./base";
 
 export class IngredientGroupRepository extends BaseRepository implements IIngredientGroupRepository {
 
@@ -12,7 +12,7 @@ export class IngredientGroupRepository extends BaseRepository implements IIngred
     public async create(applicationId: number, ingredientGroup: IngredientGroup): Promise<IngredientGroup> {
 
         const result: any = await BaseRepository.models.IngredientGroup.create({
-            applicationId: applicationId,
+            applicationId,
             description: ingredientGroup.description,
             name: ingredientGroup.name,
         });
