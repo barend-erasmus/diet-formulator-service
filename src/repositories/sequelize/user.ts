@@ -12,6 +12,7 @@ export class UserRepository extends BaseRepository implements IUserRepository {
     public async create(user: User, token: string): Promise<User> {
 
         const result: any = await BaseRepository.models.User.create({
+            displayName: user.displayName,
             email: user.email,
             expiryTimestamp: new Date().getTime() + 3600000,
             picture: user.picture,
@@ -39,6 +40,6 @@ export class UserRepository extends BaseRepository implements IUserRepository {
             return null;
         }
 
-        return new User(result.email, result.verified, result.picture, []);
+        return new User(result.email, result.verified, result.picture, result.displayName, []);
     }
 }

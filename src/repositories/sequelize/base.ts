@@ -22,6 +22,10 @@ export class BaseRepository {
     private static defineModels(): void {
 
         const User = BaseRepository.sequelize.define('user', {
+            displayName: {
+                allowNull: false,
+                type: Sequelize.STRING,
+            },
             email: {
                 allowNull: false,
                 type: Sequelize.STRING,
