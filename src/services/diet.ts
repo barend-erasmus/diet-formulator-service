@@ -15,7 +15,7 @@ export class DietService {
     ): Promise<Diet> {
 
         diet.validate();
-        
+
         return this.dietRepository.create(diet);
     }
 
@@ -29,6 +29,15 @@ export class DietService {
         dietGroupId: number,
     ): Promise<Diet[]> {
         return this.dietRepository.list(dietGroupId);
+    }
+
+    public async update(
+        diet: Diet,
+    ): Promise<Diet> {
+
+        diet.validate();
+
+        return this.dietRepository.update(diet);
     }
 
 }

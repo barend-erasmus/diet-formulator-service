@@ -1,0 +1,513 @@
+Group 1,Group 2,Feedstuff,Minimum,Maximum
+Poultry,Broilers,"Na and Cl, as Salt",2,2
+Poultry,Geese,"Na and Cl, as Salt",3,3
+Poultry,Ostriches,"Na and Cl, as Salt",3,3
+Poultry,Quail,"Na and Cl, as Salt",3,3
+Poultry,Emus,"Na and Cl, as Salt",3,3
+Poultry,Turkeys,"Na and Cl, as Salt",3,3
+Poultry,Pheasants,"Na and Cl, as Salt",3,3
+Poultry,Ducks,"Na and Cl, as Salt",3,3
+Poultry,Chickens,"Na and Cl, as Salt",2,2
+Poultry,Broilers,"Na, Cl and I, as Iodized salt",2,2
+Poultry,Geese,"Na, Cl and I, as Iodized salt",3,3
+Poultry,Ostriches,"Na, Cl and I, as Iodized salt",3,3
+Poultry,Quail,"Na, Cl and I, as Iodized salt",3,3
+Poultry,Emus,"Na, Cl and I, as Iodized salt",3,3
+Poultry,Turkeys,"Na, Cl and I, as Iodized salt",3,3
+Poultry,Pheasants,"Na, Cl and I, as Iodized salt",3,3
+Poultry,Ducks,"Na, Cl and I, as Iodized salt",3,3
+Poultry,Chickens,"Na, Cl and I, as Iodized salt",2,2
+Game,Large Antelope,Urea 46% Nitrogen,0,4
+Game,Zebra,Urea 46% Nitrogen,0,0
+Game,Small Antelope,Urea 46% Nitrogen,0,4
+Game,Deer,Urea 46% Nitrogen,0,4
+Game,Large Antelope,Biuret,0,4
+Game,Zebra,Biuret,0,0
+Game,Small Antelope,Biuret,0,4
+Game,Deer,Biuret,0,4
+,Sheep,"Blood meal, conventional",0,80
+,Beef Cattle,"Blood meal, conventional",0,80
+,Poultry,"Blood meal, conventional",0,80
+,Goats,"Blood meal, conventional",0,80
+,Cats,"Blood meal, conventional",0,80
+,Fish,"Blood meal, conventional",0,80
+,Pigs,"Blood meal, conventional",0,80
+,Horses,"Blood meal, conventional",0,80
+,Rabbits,"Blood meal, conventional",0,80
+,Dairy Cattle,"Blood meal, conventional",0,80
+,Game,"Blood meal, conventional",0,80
+,Dogs,"Blood meal, conventional",0,80
+,Alpacas and Llamas,"Blood meal, conventional",0,80
+,Pigeons,"Blood meal, conventional",0,80
+,Sheep,Soybean oil,0,100
+,Beef Cattle,Soybean oil,0,100
+,Poultry,Soybean oil,0,100
+,Goats,Soybean oil,0,100
+,Cats,Soybean oil,0,100
+,Fish,Soybean oil,0,100
+,Pigs,Soybean oil,0,100
+,Horses,Soybean oil,0,100
+,Rabbits,Soybean oil,0,100
+,Dairy Cattle,Soybean oil,0,100
+,Game,Soybean oil,0,100
+,Dogs,Soybean oil,0,100
+,Alpacas and Llamas,Soybean oil,0,100
+,Pigeons,Soybean oil,0,100
+,Sheep,Palm Kernel oil,0,100
+,Beef Cattle,Palm Kernel oil,0,100
+,Poultry,Palm Kernel oil,0,100
+,Goats,Palm Kernel oil,0,100
+,Cats,Palm Kernel oil,0,100
+,Fish,Palm Kernel oil,0,100
+,Pigs,Palm Kernel oil,0,100
+,Horses,Palm Kernel oil,0,100
+,Rabbits,Palm Kernel oil,0,100
+,Dairy Cattle,Palm Kernel oil,0,100
+,Game,Palm Kernel oil,0,100
+,Dogs,Palm Kernel oil,0,100
+,Alpacas and Llamas,Palm Kernel oil,0,100
+,Pigeons,Palm Kernel oil,0,100
+,Sheep,Coconut oil,0,100
+,Beef Cattle,Coconut oil,0,100
+,Poultry,Coconut oil,0,100
+,Goats,Coconut oil,0,100
+,Cats,Coconut oil,0,100
+,Fish,Coconut oil,0,100
+,Pigs,Coconut oil,0,100
+,Horses,Coconut oil,0,100
+,Rabbits,Coconut oil,0,100
+,Dairy Cattle,Coconut oil,0,100
+,Game,Coconut oil,0,100
+,Dogs,Coconut oil,0,100
+,Alpacas and Llamas,Coconut oil,0,100
+,Pigeons,Coconut oil,0,100
+,Sheep,Sesame oil,0,100
+,Beef Cattle,Sesame oil,0,100
+,Poultry,Sesame oil,0,100
+,Goats,Sesame oil,0,100
+,Cats,Sesame oil,0,100
+,Fish,Sesame oil,0,100
+,Pigs,Sesame oil,0,100
+,Horses,Sesame oil,0,100
+,Rabbits,Sesame oil,0,100
+,Dairy Cattle,Sesame oil,0,100
+,Game,Sesame oil,0,100
+,Dogs,Sesame oil,0,100
+,Alpacas and Llamas,Sesame oil,0,100
+,Pigeons,Sesame oil,0,100
+,Sheep,"Cottonseed o/c meal, solv extr",0,120
+,Beef Cattle,"Cottonseed o/c meal, solv extr",0,120
+,Poultry,"Cottonseed o/c meal, solv extr",0,120
+,Goats,"Cottonseed o/c meal, solv extr",0,120
+,Cats,"Cottonseed o/c meal, solv extr",0,120
+,Fish,"Cottonseed o/c meal, solv extr",0,120
+,Pigs,"Cottonseed o/c meal, solv extr",0,120
+,Horses,"Cottonseed o/c meal, solv extr",0,120
+,Rabbits,"Cottonseed o/c meal, solv extr",0,120
+,Dairy Cattle,"Cottonseed o/c meal, solv extr",0,120
+,Game,"Cottonseed o/c meal, solv extr",0,120
+,Dogs,"Cottonseed o/c meal, solv extr",0,120
+,Alpacas and Llamas,"Cottonseed o/c meal, solv extr",0,120
+,Pigeons,"Cottonseed o/c meal, solv extr",0,120
+,Sheep,Menhaden oil,0,100
+,Beef Cattle,Menhaden oil,0,100
+,Poultry,Menhaden oil,0,100
+,Goats,Menhaden oil,0,100
+,Cats,Menhaden oil,0,100
+,Fish,Menhaden oil,0,100
+,Pigs,Menhaden oil,0,100
+,Horses,Menhaden oil,0,100
+,Rabbits,Menhaden oil,0,100
+,Dairy Cattle,Menhaden oil,0,100
+,Game,Menhaden oil,0,100
+,Dogs,Menhaden oil,0,100
+,Alpacas and Llamas,Menhaden oil,0,100
+,Pigeons,Menhaden oil,0,100
+,Sheep,Restaurant grease,0,100
+,Beef Cattle,Restaurant grease,0,100
+,Poultry,Restaurant grease,0,100
+,Goats,Restaurant grease,0,100
+,Cats,Restaurant grease,0,100
+,Fish,Restaurant grease,0,100
+,Pigs,Restaurant grease,0,100
+,Horses,Restaurant grease,0,100
+,Rabbits,Restaurant grease,0,100
+,Dairy Cattle,Restaurant grease,0,100
+,Game,Restaurant grease,0,100
+,Dogs,Restaurant grease,0,100
+,Alpacas and Llamas,Restaurant grease,0,100
+,Pigeons,Restaurant grease,0,100
+,Sheep,Sockeye Salmon oil,0,100
+,Beef Cattle,Sockeye Salmon oil,0,100
+,Poultry,Sockeye Salmon oil,0,100
+,Goats,Sockeye Salmon oil,0,100
+,Cats,Sockeye Salmon oil,0,100
+,Fish,Sockeye Salmon oil,0,100
+,Pigs,Sockeye Salmon oil,0,100
+,Horses,Sockeye Salmon oil,0,100
+,Rabbits,Sockeye Salmon oil,0,100
+,Dairy Cattle,Sockeye Salmon oil,0,100
+,Game,Sockeye Salmon oil,0,100
+,Dogs,Sockeye Salmon oil,0,100
+,Alpacas and Llamas,Sockeye Salmon oil,0,100
+,Pigeons,Sockeye Salmon oil,0,100
+,Sheep,Sunflower oil,0,100
+,Beef Cattle,Sunflower oil,0,100
+,Poultry,Sunflower oil,0,100
+,Goats,Sunflower oil,0,100
+,Cats,Sunflower oil,0,100
+,Fish,Sunflower oil,0,100
+,Pigs,Sunflower oil,0,100
+,Horses,Sunflower oil,0,100
+,Rabbits,Sunflower oil,0,100
+,Dairy Cattle,Sunflower oil,0,100
+,Game,Sunflower oil,0,100
+,Dogs,Sunflower oil,0,100
+,Alpacas and Llamas,Sunflower oil,0,100
+,Pigeons,Sunflower oil,0,100
+,Sheep,Peanut oil,0,100
+,Beef Cattle,Peanut oil,0,100
+,Poultry,Peanut oil,0,100
+,Goats,Peanut oil,0,100
+,Cats,Peanut oil,0,100
+,Fish,Peanut oil,0,100
+,Pigs,Peanut oil,0,100
+,Horses,Peanut oil,0,100
+,Rabbits,Peanut oil,0,100
+,Dairy Cattle,Peanut oil,0,100
+,Game,Peanut oil,0,100
+,Dogs,Peanut oil,0,100
+,Alpacas and Llamas,Peanut oil,0,100
+,Pigeons,Peanut oil,0,100
+,Sheep,Palm oil,0,100
+,Beef Cattle,Palm oil,0,100
+,Poultry,Palm oil,0,100
+,Goats,Palm oil,0,100
+,Cats,Palm oil,0,100
+,Fish,Palm oil,0,100
+,Pigs,Palm oil,0,100
+,Horses,Palm oil,0,100
+,Rabbits,Palm oil,0,100
+,Dairy Cattle,Palm oil,0,100
+,Game,Palm oil,0,100
+,Dogs,Palm oil,0,100
+,Alpacas and Llamas,Palm oil,0,100
+,Pigeons,Palm oil,0,100
+,Sheep,Olive oil,0,100
+,Beef Cattle,Olive oil,0,100
+,Poultry,Olive oil,0,100
+,Goats,Olive oil,0,100
+,Cats,Olive oil,0,100
+,Fish,Olive oil,0,100
+,Pigs,Olive oil,0,100
+,Horses,Olive oil,0,100
+,Rabbits,Olive oil,0,100
+,Dairy Cattle,Olive oil,0,100
+,Game,Olive oil,0,100
+,Dogs,Olive oil,0,100
+,Alpacas and Llamas,Olive oil,0,100
+,Pigeons,Olive oil,0,100
+,Sheep,Poultry fat,0,100
+,Beef Cattle,Poultry fat,0,100
+,Poultry,Poultry fat,0,100
+,Goats,Poultry fat,0,100
+,Cats,Poultry fat,0,100
+,Fish,Poultry fat,0,100
+,Pigs,Poultry fat,0,100
+,Horses,Poultry fat,0,100
+,Rabbits,Poultry fat,0,100
+,Dairy Cattle,Poultry fat,0,100
+,Game,Poultry fat,0,100
+,Dogs,Poultry fat,0,100
+,Alpacas and Llamas,Poultry fat,0,100
+,Pigeons,Poultry fat,0,100
+,Sheep,Lard (Pork),0,100
+,Beef Cattle,Lard (Pork),0,100
+,Poultry,Lard (Pork),0,100
+,Goats,Lard (Pork),0,100
+,Cats,Lard (Pork),0,100
+,Fish,Lard (Pork),0,100
+,Pigs,Lard (Pork),0,100
+,Horses,Lard (Pork),0,100
+,Rabbits,Lard (Pork),0,100
+,Dairy Cattle,Lard (Pork),0,100
+,Game,Lard (Pork),0,100
+,Dogs,Lard (Pork),0,100
+,Alpacas and Llamas,Lard (Pork),0,100
+,Pigeons,Lard (Pork),0,100
+,Sheep,"Na and Cl, as Salt",4,4
+,Beef Cattle,"Na and Cl, as Salt",4,4
+,Goats,"Na and Cl, as Salt",4,4
+,Cats,"Na and Cl, as Salt",4,4
+,Fish,"Na and Cl, as Salt",4,4
+,Pigs,"Na and Cl, as Salt",4,4
+,Horses,"Na and Cl, as Salt",4,4
+,Rabbits,"Na and Cl, as Salt",4,4
+,Dairy Cattle,"Na and Cl, as Salt",4,4
+,Game,"Na and Cl, as Salt",4,4
+,Dogs,"Na and Cl, as Salt",4,4
+,Alpacas and Llamas,"Na and Cl, as Salt",4,4
+,Pigeons,"Na and Cl, as Salt",4,4
+,Sheep,"Cottonseed, whole, extruded",0,120
+,Beef Cattle,"Cottonseed, whole, extruded",0,120
+,Poultry,"Cottonseed, whole, extruded",0,120
+,Goats,"Cottonseed, whole, extruded",0,120
+,Cats,"Cottonseed, whole, extruded",0,120
+,Fish,"Cottonseed, whole, extruded",0,120
+,Pigs,"Cottonseed, whole, extruded",0,120
+,Horses,"Cottonseed, whole, extruded",0,120
+,Rabbits,"Cottonseed, whole, extruded",0,120
+,Dairy Cattle,"Cottonseed, whole, extruded",0,120
+,Game,"Cottonseed, whole, extruded",0,120
+,Dogs,"Cottonseed, whole, extruded",0,120
+,Alpacas and Llamas,"Cottonseed, whole, extruded",0,120
+,Pigeons,"Cottonseed, whole, extruded",0,120
+,Sheep,Urea 46% Nitrogen,0,4
+,Beef Cattle,Urea 46% Nitrogen,0,4
+,Poultry,Urea 46% Nitrogen,0,0
+,Goats,Urea 46% Nitrogen,0,4
+,Cats,Urea 46% Nitrogen,0,0
+,Fish,Urea 46% Nitrogen,0,0
+,Pigs,Urea 46% Nitrogen,0,0
+,Horses,Urea 46% Nitrogen,0,0
+,Rabbits,Urea 46% Nitrogen,0,0
+,Dairy Cattle,Urea 46% Nitrogen,0,4
+,Dogs,Urea 46% Nitrogen,0,0
+,Alpacas and Llamas,Urea 46% Nitrogen,0,4
+,Pigeons,Urea 46% Nitrogen,0,0
+,Sheep,"Cottonseed, whole",0,120
+,Beef Cattle,"Cottonseed, whole",0,120
+,Poultry,"Cottonseed, whole",0,120
+,Goats,"Cottonseed, whole",0,120
+,Cats,"Cottonseed, whole",0,120
+,Fish,"Cottonseed, whole",0,120
+,Pigs,"Cottonseed, whole",0,120
+,Horses,"Cottonseed, whole",0,120
+,Rabbits,"Cottonseed, whole",0,120
+,Dairy Cattle,"Cottonseed, whole",0,120
+,Game,"Cottonseed, whole",0,120
+,Dogs,"Cottonseed, whole",0,120
+,Alpacas and Llamas,"Cottonseed, whole",0,120
+,Pigeons,"Cottonseed, whole",0,120
+,Sheep,Corn oil,0,100
+,Beef Cattle,Corn oil,0,100
+,Poultry,Corn oil,0,100
+,Goats,Corn oil,0,100
+,Cats,Corn oil,0,100
+,Fish,Corn oil,0,100
+,Pigs,Corn oil,0,100
+,Horses,Corn oil,0,100
+,Rabbits,Corn oil,0,100
+,Dairy Cattle,Corn oil,0,100
+,Game,Corn oil,0,100
+,Dogs,Corn oil,0,100
+,Alpacas and Llamas,Corn oil,0,100
+,Pigeons,Corn oil,0,100
+,Sheep,"Cottonseed o/c meal, mech extr",0,120
+,Beef Cattle,"Cottonseed o/c meal, mech extr",0,120
+,Poultry,"Cottonseed o/c meal, mech extr",0,120
+,Goats,"Cottonseed o/c meal, mech extr",0,120
+,Cats,"Cottonseed o/c meal, mech extr",0,120
+,Fish,"Cottonseed o/c meal, mech extr",0,120
+,Pigs,"Cottonseed o/c meal, mech extr",0,120
+,Horses,"Cottonseed o/c meal, mech extr",0,120
+,Rabbits,"Cottonseed o/c meal, mech extr",0,120
+,Dairy Cattle,"Cottonseed o/c meal, mech extr",0,120
+,Game,"Cottonseed o/c meal, mech extr",0,120
+,Dogs,"Cottonseed o/c meal, mech extr",0,120
+,Alpacas and Llamas,"Cottonseed o/c meal, mech extr",0,120
+,Pigeons,"Cottonseed o/c meal, mech extr",0,120
+,Sheep,Biuret,0,4
+,Beef Cattle,Biuret,0,4
+,Poultry,Biuret,0,0
+,Goats,Biuret,0,4
+,Cats,Biuret,0,0
+,Fish,Biuret,0,0
+,Pigs,Biuret,0,0
+,Horses,Biuret,0,0
+,Rabbits,Biuret,0,0
+,Dairy Cattle,Biuret,0,4
+,Dogs,Biuret,0,0
+,Alpacas and Llamas,Biuret,0,4
+,Pigeons,Biuret,0,0
+,Sheep,Anchovy oil,0,100
+,Beef Cattle,Anchovy oil,0,100
+,Poultry,Anchovy oil,0,100
+,Goats,Anchovy oil,0,100
+,Cats,Anchovy oil,0,100
+,Fish,Anchovy oil,0,100
+,Pigs,Anchovy oil,0,100
+,Horses,Anchovy oil,0,100
+,Rabbits,Anchovy oil,0,100
+,Dairy Cattle,Anchovy oil,0,100
+,Game,Anchovy oil,0,100
+,Dogs,Anchovy oil,0,100
+,Alpacas and Llamas,Anchovy oil,0,100
+,Pigeons,Anchovy oil,0,100
+,Sheep,Herring oil,0,100
+,Beef Cattle,Herring oil,0,100
+,Poultry,Herring oil,0,100
+,Goats,Herring oil,0,100
+,Cats,Herring oil,0,100
+,Fish,Herring oil,0,100
+,Pigs,Herring oil,0,100
+,Horses,Herring oil,0,100
+,Rabbits,Herring oil,0,100
+,Dairy Cattle,Herring oil,0,100
+,Game,Herring oil,0,100
+,Dogs,Herring oil,0,100
+,Alpacas and Llamas,Herring oil,0,100
+,Pigeons,Herring oil,0,100
+,Sheep,"Na, Cl and I, as Iodized salt",4,4
+,Beef Cattle,"Na, Cl and I, as Iodized salt",4,4
+,Goats,"Na, Cl and I, as Iodized salt",4,4
+,Cats,"Na, Cl and I, as Iodized salt",4,4
+,Fish,"Na, Cl and I, as Iodized salt",4,4
+,Pigs,"Na, Cl and I, as Iodized salt",4,4
+,Horses,"Na, Cl and I, as Iodized salt",4,4
+,Rabbits,"Na, Cl and I, as Iodized salt",4,4
+,Dairy Cattle,"Na, Cl and I, as Iodized salt",4,4
+,Game,"Na, Cl and I, as Iodized salt",4,4
+,Dogs,"Na, Cl and I, as Iodized salt",4,4
+,Alpacas and Llamas,"Na, Cl and I, as Iodized salt",4,4
+,Pigeons,"Na, Cl and I, as Iodized salt",4,4
+,Sheep,Cottonseed oil,0,100
+,Beef Cattle,Cottonseed oil,0,100
+,Poultry,Cottonseed oil,0,100
+,Goats,Cottonseed oil,0,100
+,Cats,Cottonseed oil,0,100
+,Fish,Cottonseed oil,0,100
+,Pigs,Cottonseed oil,0,100
+,Horses,Cottonseed oil,0,100
+,Rabbits,Cottonseed oil,0,100
+,Dairy Cattle,Cottonseed oil,0,100
+,Game,Cottonseed oil,0,100
+,Dogs,Cottonseed oil,0,100
+,Alpacas and Llamas,Cottonseed oil,0,100
+,Pigeons,Cottonseed oil,0,100
+,Sheep,"Molasses, sugarcane (syrup)",0,80
+,Beef Cattle,"Molasses, sugarcane (syrup)",0,80
+,Poultry,"Molasses, sugarcane (syrup)",0,80
+,Goats,"Molasses, sugarcane (syrup)",0,80
+,Cats,"Molasses, sugarcane (syrup)",0,80
+,Fish,"Molasses, sugarcane (syrup)",0,80
+,Pigs,"Molasses, sugarcane (syrup)",0,80
+,Horses,"Molasses, sugarcane (syrup)",0,80
+,Rabbits,"Molasses, sugarcane (syrup)",0,80
+,Dairy Cattle,"Molasses, sugarcane (syrup)",0,80
+,Game,"Molasses, sugarcane (syrup)",0,80
+,Dogs,"Molasses, sugarcane (syrup)",0,80
+,Alpacas and Llamas,"Molasses, sugarcane (syrup)",0,80
+,Pigeons,"Molasses, sugarcane (syrup)",0,80
+,Sheep,Choice white grease,0,100
+,Beef Cattle,Choice white grease,0,100
+,Poultry,Choice white grease,0,100
+,Goats,Choice white grease,0,100
+,Cats,Choice white grease,0,100
+,Fish,Choice white grease,0,100
+,Pigs,Choice white grease,0,100
+,Horses,Choice white grease,0,100
+,Rabbits,Choice white grease,0,100
+,Dairy Cattle,Choice white grease,0,100
+,Game,Choice white grease,0,100
+,Dogs,Choice white grease,0,100
+,Alpacas and Llamas,Choice white grease,0,100
+,Pigeons,Choice white grease,0,100
+,Sheep,"Blood meal, flash dried",0,80
+,Beef Cattle,"Blood meal, flash dried",0,80
+,Poultry,"Blood meal, flash dried",0,80
+,Goats,"Blood meal, flash dried",0,80
+,Cats,"Blood meal, flash dried",0,80
+,Fish,"Blood meal, flash dried",0,80
+,Pigs,"Blood meal, flash dried",0,80
+,Horses,"Blood meal, flash dried",0,80
+,Rabbits,"Blood meal, flash dried",0,80
+,Dairy Cattle,"Blood meal, flash dried",0,80
+,Game,"Blood meal, flash dried",0,80
+,Dogs,"Blood meal, flash dried",0,80
+,Alpacas and Llamas,"Blood meal, flash dried",0,80
+,Pigeons,"Blood meal, flash dried",0,80
+,Sheep,Butter,0,100
+,Beef Cattle,Butter,0,100
+,Poultry,Butter,0,100
+,Goats,Butter,0,100
+,Cats,Butter,0,100
+,Fish,Butter,0,100
+,Pigs,Butter,0,100
+,Horses,Butter,0,100
+,Rabbits,Butter,0,100
+,Dairy Cattle,Butter,0,100
+,Game,Butter,0,100
+,Dogs,Butter,0,100
+,Alpacas and Llamas,Butter,0,100
+,Pigeons,Butter,0,100
+,Sheep,Beef tallow,0,100
+,Beef Cattle,Beef tallow,0,100
+,Poultry,Beef tallow,0,100
+,Goats,Beef tallow,0,100
+,Cats,Beef tallow,0,100
+,Fish,Beef tallow,0,100
+,Pigs,Beef tallow,0,100
+,Horses,Beef tallow,0,100
+,Rabbits,Beef tallow,0,100
+,Dairy Cattle,Beef tallow,0,100
+,Game,Beef tallow,0,100
+,Dogs,Beef tallow,0,100
+,Alpacas and Llamas,Beef tallow,0,100
+,Pigeons,Beef tallow,0,100
+,Sheep,Canola (Rapeseed) oil,0,100
+,Beef Cattle,Canola (Rapeseed) oil,0,100
+,Poultry,Canola (Rapeseed) oil,0,100
+,Goats,Canola (Rapeseed) oil,0,100
+,Cats,Canola (Rapeseed) oil,0,100
+,Fish,Canola (Rapeseed) oil,0,100
+,Pigs,Canola (Rapeseed) oil,0,100
+,Horses,Canola (Rapeseed) oil,0,100
+,Rabbits,Canola (Rapeseed) oil,0,100
+,Dairy Cattle,Canola (Rapeseed) oil,0,100
+,Game,Canola (Rapeseed) oil,0,100
+,Dogs,Canola (Rapeseed) oil,0,100
+,Alpacas and Llamas,Canola (Rapeseed) oil,0,100
+,Pigeons,Canola (Rapeseed) oil,0,100
+,Sheep,Flaxseed oil,0,100
+,Beef Cattle,Flaxseed oil,0,100
+,Poultry,Flaxseed oil,0,100
+,Goats,Flaxseed oil,0,100
+,Cats,Flaxseed oil,0,100
+,Fish,Flaxseed oil,0,100
+,Pigs,Flaxseed oil,0,100
+,Horses,Flaxseed oil,0,100
+,Rabbits,Flaxseed oil,0,100
+,Dairy Cattle,Flaxseed oil,0,100
+,Game,Flaxseed oil,0,100
+,Dogs,Flaxseed oil,0,100
+,Alpacas and Llamas,Flaxseed oil,0,100
+,Pigeons,Flaxseed oil,0,100
+,Sheep,"Blood meal, spray or ring dried",0,80
+,Beef Cattle,"Blood meal, spray or ring dried",0,80
+,Poultry,"Blood meal, spray or ring dried",0,80
+,Goats,"Blood meal, spray or ring dried",0,80
+,Cats,"Blood meal, spray or ring dried",0,80
+,Fish,"Blood meal, spray or ring dried",0,80
+,Pigs,"Blood meal, spray or ring dried",0,80
+,Horses,"Blood meal, spray or ring dried",0,80
+,Rabbits,"Blood meal, spray or ring dried",0,80
+,Dairy Cattle,"Blood meal, spray or ring dried",0,80
+,Game,"Blood meal, spray or ring dried",0,80
+,Dogs,"Blood meal, spray or ring dried",0,80
+,Alpacas and Llamas,"Blood meal, spray or ring dried",0,80
+,Pigeons,"Blood meal, spray or ring dried",0,80
+,Sheep,Safflower oil,0,100
+,Beef Cattle,Safflower oil,0,100
+,Poultry,Safflower oil,0,100
+,Goats,Safflower oil,0,100
+,Cats,Safflower oil,0,100
+,Fish,Safflower oil,0,100
+,Pigs,Safflower oil,0,100
+,Horses,Safflower oil,0,100
+,Rabbits,Safflower oil,0,100
+,Dairy Cattle,Safflower oil,0,100
+,Game,Safflower oil,0,100
+,Dogs,Safflower oil,0,100
+,Alpacas and Llamas,Safflower oil,0,100
+,Pigeons,Safflower oil,0,100

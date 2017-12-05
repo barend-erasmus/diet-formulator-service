@@ -3,6 +3,7 @@ import { Diet } from "../entities/diet";
 import { Formulation } from '../entities/formulation';
 import { FormulationIngredient } from "../entities/formulation-ingredient";
 import { FormulationCompositionValue } from '../entities/formulation-composition-value';
+import { DietValue } from '../entities/diet-value';
 
 export class FormulatorService {
 
@@ -29,20 +30,25 @@ export class FormulatorService {
         return formulation;
     }
 
-    public async calculateFormulationComposition(formulation: Formulation): Promise<FormulationCompositionValue[]> {
+    public async calculateFormulationComposition(formulation: Formulation, comparisonDiet: Diet, mixWeight): Promise<FormulationCompositionValue[]> {
 
         const result: FormulationCompositionValue[] = [];
-        
+
         formulation.diet.values.map((value) => {
-            return 
+            return
         });
 
         for (const value of formulation.diet.values) {
             const sum = formulation.formulationIngredients.map((ingredient) => {
-               return ingredient.values.find((x) => x.nutrient.id === value.nutrient.id)? ingredient.values.find((x) => x.nutrient.id === value.nutrient.id).value * ingredient.weight : 0; 
-            }).reduce((a, b) => a + b);
+                return ingredient.values.find((x) => x.nutrient.id === value.nutrient.id) ? ingredient.values.find((x) => x.nutrient.id === value.nutrient.id).value * ingredient.weight : 0;
+            }).reduce((a, b) => a + b) / mixWeight;
 
-            result.push(new FormulationCompositionValue(sum, value.nutrient, null));
+            let comparisonDietValue: DietValue = null;
+            if (comparisonDiet) {
+                comparisonDietValue = comparisonDiet.values.find((x) => x.nutrient.id === value.nutrient.id);
+            }
+
+            result.push(new FormulationCompositionValue(sum, value.nutrient, comparisonDietValue ? (sum < comparisonDietValue.minimum ? 'inadequate' : sum > comparisonDietValue.maximum ? 'excessive' : 'adequate') : null));
         }
 
         return result;

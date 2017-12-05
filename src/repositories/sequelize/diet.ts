@@ -70,10 +70,10 @@ export class DietRepository extends BaseRepository implements IDietRepository {
 
         dietGroup = await this.loadDietGroupParent(dietGroup);
 
-        return new Diet(result.id, result.name, result.description, result.username, dietGroup, 
-            result.dietValues.map((value) => 
-            new DietValue(value.id, value.minimum, value.maximum, new Nutrient(value.nutrient.id, value.nutrient.name, value.nutrient.description, value.nutrient.code, value.nutrient.abbreviation, value.nutrient.unit, value.nutrient.sortOrder))
-        ).sort((a, b) => a.nutrient.sortOrder - b.nutrient.sortOrder));
+        return new Diet(result.id, result.name, result.description, result.username, dietGroup,
+            result.dietValues.map((value) =>
+                new DietValue(value.id, value.minimum, value.maximum, new Nutrient(value.nutrient.id, value.nutrient.name, value.nutrient.description, value.nutrient.code, value.nutrient.abbreviation, value.nutrient.unit, value.nutrient.sortOrder))
+            ).sort((a, b) => a.nutrient.sortOrder - b.nutrient.sortOrder));
     }
 
     public async list(dietGroupId: number): Promise<Diet[]> {
@@ -123,6 +123,22 @@ export class DietRepository extends BaseRepository implements IDietRepository {
         result.description = diet.description;
         result.name = diet.name;
 
+        for (const value of diet.values) {
+            const dietValue = result.dietValues.find((x) => x.nutrient.id === value.nutrient.id);
+
+            if (dietValue) {
+                dietValue.minimum = value.minimum;
+                dietValue.maximum = value.maximum;
+                await dietValue.save();
+            } else if (value.minimum || value.maximum) {
+                await BaseRepository.models.DietValue.create({
+                    dietId: result.id,
+                    maximum: value.maximum,
+                    minimum: value.minimum,
+                    nutrientId: value.nutrient.id,
+                });
+            }
+        }
 
         await result.save();
 
@@ -130,7 +146,7 @@ export class DietRepository extends BaseRepository implements IDietRepository {
     }
 
     private async loadDietGroupParent(dietGroup: DietGroup): Promise<DietGroup> {
-        
+
         if (dietGroup.parent) {
 
             const result: any = await BaseRepository.models.DietGroup.find({

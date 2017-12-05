@@ -14,6 +14,8 @@ import { IngredientGroup } from '../entities/ingredient-group';
 import { Ingredient } from '../entities/ingredient';
 import { IngredientValue } from '../entities/ingredient-value';
 import { IngredientRepository } from '../repositories/sequelize/ingredient';
+import { SuggestedValueRepository } from '../repositories/sequelize/suggested-value';
+import { SuggestedValue } from '../entities/suggested-value';
 
 async function importNutrients() {
 
@@ -34,6 +36,7 @@ async function importNutrients() {
 
     nutrientRepository.close();
 }
+
 async function importRations() {
 
     const applicationId: number = 1;
@@ -52,8 +55,8 @@ async function importRations() {
 
         if (ration) {
             ration.values.push({
-                maximum: item['Maximum']? parseFloat(item['Maximum']) : null,
-                minimum: item['Minimum']? parseFloat(item['Minimum']) : null,
+                maximum: item['Maximum'] ? parseFloat(item['Maximum']) : null,
+                minimum: item['Minimum'] ? parseFloat(item['Minimum']) : null,
                 nutrient: item['Nutrient'],
             });
         } else {
@@ -65,8 +68,8 @@ async function importRations() {
                 name: item['Name'],
                 values: [
                     {
-                        maximum: item['Maximum']? parseFloat(item['Maximum']) : null,
-                        minimum: item['Minimum']? parseFloat(item['Minimum']) : null,
+                        maximum: item['Maximum'] ? parseFloat(item['Maximum']) : null,
+                        minimum: item['Minimum'] ? parseFloat(item['Minimum']) : null,
                         nutrient: item['Nutrient'],
                     }
                 ],
@@ -160,71 +163,109 @@ async function importRations() {
 }
 
 async function importFeedstuffs() {
-    
-        const applicationId: number = 1;
-    
-        let data: any[] = await getData('./src/importer/feedstuffs.csv');
-    
-        const feedstuffs: any[] = [];
-    
-        for (const item of data) {
-            const feedstuff: any = feedstuffs.find((x) =>
-                x.group === item['Group'] &&
-                x.name === item['Name']);
-    
-            if (feedstuff) {
-                feedstuff.values.push({
-                    nutrient: item['Nutrient'],
-                    value: item['Value']? parseFloat(item['Value']) : null,
-                });
-            } else {
-                feedstuffs.push({
-                    group: item['Group'],
-                    name: item['Name'],
-                    values: [
-                        {
-                            nutrient: item['Nutrient'],
-                            value: item['Value']? parseFloat(item['Value']) : null,
-                        }
-                    ],
-                })
-            }
+
+    const applicationId: number = 1;
+
+    let data: any[] = await getData('./src/importer/feedstuffs.csv');
+
+    const feedstuffs: any[] = [];
+
+    for (const item of data) {
+        const feedstuff: any = feedstuffs.find((x) =>
+            x.group === item['Group'] &&
+            x.name === item['Name']);
+
+        if (feedstuff) {
+            feedstuff.values.push({
+                nutrient: item['Nutrient'],
+                value: item['Value'] ? parseFloat(item['Value']) : null,
+            });
+        } else {
+            feedstuffs.push({
+                group: item['Group'],
+                name: item['Name'],
+                values: [
+                    {
+                        nutrient: item['Nutrient'],
+                        value: item['Value'] ? parseFloat(item['Value']) : null,
+                    }
+                ],
+            })
         }
-    
-        const nutrientRepository: NutrientRepository = new NutrientRepository(config.database.host, config.database.username, config.database.password);
-        const ingredientGroupRepository: IngredientGroupRepository = new IngredientGroupRepository(config.database.host, config.database.username, config.database.password);
-        const ingredientRepository: IngredientRepository = new IngredientRepository(config.database.host, config.database.username, config.database.password);
-    
-        const nutrients: Nutrient[] = await nutrientRepository.list(applicationId);
-    
-        for (const feedstuff of feedstuffs) {
-    
-            const ingredientGroups: IngredientGroup[] = await ingredientGroupRepository.list(applicationId);
-
-            let ingredientGroup: IngredientGroup = ingredientGroups.find((x) => x.name === feedstuff.group);
-
-            if (!ingredientGroup) {
-                ingredientGroup = await ingredientGroupRepository.create(applicationId, new IngredientGroup(null, feedstuff.group, null));
-                console.log(`Imported Ingredient Group '${feedstuff.group}'`);
-            }
-    
-            await ingredientRepository.create(new Ingredient(
-                null,
-                feedstuff.name,
-                null,
-                null,
-                ingredientGroup,
-                feedstuff.values.map((x) => new IngredientValue(null, x.value, nutrients.find((y) => y.code === x.nutrient)))
-            ));
-
-            console.log(`Imported Ingredient '${feedstuff.name}'`);
-    
-        }
-        
-        nutrientRepository.close();
-        ingredientGroupRepository.close();
-        ingredientRepository.close();
     }
+
+    const nutrientRepository: NutrientRepository = new NutrientRepository(config.database.host, config.database.username, config.database.password);
+    const ingredientGroupRepository: IngredientGroupRepository = new IngredientGroupRepository(config.database.host, config.database.username, config.database.password);
+    const ingredientRepository: IngredientRepository = new IngredientRepository(config.database.host, config.database.username, config.database.password);
+
+    const nutrients: Nutrient[] = await nutrientRepository.list(applicationId);
+
+    for (const feedstuff of feedstuffs) {
+
+        const ingredientGroups: IngredientGroup[] = await ingredientGroupRepository.list(applicationId);
+
+        let ingredientGroup: IngredientGroup = ingredientGroups.find((x) => x.name === feedstuff.group);
+
+        if (!ingredientGroup) {
+            ingredientGroup = await ingredientGroupRepository.create(applicationId, new IngredientGroup(null, feedstuff.group, null));
+            console.log(`Imported Ingredient Group '${feedstuff.group}'`);
+        }
+
+        await ingredientRepository.create(new Ingredient(
+            null,
+            feedstuff.name,
+            null,
+            null,
+            ingredientGroup,
+            feedstuff.values.map((x) => new IngredientValue(null, x.value, nutrients.find((y) => y.code === x.nutrient)))
+        ));
+
+        console.log(`Imported Ingredient '${feedstuff.name}'`);
+
+    }
+
+    nutrientRepository.close();
+    ingredientGroupRepository.close();
+    ingredientRepository.close();
+}
+
+async function importSuggestedValues() {
+
+    const applicationId: number = 1;
+
+    let data: any[] = await getData('./src/importer/suggested-values.csv');
+
+    const dietGroupRepository: DietGroupRepository = new DietGroupRepository(config.database.host, config.database.username, config.database.password);
+    const ingredientRepository: IngredientRepository = new IngredientRepository(config.database.host, config.database.username, config.database.password);
+    const suggestedValeRepository: SuggestedValueRepository = new SuggestedValueRepository(config.database.host, config.database.username, config.database.password);
+
+    const ingredients: Ingredient[] = await ingredientRepository.list(applicationId);
+
+    for (const item of data) {
+
+        let parentDietGroupId: number = null;
+        let dietGroups: DietGroup[] = await dietGroupRepository.listSubGroups(applicationId, parentDietGroupId);
+
+        if (item['Group 1']) {
+            parentDietGroupId = dietGroups.find((x) => x.name === item['Group 1']).id;
+            dietGroups = await dietGroupRepository.listSubGroups(applicationId, parentDietGroupId);
+        }
+
+        if (item['Group 2']) {
+            parentDietGroupId = dietGroups.find((x) => x.name === item['Group 2']).id;
+            dietGroups = await dietGroupRepository.listSubGroups(applicationId, parentDietGroupId);
+        }
+
+        const ingredient: Ingredient = ingredients.find((x) => x.name === item['Feedstuff']);
+
+        await suggestedValeRepository.create(new SuggestedValue(null, null, new DietGroup(parentDietGroupId, null, null, null), ingredient, parseFloat(item['Minimum']), parseFloat(item['Maximum'])));
+
+        console.log(`Imported Suggested Value '${item['Group 2']} - ${item['Feedstuff']}'`);
+    }
+
+    dietGroupRepository.close();
+    ingredientRepository.close();
+}
 
 function getData(fileName: string): Promise<any[]> {
     return new Promise((resolve, reject) => {
@@ -239,17 +280,12 @@ function getData(fileName: string): Promise<any[]> {
     });
 }
 
-// importNutrients().then(() => {
-//     return importRations();
-// }).then(() => {
-//     return importFeedstuffs();
-// }).catch((err) => {
-//     console.log(err.stack);
-// });
-
-
-importFeedstuffs().then(() => {
-
+importNutrients().then(() => {
+    return importRations();
+}).then(() => {
+    return importFeedstuffs();
+}).then(() => {
+    return importSuggestedValues();
 }).catch((err) => {
     console.log(err.stack);
 });

@@ -7,6 +7,7 @@ import { DietValue } from '../entities/diet-value';
 import { Nutrient } from '../entities/nutrient';
 import { FormulationIngredient } from '../entities/formulation-ingredient';
 import { IngredientValue } from '../entities/ingredient-value';
+import { FormulationCompositionValue } from '../entities/formulation-composition-value';
 
 describe('FormulatorService', () => {
     describe('formulate', () => {
@@ -14,9 +15,9 @@ describe('FormulatorService', () => {
             const formulatorService: FormulatorService = new FormulatorService();
 
             const diet: Diet = new Diet(null, null, null, null, null, [
-                new DietValue(1, 0, 100, new Nutrient(1, 'Nutrient A', null, null, null, null, null)),
-                new DietValue(2, 0, 100, new Nutrient(2, 'Nutrient B', null, null, null, null, null)),
-                new DietValue(3, 0, 100, new Nutrient(3, 'Nutrient C', null, null, null, null, null)),
+                new DietValue(1, 20, 100, new Nutrient(1, 'Nutrient A', null, null, null, null, null)),
+                new DietValue(2, 10, 100, new Nutrient(2, 'Nutrient B', null, null, null, null, null)),
+                new DietValue(3, 15, 100, new Nutrient(3, 'Nutrient C', null, null, null, null, null)),
             ]);
 
             const formulation: Formulation = new Formulation(null, diet, [
@@ -44,8 +45,10 @@ describe('FormulatorService', () => {
 
             const result: Formulation = await formulatorService.formulate(formulation, null, 750);
 
+            const formulationComposition: FormulationCompositionValue[] = await formulatorService.calculateFormulationComposition(formulation, diet, 750);
+
             expect(result.feasible).to.be.true;
-            expect(Math.round(result.cost * 100) / 100).to.eq(107.67);
+            expect(Math.round(result.cost * 100) / 100).to.eq(121.08);
         });
     });
 });
