@@ -55,6 +55,6 @@ export class IngredientRepository extends BaseRepository implements IIngredientR
             ],
         });
 
-        return result.map((x) => new Ingredient(x.id, x.name, x.description, x.username, new IngredientGroup(x.ingredientGroup.id, x.ingredientGroup.name, x.ingredientGroup.description), null));
+        return result.map((x) => new Ingredient(x.id, x.name, x.description, x.username, new IngredientGroup(x.ingredientGroup.id, x.ingredientGroup.name, x.ingredientGroup.description), []));
     }
 }

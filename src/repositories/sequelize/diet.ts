@@ -76,7 +76,7 @@ export class DietRepository extends BaseRepository implements IDietRepository {
             ).sort((a, b) => a.nutrient.sortOrder - b.nutrient.sortOrder));
     }
 
-    public async list(dietGroupId: number): Promise<Diet[]> {
+    public async list(dietGroupId: number, username: string): Promise<Diet[]> {
 
         const result: any[] = await BaseRepository.models.Diet.findAll({
             include: [
@@ -91,10 +91,13 @@ export class DietRepository extends BaseRepository implements IDietRepository {
                 dietGroupId: {
                     [Sequelize.Op.eq]: dietGroupId,
                 },
+                username: {
+                    [Sequelize.Op.or]: [null, username],
+                },
             },
         });
 
-        return result.map((x) => new Diet(x.id, x.name, x.description, x.username, new DietGroup(x.dietGroup.id, x.dietGroup.name, x.dietGroup.description, null), null));
+        return result.map((x) => new Diet(x.id, x.name, x.description, x.username, new DietGroup(x.dietGroup.id, x.dietGroup.name, x.dietGroup.description, null), []));
     }
 
     public async update(diet: Diet): Promise<Diet> {

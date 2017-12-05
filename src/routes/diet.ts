@@ -7,14 +7,19 @@ import { IDietRepository } from '../repositories/diet';
 import { DietRepository } from '../repositories/sequelize/diet';
 import { DietService } from '../services/diet';
 import { config } from './../config';
+import { DietGroupRepository } from '../repositories/sequelize/diet-group';
+import { IDietGroupRepository } from '../repositories/diet-group';
 
 export class DietRouter {
 
     public static async create(req: express.Request, res: express.Response) {
         try {
-            const result: Diet = await DietRouter.getDietService().create(new Diet(req.body.id, req.body.name, req.body.description, req.body.username, new DietGroup(req.body.group.id, req.body.group.name, req.body.group.description, null), req.body.values.map((value) => {
+            const applicationId: number = parseInt(req.get('x-application-id'), undefined);
+
+            const result: Diet = await DietRouter.getDietService().create(applicationId, new Diet(req.body.id, req.body.name, req.body.description, req.body.username, new DietGroup(req.body.group.id, req.body.group.name, req.body.group.description, null), req.body.values.map((value) => {
                 return new DietValue(value.id, value.minimum ? parseFloat(value.minimum) : null, value.maximum ? parseFloat(value.maximum) : null, new Nutrient(value.nutrient.id, value.nutrient.name, value.nutrient.description, value.nutrient.code, value.nutrient.abbreviation, value.nutrient.unit, value.nutrient.sortOrder));
-            })));
+            })),
+                req['user'].email);
 
             res.json(result);
         } catch (err) {
@@ -27,7 +32,7 @@ export class DietRouter {
 
     public static async find(req: express.Request, res: express.Response) {
         try {
-            const result: Diet = await DietRouter.getDietService().find(req.query.id);
+            const result: Diet = await DietRouter.getDietService().find(req.query.id, req['user'].email);
 
             res.json(result);
         } catch (err) {
@@ -40,7 +45,7 @@ export class DietRouter {
 
     public static async list(req: express.Request, res: express.Response) {
         try {
-            const result: Diet[] = await DietRouter.getDietService().list(req.query.dietGroupId);
+            const result: Diet[] = await DietRouter.getDietService().list(req.query.dietGroupId, req['user'].email);
 
             res.json(result);
         } catch (err) {
@@ -53,9 +58,12 @@ export class DietRouter {
 
     public static async update(req: express.Request, res: express.Response) {
         try {
-            const result: Diet = await DietRouter.getDietService().update(new Diet(req.body.id, req.body.name, req.body.description, req.body.username, new DietGroup(req.body.group.id, req.body.group.name, req.body.group.description, null), req.body.values.map((value) => {
+            const applicationId: number = parseInt(req.get('x-application-id'), undefined);
+
+            const result: Diet = await DietRouter.getDietService().update(applicationId, new Diet(req.body.id, req.body.name, req.body.description, req.body.username, new DietGroup(req.body.group.id, req.body.group.name, req.body.group.description, null), req.body.values.map((value) => {
                 return new DietValue(value.id, value.minimum ? parseFloat(value.minimum) : null, value.maximum ? parseFloat(value.maximum) : null, new Nutrient(value.nutrient.id, value.nutrient.name, value.nutrient.description, value.nutrient.code, value.nutrient.abbreviation, value.nutrient.unit, value.nutrient.sortOrder));
-            })));
+            })),
+                req['user'].email);
 
             res.json(result);
         } catch (err) {
@@ -68,7 +76,8 @@ export class DietRouter {
 
     protected static getDietService(): DietService {
         const dietRepository: IDietRepository = new DietRepository(config.database.host, config.database.username, config.database.password);
-        const dietService: DietService = new DietService(dietRepository);
+        const dietGroupRepository: IDietGroupRepository = new DietGroupRepository(config.database.host, config.database.username, config.database.password);
+        const dietService: DietService = new DietService(dietRepository, dietGroupRepository);
 
         return dietService;
     }

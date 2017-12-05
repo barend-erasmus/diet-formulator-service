@@ -56,7 +56,7 @@ export class NutrientRouter {
         try {
             const applicationId: number = parseInt(req.get('x-application-id'), undefined);
 
-            const result: Nutrient = await NutrientRouter.getNutrientService().update(applicationId, new Nutrient(null, req.body.name, req.body.description, req.body.code, req.body.abbreviation, req.body.unit, parseInt(req.body.sortOrder, undefined)));
+            const result: Nutrient = await NutrientRouter.getNutrientService().update(applicationId, new Nutrient(req.body.id, req.body.name, req.body.description, req.body.code, req.body.abbreviation, req.body.unit, parseInt(req.body.sortOrder, undefined)));
 
             res.json(result);
         } catch (err) {

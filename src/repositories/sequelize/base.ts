@@ -15,10 +15,34 @@ export class BaseRepository {
         Nutrient: Sequelize.Model<{}, {}>,
         SuggestedValue: Sequelize.Model<{}, {}>,
         Supplement: Sequelize.Model<{}, {}>,
+        User: Sequelize.Model<{}, {}>,
     } = null;
     protected static sequelize: Sequelize.Sequelize = null;
 
     private static defineModels(): void {
+
+        const User = BaseRepository.sequelize.define('user', {
+            email: {
+                allowNull: false,
+                type: Sequelize.STRING,
+            },
+            expiryTimestamp: {
+                allowNull: false,
+                type: Sequelize.NUMERIC,
+            },
+            picture: {
+                allowNull: true,
+                type: Sequelize.STRING,
+            },
+            token: {
+                allowNull: false,
+                type: Sequelize.STRING,
+            },
+            verified: {
+                allowNull: false,
+                type: Sequelize.BOOLEAN,
+            },
+        });
 
         const Application = BaseRepository.sequelize.define('application', {
             description: {
@@ -248,6 +272,7 @@ export class BaseRepository {
             Nutrient,
             SuggestedValue,
             Supplement,
+            User,
         };
     }
 

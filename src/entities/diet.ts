@@ -28,4 +28,8 @@ export class Diet {
             throw new Error(messages.join(';'));
         }
     }
+
+    public removeValues(): void {
+        this.values = [];
+    }
 }
