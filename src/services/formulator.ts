@@ -54,7 +54,7 @@ export class FormulatorService {
         return result;
     }
 
-    private buildConstraintsForSolver(formulationIngredients: FormulationIngredient[], diet: Diet, mixWeight: number ) {
+    private buildConstraintsForSolver(formulationIngredients: FormulationIngredient[], diet: Diet, mixWeight: number) {
         const constraints = {
             weight: null,
         };

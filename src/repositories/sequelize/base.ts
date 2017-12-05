@@ -1,5 +1,5 @@
-import * as Sequelize from 'sequelize';
 import * as fs from 'fs';
+import * as Sequelize from 'sequelize';
 
 export class BaseRepository {
     protected static models: {
@@ -287,12 +287,12 @@ export class BaseRepository {
             BaseRepository.sequelize = new Sequelize('diet-formulator', username, password, {
                 dialect: 'postgres',
                 host,
-                // logging: false,
-                logging: (text: string) => {
-                    if (text.startsWith('Executing (default): INSERT')) {
-                        fs.appendFileSync('importer-logs.sql', `${text.substring('Executing (default): '.length)} \r\n`);
-                    }
-                },
+                logging: false,
+                // logging: (text: string) => {
+                //     if (text.startsWith('Executing (default): INSERT')) {
+                //         fs.appendFileSync('importer-logs.sql', `${text.substring('Executing (default): '.length)} \r\n`);
+                //     }
+                // },
                 pool: {
                     idle: 10000,
                     max: 5,

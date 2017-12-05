@@ -40,6 +40,6 @@ export class UserRepository extends BaseRepository implements IUserRepository {
             return null;
         }
 
-        return new User(result.email, result.verified, result.picture, result.displayName, []);
+        return new User(result.email, result.displayName, result.verified, result.picture, []);
     }
 }

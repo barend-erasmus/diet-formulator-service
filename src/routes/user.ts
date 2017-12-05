@@ -25,13 +25,13 @@ export class UserRouter {
                         uri: 'https://developersworkspace.auth0.com/userinfo',
                     });
 
-                    user = await UserRouter.getUserService().create(new User(json.email, json.email_verified, json.picture, json.name, []), token);
+                    user = await UserRouter.getUserService().create(new User(json.email, json.name, json.email_verified, json.picture, []), token);
 
                     res.json(user);
                 } catch (err) {
                     res.status(401).end();
                 }
-            }else {
+            } else {
                 res.json(user);
             }
 
