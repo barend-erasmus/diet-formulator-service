@@ -57,7 +57,7 @@ function requireUser(req: express.Request, res: express.Response, next: express.
             Authorization: req.get('Authorization'),
         },
         json: true,
-        uri: `${argv.prod ? 'https://worldofrations.com' : 'http://localhost:3000'}/api/user/info`,
+        uri: `${argv.prod ? 'https://api.suite.worldofrations.com' : 'http://localhost:3000'}/api/user/info`,
     }).then((result) => {
         req['user'] = result;
 
