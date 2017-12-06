@@ -9,6 +9,7 @@ import { config } from './config';
 import { ApplicationRouter } from './routes/application';
 import { DietRouter } from './routes/diet';
 import { DietGroupRouter } from './routes/diet-group';
+import { FormulatorRouter } from './routes/formulator';
 import { IngredientRouter } from './routes/ingredients';
 import { NutrientRouter } from './routes/nutrient';
 import { UserRouter } from './routes/user';
@@ -44,6 +45,8 @@ app.post('/api/diet/update', requireUser, DietRouter.update);
 
 app.post('/api/ingredient/create', requireUser, IngredientRouter.create);
 app.get('/api/ingredient/list', requireUser, IngredientRouter.list);
+
+app.post('/api/formulator/create', requireUser, FormulatorRouter.create);
 
 app.use('/api/docs', express.static(path.join(__dirname, './../apidoc')));
 app.use('/api/coverage', express.static(path.join(__dirname, './../coverage/lcov-report')));

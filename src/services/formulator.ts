@@ -4,10 +4,39 @@ import { DietValue } from '../entities/diet-value';
 import { Formulation } from '../entities/formulation';
 import { FormulationCompositionValue } from '../entities/formulation-composition-value';
 import { FormulationIngredient } from "../entities/formulation-ingredient";
+import { IDietRepository } from '../repositories/diet';
+import { IIngredientRepository } from '../repositories/ingredient';
 
 export class FormulatorService {
 
-    public async formulate(formulation: Formulation, username: string, mixWeight: number): Promise<Formulation> {
+    constructor(
+        private dietRepository: IDietRepository,
+        private ingredientRepository: IIngredientRepository,
+    ) {
+
+    }
+
+    public async createFormulation(diet: Diet, formulationIngredients: FormulationIngredient[], mixWeight: number, username: string): Promise<Formulation> {
+
+        // TODO: Add permissioning check.
+
+        diet = await this.dietRepository.find(diet.id);
+
+        for (const formulationIngredient of formulationIngredients) {
+            // TODO: Add permissioning check for ingredient.
+            formulationIngredient.ingredient = await this.ingredientRepository.find(formulationIngredient.ingredient.id);
+
+            console.log(formulationIngredient.ingredient);
+        }
+
+        const formulation: Formulation = new Formulation(null, diet, formulationIngredients, null, null);
+
+        const result: Formulation = await this.formulate(formulation, mixWeight, username);
+
+        return result;
+    }
+
+    public async formulate(formulation: Formulation, mixWeight: number, username: string): Promise<Formulation> {
 
         let results: any;
 
@@ -21,7 +50,7 @@ export class FormulatorService {
         results = solver.Solve(model);
 
         for (const formulationIngredient of formulation.formulationIngredients) {
-            formulationIngredient.weight = results[`ingredient-${formulationIngredient.id}`] === undefined ? 0 : results[`ingredient-${formulationIngredient.id}`];
+            formulationIngredient.weight = results[`ingredient-${formulationIngredient.ingredient.id}`] === undefined ? 0 : results[`ingredient-${formulationIngredient.ingredient.id}`];
         }
 
         formulation.cost = results.result / mixWeight;
@@ -39,8 +68,8 @@ export class FormulatorService {
         });
 
         for (const value of formulation.diet.values) {
-            const sum = formulation.formulationIngredients.map((ingredient) => {
-                return ingredient.values.find((x) => x.nutrient.id === value.nutrient.id) ? ingredient.values.find((x) => x.nutrient.id === value.nutrient.id).value * ingredient.weight : 0;
+            const sum = formulation.formulationIngredients.map((formualtionIngredient) => {
+                return formualtionIngredient.ingredient.values.find((x) => x.nutrient.id === value.nutrient.id) ? formualtionIngredient.ingredient.values.find((x) => x.nutrient.id === value.nutrient.id).value * formualtionIngredient.weight : 0;
             }).reduce((a, b) => a + b) / mixWeight;
 
             let comparisonDietValue: DietValue = null;
@@ -67,7 +96,7 @@ export class FormulatorService {
         }
 
         for (const formulationIngredient of formulationIngredients) {
-            constraints[`ingredient-${formulationIngredient.id}`] = {
+            constraints[`ingredient-${formulationIngredient.ingredient.id}`] = {
                 max: formulationIngredient.maximum,
                 min: formulationIngredient.minimum,
             };
@@ -90,13 +119,13 @@ export class FormulatorService {
                 weight: 1,
             };
 
-            for (const value of formulationIngredient.values) {
+            for (const value of formulationIngredient.ingredient.values) {
                 t[`nutrient-${value.nutrient.id}`] = value.value;
             }
 
-            t[`ingredient-${formulationIngredient.id}`] = 1;
+            t[`ingredient-${formulationIngredient.ingredient.id}`] = 1;
 
-            variables[`ingredient-${formulationIngredient.id}`] = t;
+            variables[`ingredient-${formulationIngredient.ingredient.id}`] = t;
         }
 
         return variables;
