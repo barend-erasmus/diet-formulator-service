@@ -25,10 +25,19 @@ export class UserRouter {
                         uri: 'https://developersworkspace.auth0.com/userinfo',
                     });
 
-                    user = await UserRouter.getUserService().create(new User(json.email, json.name, json.email_verified, json.picture, []), token);
+                    user = await UserRouter.getUserService().create(new User(
+                        json.email,
+                        json.name,
+                        json.email_verified,
+                        json.picture,
+                        json.user_metadata ? (json.user_metadata.packageClass? json.user_metadata.packageClass : 'basic') : 'basic',
+                        json.user_metadata ? (json.user_metadata.isSuperAdmin? json.user_metadata.isSuperAdmin : false) : false,
+                        [],
+                    ), token);
 
                     res.json(user);
                 } catch (err) {
+                    console.log(err);
                     res.status(401).end();
                 }
             } else {

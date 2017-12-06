@@ -2,13 +2,15 @@ import { Nutrient } from '../entities/nutrient';
 import { INutrientRepository } from '../repositories/nutrient';
 import { config } from './../config';
 import { BaseService } from './base';
+import { IUserRepository } from '../repositories/user';
 
 export class NutrientService extends BaseService {
 
     constructor(
+        userRepository: IUserRepository,
         private nutrientRepository: INutrientRepository,
     ) {
-        super();
+        super(userRepository);
     }
 
     public async create(
@@ -17,7 +19,7 @@ export class NutrientService extends BaseService {
         username: string,
     ): Promise<Nutrient> {
 
-        if (!this.hasPermission(username, 'create-nutrient')) {
+        if (!await this.hasPermission(username, 'create-nutrient')) {
             throw new Error('Unauthorized');
         }
 
@@ -38,7 +40,7 @@ export class NutrientService extends BaseService {
         username: string,
     ): Promise<Nutrient> {
 
-        if (!this.hasPermission(username, 'view-nutrient')) {
+        if (!await this.hasPermission(username, 'view-nutrient')) {
             throw new Error('Unauthorized');
         }
 
@@ -50,7 +52,7 @@ export class NutrientService extends BaseService {
         username: string,
     ): Promise<Nutrient[]> {
 
-        if (!this.hasPermission(username, 'view-nutrient')) {
+        if (!await this.hasPermission(username, 'view-nutrient')) {
             throw new Error('Unauthorized');
         }
 
@@ -63,7 +65,7 @@ export class NutrientService extends BaseService {
         username: string,
     ): Promise<Nutrient> {
 
-        if (!this.hasPermission(username, 'update-nutrient')) {
+        if (!await this.hasPermission(username, 'update-nutrient')) {
             throw new Error('Unauthorized');
         }
 

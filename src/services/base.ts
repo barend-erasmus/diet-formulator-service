@@ -1,10 +1,17 @@
+import { IUserRepository } from "../repositories/user";
+import { User } from "../entities/user";
+
 export class BaseService {
 
-    public getUserPermissions(username: string): string[] {
+    constructor(
+        protected userRepository: IUserRepository,
+    ) {
 
-        const superUserUsernames: string[] = [
-            'developersworkspace@gmail.com',
-        ];
+    }
+
+    public async getUserPermissions(username: string): Promise<string[]> {
+
+        const user: User = await this.userRepository.findByUsername(username);
 
         const permissions: string[] = [];
 
@@ -15,7 +22,7 @@ export class BaseService {
         permissions.push('create-diet');
         permissions.push('update-diet');
 
-        if (superUserUsernames.indexOf(username) > -1) {
+        if (user.isSuperAdmin) {
 
             permissions.push('super-user');
 
@@ -42,8 +49,8 @@ export class BaseService {
         return permissions;
     }
 
-    public hasPermission(username: string, permission: string): boolean {
-        const permissions: string[] = this.getUserPermissions(username);
+    public async hasPermission(username: string, permission: string): Promise<boolean> {
+        const permissions: string[] = await this.getUserPermissions(username);
 
         if (permissions.indexOf(permission) > -1) {
             return true;

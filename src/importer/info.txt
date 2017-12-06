@@ -1,3 +1,7 @@
 Import of Nutrients, Rations and Feedstuff takes ~ 70 minutes
 
 Backup database `pg_dump --username "sa" -h localhost diet-formulator >> diet-formulator-backup.sql`
+
+
+`sudo su - postgres`
+`psql -U sa -d diet-formulator -h localhost -a -f /opt/sql/importer-logs.sql`

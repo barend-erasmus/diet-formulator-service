@@ -4,6 +4,8 @@ export class User {
         public displayName: string,
         public verified: boolean,
         public picture: string,
+        public packageClass: string,
+        public isSuperAdmin: boolean,
         public permissions: string[],
     ) {
 

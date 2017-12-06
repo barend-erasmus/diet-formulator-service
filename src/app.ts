@@ -63,6 +63,7 @@ function requireUser(req: express.Request, res: express.Response, next: express.
 
         next();
     }).catch((err) => {
+        console.log(err);
         res.status(401).end();
     });
 }

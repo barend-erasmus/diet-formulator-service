@@ -9,6 +9,8 @@ import { DietRepository } from '../repositories/sequelize/diet';
 import { DietGroupRepository } from '../repositories/sequelize/diet-group';
 import { DietService } from '../services/diet';
 import { config } from './../config';
+import { UserRepository } from '../repositories/sequelize/user';
+import { IUserRepository } from '../repositories/user';
 
 export class DietRouter {
 
@@ -75,9 +77,10 @@ export class DietRouter {
     }
 
     protected static getDietService(): DietService {
+        const userRepository: IUserRepository = new UserRepository(config.database.host, config.database.username, config.database.password); 
         const dietRepository: IDietRepository = new DietRepository(config.database.host, config.database.username, config.database.password);
         const dietGroupRepository: IDietGroupRepository = new DietGroupRepository(config.database.host, config.database.username, config.database.password);
-        const dietService: DietService = new DietService(dietRepository, dietGroupRepository);
+        const dietService: DietService = new DietService(userRepository, dietRepository, dietGroupRepository);
 
         return dietService;
     }

@@ -4,16 +4,16 @@ import { BaseService } from "./base";
 
 export class UserService extends BaseService {
     constructor(
-        private userRepository: IUserRepository,
+        userRepository: IUserRepository,
     ) {
-        super();
+        super(userRepository);
     }
 
     public async create(user: User, token: string): Promise<User> {
 
         const result: User = await this.userRepository.create(user, token);
 
-        result.permissions = this.getUserPermissions(user.email);
+        result.permissions = await this.getUserPermissions(user.email);
 
         return result;
     }
@@ -25,7 +25,7 @@ export class UserService extends BaseService {
             return null;
         }
 
-        user.permissions = this.getUserPermissions(user.email);
+        user.permissions = await this.getUserPermissions(user.email);
 
         return user;
     }

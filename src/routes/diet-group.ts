@@ -4,6 +4,8 @@ import { IDietGroupRepository } from '../repositories/diet-group';
 import { DietGroupRepository } from '../repositories/sequelize/diet-group';
 import { DietGroupService } from '../services/diet-group';
 import { config } from './../config';
+import { IUserRepository } from '../repositories/user';
+import { UserRepository } from '../repositories/sequelize/user';
 
 export class DietGroupRouter {
 
@@ -92,8 +94,9 @@ export class DietGroupRouter {
     }
 
     protected static getDietGroupService(): DietGroupService {
+        const userRepository: IUserRepository = new UserRepository(config.database.host, config.database.username, config.database.password); 
         const dietGroupRepository: IDietGroupRepository = new DietGroupRepository(config.database.host, config.database.username, config.database.password);
-        const dietGroupService: DietGroupService = new DietGroupService(dietGroupRepository);
+        const dietGroupService: DietGroupService = new DietGroupService(userRepository, dietGroupRepository);
 
         return dietGroupService;
     }

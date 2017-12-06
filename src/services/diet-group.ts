@@ -2,13 +2,15 @@ import { DietGroup } from '../entities/diet-group';
 import { IDietGroupRepository } from '../repositories/diet-group';
 import { config } from './../config';
 import { BaseService } from './base';
+import { IUserRepository } from '../repositories/user';
 
 export class DietGroupService extends BaseService {
 
     constructor(
+        userRepository: IUserRepository,
         private dietGroupRepository: IDietGroupRepository,
     ) {
-        super();
+        super(userRepository);
     }
 
     public async create(
@@ -17,7 +19,7 @@ export class DietGroupService extends BaseService {
         username: string,
     ): Promise<DietGroup> {
 
-        if (!this.hasPermission(username, 'create-diet-group')) {
+        if (!await this.hasPermission(username, 'create-diet-group')) {
             throw new Error('Unauthorized');
         }
 
@@ -32,7 +34,7 @@ export class DietGroupService extends BaseService {
         username: string,
     ): Promise<DietGroup> {
 
-        if (!this.hasPermission(username, 'view-diet-group')) {
+        if (!await this.hasPermission(username, 'view-diet-group')) {
             throw new Error('Unauthorized');
         }
 
@@ -44,7 +46,7 @@ export class DietGroupService extends BaseService {
         dietGroupId: number,
         username: string,
     ): Promise<DietGroup[]> {
-        if (!this.hasPermission(username, 'view-diet-group')) {
+        if (!await this.hasPermission(username, 'view-diet-group')) {
             throw new Error('Unauthorized');
         }
 
@@ -55,7 +57,7 @@ export class DietGroupService extends BaseService {
         applicationId: number,
         username: string,
     ): Promise<DietGroup[]> {
-        if (!this.hasPermission(username, 'view-diet-group')) {
+        if (!await this.hasPermission(username, 'view-diet-group')) {
             throw new Error('Unauthorized');
         }
 
@@ -68,7 +70,7 @@ export class DietGroupService extends BaseService {
         username: string,
     ): Promise<DietGroup> {
 
-        if (!this.hasPermission(username, 'update-diet-group')) {
+        if (!await this.hasPermission(username, 'update-diet-group')) {
             throw new Error('Unauthorized');
         }
 

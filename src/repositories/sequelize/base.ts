@@ -35,6 +35,14 @@ export class BaseRepository {
                 allowNull: false,
                 type: Sequelize.NUMERIC,
             },
+            isSuperAdmin: {
+                allowNull: false,
+                type: Sequelize.BOOLEAN,
+            },
+            packageClass: {
+                allowNull: false,
+                type: Sequelize.STRING,
+            },
             picture: {
                 allowNull: true,
                 type: Sequelize.STRING,
@@ -290,7 +298,7 @@ export class BaseRepository {
                 logging: false,
                 // logging: (text: string) => {
                 //     if (text.startsWith('Executing (default): INSERT')) {
-                //         fs.appendFileSync('importer-logs.sql', `${text.substring('Executing (default): '.length)} \r\n`);
+                //         fs.appendFileSync('importer-logs.sql', `${text.substring('Executing (default): '.length, text.length - ' RETURNING *;'.length)}; \r\n`);
                 //     }
                 // },
                 pool: {

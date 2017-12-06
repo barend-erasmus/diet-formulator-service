@@ -4,14 +4,16 @@ import { IDietRepository } from '../repositories/diet';
 import { IDietGroupRepository } from '../repositories/diet-group';
 import { config } from './../config';
 import { BaseService } from './base';
+import { IUserRepository } from '../repositories/user';
 
 export class DietService extends BaseService {
 
     constructor(
+        userRepository: IUserRepository,
         private dietRepository: IDietRepository,
         private dietGroupRepository: IDietGroupRepository,
     ) {
-        super();
+        super(userRepository);
     }
 
     public async create(
@@ -22,7 +24,7 @@ export class DietService extends BaseService {
 
         diet.username = username;
 
-        if (!this.hasPermission(username, 'create-diet')) {
+        if (!await this.hasPermission(username, 'create-diet')) {
             throw new Error('Unauthorized');
         }
 

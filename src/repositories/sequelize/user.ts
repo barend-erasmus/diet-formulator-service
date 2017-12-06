@@ -15,6 +15,8 @@ export class UserRepository extends BaseRepository implements IUserRepository {
             displayName: user.displayName,
             email: user.email,
             expiryTimestamp: new Date().getTime() + 3600000,
+            isSuperAdmin: user.isSuperAdmin,
+            packageClass: user.packageClass,
             picture: user.picture,
             token,
             verified: user.verified,
@@ -40,6 +42,26 @@ export class UserRepository extends BaseRepository implements IUserRepository {
             return null;
         }
 
-        return new User(result.email, result.displayName, result.verified, result.picture, []);
+        return new User(result.email, result.displayName, result.verified, result.picture, result.packageClass, result.isSuperAdmin, []);
+    }
+
+    public async findByUsername(username: string): Promise<User> {
+
+        const result: any = await BaseRepository.models.User.find({
+            where: {
+                email: {
+                    [Sequelize.Op.eq]: username,
+                },
+                expiryTimestamp: {
+                    [Sequelize.Op.gte]: new Date().getTime(),
+                },
+            },
+        });
+
+        if (!result) {
+            return null;
+        }
+
+        return new User(result.email, result.displayName, result.verified, result.picture, result.packageClass, result.isSuperAdmin, []);
     }
 }
