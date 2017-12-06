@@ -25,8 +25,6 @@ export class FormulatorService {
         for (const formulationIngredient of formulationIngredients) {
             // TODO: Add permissioning check for ingredient.
             formulationIngredient.ingredient = await this.ingredientRepository.find(formulationIngredient.ingredient.id);
-
-            console.log(formulationIngredient.ingredient);
         }
 
         const formulation: Formulation = new Formulation(null, diet, formulationIngredients, null, null);
