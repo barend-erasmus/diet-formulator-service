@@ -1,4 +1,5 @@
 import * as solver from 'javascript-lp-solver';
+import * as moment from 'moment';
 import { Diet } from "../entities/diet";
 import { DietValue } from '../entities/diet-value';
 import { Formulation } from '../entities/formulation';
@@ -6,12 +7,14 @@ import { FormulationCompositionValue } from '../entities/formulation-composition
 import { FormulationIngredient } from "../entities/formulation-ingredient";
 import { IDietRepository } from '../repositories/diet';
 import { IIngredientRepository } from '../repositories/ingredient';
+import { IFormulationRepository } from '../repositories/formulation';
 
 export class FormulatorService {
 
     constructor(
         private dietRepository: IDietRepository,
         private ingredientRepository: IIngredientRepository,
+        private formulationRepository: IFormulationRepository,
     ) {
 
     }
@@ -27,9 +30,23 @@ export class FormulatorService {
             formulationIngredient.ingredient = await this.ingredientRepository.find(formulationIngredient.ingredient.id);
         }
 
-        const formulation: Formulation = new Formulation(null, diet, formulationIngredients, null, null);
+        const groupChart: string[] = [];
 
-        const result: Formulation = await this.formulate(formulation, mixWeight, username);
+        let group: any = diet.group;
+
+        while (group) {
+            groupChart.push(group.name);
+
+            group = group.parent;
+        }
+
+        groupChart.reverse();
+
+        const formulation: Formulation = new Formulation(null, `${groupChart.join(' - ')} - ${diet.name} - ${moment().format('DD-MM-YYYY')}`, diet, formulationIngredients, null, null);
+
+        let result: Formulation = await this.formulate(formulation, mixWeight, username);
+
+        result = await this.formulationRepository.create(formulation, username);
 
         return result;
     }

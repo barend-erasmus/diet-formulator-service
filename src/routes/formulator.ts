@@ -6,6 +6,8 @@ import { DietRepository } from '../repositories/sequelize/diet';
 import { IngredientRepository } from '../repositories/sequelize/ingredient';
 import { FormulatorService } from '../services/formulator';
 import { config } from './../config';
+import { IFormulationRepository } from '../repositories/formulation';
+import { FormulationRepository } from '../repositories/sequelize/formulation';
 
 export class FormulatorRouter {
 
@@ -29,7 +31,8 @@ export class FormulatorRouter {
     protected static getFormulatorService(): FormulatorService {
         const dietRepository: IDietRepository = new DietRepository(config.database.host, config.database.username, config.database.password);
         const ingredientRepository: IIngredientRepository = new IngredientRepository(config.database.host, config.database.username, config.database.password);
-        const formulatorService: FormulatorService = new FormulatorService(dietRepository, ingredientRepository);
+        const formulationRepository: IFormulationRepository = new FormulationRepository(config.database.host, config.database.username, config.database.password);
+        const formulatorService: FormulatorService = new FormulatorService(dietRepository, ingredientRepository, formulationRepository);
 
         return formulatorService;
     }
