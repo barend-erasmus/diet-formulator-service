@@ -28,6 +28,19 @@ export class FormulatorRouter {
         }
     }
 
+    public static async find(req: express.Request, res: express.Response) {
+        try {
+            const result: Formulation = await FormulatorRouter.getFormulatorService().find(req.query.id, null);
+
+            res.json(result);
+        } catch (err) {
+            res.status(500).json({
+                message: err.message,
+                stack: err.stack,
+            });
+        }
+    }
+
     protected static getFormulatorService(): FormulatorService {
         const dietRepository: IDietRepository = new DietRepository(config.database.host, config.database.username, config.database.password);
         const ingredientRepository: IIngredientRepository = new IngredientRepository(config.database.host, config.database.username, config.database.password);

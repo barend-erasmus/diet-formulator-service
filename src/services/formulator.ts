@@ -51,6 +51,12 @@ export class FormulatorService {
         return result;
     }
 
+    public async find(formulationId: number, username: string): Promise<Formulation> {
+        let formulation: Formulation = await this.formulationRepository.find(formulationId);
+
+        return this.formulate(formulation, 1000, username);
+    }
+
     public async formulate(formulation: Formulation, mixWeight: number, username: string): Promise<Formulation> {
 
         let results: any;
