@@ -30,7 +30,7 @@ export class FormulatorRouter {
 
     public static async find(req: express.Request, res: express.Response) {
         try {
-            const result: Formulation = await FormulatorRouter.getFormulatorService().find(req.query.id, null);
+            const result: Formulation = await FormulatorRouter.getFormulatorService().find(req.query.id, req['user'].email);
 
             res.json(result);
         } catch (err) {
