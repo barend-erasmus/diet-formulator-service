@@ -42,7 +42,7 @@ describe('FormulatorService', () => {
                     new IngredientValue(2, 30, new Nutrient(2, 'Nutrient B', null, null, null, null, null)),
                     new IngredientValue(3, 5, new Nutrient(3, 'Nutrient C', null, null, null, null, null)),
                 ]), 70, 0, 350, null),
-            ], null, null, 750);
+            ], null, null, 750, new Date());
 
             const result: Formulation = await formulatorService.formulate(formulation, null);
 

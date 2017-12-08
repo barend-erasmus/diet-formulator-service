@@ -32,7 +32,7 @@ ON
 AND 
 "comparisonDietGroup"."name" = 'MNI'
 AND 
-"dietGroup"."dietGroupId" = "comparisonDietGroup"."dietGroupId"
+"dietGroup"."dietGroupId" = "comparisonDietGroup"."dietGroupId";
 
 -- Update nutrients
 UPDATE public."nutrients" SET 
@@ -304,3 +304,4 @@ UPDATE public."nutrients" SET
 "abbreviation" = 'C27H46O',
 "name" = 'Cholesterol'
 WHERE "code" = 'Cholest';
+

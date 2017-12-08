@@ -10,6 +10,7 @@ export class Formulation {
         public cost: number,
         public feasible: boolean,
         public mixWeight: number,
+        public timestamp: Date,
     ) {
 
     }

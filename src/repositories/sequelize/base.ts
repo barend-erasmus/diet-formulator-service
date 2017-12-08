@@ -205,6 +205,10 @@ export class BaseRepository {
                 allowNull: false,
                 type: Sequelize.STRING,
             },
+            timestamp: {
+                allowNull: false,
+                type: Sequelize.DATE,
+            },
             username: {
                 allowNull: false,
                 type: Sequelize.STRING,

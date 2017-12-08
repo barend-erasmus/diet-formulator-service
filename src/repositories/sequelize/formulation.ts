@@ -34,6 +34,7 @@ export class FormulationRepository extends BaseRepository implements IFormulatio
             }),
             mixWeight: formulation.mixWeight,
             name: formulation.name,
+            timestamp: formulation.timestamp,
             username,
         }, {
 
@@ -125,11 +126,14 @@ export class FormulationRepository extends BaseRepository implements IFormulatio
             formulationIngredient.minimum,
             formulationIngredient.maximum,
             formulationIngredient.weight,
-        )), result.cost, result.feasible, result.mixWeight);
+        )), result.cost, result.feasible, result.mixWeight, new Date());
     }
 
     public async list(username: string): Promise<Formulation[]> {
         const result: any[] = await BaseRepository.models.Formulation.findAll({
+            order: [
+                ['timestamp', 'DESC'],
+            ],
             where: {
                 username: {
                     [Sequelize.Op.eq]: username,
@@ -137,7 +141,7 @@ export class FormulationRepository extends BaseRepository implements IFormulatio
             },
         });
 
-        return result.map((x) => new Formulation(x.id, x.name, null, [], x.cost, x.feasible, x.mixWeight));
+        return result.map((x) => new Formulation(x.id, x.name, null, [], x.cost, x.feasible, x.mixWeight, x.timestamp));
     }
 
     private async loadDietGroupParent(dietGroup: DietGroup): Promise<DietGroup> {

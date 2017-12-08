@@ -50,7 +50,7 @@ export class FormulatorService extends BaseService {
 
         groupChart.reverse();
 
-        const formulation: Formulation = new Formulation(null, `${groupChart.join(' - ')} - ${diet.name} - ${moment().format('DD-MM-YYYY')}`, diet, formulationIngredients, null, null, mixWeight);
+        const formulation: Formulation = new Formulation(null, `${groupChart.join(' - ')} - ${diet.name} - ${moment().format('DD-MM-YYYY')}`, diet, formulationIngredients, null, null, mixWeight, new Date());
 
         let result: Formulation = await this.formulate(formulation, username);
 
