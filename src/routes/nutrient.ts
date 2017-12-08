@@ -2,10 +2,10 @@ import * as express from 'express';
 import { Nutrient } from '../entities/nutrient';
 import { INutrientRepository } from '../repositories/nutrient';
 import { NutrientRepository } from '../repositories/sequelize/nutrient';
-import { NutrientService } from '../services/nutrient';
-import { config } from './../config';
 import { UserRepository } from '../repositories/sequelize/user';
 import { IUserRepository } from '../repositories/user';
+import { NutrientService } from '../services/nutrient';
+import { config } from './../config';
 
 export class NutrientRouter {
 
@@ -77,7 +77,7 @@ export class NutrientRouter {
     }
 
     protected static getNutrientService(): NutrientService {
-        const userRepository: IUserRepository = new UserRepository(config.database.host, config.database.username, config.database.password); 
+        const userRepository: IUserRepository = new UserRepository(config.database.host, config.database.username, config.database.password);
         const nutrientRepository: INutrientRepository = new NutrientRepository(config.database.host, config.database.username, config.database.password);
         const nutrientService: NutrientService = new NutrientService(userRepository, nutrientRepository);
 

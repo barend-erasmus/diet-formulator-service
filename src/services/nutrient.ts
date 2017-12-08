@@ -1,8 +1,8 @@
 import { Nutrient } from '../entities/nutrient';
 import { INutrientRepository } from '../repositories/nutrient';
+import { IUserRepository } from '../repositories/user';
 import { config } from './../config';
 import { BaseService } from './base';
-import { IUserRepository } from '../repositories/user';
 
 export class NutrientService extends BaseService {
 

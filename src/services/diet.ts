@@ -2,9 +2,9 @@ import { Diet } from '../entities/diet';
 import { DietGroup } from '../entities/diet-group';
 import { IDietRepository } from '../repositories/diet';
 import { IDietGroupRepository } from '../repositories/diet-group';
+import { IUserRepository } from '../repositories/user';
 import { config } from './../config';
 import { BaseService } from './base';
-import { IUserRepository } from '../repositories/user';
 
 export class DietService extends BaseService {
 

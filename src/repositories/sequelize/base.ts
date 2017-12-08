@@ -189,6 +189,18 @@ export class BaseRepository {
         });
 
         const Formulation = BaseRepository.sequelize.define('formulation', {
+            cost: {
+                allowNull: false,
+                type: Sequelize.NUMERIC,
+            },
+            feasible: {
+                allowNull: false,
+                type: Sequelize.BOOLEAN,
+            },
+            mixWeight: {
+                allowNull: false,
+                type: Sequelize.NUMERIC,
+            },
             name: {
                 allowNull: false,
                 type: Sequelize.STRING,

@@ -1,15 +1,15 @@
 import * as Sequelize from 'sequelize';
-import { BaseRepository } from "./base";
-import { IFormulationRepository } from '../formulation';
-import { Formulation } from '../../entities/formulation';
+import { Diet } from '../../entities/diet';
 import { DietGroup } from '../../entities/diet-group';
 import { DietValue } from '../../entities/diet-value';
-import { Diet } from '../../entities/diet';
-import { Nutrient } from '../../entities/nutrient';
+import { Formulation } from '../../entities/formulation';
 import { FormulationIngredient } from '../../entities/formulation-ingredient';
 import { Ingredient } from '../../entities/ingredient';
-import { IngredientValue } from '../../entities/ingredient-value';
 import { IngredientGroup } from '../../entities/ingredient-group';
+import { IngredientValue } from '../../entities/ingredient-value';
+import { Nutrient } from '../../entities/nutrient';
+import { IFormulationRepository } from '../formulation';
+import { BaseRepository } from "./base";
 
 export class FormulationRepository extends BaseRepository implements IFormulationRepository {
 
@@ -20,17 +20,21 @@ export class FormulationRepository extends BaseRepository implements IFormulatio
     public async create(formulation: Formulation, username: string): Promise<Formulation> {
 
         const result: any = await BaseRepository.models.Formulation.create({
-            name: formulation.name,
-            username,
+
+            cost: formulation.cost,
             dietId: formulation.diet.id,
+            feasible: formulation.feasible,
             formulationIngredients: formulation.formulationIngredients.map((formulationIngredient) => {
                 return {
                     cost: formulationIngredient.cost,
+                    ingredientId: formulationIngredient.ingredient.id,
                     maximum: formulationIngredient.maximum,
                     minimum: formulationIngredient.minimum,
-                    ingredientId: formulationIngredient.ingredient.id,
                 };
             }),
+            mixWeight: formulation.mixWeight,
+            name: formulation.name,
+            username,
         }, {
 
                 include: [
@@ -106,7 +110,7 @@ export class FormulationRepository extends BaseRepository implements IFormulatio
             result.diet.dietValues.map((value) =>
                 new DietValue(value.id, value.minimum, value.maximum, new Nutrient(value.nutrient.id, value.nutrient.name, value.nutrient.description, value.nutrient.code, value.nutrient.abbreviation, value.nutrient.unit, value.nutrient.sortOrder)),
             ).sort((a, b) => a.nutrient.sortOrder - b.nutrient.sortOrder));
-            
+
         return new Formulation(result.id, result.name, diet, result.formulationIngredients.map((formulationIngredient) => new FormulationIngredient(
             formulationIngredient.id,
             new Ingredient(formulationIngredient.ingredient.id,
@@ -121,7 +125,19 @@ export class FormulationRepository extends BaseRepository implements IFormulatio
             formulationIngredient.minimum,
             formulationIngredient.maximum,
             formulationIngredient.weight,
-        )), result.cost, result.feasible);
+        )), result.cost, result.feasible, result.mixWeight);
+    }
+
+    public async list(username: string): Promise<Formulation[]> {
+        const result: any[] = await BaseRepository.models.Formulation.findAll({
+            where: {
+                username: {
+                    [Sequelize.Op.eq]: username,
+                },
+            },
+        });
+
+        return result.map((x) => new Formulation(x.id, x.name, null, [], x.cost, x.feasible, x.mixWeight));
     }
 
     private async loadDietGroupParent(dietGroup: DietGroup): Promise<DietGroup> {

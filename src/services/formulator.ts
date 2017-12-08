@@ -6,10 +6,10 @@ import { Formulation } from '../entities/formulation';
 import { FormulationCompositionValue } from '../entities/formulation-composition-value';
 import { FormulationIngredient } from "../entities/formulation-ingredient";
 import { IDietRepository } from '../repositories/diet';
-import { IIngredientRepository } from '../repositories/ingredient';
 import { IFormulationRepository } from '../repositories/formulation';
-import { BaseService } from './base';
+import { IIngredientRepository } from '../repositories/ingredient';
 import { IUserRepository } from '../repositories/user';
+import { BaseService } from './base';
 
 export class FormulatorService extends BaseService {
 
@@ -50,9 +50,9 @@ export class FormulatorService extends BaseService {
 
         groupChart.reverse();
 
-        const formulation: Formulation = new Formulation(null, `${groupChart.join(' - ')} - ${diet.name} - ${moment().format('DD-MM-YYYY')}`, diet, formulationIngredients, null, null);
+        const formulation: Formulation = new Formulation(null, `${groupChart.join(' - ')} - ${diet.name} - ${moment().format('DD-MM-YYYY')}`, diet, formulationIngredients, null, null, mixWeight);
 
-        let result: Formulation = await this.formulate(formulation, mixWeight, username);
+        let result: Formulation = await this.formulate(formulation, username);
 
         result = await this.formulationRepository.create(formulation, username);
 
@@ -71,13 +71,24 @@ export class FormulatorService extends BaseService {
 
         let formulation: Formulation = await this.formulationRepository.find(formulationId);
 
-        formulation = await this.formulate(formulation, 1000, username);
+        formulation = await this.formulate(formulation, username);
 
         if (!this.hasPermission(username, 'view-formulation-values')) {
             formulation.removeValues();
         }
 
         return formulation;
+    }
+
+    public async list(username: string): Promise<Formulation[]> {
+
+        if (!await this.hasPermission(username, 'view-formulation')) {
+            throw new Error('Unauthorized');
+        }
+
+        const formulations: Formulation[] = await this.formulationRepository.list(username);
+
+        return formulations;
     }
 
     public async composition(formulationId: number, username: string): Promise<FormulationCompositionValue[]> {
@@ -88,20 +99,19 @@ export class FormulatorService extends BaseService {
 
         let formulation: Formulation = await this.formulationRepository.find(formulationId);
 
-        formulation = await this.formulate(formulation, 1000, username);
+        formulation = await this.formulate(formulation, username);
 
         const comparisonDiet: Diet = await this.dietRepository.findComparison(formulation.diet.id);
 
-        return this.calculateFormulationComposition(formulation, comparisonDiet, 1000);
+        return this.calculateFormulationComposition(formulation, comparisonDiet);
     }
 
-
-    public async formulate(formulation: Formulation, mixWeight: number, username: string): Promise<Formulation> {
+    public async formulate(formulation: Formulation, username: string): Promise<Formulation> {
 
         let results: any;
 
         const model = {
-            constraints: this.buildConstraintsForSolver(formulation.formulationIngredients, formulation.diet, mixWeight),
+            constraints: this.buildConstraintsForSolver(formulation.formulationIngredients, formulation.diet, formulation.mixWeight),
             opType: "min",
             optimize: "cost",
             variables: this.buildVariablesForSolver(formulation.formulationIngredients),
@@ -113,13 +123,13 @@ export class FormulatorService extends BaseService {
             formulationIngredient.weight = results[`ingredient-${formulationIngredient.ingredient.id}`] === undefined ? 0 : results[`ingredient-${formulationIngredient.ingredient.id}`];
         }
 
-        formulation.cost = results.result / mixWeight;
+        formulation.cost = results.result / formulation.mixWeight;
         formulation.feasible = results.feasible;
 
         return formulation;
     }
 
-    public async calculateFormulationComposition(formulation: Formulation, comparisonDiet: Diet, mixWeight): Promise<FormulationCompositionValue[]> {
+    public async calculateFormulationComposition(formulation: Formulation, comparisonDiet: Diet): Promise<FormulationCompositionValue[]> {
 
         const result: FormulationCompositionValue[] = [];
 
@@ -130,9 +140,9 @@ export class FormulatorService extends BaseService {
         for (const value of comparisonDiet.values) {
             const sum = formulation.formulationIngredients.map((formulationIngredient) => {
                 return formulationIngredient.ingredient.values.find((x) => x.nutrient.id === value.nutrient.id) ? formulationIngredient.ingredient.values.find((x) => x.nutrient.id === value.nutrient.id).value * formulationIngredient.weight : 0;
-            }).reduce((a, b) => a + b) / mixWeight;
+            }).reduce((a, b) => a + b) / formulation.mixWeight;
 
-            let comparisonDietValue: DietValue = comparisonDiet.values.find((x) => x.nutrient.id === value.nutrient.id);
+            const comparisonDietValue: DietValue = comparisonDiet.values.find((x) => x.nutrient.id === value.nutrient.id);
 
             let status: string = `Adequate`;
 

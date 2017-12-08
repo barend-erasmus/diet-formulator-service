@@ -1,8 +1,8 @@
 import { DietGroup } from '../entities/diet-group';
 import { IDietGroupRepository } from '../repositories/diet-group';
+import { IUserRepository } from '../repositories/user';
 import { config } from './../config';
 import { BaseService } from './base';
-import { IUserRepository } from '../repositories/user';
 
 export class DietGroupService extends BaseService {
 

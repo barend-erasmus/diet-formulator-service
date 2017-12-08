@@ -42,11 +42,11 @@ describe('FormulatorService', () => {
                     new IngredientValue(2, 30, new Nutrient(2, 'Nutrient B', null, null, null, null, null)),
                     new IngredientValue(3, 5, new Nutrient(3, 'Nutrient C', null, null, null, null, null)),
                 ]), 70, 0, 350, null),
-            ], null, null);
+            ], null, null, 750);
 
-            const result: Formulation = await formulatorService.formulate(formulation, 750, null);
+            const result: Formulation = await formulatorService.formulate(formulation, null);
 
-            const formulationComposition: FormulationCompositionValue[] = await formulatorService.calculateFormulationComposition(formulation, diet, 750);
+            const formulationComposition: FormulationCompositionValue[] = await formulatorService.calculateFormulationComposition(formulation, diet);
 
             expect(result.feasible).to.be.true;
             expect(Math.round(result.cost * 100) / 100).to.eq(121.08);

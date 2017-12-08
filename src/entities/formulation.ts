@@ -9,13 +9,14 @@ export class Formulation {
         public formulationIngredients: FormulationIngredient[],
         public cost: number,
         public feasible: boolean,
+        public mixWeight: number,
     ) {
 
     }
 
     public removeValues(): void {
         this.diet.removeValues();
-        
+
         for (const formulationIngredient of this.formulationIngredients) {
             formulationIngredient.removeValues();
         }
