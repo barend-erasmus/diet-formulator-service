@@ -76,6 +76,23 @@ export class DietRepository extends BaseRepository implements IDietRepository {
             ).sort((a, b) => a.nutrient.sortOrder - b.nutrient.sortOrder));
     }
 
+    public async findComparison(dietId: number): Promise<Diet> {
+
+        const result: any = await BaseRepository.models.ComparisonDiet.find({
+            where: {
+                dietId: {
+                    [Sequelize.Op.eq]: dietId,
+                },
+            },
+        });
+
+        if (!result) {
+            return null;
+        }
+
+        return this.find(result.comparisonDietId);
+    }
+
     public async list(dietGroupId: number, username: string): Promise<Diet[]> {
 
         const result: any[] = await BaseRepository.models.Diet.findAll({

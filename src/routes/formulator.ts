@@ -8,6 +8,7 @@ import { FormulatorService } from '../services/formulator';
 import { config } from './../config';
 import { IFormulationRepository } from '../repositories/formulation';
 import { FormulationRepository } from '../repositories/sequelize/formulation';
+import { FormulationCompositionValue } from '../entities/formulation-composition-value';
 
 export class FormulatorRouter {
 
@@ -31,6 +32,19 @@ export class FormulatorRouter {
     public static async find(req: express.Request, res: express.Response) {
         try {
             const result: Formulation = await FormulatorRouter.getFormulatorService().find(req.query.id, req['user'].email);
+
+            res.json(result);
+        } catch (err) {
+            res.status(500).json({
+                message: err.message,
+                stack: err.stack,
+            });
+        }
+    }
+
+    public static async composition(req: express.Request, res: express.Response) {
+        try {
+            const result: FormulationCompositionValue[] = await FormulatorRouter.getFormulatorService().composition(req.query.id, req['user'].email);
 
             res.json(result);
         } catch (err) {

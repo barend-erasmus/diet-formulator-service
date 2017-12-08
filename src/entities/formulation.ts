@@ -12,4 +12,12 @@ export class Formulation {
     ) {
 
     }
+
+    public removeValues(): void {
+        this.diet.removeValues();
+        
+        for (const formulationIngredient of this.formulationIngredients) {
+            formulationIngredient.removeValues();
+        }
+    }
 }

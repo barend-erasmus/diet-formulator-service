@@ -12,4 +12,8 @@ export class FormulationIngredient {
         public weight: number,
     ) {
     }
+
+    public removeValues(): void {
+        this.ingredient.removeValues();
+    }
 }

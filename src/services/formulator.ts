@@ -8,25 +8,33 @@ import { FormulationIngredient } from "../entities/formulation-ingredient";
 import { IDietRepository } from '../repositories/diet';
 import { IIngredientRepository } from '../repositories/ingredient';
 import { IFormulationRepository } from '../repositories/formulation';
+import { BaseService } from './base';
+import { IUserRepository } from '../repositories/user';
 
-export class FormulatorService {
+export class FormulatorService extends BaseService {
 
     constructor(
+        userRepository: IUserRepository,
         private dietRepository: IDietRepository,
         private ingredientRepository: IIngredientRepository,
         private formulationRepository: IFormulationRepository,
     ) {
-
+        super(userRepository);
     }
 
     public async createFormulation(diet: Diet, formulationIngredients: FormulationIngredient[], mixWeight: number, username: string): Promise<Formulation> {
 
-        // TODO: Add permissioning check.
+        if (!await this.hasPermission(username, 'create-formulation')) {
+            throw new Error('Unauthorized');
+        }
 
         diet = await this.dietRepository.find(diet.id);
 
         for (const formulationIngredient of formulationIngredients) {
-            // TODO: Add permissioning check for ingredient.
+            if (formulationIngredient.ingredient.username && formulationIngredient.ingredient.username !== username) {
+                throw new Error(`Cannot use other user's ingredients`);
+            }
+
             formulationIngredient.ingredient = await this.ingredientRepository.find(formulationIngredient.ingredient.id);
         }
 
@@ -48,14 +56,45 @@ export class FormulatorService {
 
         result = await this.formulationRepository.create(formulation, username);
 
+        if (!this.hasPermission(username, 'view-formulation-values')) {
+            result.removeValues();
+        }
+
         return result;
     }
 
     public async find(formulationId: number, username: string): Promise<Formulation> {
+
+        if (!await this.hasPermission(username, 'view-formulation')) {
+            throw new Error('Unauthorized');
+        }
+
         let formulation: Formulation = await this.formulationRepository.find(formulationId);
 
-        return this.formulate(formulation, 1000, username);
+        formulation = await this.formulate(formulation, 1000, username);
+
+        if (!this.hasPermission(username, 'view-formulation-values')) {
+            formulation.removeValues();
+        }
+
+        return formulation;
     }
+
+    public async composition(formulationId: number, username: string): Promise<FormulationCompositionValue[]> {
+
+        if (!await this.hasPermission(username, 'view-formulation-composition')) {
+            throw new Error('Unauthorized');
+        }
+
+        let formulation: Formulation = await this.formulationRepository.find(formulationId);
+
+        formulation = await this.formulate(formulation, 1000, username);
+
+        const comparisonDiet: Diet = await this.dietRepository.findComparison(formulation.diet.id);
+
+        return this.calculateFormulationComposition(formulation, comparisonDiet, 1000);
+    }
+
 
     public async formulate(formulation: Formulation, mixWeight: number, username: string): Promise<Formulation> {
 
@@ -84,21 +123,28 @@ export class FormulatorService {
 
         const result: FormulationCompositionValue[] = [];
 
-        formulation.diet.values.map((value) => {
-            return;
-        });
+        if (!comparisonDiet) {
+            comparisonDiet = formulation.diet;
+        }
 
-        for (const value of formulation.diet.values) {
-            const sum = formulation.formulationIngredients.map((formualtionIngredient) => {
-                return formualtionIngredient.ingredient.values.find((x) => x.nutrient.id === value.nutrient.id) ? formualtionIngredient.ingredient.values.find((x) => x.nutrient.id === value.nutrient.id).value * formualtionIngredient.weight : 0;
+        for (const value of comparisonDiet.values) {
+            const sum = formulation.formulationIngredients.map((formulationIngredient) => {
+                return formulationIngredient.ingredient.values.find((x) => x.nutrient.id === value.nutrient.id) ? formulationIngredient.ingredient.values.find((x) => x.nutrient.id === value.nutrient.id).value * formulationIngredient.weight : 0;
             }).reduce((a, b) => a + b) / mixWeight;
 
-            let comparisonDietValue: DietValue = null;
-            if (comparisonDiet) {
-                comparisonDietValue = comparisonDiet.values.find((x) => x.nutrient.id === value.nutrient.id);
+            let comparisonDietValue: DietValue = comparisonDiet.values.find((x) => x.nutrient.id === value.nutrient.id);
+
+            let status: string = `Adequate`;
+
+            if (comparisonDietValue.minimum && ((sum - comparisonDietValue.minimum) / comparisonDietValue.minimum < -0.01)) {
+                status = `Inadequate`;
             }
 
-            result.push(new FormulationCompositionValue(sum, value.nutrient, comparisonDietValue ? (sum < comparisonDietValue.minimum ? 'inadequate' : sum > comparisonDietValue.maximum ? 'excessive' : 'adequate') : null));
+            if (comparisonDietValue.maximum && ((sum - comparisonDietValue.maximum) / comparisonDietValue.maximum > 0.01)) {
+                status = `Excessive`;
+            }
+
+            result.push(new FormulationCompositionValue(sum, value.nutrient, status));
         }
 
         return result;

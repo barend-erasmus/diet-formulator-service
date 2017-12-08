@@ -21,6 +21,10 @@ export class BaseService {
         permissions.push('view-ingredient');
         permissions.push('create-diet');
         permissions.push('update-diet');
+        permissions.push('create-formulation');
+        permissions.push('view-formulation');
+        permissions.push('view-formulation-composition');
+        permissions.push('view-formulation-supplement');
 
         if (user.isSuperAdmin) {
 
@@ -36,13 +40,13 @@ export class BaseService {
             permissions.push('create-diet-group');
             permissions.push('update-diet-group');
 
-            permissions.push('create-diet');
-
             permissions.push('create-ingredient');
             permissions.push('update-ingredient');
 
             permissions.push('view-diet-values');
             permissions.push('view-ingedient-values');
+
+            permissions.push('view-formulation-values');
 
         }
 
