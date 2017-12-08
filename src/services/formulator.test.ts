@@ -13,7 +13,7 @@ import { FormulatorService } from './formulator';
 describe('FormulatorService', () => {
     describe('formulate', () => {
         it('should return feasible formulation', async () => {
-            const formulatorService: FormulatorService = new FormulatorService(null, null, null);
+            const formulatorService: FormulatorService = new FormulatorService(null, null, null, null);
 
             const diet: Diet = new Diet(null, null, null, null, null, [
                 new DietValue(1, 20, 100, new Nutrient(1, 'Nutrient A', null, null, null, null, null)),
