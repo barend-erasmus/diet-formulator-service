@@ -50,6 +50,7 @@ app.post('/api/formulator/create', requireUser, FormulatorRouter.create);
 app.get('/api/formulator/find', requireUser, FormulatorRouter.find);
 app.get('/api/formulator/list', requireUser, FormulatorRouter.list);
 app.get('/api/formulator/composition', requireUser, FormulatorRouter.composition);
+app.get('/api/formulator/supplement', requireUser, FormulatorRouter.supplement);
 
 app.use('/api/docs', express.static(path.join(__dirname, './../apidoc')));
 app.use('/api/coverage', express.static(path.join(__dirname, './../coverage/lcov-report')));

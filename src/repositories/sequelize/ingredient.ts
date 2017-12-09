@@ -102,10 +102,10 @@ export class IngredientRepository extends BaseRepository implements IIngredientR
                     },
                 });
                 
-                return result.map((x) => new Ingredient(x.id, x.name, x.description, x.username, new IngredientGroup(x.ingredientGroup.id, x.ingredientGroup.name, x.ingredientGroup.description),
-                    x.ingredientValues.map((value) =>
-                        new IngredientValue(value.id, value.value, new Nutrient(value.nutrient.id, value.nutrient.name, value.nutrient.description, value.nutrient.code, value.nutrient.abbreviation, value.nutrient.unit, value.nutrient.sortOrder)),
-                    ).sort((a, b) => a.nutrient.sortOrder - b.nutrient.sortOrder)))
+                return result.map((x) => new Ingredient(x.ingredient.id, x.ingredient.name, x.ingredient.description, x.ingredient.username, new IngredientGroup(x.ingredient.ingredientGroup.id, x.ingredient.ingredientGroup.name, x.ingredient.ingredientGroup.description),
+                x.ingredient.ingredientValues.map((value) =>
+                    new IngredientValue(value.id, value.value, new Nutrient(value.nutrient.id, value.nutrient.name, value.nutrient.description, value.nutrient.code, value.nutrient.abbreviation, value.nutrient.unit, value.nutrient.sortOrder)),
+                ).sort((a, b) => a.nutrient.sortOrder - b.nutrient.sortOrder)));
             }
 
     public async list(applicationId: number): Promise<Ingredient[]> {

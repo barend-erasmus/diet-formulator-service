@@ -10,6 +10,9 @@ import { IFormulationRepository } from '../repositories/formulation';
 import { IIngredientRepository } from '../repositories/ingredient';
 import { IUserRepository } from '../repositories/user';
 import { BaseService } from './base';
+import { Supplement } from '../entities/supplement';
+import { Ingredient } from '../entities/ingredient';
+import { SupplementIngredient } from '../entities/supplement-ingredient';
 
 export class FormulatorService extends BaseService {
 
@@ -104,6 +107,45 @@ export class FormulatorService extends BaseService {
         const comparisonDiet: Diet = await this.dietRepository.findComparison(formulation.diet.id);
 
         return this.calculateFormulationComposition(formulation, comparisonDiet);
+    }
+
+    public async supplement(formulationId: number, username: string): Promise<Supplement[]> {
+
+        if (!await this.hasPermission(username, 'view-formulation-supplement')) {
+            throw new Error('Unauthorized');
+        }
+
+        let formulation: Formulation = await this.formulationRepository.find(formulationId);
+
+        formulation = await this.formulate(formulation, username);
+
+        const comparisonDiet: Diet = await this.dietRepository.findComparison(formulation.diet.id);
+
+        const FormulationCompositionValues: FormulationCompositionValue[] = await this.calculateFormulationComposition(formulation, comparisonDiet);
+
+        if (!comparisonDiet) {
+            throw new Error('Diet does not have a comparison diet');
+        }
+
+        const result: Supplement[] = [];
+
+        for (const value of comparisonDiet.values) {
+            const sum = formulation.formulationIngredients.map((formulationIngredient) => {
+                return formulationIngredient.ingredient.values.find((x) => x.nutrient.id === value.nutrient.id) ? formulationIngredient.ingredient.values.find((x) => x.nutrient.id === value.nutrient.id).value * formulationIngredient.weight : 0;
+            }).reduce((a, b) => a + b) / formulation.mixWeight;
+
+            const comparisonDietValue: DietValue = comparisonDiet.values.find((x) => x.nutrient.id === value.nutrient.id);
+
+            if (comparisonDietValue.minimum && ((sum - comparisonDietValue.minimum) / comparisonDietValue.minimum < -0.01)) {
+                const valueRequired: number = comparisonDietValue.minimum - sum;
+
+                const ingredients: Ingredient[] = await this.ingredientRepository.listSupplements(value.nutrient.id);
+                
+                result.push(new Supplement(value.nutrient, ingredients.map((x) => new SupplementIngredient(x, valueRequired / x.values.find((y) => y.nutrient.id === value.nutrient.id).value))));
+            }
+        }
+
+        return result;
     }
 
     public async formulate(formulation: Formulation, username: string): Promise<Formulation> {
