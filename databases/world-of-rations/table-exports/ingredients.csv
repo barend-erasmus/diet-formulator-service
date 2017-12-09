@@ -1,79 +1,4 @@
 id;description;name;username;ingredientGroupId
-97;;Cys, as Cystine or DL-Cystine;;6
-103;;Fescue hay;;2
-108;;Folic, as Folic Acid (Vit B9);;8
-110;;Herring oil;;5
-113;;I, from Ethylene-diamino-dihydroiodide (EDDI);;11
-117;;K, as Potassium Bicarbonate (KHCO3);;10
-119;;K, as Potassium Chloride (KCl);;10
-98;;Di-Ammonium Phosphate;;4
-99;;Distillers grain, wet;;9
-102;;Feather meal, hydrolyzed;;9
-100;;Fababean (Broadbean) seeds;;9
-105;;Fish meal, menhaden;;9
-107;;Flaxseed oil;;5
-111;;His, as DL-Histidine;;6
-101;;Fe, from Ferrous sulphate;;11
-104;;Fish meal, herring;;9
-112;;His, as L-Histidine monohydochloride;;6
-120;;K, as Potassium Iodide (KI);;10
-106;;Fish meal, white;;9
-211;;Trace Mineral Premix for Cattle (Formulate using 1 kg);;12
-218;;Trace Mineral Premix for Poultry (Formulate using 1 kg);;12
-219;;Trace Mineral Premix for Rabbits (Formulate using 1 kg);;12
-226;;Urea 46% Nitrogen;;4
-232;;Vit A, from Vit A Palmitate 500;;8
-212;;Trace Mineral Premix for Deer (Formulate using 1 kg);;12
-213;;Trace Mineral Premix for Dogs (Formulate using 1 kg);;12
-214;;Trace Mineral Premix for Fish (Formulate using 2 kg);;12
-216;;Trace Mineral Premix for Horses (Formulate using 1 kg);;12
-224;;Trp, as L-Tryptophan;;6
-229;;Vit A, from Vit A Acetate 325;;8
-235;;Vit B1, from Thiamine mono-nitrate 98%;;8
-246;;Vit D, from Vit D3 Oil (Cholecalciferol);;8
-257;;Wheat straw, Ammoniated;;2
-259;;Wheat, grain (hard, red var);;7
-215;;Trace Mineral Premix for Goats (Formulate using 1 kg);;12
-223;;Triticale, grain;;7
-225;;Tyr, as L-Tyrosine;;6
-227;;Val, as L-Valine;;6
-236;;Vit B12, as the 1.0 % product (Cyanocobalamin);;8
-239;;Vit B2, as the 0.1% product (Riboflavin);;8
-249;;Vit D, from Vit D3 500;;8
-255;;Wheat Silage (dough stage);;3
-260;;Wheat, grain (soft, white var);;7
-261;;Wheat, middlings;;7
-264;;Zn, from Zinc chloride;;11
-217;;Trace Mineral Premix for Pigs (Formulate using 1 kg);;12
-221;;Trace Mineral Premix for Shrimp (Formulate using 2 kg);;12
-222;;Trace Mineral Premix for Zebra (Formulate using 1 kg);;12
-231;;Vit A, from Vit A Palmitate 250;;8
-233;;Vit B1, (Thiamine), from Vita-B1 supplied by Allivet;;8
-238;;Vit B12, as the 10.0% product (Cyanocobalamin);;8
-241;;Vit B6, (Pyridoxine);;8
-244;;Vit C, as an Ethylcellulose-coated Ascorbic Acid;;8
-253;;Vit K, from Vit K 5%;;8
-263;;Zn, from Zinc carbonate;;11
-265;;Zn, from Zinc oxide;;11
-220;;Trace Mineral Premix for Sheep (Formulate using 1 kg);;12
-228;;Vit A, from Vit A Acetate 250;;8
-230;;Vit A, from Vit A Acetate 500;;8
-234;;Vit B1, from Thiamine hydrochloride 98%;;8
-237;;Vit B12, as the 0.1% product (Cyanocobalamin);;8
-240;;Vit B2, as the 1% product (Riboflavin);;8
-242;;Vit C, as a Fat-coated Ascorbic Acid;;8
-243;;Vit C, as a Phosphorylated Ascorbic Acid;;8
-245;;Vit D, from Vit D2 Oil (Ergocalciferol);;8
-247;;Vit D, from Vit D3 100;;8
-248;;Vit D, from Vit D3 50;;8
-250;;Vit E, from Vit E Acetate 50%;;8
-251;;Vit E, from Vit E Acetate 500;;8
-252;;Vit K, from Vit K 1%;;8
-254;;Wheat hay;;2
-256;;Wheat straw;;2
-258;;Wheat, bran;;7
-262;;Whey, dried;;7
-266;;Zn, from Zinc sulphate monhydrate;;11
 1;;Acid Buf (calcified seaweed);;1
 2;;Alfalfa hay, dehy 17% CP;;2
 3;;Alfalfa hay, dehy 20% CP;;2
@@ -170,11 +95,30 @@ id;description;name;username;ingredientGroupId
 94;;Cu, from Cupric chloride dihydrate;;11
 95;;Cu, from Cupric oxide;;11
 96;;Cu, from Cupric sulphate pentahydrate;;11
+97;;Cys, as Cystine or DL-Cystine;;6
+98;;Di-Ammonium Phosphate;;4
+99;;Distillers grain, wet;;9
+100;;Fababean (Broadbean) seeds;;9
+101;;Fe, from Ferrous sulphate;;11
+102;;Feather meal, hydrolyzed;;9
+103;;Fescue hay;;2
+104;;Fish meal, herring;;9
+105;;Fish meal, menhaden;;9
+106;;Fish meal, white;;9
+107;;Flaxseed oil;;5
+108;;Folic, as Folic Acid (Vit B9);;8
 109;;Gly, as Glycine;;6
+110;;Herring oil;;5
+111;;His, as DL-Histidine;;6
+112;;His, as L-Histidine monohydochloride;;6
+113;;I, from Ethylene-diamino-dihydroiodide (EDDI);;11
 114;;I, from Potassium iodide;;11
 115;;Inositol, as Myo-Inositol (previously known as Vit B8);;8
 116;;Iso-L, as L-Iso-Leucine;;6
+117;;K, as Potassium Bicarbonate (KHCO3);;10
 118;;K, as Potassium Carbonate (K2CO3);;10
+119;;K, as Potassium Chloride (KCl);;10
+120;;K, as Potassium Iodide (KI);;10
 121;;K, as Potassium Sulpnate (K2SO4);;10
 122;;Lard (Pork);;5
 123;;Lentil seeds;;9
@@ -265,3 +209,59 @@ id;description;name;username;ingredientGroupId
 208;;Trace Min Premix Alpacas & Llamas (Formulate using 1 kg);;12
 209;;Trace Mineral Premix for Antelope (Formulate using 1 kg);;12
 210;;Trace Mineral Premix for Cats (Formulate using 1 kg);;12
+211;;Trace Mineral Premix for Cattle (Formulate using 1 kg);;12
+212;;Trace Mineral Premix for Deer (Formulate using 1 kg);;12
+213;;Trace Mineral Premix for Dogs (Formulate using 1 kg);;12
+214;;Trace Mineral Premix for Fish (Formulate using 2 kg);;12
+215;;Trace Mineral Premix for Goats (Formulate using 1 kg);;12
+216;;Trace Mineral Premix for Horses (Formulate using 1 kg);;12
+217;;Trace Mineral Premix for Pigs (Formulate using 1 kg);;12
+218;;Trace Mineral Premix for Poultry (Formulate using 1 kg);;12
+219;;Trace Mineral Premix for Rabbits (Formulate using 1 kg);;12
+220;;Trace Mineral Premix for Sheep (Formulate using 1 kg);;12
+221;;Trace Mineral Premix for Shrimp (Formulate using 2 kg);;12
+222;;Trace Mineral Premix for Zebra (Formulate using 1 kg);;12
+223;;Triticale, grain;;7
+224;;Trp, as L-Tryptophan;;6
+225;;Tyr, as L-Tyrosine;;6
+226;;Urea 46% Nitrogen;;4
+227;;Val, as L-Valine;;6
+228;;Vit A, from Vit A Acetate 250;;8
+229;;Vit A, from Vit A Acetate 325;;8
+230;;Vit A, from Vit A Acetate 500;;8
+231;;Vit A, from Vit A Palmitate 250;;8
+232;;Vit A, from Vit A Palmitate 500;;8
+233;;Vit B1, (Thiamine), from Vita-B1 supplied by Allivet;;8
+234;;Vit B1, from Thiamine hydrochloride 98%;;8
+235;;Vit B1, from Thiamine mono-nitrate 98%;;8
+236;;Vit B12, as the 1.0 % product (Cyanocobalamin);;8
+237;;Vit B12, as the 0.1% product (Cyanocobalamin);;8
+238;;Vit B12, as the 10.0% product (Cyanocobalamin);;8
+239;;Vit B2, as the 0.1% product (Riboflavin);;8
+240;;Vit B2, as the 1% product (Riboflavin);;8
+241;;Vit B6, (Pyridoxine);;8
+242;;Vit C, as a Fat-coated Ascorbic Acid;;8
+243;;Vit C, as a Phosphorylated Ascorbic Acid;;8
+244;;Vit C, as an Ethylcellulose-coated Ascorbic Acid;;8
+245;;Vit D, from Vit D2 Oil (Ergocalciferol);;8
+246;;Vit D, from Vit D3 Oil (Cholecalciferol);;8
+247;;Vit D, from Vit D3 100;;8
+248;;Vit D, from Vit D3 50;;8
+249;;Vit D, from Vit D3 500;;8
+250;;Vit E, from Vit E Acetate 50%;;8
+251;;Vit E, from Vit E Acetate 500;;8
+252;;Vit K, from Vit K 1%;;8
+253;;Vit K, from Vit K 5%;;8
+254;;Wheat hay;;2
+255;;Wheat Silage (dough stage);;3
+256;;Wheat straw;;2
+257;;Wheat straw, Ammoniated;;2
+258;;Wheat, bran;;7
+259;;Wheat, grain (hard, red var);;7
+260;;Wheat, grain (soft, white var);;7
+261;;Wheat, middlings;;7
+262;;Whey, dried;;7
+263;;Zn, from Zinc carbonate;;11
+264;;Zn, from Zinc chloride;;11
+265;;Zn, from Zinc oxide;;11
+266;;Zn, from Zinc sulphate monhydrate;;11

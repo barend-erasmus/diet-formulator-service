@@ -1,130 +1,6 @@
 id;description;name;username;dietGroupId
-80;;Bulls now weighing around 500kg (1100 lb), with moderate growth intended;;72
-81;;Bulls now weighing around 635kg (1400 lb), rapid growth intended;;74
-84;;Bulls now weighing around 400kg (900 lb), with moderate growth intended;;72
-85;;Bulls now weighing around 400kg (900 lb), with rapid growth intended;;71
-89;;Bulls now weighing around 450kg (1000 lb), with moderate growth intended;;78
-96;;Bulls now weighing around 500kg (1100 lb), with moderate growth intended;;78
-97;;Bulls now weighing around 500kg (1100 lb), with rapid rapid growth intended;;77
-100;;Bulls now weighing around 500kg (1100 lb), with rapid growth intended;;72
-107;;Bulls now weighing around 540kg (1200 lb), with moderate growth intended;;78
-82;;Bulls now weighing around 635kg (1400 lb), rapid growth intended;;75
-91;;Bulls now weighing around 450kg (1000 lb), with rapid rapid growth intended;;77
-92;;Bulls now weighing around 450kg (1000 lb), with rapid rapid growth intended;;78
-94;;Bulls now weighing around 450kg (1000 lb), with rapid growth intended;;72
-99;;Bulls now weighing around 500kg (1100 lb), with rapid growth intended;;71
-83;;Bulls now weighing around 400kg (900 lb), with moderate growth intended;;71
-88;;Bulls now weighing around 450kg (1000 lb), with moderate growth intended;;77
-93;;Bulls now weighing around 450kg (1000 lb), with rapid growth intended;;71
-103;;Bulls now weighing around 540kg (1200 lb), rapid growth intended;;74
-109;;Bulls now weighing around 540kg (1200 lb), with rapid rapid growth intended;;77
-111;;Bulls now weighing around 540kg (1200 lb), with rapid growth intended;;71
-112;;Bulls now weighing around 540kg (1200 lb), with rapid growth intended;;72
-115;;Bulls now weighing around 590kg (1300 lb), rapid growth intended;;74
-171;;Creep feed ration;;92
-172;;Creep feed ration;;93
-174;;Daily production, around 1 kg (2.2 lb) & 3% butter fat;;96
-173;;Daily production, around 1 kg (2.2 lb) & 3% butter fat;;95
-175;;Daily production, around 1 kg (2.2 lb) & 4% butter fat;;95
-176;;Daily production, around 1 kg (2.2 lb) & 4% butter fat;;96
-178;;Daily production, around 1 kg (2.2 lb) & 5% butter fat;;96
-179;;Daily production, around 2 kg (4.4 lb) & 3% butter fat;;95
-180;;Daily production, around 2 kg (4.4 lb) & 3% butter fat;;96
-185;;Daily production, around 3 kg (6.6 lb) & 3% butter fat;;95
-251;;Females, last third of pregnancy and also during lactation;;117
-252;;Females, last third of pregnancy and also during lactation;;118
-253;;Females, last third of pregnancy and during lactation;;120
-254;;Females, last third of pregnancy and during lactation;;121
+21;;Bobwhite Quail, Breeder ration;;12
 255;;Fingerling;;54
-256;;Fingerling;;56
-257;;Fingerling;;59
-258;;Fingerling;;61
-259;;Finisher ration, from 36 - 48 weeks;;20
-261;;Finisher ration, from 42 weeks to market weight;;16
-264;;Finishing lambs, of about 30 kg, 4 - 7 months old;;93
-266;;Finishing lambs, of about 40 kg, 4 - 7 months old;;93
-267;;Finishing lambs, of about 50 kg, 4 - 7 months old;;92
-260;;Finisher ration, from 36 - 48 weeks;;21
-268;;Finishing lambs, of about 50 kg, 4 - 7 months old;;93
-336;;Grower;;56
-337;;Grower;;59
-339;;Grower ration for Ducklings of mixed gender, 2 - 7 weeks old;;36
-341;;Grower ration for Goslings of mixed gender, after 4 weeks of age;;40
-345;;Grower ration for Pheasant chicks of mixed gender, 9 - 17 weeks of age;;44
-338;;Grower;;61
-340;;Grower ration for Ducklings of mixed gender, 2 - 7 weeks old;;37
-349;;Grower ration, 3 - 6 months, fed ad lib;;112
-352;;Grower ration, 3 - 6 months, fed ad lib;;115
-355;;Grower ration, 6 - 9 months, fed ad lib;;109
-357;;Grower ration, 6 - 9 months, fed ad lib;;112
-416;;In Early lactation, producing around 55 Kg (120 lb) milk with 4,0 % Fat & 3-4 % Protein;;136
-417;;In late lactation, producing around 25 Kg (55 lb) milk with 3,0 % Fat & 3-4 % Protein;;130
-418;;In late lactation, producing around 25 Kg (55 lb) milk with 3,0 % Fat & 3-4 % Protein;;131
-419;;In late lactation, producing around 25 Kg (55 lb) milk with 4,0 % Fat & 3-4 % Protein;;133
-420;;In late lactation, producing around 25 Kg (55 lb) milk with 4,0 % Fat & 3-4 % Protein;;135
-421;;In late lactation, producing around 25 Kg (55 lb) milk with 4,0 % Fat & 3-4 % Protein;;136
-422;;In late lactation, producing around 25 Kg (55 lb) milk with 4,0 % Fat & 3-4 % Protein;;137
-423;;In late lactation, producing around 25 Kg (55 lb) milk with 5,0 % Fat & 3-4 % Protein;;139
-424;;In late lactation, producing around 25 Kg (55 lb) milk with 5,0 % Fat & 3-4 % Protein;;140
-425;;In late lactation, producing around 35 Kg (77 lb) milk with 3,0 % Fat & 3-4 % Protein;;130
-496;;Lactation ration for does and litter fed one (same) feed;;146
-499;;Lactation, First 6-8 wks suckling singles;;123
-500;;Lactation, First 6-8 wks suckling singles;;125
-506;;Lactation, First 6-8 wks suckling twins;;127
-511;;Larval;;52
-514;;Larval;;62
-525;;Long yearling supplement, at 18 months of age, fed at 1% of BW;;162
-497;;Lactation ration for does only;;145
-505;;Lactation, First 6-8 wks suckling twins;;126
-507;;Lactation, Last 4-6 wks suckling singles;;123
-513;;Larval;;60
-517;;Late-Gestation ration, 24 - 36 weeks, fed ad lib;;112
-519;;Late-Gestation ration, 24 - 36 weeks, fed ad lib;;114
-523;;Long yearling supplement, at 18 months of age, fed at 0.5% of BW;;159
-527;;Long yearling, 18 months - Not in training;;168
-531;;Lost 10 kg (22 lb), and Piglets gaining 200 g/day (0.44 lb);;171
-534;;Lost 10 kg (22 lb), and Piglets gaining 250 g/day (0.55 lb);;172
-546;;Maintenance ration, Adult Mares and Stallions, to be fed ad lib;;166
-547;;Maintenance ration, fed ad lib;;106
-550;;Maintenance ration, fed ad lib;;113
-498;;Lactation ration for does only;;146
-508;;Lactation, Last 4-6 wks suckling singles;;126
-596;;Non-pregnant cows weighing around 500 kg (1100 lb);;182
-604;;Now weighing around 500 kg (1100 lb);;185
-608;;Now weighing around 590 kg (1300 lb);;185
-611;;Post Larval, 1 to 25 days;;52
-623;;Pregnant cows during last 90 days of gestation weighing around 545 kg (1200 lb);;181
-627;;Pregnant mare ration, at 9 months, to be fed ad lib;;165
-632;;Pregnant mare supplement, at 11 months, fed at 1% of BW;;163
-636;;Pregnant mare supplement, at 9 months, fed at 1% of BW;;163
-639;;Pregnant mares, 11 months;;152
-640;;Pregnant mares, 11 months;;153
-597;;Non-pregnant cows weighing around 545 kg (1200 lb);;181
-601;;Now weighing around 450 kg (1000 lb);;184
-603;;Now weighing around 500 kg (1100 lb);;184
-606;;Now weighing around 545 kg (1200 lb);;185
-598;;Non-pregnant cows weighing around 545 kg (1200 lb);;182
-600;;Now weighing around 400 kg (900 lb);;185
-749;;Supplement mix for Growers, 3 - 6 months, fed at 0.5% of BW;;199
-756;;Supplement mix for Growers, 3 - 6 months, fed at 1% of BW;;210
-766;;Supplement mix for Growers, 6 - 9 months, fed at 0.5% of BW;;206
-768;;Supplement mix for Growers, 6 - 9 months, fed at 1% of BW;;210
-769;;Supplement mix for Growers, 6 - 9 months, fed at 1% of BW;;212
-770;;Supplement mix for Growers, 6 - 9 months, fed at 1% of BW;;213
-771;;Supplement mix for Growers, 6 - 9 months, fed at 1% of BW;;214
-772;;Supplement mix for Growers, 6 - 9 months, fed at 1% of BW;;215
-775;;Supplement mix for Growers, 9 - 18 months, fed at 0.5% of BW;;203
-780;;Supplement mix for Growers, 9 - 18 months, fed at 1% of BW;;210
-825;;Supplement mix for mid-Lactation, 6 - 12 weeks, fed at 0.5% of BW;;205
-828;;Supplement mix for mid-Lactation, 6 - 12 weeks, fed at 1% of BW;;210
-831;;Supplement mix for mid-Lactation, 6 - 12 weeks, fed at 1% of BW;;214
-826;;Supplement mix for mid-Lactation, 6 - 12 weeks, fed at 0.5% of BW;;206
-827;;Supplement mix for mid-Lactation, 6 - 12 weeks, fed at 1% of BW;;208
-830;;Supplement mix for mid-Lactation, 6 - 12 weeks, fed at 1% of BW;;213
-829;;Supplement mix for mid-Lactation, 6 - 12 weeks, fed at 1% of BW;;212
-832;;Supplement mix for mid-Lactation, 6 - 12 weeks, fed at 1% of BW;;215
-704;;Starter ration, 0 - 9 weeks of age;;17
-858;;Weanling, 6 months - rapid growth;;169
 1;;A complete (Full feed) Finisher ration;;3
 2;;A complete (Full feed) Finisher ration;;4
 3;;A complete (Full feed) Gestation ration;;3
@@ -145,7 +21,6 @@ id;description;name;username;dietGroupId
 18;;Barrows, BW: 80 - 120 kg (175 - 265 lb), to gain 325 g/day;;8
 19;;Barrows, BW: 80 - 120 kg (175 - 265 lb), to gain 350 g/day;;7
 20;;Barrows, BW: 80 - 120 kg (175 - 265 lb), to gain 350 g/day;;8
-21;;Bobwhite Quail, Breeder ration;;12
 22;;Bobwhite Quail, Breeder ration;;13
 23;;Bobwhite Quail, Grower ration for chicks after 6 weeks of age;;12
 24;;Bobwhite Quail, Grower ration for chicks after 6 weeks of age;;13
@@ -204,21 +79,43 @@ id;description;name;username;dietGroupId
 77;;Brown egg strain, 6 - 12 weeks, ending around 1100 g BW;;67
 78;;Brown egg strain, 6 - 12 weeks, ending around 1100 g BW;;68
 79;;Bulls now weighing around 500kg (1100 lb), with moderate growth intended;;71
-335;;Grower;;54
+80;;Bulls now weighing around 500kg (1100 lb), with moderate growth intended;;72
+81;;Bulls now weighing around 635kg (1400 lb), rapid growth intended;;74
+82;;Bulls now weighing around 635kg (1400 lb), rapid growth intended;;75
+83;;Bulls now weighing around 400kg (900 lb), with moderate growth intended;;71
+84;;Bulls now weighing around 400kg (900 lb), with moderate growth intended;;72
+85;;Bulls now weighing around 400kg (900 lb), with rapid growth intended;;71
 86;;Bulls now weighing around 400kg (900 lb), with rapid growth intended;;72
 87;;Bulls now weighing around 450kg (1000 lb), with moderate growth intended;;71
+88;;Bulls now weighing around 450kg (1000 lb), with moderate growth intended;;77
+89;;Bulls now weighing around 450kg (1000 lb), with moderate growth intended;;78
 90;;Bulls now weighing around 450kg (1000 lb), with moderate growth intended;;72
+91;;Bulls now weighing around 450kg (1000 lb), with rapid rapid growth intended;;77
+92;;Bulls now weighing around 450kg (1000 lb), with rapid rapid growth intended;;78
+93;;Bulls now weighing around 450kg (1000 lb), with rapid growth intended;;71
+160;;Cows weighing around 400 kg (900 lb);;89
+94;;Bulls now weighing around 450kg (1000 lb), with rapid growth intended;;72
 95;;Bulls now weighing around 500kg (1100 lb), with moderate growth intended;;77
+96;;Bulls now weighing around 500kg (1100 lb), with moderate growth intended;;78
+97;;Bulls now weighing around 500kg (1100 lb), with rapid rapid growth intended;;77
 98;;Bulls now weighing around 500kg (1100 lb), with rapid rapid growth intended;;78
+99;;Bulls now weighing around 500kg (1100 lb), with rapid growth intended;;71
+100;;Bulls now weighing around 500kg (1100 lb), with rapid growth intended;;72
 101;;Bulls now weighing around 540kg (1200 lb), moderate growth intended;;74
 102;;Bulls now weighing around 540kg (1200 lb), moderate growth intended;;75
+103;;Bulls now weighing around 540kg (1200 lb), rapid growth intended;;74
 104;;Bulls now weighing around 540kg (1200 lb), rapid growth intended;;75
 105;;Bulls now weighing around 540kg (1200 lb), with moderate growth intended;;71
 106;;Bulls now weighing around 540kg (1200 lb), with moderate growth intended;;77
+107;;Bulls now weighing around 540kg (1200 lb), with moderate growth intended;;78
 108;;Bulls now weighing around 540kg (1200 lb), with moderate growth intended;;72
+109;;Bulls now weighing around 540kg (1200 lb), with rapid rapid growth intended;;77
 110;;Bulls now weighing around 540kg (1200 lb), with rapid rapid growth intended;;78
+111;;Bulls now weighing around 540kg (1200 lb), with rapid growth intended;;71
+112;;Bulls now weighing around 540kg (1200 lb), with rapid growth intended;;72
 113;;Bulls now weighing around 590kg (1300 lb), moderate growth intended;;74
 114;;Bulls now weighing around 590kg (1300 lb), moderate growth intended;;75
+115;;Bulls now weighing around 590kg (1300 lb), rapid growth intended;;74
 116;;Bulls now weighing around 590kg (1300 lb), rapid growth intended;;75
 117;;Bulls now weighing around 590kg (1300 lb), with moderate growth intended;;77
 118;;Bulls now weighing around 590kg (1300 lb), with moderate growth intended;;78
@@ -245,6 +142,7 @@ id;description;name;username;dietGroupId
 139;;Bulls now weighing around 980kg (2160 lb), moderate growth intended;;74
 140;;Bulls now weighing around 980kg (2160 lb), moderate growth intended;;75
 141;;BW 10 kg (22 lb) to gain around 150 g (0.33 lb)/day;;81
+487;;Lactating mares, from foaling to 3 months;;152
 142;;BW 10 kg (22 lb) to gain around 150 g (0.33 lb)/day;;82
 143;;BW 10 kg (22 lb) to gain around100 g (0.22 lb)/day;;81
 144;;BW 10 kg (22 lb) to gain around100 g (0.22 lb)/day;;82
@@ -263,7 +161,6 @@ id;description;name;username;dietGroupId
 157;;Cows and heifers still far from calving;;85
 158;;Cows and heifers still far from calving;;86
 159;;Cows weighing around 400 kg (900 lb);;88
-160;;Cows weighing around 400 kg (900 lb);;89
 161;;Cows weighing around 450 kg (1000 lb);;88
 162;;Cows weighing around 450 kg (1000 lb);;89
 163;;Cows weighing around 500 kg (1100 lb);;88
@@ -274,11 +171,21 @@ id;description;name;username;dietGroupId
 168;;Cows weighing around 590 kg (1300 lb);;89
 169;;Cows weighing around 630 kg (1400 lb);;88
 170;;Cows weighing around 630 kg (1400 lb);;89
+171;;Creep feed ration;;92
+172;;Creep feed ration;;93
+173;;Daily production, around 1 kg (2.2 lb) & 3% butter fat;;95
+174;;Daily production, around 1 kg (2.2 lb) & 3% butter fat;;96
+175;;Daily production, around 1 kg (2.2 lb) & 4% butter fat;;95
+176;;Daily production, around 1 kg (2.2 lb) & 4% butter fat;;96
 177;;Daily production, around 1 kg (2.2 lb) & 5% butter fat;;95
+178;;Daily production, around 1 kg (2.2 lb) & 5% butter fat;;96
+179;;Daily production, around 2 kg (4.4 lb) & 3% butter fat;;95
+180;;Daily production, around 2 kg (4.4 lb) & 3% butter fat;;96
 181;;Daily production, around 2 kg (4.4 lb) & 4% butter fat;;95
 182;;Daily production, around 2 kg (4.4 lb) & 4% butter fat;;96
 183;;Daily production, around 2 kg (4.4 lb) & 5% butter fat;;95
 184;;Daily production, around 2 kg (4.4 lb) & 5% butter fat;;96
+185;;Daily production, around 3 kg (6.6 lb) & 3% butter fat;;95
 186;;Daily production, around 3 kg (6.6 lb) & 3% butter fat;;96
 187;;Daily production, around 3 kg (6.6 lb) & 4% butter fat;;95
 188;;Daily production, around 3 kg (6.6 lb) & 4% butter fat;;96
@@ -326,6 +233,7 @@ id;description;name;username;dietGroupId
 230;;Does in Early Gestation, BW of around 80 kg (175 lb);;102
 231;;Does in Early Gestation, BW of around 100 kg (220 lb);;101
 232;;Does in Early Gestation, BW of around 100 kg (220 lb);;102
+514;;Larval;;62
 233;;Does in Late Gestation, BW of around 100 kg (220 lb);;101
 234;;Does in Late Gestation, BW of around 100 kg (220 lb);;102
 235;;Does in Late Gestation, BW of around 80 kg (175 lb);;101
@@ -344,9 +252,23 @@ id;description;name;username;dietGroupId
 248;;Early-Lactation ration, 0 - 6 weeks, fed ad lib;;113
 249;;Early-Lactation ration, 0 - 6 weeks, fed ad lib;;114
 250;;Early-Lactation ration, 0 - 6 weeks, fed ad lib;;115
+251;;Females, last third of pregnancy and also during lactation;;117
+252;;Females, last third of pregnancy and also during lactation;;118
+253;;Females, last third of pregnancy and during lactation;;120
+254;;Females, last third of pregnancy and during lactation;;121
+256;;Fingerling;;56
+257;;Fingerling;;59
+258;;Fingerling;;61
+259;;Finisher ration, from 36 - 48 weeks;;20
+260;;Finisher ration, from 36 - 48 weeks;;21
+261;;Finisher ration, from 42 weeks to market weight;;16
 262;;Finisher ration, from 42 weeks to market weight;;17
 263;;Finishing lambs, of about 30 kg, 4 - 7 months old;;92
+264;;Finishing lambs, of about 30 kg, 4 - 7 months old;;93
 265;;Finishing lambs, of about 40 kg, 4 - 7 months old;;92
+266;;Finishing lambs, of about 40 kg, 4 - 7 months old;;93
+267;;Finishing lambs, of about 50 kg, 4 - 7 months old;;92
+268;;Finishing lambs, of about 50 kg, 4 - 7 months old;;93
 269;;Finishing/Velveting ration, fed ad lib;;109
 270;;Finishing/Velveting ration, fed ad lib;;106
 271;;Finishing/Velveting ration, fed ad lib;;112
@@ -413,17 +335,29 @@ id;description;name;username;dietGroupId
 332;;Gilts, BW: 50 - 80 kg (110 - 175 lb), to gain 325 g/day;;8
 333;;Gilts, BW: 50 - 80 kg (110 - 175 lb), to gain 350 g/day;;7
 334;;Gilts, BW: 50 - 80 kg (110 - 175 lb), to gain 350 g/day;;8
+335;;Grower;;54
+336;;Grower;;56
+337;;Grower;;59
+338;;Grower;;61
+339;;Grower ration for Ducklings of mixed gender, 2 - 7 weeks old;;36
+340;;Grower ration for Ducklings of mixed gender, 2 - 7 weeks old;;37
+341;;Grower ration for Goslings of mixed gender, after 4 weeks of age;;40
 342;;Grower ration for Goslings of mixed gender, after 4 weeks of age;;41
 343;;Grower ration for Pheasant chicks of mixed gender, 4 - 8 weeks of age;;44
 344;;Grower ration for Pheasant chicks of mixed gender, 4 - 8 weeks of age;;45
+345;;Grower ration for Pheasant chicks of mixed gender, 9 - 17 weeks of age;;44
 346;;Grower ration for Pheasant chicks of mixed gender, 9 - 17 weeks of age;;45
 347;;Grower ration, 3 - 6 months, fed ad lib;;109
 348;;Grower ration, 3 - 6 months, fed ad lib;;106
+349;;Grower ration, 3 - 6 months, fed ad lib;;112
 350;;Grower ration, 3 - 6 months, fed ad lib;;113
 351;;Grower ration, 3 - 6 months, fed ad lib;;114
+352;;Grower ration, 3 - 6 months, fed ad lib;;115
 353;;Grower ration, 6 - 36 weeks of age;;20
 354;;Grower ration, 6 - 36 weeks of age;;21
+355;;Grower ration, 6 - 9 months, fed ad lib;;109
 356;;Grower ration, 6 - 9 months, fed ad lib;;106
+357;;Grower ration, 6 - 9 months, fed ad lib;;112
 358;;Grower ration, 6 - 9 months, fed ad lib;;113
 359;;Grower ration, 6 - 9 months, fed ad lib;;114
 360;;Grower ration, 6 - 9 months, fed ad lib;;115
@@ -446,6 +380,7 @@ id;description;name;username;dietGroupId
 377;;Grower: 10 g to harvest;;60
 378;;Grower: 10 g to harvest;;62
 379;;Growing and Finishing lambs, of about 30 kg, under 4 months old;;92
+592;;Non Competitive, Pelleted Mix;;29
 380;;Growing and Finishing lambs, of about 30 kg, under 4 months old;;93
 381;;Growing dogs, 14 weeks onwards and up to maturity;;120
 382;;Growing dogs, 14 weeks onwards and up to maturity;;121
@@ -482,28 +417,39 @@ id;description;name;username;dietGroupId
 413;;In early lactation, producing around 55 Kg (120 lb) milk with 3,0 % Fat & 3-4 % Protein;;130
 414;;In early lactation, producing around 55 Kg (120 lb) milk with 3,0 % Fat & 3-4 % Protein;;131
 415;;In Early lactation, producing around 55 Kg (120 lb) milk with 4,0 % Fat & 3-4 % Protein;;135
-428;;In late lactation, producing around 35 Kg (77 lb) milk with 4,0 % Fat & 3-4 % Protein;;135
-433;;In mid-lactation, prodcing around 55 Kg (120 lb) milk with 3,0 % Fat & 3-4 % Protein;;130
-437;;In mid-lactation, producing around 25 Kg (55 lb) milk with 4,0 % Fat & 3-4 % Protein;;133
-440;;In mid-lactation, producing around 25 Kg (55 lb) milk with 4,0 % Fat & 3-4 % Protein;;137
-447;;In mid-lactation, producing around 35 Kg (77 lb) milk with 4,0 % Fat & 3-4 % Protein;;136
+416;;In Early lactation, producing around 55 Kg (120 lb) milk with 4,0 % Fat & 3-4 % Protein;;136
+417;;In late lactation, producing around 25 Kg (55 lb) milk with 3,0 % Fat & 3-4 % Protein;;130
+418;;In late lactation, producing around 25 Kg (55 lb) milk with 3,0 % Fat & 3-4 % Protein;;131
+419;;In late lactation, producing around 25 Kg (55 lb) milk with 4,0 % Fat & 3-4 % Protein;;133
+420;;In late lactation, producing around 25 Kg (55 lb) milk with 4,0 % Fat & 3-4 % Protein;;135
+421;;In late lactation, producing around 25 Kg (55 lb) milk with 4,0 % Fat & 3-4 % Protein;;136
+422;;In late lactation, producing around 25 Kg (55 lb) milk with 4,0 % Fat & 3-4 % Protein;;137
+423;;In late lactation, producing around 25 Kg (55 lb) milk with 5,0 % Fat & 3-4 % Protein;;139
+488;;Lactating mares, from foaling to 3 months;;153
+424;;In late lactation, producing around 25 Kg (55 lb) milk with 5,0 % Fat & 3-4 % Protein;;140
+425;;In late lactation, producing around 35 Kg (77 lb) milk with 3,0 % Fat & 3-4 % Protein;;130
 426;;In late lactation, producing around 35 Kg (77 lb) milk with 3,0 % Fat & 3-4 % Protein;;131
 427;;In late lactation, producing around 35 Kg (77 lb) milk with 4,0 % Fat & 3-4 % Protein;;133
+428;;In late lactation, producing around 35 Kg (77 lb) milk with 4,0 % Fat & 3-4 % Protein;;135
 429;;In late lactation, producing around 35 Kg (77 lb) milk with 4,0 % Fat & 3-4 % Protein;;136
 430;;In late lactation, producing around 35 Kg (77 lb) milk with 4,0 % Fat & 3-4 % Protein;;137
 431;;In late lactation, producing around 35 Kg (77 lb) milk with 5,0 % Fat & 3-4 % Protein;;139
 432;;In late lactation, producing around 35 Kg (77 lb) milk with 5,0 % Fat & 3-4 % Protein;;140
+433;;In mid-lactation, prodcing around 55 Kg (120 lb) milk with 3,0 % Fat & 3-4 % Protein;;130
 434;;In mid-lactation, prodcing around 55 Kg (120 lb) milk with 3,0 % Fat & 3-4 % Protein;;131
 435;;In mid-lactation, producing around 25 Kg (55 lb) milk with 3,0 % Fat & 3-4 % Protein;;130
 436;;In mid-lactation, producing around 25 Kg (55 lb) milk with 3,0 % Fat & 3-4 % Protein;;131
+437;;In mid-lactation, producing around 25 Kg (55 lb) milk with 4,0 % Fat & 3-4 % Protein;;133
 438;;In mid-lactation, producing around 25 Kg (55 lb) milk with 4,0 % Fat & 3-4 % Protein;;135
 439;;In mid-lactation, producing around 25 Kg (55 lb) milk with 4,0 % Fat & 3-4 % Protein;;136
+440;;In mid-lactation, producing around 25 Kg (55 lb) milk with 4,0 % Fat & 3-4 % Protein;;137
 441;;In mid-lactation, producing around 25 Kg (55 lb) milk with 5,0 % Fat & 3-4 % Protein;;139
 442;;In mid-lactation, producing around 25 Kg (55 lb) milk with 5,0 % Fat & 3-4 % Protein;;140
 443;;In mid-lactation, producing around 35 Kg (77 lb) milk with 3,0 % Fat & 3-4 % Protein;;130
 444;;In mid-lactation, producing around 35 Kg (77 lb) milk with 3,0 % Fat & 3-4 % Protein;;131
 445;;In mid-lactation, producing around 35 Kg (77 lb) milk with 4,0 % Fat & 3-4 % Protein;;133
 446;;In mid-lactation, producing around 35 Kg (77 lb) milk with 4,0 % Fat & 3-4 % Protein;;135
+447;;In mid-lactation, producing around 35 Kg (77 lb) milk with 4,0 % Fat & 3-4 % Protein;;136
 448;;In mid-lactation, producing around 35 Kg (77 lb) milk with 4,0 % Fat & 3-4 % Protein;;137
 449;;In mid-lactation, producing around 35 Kg (77 lb) milk with 5,0 % Fat & 3-4 % Protein;;139
 450;;In mid-lactation, producing around 35 Kg (77 lb) milk with 5,0 % Fat & 3-4 % Protein;;140
@@ -543,8 +489,6 @@ id;description;name;username;dietGroupId
 484;;Lactating mares, from 3 months to weaning, fed at 1% of BW;;163
 485;;Lactating mares, from 3 months to weaning, to be fed ad lib;;165
 486;;Lactating mares, from 3 months to weaning, to be fed ad lib;;166
-487;;Lactating mares, from foaling to 3 months;;152
-488;;Lactating mares, from foaling to 3 months;;153
 489;;Lactating mares, from foaling to 3 months, fed at 0.5% of BW;;159
 490;;Lactating mares, from foaling to 3 months, fed at 0.5% of BW;;160
 491;;Lactating mares, from foaling to 3 months, fed at 1% of BW;;162
@@ -552,26 +496,44 @@ id;description;name;username;dietGroupId
 493;;Lactating mares, from foaling to 3 months, to be fed ad lib;;165
 494;;Lactating mares, from foaling to 3 months, to be fed ad lib;;166
 495;;Lactation ration for does and litter fed one (same) feed;;145
+496;;Lactation ration for does and litter fed one (same) feed;;146
+497;;Lactation ration for does only;;145
+498;;Lactation ration for does only;;146
+499;;Lactation, First 6-8 wks suckling singles;;123
+500;;Lactation, First 6-8 wks suckling singles;;125
 501;;Lactation, First 6-8 wks suckling singles;;126
 502;;Lactation, First 6-8 wks suckling singles;;127
 503;;Lactation, First 6-8 wks suckling twins;;123
 504;;Lactation, First 6-8 wks suckling twins;;125
+505;;Lactation, First 6-8 wks suckling twins;;126
+506;;Lactation, First 6-8 wks suckling twins;;127
+507;;Lactation, Last 4-6 wks suckling singles;;123
+508;;Lactation, Last 4-6 wks suckling singles;;126
 509;;Lactation, Last 4-6 wks suckling twins;;123
 510;;Lactation, Last 4-6 wks suckling twins;;126
+511;;Larval;;52
 512;;Larval;;58
+513;;Larval;;60
 515;;Late-Gestation ration, 24 - 36 weeks, fed ad lib;;106
 516;;Late-Gestation ration, 24 - 36 weeks, fed ad lib;;109
+517;;Late-Gestation ration, 24 - 36 weeks, fed ad lib;;112
 518;;Late-Gestation ration, 24 - 36 weeks, fed ad lib;;113
+519;;Late-Gestation ration, 24 - 36 weeks, fed ad lib;;114
 520;;Late-Gestation ration, 24 - 36 weeks, fed ad lib;;115
 521;;Long yearling ration, at 18 months of age, to be fed ad lib;;165
 522;;Long yearling ration, at 18 months of age, to be fed ad lib;;166
+523;;Long yearling supplement, at 18 months of age, fed at 0.5% of BW;;159
 524;;Long yearling supplement, at 18 months of age, fed at 0.5% of BW;;160
+525;;Long yearling supplement, at 18 months of age, fed at 1% of BW;;162
 526;;Long yearling supplement, at 18 months of age, fed at 1% of BW;;163
+527;;Long yearling, 18 months - Not in training;;168
 528;;Long yearling, 18 months - Not in training;;169
 529;;Lost 10 kg (22 lb), and Piglets gaining 150 g/day (0.33 lb);;171
 530;;Lost 10 kg (22 lb), and Piglets gaining 150 g/day (0.33 lb);;172
+531;;Lost 10 kg (22 lb), and Piglets gaining 200 g/day (0.44 lb);;171
 532;;Lost 10 kg (22 lb), and Piglets gaining 200 g/day (0.44 lb);;172
 533;;Lost 10 kg (22 lb), and Piglets gaining 250 g/day (0.55 lb);;171
+534;;Lost 10 kg (22 lb), and Piglets gaining 250 g/day (0.55 lb);;172
 535;;Maintaining BW, and Piglets gaining 150 g/day (0.33 lb);;171
 536;;Maintaining BW, and Piglets gaining 150 g/day (0.33 lb);;172
 537;;Maintaining BW, and Piglets gaining 200 g/day (0.44 lb);;171
@@ -583,8 +545,11 @@ id;description;name;username;dietGroupId
 543;;Maintenance ration, BW of around 100 kg (220 lb);;101
 544;;Maintenance ration, BW of around 100 kg (220 lb);;102
 545;;Maintenance ration, Adult Mares and Stallions, to be fed ad lib;;165
+546;;Maintenance ration, Adult Mares and Stallions, to be fed ad lib;;166
+547;;Maintenance ration, fed ad lib;;106
 548;;Maintenance ration, fed ad lib;;109
 549;;Maintenance ration, fed ad lib;;112
+550;;Maintenance ration, fed ad lib;;113
 551;;Maintenance ration, fed ad lib;;114
 552;;Maintenance ration, fed ad lib;;115
 553;;Maintenance supplement, Adult Mares and Stallions, fed at 0.5% of BW;;159
@@ -626,16 +591,25 @@ id;description;name;username;dietGroupId
 589;;Mixed Gender Pig Starter, BW: 5 - 10 kg (11 - 22 lb);;178
 590;;Mixed Gender Pig Starter, BW: 5 - 10 kg (11 - 22 lb);;179
 591;;Non Competitive, Pelleted Mix;;28
-592;;Non Competitive, Pelleted Mix;;29
 593;;Non-pregnant cows weighing around 450 kg (1000 lb);;181
 594;;Non-pregnant cows weighing around 450 kg (1000 lb);;182
 595;;Non-pregnant cows weighing around 500 kg (1100 lb);;181
+596;;Non-pregnant cows weighing around 500 kg (1100 lb);;182
+597;;Non-pregnant cows weighing around 545 kg (1200 lb);;181
+598;;Non-pregnant cows weighing around 545 kg (1200 lb);;182
 599;;Now weighing around 400 kg (900 lb);;184
+600;;Now weighing around 400 kg (900 lb);;185
+601;;Now weighing around 450 kg (1000 lb);;184
 602;;Now weighing around 450 kg (1000 lb);;185
+603;;Now weighing around 500 kg (1100 lb);;184
+604;;Now weighing around 500 kg (1100 lb);;185
 605;;Now weighing around 545 kg (1200 lb);;184
+606;;Now weighing around 545 kg (1200 lb);;185
 607;;Now weighing around 590 kg (1300 lb);;184
+608;;Now weighing around 590 kg (1300 lb);;185
 609;;Now weighing around 630 kg (1400 lb);;184
 610;;Now weighing around 630 kg (1400 lb);;185
+611;;Post Larval, 1 to 25 days;;52
 612;;Post Larval, 1 to 25 days;;58
 613;;Post Larval, 1 to 25 days;;60
 614;;Post Larval, 1 to 25 days;;62
@@ -647,18 +621,24 @@ id;description;name;username;dietGroupId
 620;;Pregnant cows during last 90 days of gestation weighing around 450 kg (1000 lb);;182
 621;;Pregnant cows during last 90 days of gestation weighing around 500 kg (1100 lb);;181
 622;;Pregnant cows during last 90 days of gestation weighing around 500 kg (1100 lb);;182
+623;;Pregnant cows during last 90 days of gestation weighing around 545 kg (1200 lb);;181
 624;;Pregnant cows during last 90 days of gestation weighing around 545 kg (1200 lb);;182
 625;;Pregnant mare ration, at 11 months, to be fed ad lib;;165
 626;;Pregnant mare ration, at 11 months, to be fed ad lib;;166
+627;;Pregnant mare ration, at 9 months, to be fed ad lib;;165
 628;;Pregnant mare ration, at 9 months, to be fed ad lib;;166
 629;;Pregnant mare supplement, at 11 months, fed at 0.5% of BW;;159
 630;;Pregnant mare supplement, at 11 months, fed at 0.5% of BW;;160
 631;;Pregnant mare supplement, at 11 months, fed at 1% of BW;;162
+632;;Pregnant mare supplement, at 11 months, fed at 1% of BW;;163
 633;;Pregnant mare supplement, at 9 months, fed at 0.5% of BW;;159
 634;;Pregnant mare supplement, at 9 months, fed at 0.5% of BW;;160
 635;;Pregnant mare supplement, at 9 months, fed at 1% of BW;;162
+636;;Pregnant mare supplement, at 9 months, fed at 1% of BW;;163
 637;;Pregnant mares, 10 months;;152
 638;;Pregnant mares, 10 months;;153
+639;;Pregnant mares, 11 months;;152
+640;;Pregnant mares, 11 months;;153
 641;;Pregnant mares, 9 months;;152
 642;;Pregnant mares, 9 months;;153
 643;;Pre-starter for calves fed milk or milk replacer;;175
@@ -722,6 +702,7 @@ id;description;name;username;dietGroupId
 701;;Starter ration, 0 - 6 weeks of age;;20
 702;;Starter ration, 0 - 6 weeks of age;;21
 703;;Starter ration, 0 - 9 weeks of age;;16
+704;;Starter ration, 0 - 9 weeks of age;;17
 705;;Starting from around 135kg (300lb), with moerat growth to finish in about 13.1 months;;196
 706;;Starting from around 135kg (300lb), with moerat growth to finish in about 13.1 months;;197
 707;;Starting from around 135kg (300lb), with rapid growth to finish in about 8.75 months;;196
@@ -766,12 +747,14 @@ id;description;name;username;dietGroupId
 746;;Supplement mix for Finishing/Velveting, fed at 1% of BW;;213
 747;;Supplement mix for Finishing/Velveting, fed at 1% of BW;;214
 748;;Supplement mix for Finishing/Velveting, fed at 1% of BW;;215
+749;;Supplement mix for Growers, 3 - 6 months, fed at 0.5% of BW;;199
 750;;Supplement mix for Growers, 3 - 6 months, fed at 0.5% of BW;;203
 751;;Supplement mix for Growers, 3 - 6 months, fed at 0.5% of BW;;201
 752;;Supplement mix for Growers, 3 - 6 months, fed at 0.5% of BW;;204
 753;;Supplement mix for Growers, 3 - 6 months, fed at 0.5% of BW;;205
 754;;Supplement mix for Growers, 3 - 6 months, fed at 0.5% of BW;;206
 755;;Supplement mix for Growers, 3 - 6 months, fed at 1% of BW;;208
+756;;Supplement mix for Growers, 3 - 6 months, fed at 1% of BW;;210
 757;;Supplement mix for Growers, 3 - 6 months, fed at 1% of BW;;212
 758;;Supplement mix for Growers, 3 - 6 months, fed at 1% of BW;;213
 759;;Supplement mix for Growers, 3 - 6 months, fed at 1% of BW;;214
@@ -781,13 +764,21 @@ id;description;name;username;dietGroupId
 763;;Supplement mix for Growers, 6 - 9 months, fed at 0.5% of BW;;201
 764;;Supplement mix for Growers, 6 - 9 months, fed at 0.5% of BW;;204
 765;;Supplement mix for Growers, 6 - 9 months, fed at 0.5% of BW;;205
+766;;Supplement mix for Growers, 6 - 9 months, fed at 0.5% of BW;;206
 767;;Supplement mix for Growers, 6 - 9 months, fed at 1% of BW;;208
+768;;Supplement mix for Growers, 6 - 9 months, fed at 1% of BW;;210
+769;;Supplement mix for Growers, 6 - 9 months, fed at 1% of BW;;212
+770;;Supplement mix for Growers, 6 - 9 months, fed at 1% of BW;;213
+771;;Supplement mix for Growers, 6 - 9 months, fed at 1% of BW;;214
+772;;Supplement mix for Growers, 6 - 9 months, fed at 1% of BW;;215
 773;;Supplement mix for Growers, 9 - 18 months, fed at 0.5% of BW;;199
 774;;Supplement mix for Growers, 9 - 18 months, fed at 0.5% of BW;;201
+775;;Supplement mix for Growers, 9 - 18 months, fed at 0.5% of BW;;203
 776;;Supplement mix for Growers, 9 - 18 months, fed at 0.5% of BW;;204
 777;;Supplement mix for Growers, 9 - 18 months, fed at 0.5% of BW;;205
 778;;Supplement mix for Growers, 9 - 18 months, fed at 0.5% of BW;;206
 779;;Supplement mix for Growers, 9 - 18 months, fed at 1% of BW;;208
+780;;Supplement mix for Growers, 9 - 18 months, fed at 1% of BW;;210
 781;;Supplement mix for Growers, 9 - 18 months, fed at 1% of BW;;212
 782;;Supplement mix for Growers, 9 - 18 months, fed at 1% of BW;;213
 783;;Supplement mix for Growers, 9 - 18 months, fed at 1% of BW;;214
@@ -832,6 +823,14 @@ id;description;name;username;dietGroupId
 822;;Supplement mix for mid-Lactation, 6 - 12 weeks, fed at 0.5% of BW;;201
 823;;Supplement mix for mid-Lactation, 6 - 12 weeks, fed at 0.5% of BW;;203
 824;;Supplement mix for mid-Lactation, 6 - 12 weeks, fed at 0.5% of BW;;204
+825;;Supplement mix for mid-Lactation, 6 - 12 weeks, fed at 0.5% of BW;;205
+826;;Supplement mix for mid-Lactation, 6 - 12 weeks, fed at 0.5% of BW;;206
+827;;Supplement mix for mid-Lactation, 6 - 12 weeks, fed at 1% of BW;;208
+828;;Supplement mix for mid-Lactation, 6 - 12 weeks, fed at 1% of BW;;210
+829;;Supplement mix for mid-Lactation, 6 - 12 weeks, fed at 1% of BW;;212
+830;;Supplement mix for mid-Lactation, 6 - 12 weeks, fed at 1% of BW;;213
+831;;Supplement mix for mid-Lactation, 6 - 12 weeks, fed at 1% of BW;;214
+832;;Supplement mix for mid-Lactation, 6 - 12 weeks, fed at 1% of BW;;215
 833;;Two year old, 24 months - In training;;168
 834;;Two year old, 24 months - In training;;169
 835;;Two year old, 24 months - Not in training;;168
@@ -857,6 +856,7 @@ id;description;name;username;dietGroupId
 855;;Weanling, 6 months - moderate growth;;168
 856;;Weanling, 6 months - moderate growth;;169
 857;;Weanling, 6 months - rapid growth;;168
+858;;Weanling, 6 months - rapid growth;;169
 859;;Weighing around 450 kg (1000 lb), and in 1st 6 months of gestation.;;217
 860;;Weighing around 450 kg (1000 lb), and in 1st 6 months of gestation.;;218
 861;;Weighing around 450 kg (1000 lb), and in last 3 months of gestation.;;217

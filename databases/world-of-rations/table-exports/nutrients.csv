@@ -1,0 +1,81 @@
+id;abbreviation;code;description;name;sortOrder;unit;applicationId
+48;Ca;Ca;"";Calcium;49;%;1
+49;Cl;Cl;"";Chlorine;50;%;1
+50;Mg;Mg;"";Magnesium;51;%;1
+51;P;P;"";Phosphorus;52;%;1
+53;K;K;"";Potassium;54;%;1
+54;Na;Na;"";Sodium;55;%;1
+55;S;S;"";Sulphur;56;%;1
+56;Co;Co;"";Cobalt;57;mg/kg;1
+57;Cr;Cr;"";Chromium;58;mg/kg;1
+58;Cu;Cu;"";Copper;59;mg/kg;1
+59;I;I;"";Iodine;60;mg/kg;1
+60;Fe;Fe;"";Iron;61;mg/kg;1
+61;Mn;Mn;"";Manganese;62;mg/kg;1
+62;Se;Se;"";Selenium;63;mg/kg;1
+63;Zn;Zn;"";Zinc;64;mg/kg;1
+64;Mo;Mo;"";Molybdenum;65;mg/kg;1
+65;Vit A;Vit A;"";Vitamin A;66;I.U./kg;1
+66;Vit D;Vit D;"";Vitamin D;67;I.U./kg;1
+67;Vit E;Vit E;"";Vitamin E;68;I.U./kg;1
+68;Vit K;Vit K;"";Vitamin K;69;mg/kg;1
+69;Biotin;Biotin;"";Biotin;70;mg/kg;1
+74;Vit B1;Vit B1;"";Vitamin B1;75;mg/kg;1
+75;Vit B2;Vit B2;"";Vitamin B2;76;mg/kg;1
+76;Vit B6;Vit B6;"";Vitamin B6;77;mg/kg;1
+77;Vit B12;Vit B12;"";Vitamin B12;78;mg/kg;1
+78;Vit C;Vit C;"";Vitamin C;79;mg/kg;1
+1;Dry Matter;DM;"";Dry Matter;1;%;1
+2;Crude Protein;CP;"";Crude Protein;2;%;1
+4;Crude Fiber;CF;"";Crude Fiber;4;%;1
+5;Ether Extract;EE;"";Ether Extract;5;%;1
+6;Fat;EEP;"";Fat from Plant Origin;6;%;1
+9;Acid Detergent Fiber;ADF;"";Acid Detergent Fiber;9;%;1
+10;Neutral Detergent Fiber;NDF;"";Neutral Detergent Fiber;10;%;1
+11;Effective Neutral Detergent Fibre;eNDF;"";Effective Neutral Detergent Fibre;11;%;1
+7;C18H32O2;Linoleic;"";Linoleic Acid;7;%;1
+8;C20H32O2;Arachid;"";Arachidonic Acid;8;%;1
+12;Total Digestible Nutrients;TDNCamelids;"";Total Digestible Nutrients for Camelids;12;%;1
+13;Total Digestible Nutrients;TDNCattle;"";Total Digestible Nutrients for Cattle;13;%;1
+14;Total Digestible Nutrients;TDNSheep;"";Total Digestible Nutrients for Sheep;14;%;1
+15;Digestible Energy;DEAntelope;"";Digestible Energy for Antelopes;15;Mcal/kg;1
+16;Digestible Energy;DECamelids;"";Digestible Energy for Camelids;16;Mcal/kg;1
+17;Digestible Energy;DEDeer;"";Digestible Energy for Deer;17;Mcal/kg;1
+18;Digestible Energy;DEHorse;"";Digestible Energy for Horses;18;Mcal/kg;1
+19;Digestible Energy;DEPig;"";Digestible Energy for Pigs;19;Mcal/kg;1
+20;Digestible Energy;DESheep;"";Digestible Energy for Sheep;20;Mcal/kg;1
+21;Metabolizable Energy;MECattle;"";Metabolizable Energy for Cattle;21;Mcal/kg;1
+22;Metabolizable Energy;MECats;"";Metabolizable Energy for Cats;22;Mcal/kg;1
+23;Metabolizable Energy;MEDogs;"";Metabolizable Energy for Dogs;24;Mcal/kg;1
+24;Metabolizable Energy;MEFish;"";Metabolizable Energy for Fish;25;Mcal/kg;1
+25;Metabolizable Energy;MEPig;"";Metabolizable Energy for Pigs;26;Mcal/kg;1
+26;Metabolizable Energy;MEPoultry;"";Metabolizable Energy for Poultry;27;Mcal/kg;1
+27;Metabolizable Energy;MESheep;"";Metabolizable Energy for Sheep;28;Mcal/kg;1
+28;Net Energy for Maintenance;NEmCattle;"";Net Energy for Maintenance for Cattle;29;Mcal/kg;1
+29;Net Energy for Gain or Growth;NEgCattle;"";Net Energy for Gain or Growth for Cattle;30;Mcal/kg;1
+30;Net Energy for Lactation;NElCattle;"";Net Energy for Lactation for Cattle;31;Mcal/kg;1
+3;Rumen Undegradable Protein;RUP;"";Rumen Undegradable Protein;3;%;1
+31;C6H14N4O2;Arg;"";Arginine;32;%;1
+32;C6H9N3O2;His;"";Histidine;33;%;1
+33;C6H13NO2;Iso-L;"";Isoleucine;34;%;1
+34;C6H13NO2;Leu;"";Leucine;35;%;1
+36;C6H14N2O2;Avail Lys;"";Available Lysine;37;%;1
+35;C6H14N2O2;Lys;"";Lysine;36;%;1
+37;C5H11NO2S;Met;"";Methionine;38;%;1
+38;C6H12N2O4S2;Cys;"";Cystine;39;%;1
+39;C9H11NO2;Phe;"";Phenylalanine;40;%;1
+40;C5H9NO2;Proline;"";Proline ;41;%;1
+41;C2H7NO3S;Taurine;"";Taurine;42;%;1
+42;C9H11NO3;Tyr;"";Tyrosine;43;%;1
+43;C4H9NO3;Thr;"";Threonine;44;%;1
+44;C11H12N2O2;Trp;"";Tryptophan;45;%;1
+45;C5H11NO2;Val;"";Valine;46;%;1
+46;C2H5NO2;Gly;"";Glycine ;47;%;1
+47;C3H7NO3;Ser;"";Serine;48;%;1
+52;P;Avail P;"";Available Phosphorus;53;%;1
+70;C5H14NO+;Choline;"";Choline;71;mg/kg;1
+71;C19H19N7O6;Folic;"";Folic Acid;72;mg/kg;1
+72;C6NH5O2;Niacin;"";Nicotinic Acid;73;mg/kg;1
+73;C9H17NO5;Pantot;"";Pantothenic Acid;74;mg/kg;1
+79;C6H12O6;Inositol;"";Inositol;80;mg/kg;1
+80;C27H46O;Cholest;"";Cholesterol;81;%;1
