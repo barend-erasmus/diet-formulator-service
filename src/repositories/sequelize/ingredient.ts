@@ -74,6 +74,40 @@ export class IngredientRepository extends BaseRepository implements IIngredientR
             ).sort((a, b) => a.nutrient.sortOrder - b.nutrient.sortOrder));
     }
 
+    public async listSupplements(nutrientId: number): Promise<Ingredient[]> {
+        
+                const result: any[] = await BaseRepository.models.Supplement.findAll({
+                    include: [
+                        {
+                            include: [
+                                {
+                                    include: [
+                                        {
+                                            model: BaseRepository.models.Nutrient,
+                                        },
+                                    ],
+                                    model: BaseRepository.models.IngredientValue,
+                                },
+                                {
+                                    model: BaseRepository.models.IngredientGroup,
+                                },
+                            ],
+                            model: BaseRepository.models.Ingredient,
+                        }
+                    ],
+                    where: {
+                        nutrientId: {
+                            [Sequelize.Op.eq]: nutrientId,
+                        },
+                    },
+                });
+                
+                return result.map((x) => new Ingredient(x.id, x.name, x.description, x.username, new IngredientGroup(x.ingredientGroup.id, x.ingredientGroup.name, x.ingredientGroup.description),
+                    x.ingredientValues.map((value) =>
+                        new IngredientValue(value.id, value.value, new Nutrient(value.nutrient.id, value.nutrient.name, value.nutrient.description, value.nutrient.code, value.nutrient.abbreviation, value.nutrient.unit, value.nutrient.sortOrder)),
+                    ).sort((a, b) => a.nutrient.sortOrder - b.nutrient.sortOrder)))
+            }
+
     public async list(applicationId: number): Promise<Ingredient[]> {
 
         const result: any[] = await BaseRepository.models.Ingredient.findAll({
