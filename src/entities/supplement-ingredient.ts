@@ -7,4 +7,8 @@ export class SupplementIngredient {
     ) {
 
     }
+
+    public removeValues(): void {
+        this.ingredient.removeValues();
+    }
 }

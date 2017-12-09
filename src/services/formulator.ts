@@ -59,7 +59,7 @@ export class FormulatorService extends BaseService {
 
         result = await this.formulationRepository.create(formulation, username);
 
-        if (!this.hasPermission(username, 'view-formulation-values')) {
+        if (!await this.hasPermission(username, 'view-formulation-values')) {
             result.removeValues();
         }
 
@@ -76,7 +76,7 @@ export class FormulatorService extends BaseService {
 
         formulation = await this.formulate(formulation, username);
 
-        if (!this.hasPermission(username, 'view-formulation-values')) {
+        if (!await this.hasPermission(username, 'view-formulation-values')) {
             formulation.removeValues();
         }
 
@@ -141,7 +141,14 @@ export class FormulatorService extends BaseService {
 
                 const ingredients: Ingredient[] = await this.ingredientRepository.listSupplements(value.nutrient.id);
                 
-                result.push(new Supplement(value.nutrient, ingredients.map((x) => new SupplementIngredient(x, valueRequired / x.values.find((y) => y.nutrient.id === value.nutrient.id).value))));
+                result.push(new Supplement(value.nutrient, ingredients.map((x) => new SupplementIngredient(x, valueRequired / x.values.find((y) => y.nutrient.id === value.nutrient.id).value * formulation.mixWeight))));
+            }
+        }
+
+        if (!await this.hasPermission(username, 'view-formulation-supplement-values')) {
+            
+            for (const supplement of result) {
+                supplement.removeValues();
             }
         }
 

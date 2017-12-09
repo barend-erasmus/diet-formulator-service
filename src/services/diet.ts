@@ -30,7 +30,7 @@ export class DietService extends BaseService {
 
         diet.validate();
 
-        if (!this.hasPermission(username, 'super-user')) {
+        if (!await this.hasPermission(username, 'super-user')) {
             const dietGroup: DietGroup = await this.dietGroupRepository.find(applicationId, diet.group.id);
 
             if (dietGroup.name !== 'User Defined') {
@@ -44,7 +44,7 @@ export class DietService extends BaseService {
 
         diet = await this.dietRepository.create(diet);
 
-        if (!this.hasPermission(username, 'view-diet-values')) {
+        if (!await this.hasPermission(username, 'view-diet-values')) {
             diet.removeValues();
         }
 
@@ -56,13 +56,13 @@ export class DietService extends BaseService {
         username: string,
     ): Promise<Diet> {
 
-        if (!this.hasPermission(username, 'view-diet')) {
+        if (!await this.hasPermission(username, 'view-diet')) {
             throw new Error('Unauthorized');
         }
 
         const diet: Diet = await this.dietRepository.find(dietId);
 
-        if (!this.hasPermission(username, 'view-diet-values')) {
+        if (!await this.hasPermission(username, 'view-diet-values')) {
             diet.removeValues();
         }
 
@@ -74,7 +74,7 @@ export class DietService extends BaseService {
         username: string,
     ): Promise<Diet[]> {
 
-        if (!this.hasPermission(username, 'view-diet')) {
+        if (!await this.hasPermission(username, 'view-diet')) {
             throw new Error('Unauthorized');
         }
 
@@ -89,13 +89,13 @@ export class DietService extends BaseService {
 
         diet.username = username;
 
-        if (!this.hasPermission(username, 'create-diet')) {
+        if (!await this.hasPermission(username, 'create-diet')) {
             throw new Error('Unauthorized');
         }
 
         diet.validate();
 
-        if (!this.hasPermission(username, 'super-user')) {
+        if (!await this.hasPermission(username, 'super-user')) {
 
             const existingDiet: Diet = await this.dietRepository.find(diet.id);
 
@@ -115,7 +115,7 @@ export class DietService extends BaseService {
 
         diet = await this.dietRepository.update(diet);
 
-        if (!this.hasPermission(username, 'view-diet-values')) {
+        if (!await this.hasPermission(username, 'view-diet-values')) {
             diet.removeValues();
         }
 

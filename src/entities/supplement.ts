@@ -8,4 +8,10 @@ export class Supplement {
     ) {
 
     }
+
+    public removeValues(): void {
+        for (const supplementIngredient of this.supplementIngredients) {
+            supplementIngredient.removeValues();
+        }
+    }
 }

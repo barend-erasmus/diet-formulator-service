@@ -47,6 +47,7 @@ export class BaseService {
             permissions.push('view-ingedient-values');
 
             permissions.push('view-formulation-values');
+            permissions.push('view-formulation-supplement-values');
 
         }
 
