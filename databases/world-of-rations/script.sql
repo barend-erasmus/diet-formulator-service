@@ -7,7 +7,6 @@ INSERT INTO public."dietGroups" ("description", "name", "createdAt", "updatedAt"
 VALUES
 (null, 'User Defined', NOW(), NOW(), 1);
 
-
 -- Populate comparison diet table
 INSERT INTO
 public."comparisonDiets"
@@ -305,3 +304,6 @@ UPDATE public."nutrients" SET
 "name" = 'Cholesterol'
 WHERE "code" = 'Cholest';
 
+-- Removes empty values from ingredient values
+DELETE FROM public."ingredientValues"
+WHERE "value" = 0
