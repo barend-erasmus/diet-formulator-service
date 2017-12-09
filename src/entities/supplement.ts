@@ -4,7 +4,7 @@ import { SupplementIngredient } from "./supplement-ingredient";
 export class Supplement {
     constructor(
         public nutrient: Nutrient,
-        public supplementIngredients: SupplementIngredient[], 
+        public supplementIngredients: SupplementIngredient[],
     ) {
 
     }

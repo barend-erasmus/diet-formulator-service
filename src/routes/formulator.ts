@@ -1,6 +1,7 @@
 import * as express from 'express';
 import { Formulation } from '../entities/formulation';
 import { FormulationCompositionValue } from '../entities/formulation-composition-value';
+import { Supplement } from '../entities/supplement';
 import { IDietRepository } from '../repositories/diet';
 import { IFormulationRepository } from '../repositories/formulation';
 import { IIngredientRepository } from '../repositories/ingredient';
@@ -11,7 +12,6 @@ import { UserRepository } from '../repositories/sequelize/user';
 import { IUserRepository } from '../repositories/user';
 import { FormulatorService } from '../services/formulator';
 import { config } from './../config';
-import { Supplement } from '../entities/supplement';
 
 export class FormulatorRouter {
 

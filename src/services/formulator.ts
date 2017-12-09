@@ -5,14 +5,14 @@ import { DietValue } from '../entities/diet-value';
 import { Formulation } from '../entities/formulation';
 import { FormulationCompositionValue } from '../entities/formulation-composition-value';
 import { FormulationIngredient } from "../entities/formulation-ingredient";
+import { Ingredient } from '../entities/ingredient';
+import { Supplement } from '../entities/supplement';
+import { SupplementIngredient } from '../entities/supplement-ingredient';
 import { IDietRepository } from '../repositories/diet';
 import { IFormulationRepository } from '../repositories/formulation';
 import { IIngredientRepository } from '../repositories/ingredient';
 import { IUserRepository } from '../repositories/user';
 import { BaseService } from './base';
-import { Supplement } from '../entities/supplement';
-import { Ingredient } from '../entities/ingredient';
-import { SupplementIngredient } from '../entities/supplement-ingredient';
 
 export class FormulatorService extends BaseService {
 
@@ -140,13 +140,13 @@ export class FormulatorService extends BaseService {
                 const valueRequired: number = comparisonDietValue.minimum - sum;
 
                 const ingredients: Ingredient[] = await this.ingredientRepository.listSupplements(value.nutrient.id);
-                
+
                 result.push(new Supplement(value.nutrient, ingredients.map((x) => new SupplementIngredient(x, valueRequired / x.values.find((y) => y.nutrient.id === value.nutrient.id).value * formulation.mixWeight))));
             }
         }
 
         if (!await this.hasPermission(username, 'view-formulation-supplement-values')) {
-            
+
             for (const supplement of result) {
                 supplement.removeValues();
             }
