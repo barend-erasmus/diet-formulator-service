@@ -175,6 +175,8 @@ export class FormulatorService extends BaseService {
         formulation.cost = results.result / formulation.mixWeight;
         formulation.feasible = results.feasible;
 
+        formulation.formulationIngredients = formulation.formulationIngredients.sort((a: FormulationIngredient, b: FormulationIngredient) => a.weight > b.weight? -1 : (a.weight < b.weight ? 1 : 0));
+
         return formulation;
     }
 

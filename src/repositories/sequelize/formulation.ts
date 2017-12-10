@@ -112,7 +112,7 @@ export class FormulationRepository extends BaseRepository implements IFormulatio
                 new DietValue(value.id, value.minimum, value.maximum, new Nutrient(value.nutrient.id, value.nutrient.name, value.nutrient.description, value.nutrient.code, value.nutrient.abbreviation, value.nutrient.unit, value.nutrient.sortOrder)),
             ).sort((a, b) => a.nutrient.sortOrder - b.nutrient.sortOrder));
 
-        return new Formulation(result.id, result.name, diet, result.formulationIngredients.map((formulationIngredient) => new FormulationIngredient(
+        const formulation: Formulation = new Formulation(result.id, result.name, diet, result.formulationIngredients.map((formulationIngredient) => new FormulationIngredient(
             formulationIngredient.id,
             new Ingredient(formulationIngredient.ingredient.id,
                 formulationIngredient.ingredient.name,
@@ -127,6 +127,8 @@ export class FormulationRepository extends BaseRepository implements IFormulatio
             formulationIngredient.maximum,
             formulationIngredient.weight,
         )), result.cost, result.feasible, result.mixWeight, new Date());
+        
+        return formulation;
     }
 
     public async list(username: string): Promise<Formulation[]> {

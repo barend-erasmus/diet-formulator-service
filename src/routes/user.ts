@@ -27,7 +27,7 @@ export class UserRouter {
 
                     user = await UserRouter.getUserService().create(new User(
                         json.email,
-                        json.name,
+                        json.nickname,
                         json.email_verified,
                         json.picture,
                         json.user_metadata ? (json.user_metadata.packageClass ? json.user_metadata.packageClass : 'trial') : 'trial',
