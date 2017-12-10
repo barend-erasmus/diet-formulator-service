@@ -12,12 +12,19 @@ import { UserRepository } from '../repositories/sequelize/user';
 import { IUserRepository } from '../repositories/user';
 import { FormulatorService } from '../services/formulator';
 import { config } from './../config';
+import { Diet } from '../entities/diet';
+import { FormulationIngredient } from '../entities/formulation-ingredient';
+import { Ingredient } from '../entities/ingredient';
 
 export class FormulatorRouter {
 
     public static async create(req: express.Request, res: express.Response) {
         try {
-            const result: Formulation = await FormulatorRouter.getFormulatorService().createFormulation(req.body.diet, req.body.formulationIngredients, req.body.mixWeight, req['user'].email);
+            const result: Formulation = await FormulatorRouter.getFormulatorService().createFormulation(
+                new Diet(req.body.diet.id, null, null, null, null, null),
+                req.body.formulationIngredients.map((x) => new FormulationIngredient(null, new Ingredient(x.ingredient.id, null, null, null, null, null), x.cost, x.minimum, x.maximum, null)),
+                req.body.mixWeight,
+                req['user'].email);
 
             res.json({
                 cost: result.cost,
