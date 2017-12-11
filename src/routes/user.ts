@@ -25,13 +25,15 @@ export class UserRouter {
                         uri: 'https://developersworkspace.auth0.com/userinfo',
                     });
 
-                    user = await UserRouter.getUserService().create(new User(
+                    user = await UserRouter.getUserService().login(new User(
                         json.email,
-                        json.nickname,
+                        json.name,
                         json.email_verified,
                         json.picture,
                         json.user_metadata ? (json.user_metadata.packageClass ? json.user_metadata.packageClass : 'trial') : 'trial',
                         json.user_metadata ? (json.user_metadata.isSuperAdmin ? json.user_metadata.isSuperAdmin : false) : false,
+                        json.locale,
+                        json.country,
                         [],
                     ), token);
 

@@ -23,6 +23,10 @@ export class BaseRepository {
     private static defineModels(): void {
 
         const User = BaseRepository.sequelize.define('user', {
+            country: {
+                allowNull: true,
+                type: Sequelize.STRING,
+            },
             displayName: {
                 allowNull: false,
                 type: Sequelize.STRING,
@@ -38,6 +42,10 @@ export class BaseRepository {
             isSuperAdmin: {
                 allowNull: false,
                 type: Sequelize.BOOLEAN,
+            },
+            locale: {
+                allowNull: true,
+                type: Sequelize.STRING,
             },
             packageClass: {
                 allowNull: false,

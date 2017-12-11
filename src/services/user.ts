@@ -9,9 +9,15 @@ export class UserService extends BaseService {
         super(userRepository);
     }
 
-    public async create(user: User, token: string): Promise<User> {
+    public async login(user: User, token: string): Promise<User> {
 
-        const result: User = await this.userRepository.create(user, token);
+        let result: User = await this.userRepository.findByUsername(user.email);
+
+        if (!result) {
+            result = await this.userRepository.create(user, token)
+        } else {
+            result = await this.userRepository.update(user, token);
+        }
 
         result.permissions = await this.getUserPermissions(user.email);
 

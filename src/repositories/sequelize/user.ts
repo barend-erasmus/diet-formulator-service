@@ -12,10 +12,12 @@ export class UserRepository extends BaseRepository implements IUserRepository {
     public async create(user: User, token: string): Promise<User> {
 
         const result: any = await BaseRepository.models.User.create({
+            country: user.country,
             displayName: user.displayName,
             email: user.email,
             expiryTimestamp: new Date().getTime() + 3600000,
             isSuperAdmin: user.isSuperAdmin,
+            locale: user.locale,
             packageClass: user.packageClass,
             picture: user.picture,
             token,
@@ -42,7 +44,7 @@ export class UserRepository extends BaseRepository implements IUserRepository {
             return null;
         }
 
-        return new User(result.email, result.displayName, result.verified, result.picture, result.packageClass, result.isSuperAdmin, []);
+        return new User(result.email, result.displayName, result.verified, result.picture, result.packageClass, result.isSuperAdmin, result.locale, result.country, []);
     }
 
     public async findByUsername(username: string): Promise<User> {
@@ -64,6 +66,23 @@ export class UserRepository extends BaseRepository implements IUserRepository {
             return null;
         }
 
-        return new User(result[0].email, result[0].displayName, result[0].verified, result[0].picture, result[0].packageClass, result[0].isSuperAdmin, []);
+        return new User(result[0].email, result[0].displayName, result[0].verified, result[0].picture, result[0].packageClass, result[0].isSuperAdmin, result[0].locale, result[0].country, []);
+    }
+
+    public async update(user: User, token: string): Promise<User> {
+        const result: any = await BaseRepository.models.User.find({
+            where: {
+                email: {
+                    [Sequelize.Op.eq]: user.email,
+                },
+            },
+        });
+
+        result.expiryTimestamp = new Date().getTime() + 3600000;
+        result.token = token;
+
+        result.save();
+
+        return user;
     }
 }

@@ -17,6 +17,7 @@ export class BaseService {
 
         if (user.packageClass === 'trial') {
             permissions = [
+                'view-profile',
                 'view-nutrient',
                 'view-diet-group',
                 'create-diet',
@@ -30,6 +31,7 @@ export class BaseService {
 
         if (user.packageClass === 'basic') {
             permissions = [
+                'view-profile',
                 'view-nutrient',
                 'view-diet-group',
                 'create-diet',
@@ -44,6 +46,7 @@ export class BaseService {
 
         if (user.packageClass === 'standard') {
             permissions = [
+                'view-profile',
                 'view-nutrient',
                 'view-diet-group',
                 'create-diet',
@@ -59,6 +62,7 @@ export class BaseService {
 
         if (user.packageClass === 'premium') {
             permissions = [
+                'view-profile',
                 'view-nutrient',
                 'view-diet-group',
                 'create-diet',
@@ -75,6 +79,7 @@ export class BaseService {
         if (user.isSuperAdmin) {
 
             permissions = [
+                'view-profile',
                 'view-nutrient',
                 'view-diet-group',
                 'create-diet',

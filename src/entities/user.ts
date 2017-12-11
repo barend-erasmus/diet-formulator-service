@@ -6,6 +6,8 @@ export class User {
         public picture: string,
         public packageClass: string,
         public isSuperAdmin: boolean,
+        public locale: string,
+        public country: string,
         public permissions: string[],
     ) {
 
