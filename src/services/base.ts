@@ -14,7 +14,7 @@ export class BaseService {
         const user: User = await this.userRepository.findByUsername(username);
 
         let permissions: string[] = [];
-        
+
         if (user.packageClass === 'trial') {
             permissions = [
                 'view-nutrient',

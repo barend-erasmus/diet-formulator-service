@@ -127,7 +127,7 @@ export class FormulationRepository extends BaseRepository implements IFormulatio
             formulationIngredient.maximum,
             formulationIngredient.weight,
         )), result.cost, result.feasible, result.mixWeight, new Date());
-        
+
         return formulation;
     }
 
