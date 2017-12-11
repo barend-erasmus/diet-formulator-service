@@ -13,42 +13,95 @@ export class BaseService {
 
         const user: User = await this.userRepository.findByUsername(username);
 
-        const permissions: string[] = [];
+        let permissions: string[] = [];
+        
+        if (user.packageClass === 'trial') {
+            permissions = [
+                'view-nutrient',
+                'view-diet-group',
+                'create-diet',
+                'view-diet',
+                'update-diet',
+                'view-ingredient',
+                'create-formulation',
+                'view-formulation',
+            ];
+        }
 
-        permissions.push('view-nutrient');
-        permissions.push('view-diet-group');
-        permissions.push('view-diet');
-        permissions.push('view-ingredient');
-        permissions.push('create-diet');
-        permissions.push('update-diet');
-        permissions.push('create-formulation');
-        permissions.push('view-formulation');
-        permissions.push('view-formulation-composition');
-        permissions.push('view-formulation-supplement');
+        if (user.packageClass === 'basic') {
+            permissions = [
+                'view-nutrient',
+                'view-diet-group',
+                'create-diet',
+                'view-diet',
+                'update-diet',
+                'view-ingredient',
+                'create-formulation',
+                'view-formulation',
+                'view-formulation-composition',
+            ];
+        }
+
+        if (user.packageClass === 'standard') {
+            permissions = [
+                'view-nutrient',
+                'view-diet-group',
+                'create-diet',
+                'view-diet',
+                'update-diet',
+                'view-ingredient',
+                'create-formulation',
+                'view-formulation',
+                'view-formulation-composition',
+                'view-formulation-supplement',
+            ];
+        }
+
+        if (user.packageClass === 'premium') {
+            permissions = [
+                'view-nutrient',
+                'view-diet-group',
+                'create-diet',
+                'view-diet',
+                'update-diet',
+                'view-ingredient',
+                'create-formulation',
+                'view-formulation',
+                'view-formulation-composition',
+                'view-formulation-supplement',
+            ];
+        }
 
         if (user.isSuperAdmin) {
 
-            permissions.push('super-user');
+            permissions = [
+                'view-nutrient',
+                'view-diet-group',
+                'create-diet',
+                'view-diet',
+                'update-diet',
+                'view-ingredient',
+                'create-formulation',
+                'view-formulation',
+                'view-formulation-composition',
+                'view-formulation-supplement',
 
-            permissions.push('create-application');
-            permissions.push('view-application');
-            permissions.push('update-application');
+                'create-application',
+                'view-application',
+                'update-application',
+                'create-nutrient',
+                'update-nutrient',
+                'create-diet-group',
+                'update-diet-group',
+                'create-ingredient',
+                'update-ingredient',
+                'view-diet-values',
+                'view-ingedient-values',
+                'view-formulation-values',
+                'view-formulation-supplement-values',
 
-            permissions.push('create-nutrient');
-            permissions.push('update-nutrient');
-
-            permissions.push('create-diet-group');
-            permissions.push('update-diet-group');
-
-            permissions.push('create-ingredient');
-            permissions.push('update-ingredient');
-
-            permissions.push('view-diet-values');
-            permissions.push('view-ingedient-values');
-
-            permissions.push('view-formulation-values');
-            permissions.push('view-formulation-supplement-values');
-
+                'super-user',
+            ];
         }
 
         return permissions;
