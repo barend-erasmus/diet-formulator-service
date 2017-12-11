@@ -24,6 +24,7 @@ app.use(bodyParser.json({ limit: '50mb' }));
 app.use(cors());
 
 app.get('/api/user/info', UserRouter.info);
+app.post('/api/user/update', UserRouter.update);
 
 app.post('/api/application/create', requireUser, ApplicationRouter.create);
 

@@ -78,6 +78,13 @@ export class UserRepository extends BaseRepository implements IUserRepository {
             },
         });
 
+        result.country = user.country;
+        result.displayName = user.displayName;
+        result.locale = user.locale;
+        result.packageClass = user.packageClass;
+        result.picture = user.picture;
+        result.verified = user.verified;
+
         result.expiryTimestamp = new Date().getTime() + 3600000;
         result.token = token;
 

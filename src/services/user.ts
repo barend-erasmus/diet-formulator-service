@@ -14,12 +14,13 @@ export class UserService extends BaseService {
         let result: User = await this.userRepository.findByUsername(user.email);
 
         if (!result) {
-            result = await this.userRepository.create(user, token)
+            result = await this.userRepository.create(user, token);
         } else {
-            result = await this.userRepository.update(user, token);
+            result.packageClass = user.packageClass;
+            result = await this.userRepository.update(result, token);
         }
 
-        result.permissions = await this.getUserPermissions(user.email);
+        result.permissions = await this.getUserPermissions(result.email);
 
         return result;
     }
@@ -34,5 +35,24 @@ export class UserService extends BaseService {
         user.permissions = await this.getUserPermissions(user.email);
 
         return user;
+    }
+
+    public async update(user: User, token: string): Promise<User> {
+        const existingUser: User = await this.userRepository.find(token);
+
+        if (!user) {
+            return null;
+        }
+
+        existingUser.country = user.country;
+        existingUser.displayName = user.displayName;
+        existingUser.locale = user.locale;
+        existingUser.picture = user.picture;
+
+        await this.userRepository.update(existingUser, token);
+
+        existingUser.permissions = await this.getUserPermissions(user.email);
+
+        return existingUser;
     }
 }

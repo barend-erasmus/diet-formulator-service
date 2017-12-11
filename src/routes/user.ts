@@ -53,6 +53,21 @@ export class UserRouter {
         }
     }
 
+    public static async update(req: express.Request, res: express.Response) {
+        try {
+            const applicationId: number = parseInt(req.get('x-application-id'), undefined);
+
+            const result: User = await UserRouter.getUserService().update(req.body, req.get('Authorization').split(' ')[1]);
+
+            res.json(result);
+        } catch (err) {
+            res.status(500).json({
+                message: err.message,
+                stack: err.stack,
+            });
+        }
+    }
+
     protected static getUserService(): UserService {
         const userRepository: IUserRepository = new UserRepository(config.database.host, config.database.username, config.database.password);
         const userService: UserService = new UserService(userRepository);
