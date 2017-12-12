@@ -42,7 +42,6 @@ export class BaseService {
                 'view-ingredient',
                 'create-formulation',
                 'view-formulation',
-                'view-formulation-composition',
             ];
         }
 
@@ -59,7 +58,6 @@ export class BaseService {
                 'create-formulation',
                 'view-formulation',
                 'view-formulation-composition',
-                'view-formulation-supplement',
             ];
         }
 

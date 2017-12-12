@@ -17,6 +17,7 @@ export class UserService extends BaseService {
             result = await this.userRepository.create(user, token);
         } else {
             result.packageClass = user.packageClass;
+            result.verified = user.verified;
             result = await this.userRepository.update(result, token);
         }
 
