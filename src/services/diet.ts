@@ -38,7 +38,7 @@ export class DietService extends BaseService {
             }
         }
 
-        if (this.hasPermission(username, 'super-user')) {
+        if (await this.hasPermission(username, 'super-user')) {
             diet.username = null;
         }
 
