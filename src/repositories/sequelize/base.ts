@@ -53,7 +53,7 @@ export class BaseRepository {
             },
             picture: {
                 allowNull: true,
-                type: Sequelize.STRING,
+                type: Sequelize.TEXT,
             },
             token: {
                 allowNull: false,
@@ -106,7 +106,7 @@ export class BaseRepository {
         const DietGroup = BaseRepository.sequelize.define('dietGroup', {
             description: {
                 allowNull: true,
-                type: Sequelize.STRING,
+                type: Sequelize.TEXT,
             },
             name: {
                 allowNull: false,

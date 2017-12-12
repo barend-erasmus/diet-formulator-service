@@ -306,7 +306,7 @@ WHERE "code" = 'Cholest';
 
 -- Removes empty values from ingredient values
 DELETE FROM public."ingredientValues"
-WHERE "value" = 0
+WHERE "value" = 0;
 
 -- Populate supplements
 INSERT INTO public."supplements" ("nutrientId", "ingredientId", "createdAt", "updatedAt") SELECT "nutrient"."id", "ingredient"."id", NOW(), NOW() FROM public."nutrients" AS "nutrient" INNER JOIN public."ingredients" AS "ingredient" ON "ingredient"."name" = 'Arg, as DL-Arginine hydrochloride' AND "nutrient"."code" = 'Arg';
@@ -393,3 +393,15 @@ INSERT INTO public."supplements" ("nutrientId", "ingredientId", "createdAt", "up
 INSERT INTO public."supplements" ("nutrientId", "ingredientId", "createdAt", "updatedAt") SELECT "nutrient"."id", "ingredient"."id", NOW(), NOW() FROM public."nutrients" AS "nutrient" INNER JOIN public."ingredients" AS "ingredient" ON "ingredient"."name" = 'Zn, from Zinc chloride' AND "nutrient"."code" = 'Zn';
 INSERT INTO public."supplements" ("nutrientId", "ingredientId", "createdAt", "updatedAt") SELECT "nutrient"."id", "ingredient"."id", NOW(), NOW() FROM public."nutrients" AS "nutrient" INNER JOIN public."ingredients" AS "ingredient" ON "ingredient"."name" = 'Zn, from Zinc oxide' AND "nutrient"."code" = 'Zn';
 INSERT INTO public."supplements" ("nutrientId", "ingredientId", "createdAt", "updatedAt") SELECT "nutrient"."id", "ingredient"."id", NOW(), NOW() FROM public."nutrients" AS "nutrient" INNER JOIN public."ingredients" AS "ingredient" ON "ingredient"."name" = 'Zn, from Zinc sulphate monhydrate' AND "nutrient"."code" = 'Zn';
+
+-- Update ration groups
+UPDATE public."dietGroups" SET 
+"description" = 'The ''Micronutrients excluded'' option formulates a least-cost ration in two stages. It first formulates a ration to its macronutrient stage and supplies thereafter a supplement micronutrient mix which, when added to the feed, will rectify all deficiencies found in the initial macronutrient formulation.',
+"name" = 'Micronutrients excluded'
+WHERE "name" = 'MNE';
+
+UPDATE public."dietGroups" SET 
+"description" = 'The ''Micronutrients included'' option is meant for those who know exactly which or what feedstuffs are necessary to arrive at a successful solution and is ideal for professionals.',
+"name" = 'Micronutrients included'
+WHERE "name" = 'MNI';
+
