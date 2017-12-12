@@ -56,9 +56,6 @@ export class UserRepository extends BaseRepository implements IUserRepository {
                 email: {
                     [Sequelize.Op.eq]: username,
                 },
-                expiryTimestamp: {
-                    [Sequelize.Op.gte]: new Date().getTime(),
-                },
             },
         });
 
