@@ -45,6 +45,10 @@ export class UserService extends BaseService {
             return null;
         }
 
+        if (!await this.hasPermission(existingUser.email, 'update-profile')) {
+            throw new Error('Unauthorized');
+        }
+
         existingUser.country = user.country;
         existingUser.displayName = user.displayName;
         existingUser.locale = user.locale;
