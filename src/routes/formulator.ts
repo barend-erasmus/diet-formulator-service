@@ -15,6 +15,7 @@ import { UserRepository } from '../repositories/sequelize/user';
 import { IUserRepository } from '../repositories/user';
 import { FormulatorService } from '../services/formulator';
 import { config } from './../config';
+import { SuggestedValue } from '../entities/suggested-value';
 
 export class FormulatorRouter {
 
@@ -55,6 +56,19 @@ export class FormulatorRouter {
     public static async list(req: express.Request, res: express.Response) {
         try {
             const result: Formulation[] = await FormulatorRouter.getFormulatorService().list(req['user'].email);
+
+            res.json(result);
+        } catch (err) {
+            res.status(500).json({
+                message: err.message,
+                stack: err.stack,
+            });
+        }
+    }
+
+    public static async suggestedValue(req: express.Request, res: express.Response) {
+        try {
+            const result: SuggestedValue = await FormulatorRouter.getFormulatorService().suggestedValue(req.query.dietId, req.query.ingredientId, req['user'].email);
 
             res.json(result);
         } catch (err) {

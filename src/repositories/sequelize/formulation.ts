@@ -10,6 +10,7 @@ import { IngredientValue } from '../../entities/ingredient-value';
 import { Nutrient } from '../../entities/nutrient';
 import { IFormulationRepository } from '../formulation';
 import { BaseRepository } from "./base";
+import { SuggestedValue } from '../../entities/suggested-value';
 
 export class FormulationRepository extends BaseRepository implements IFormulationRepository {
 
@@ -144,6 +145,25 @@ export class FormulationRepository extends BaseRepository implements IFormulatio
         });
 
         return result.map((x) => new Formulation(x.id, x.name, null, [], x.cost, x.feasible, x.mixWeight, x.timestamp));
+    }
+
+    public async findSuggestedValue(dietGroupId: number, ingredientId: number): Promise<SuggestedValue> {
+        const result: any = await BaseRepository.models.SuggestedValue.find({
+            where: {
+                dietGroupId: {
+                    [Sequelize.Op.eq]: dietGroupId,
+                },
+                ingredientId: {
+                    [Sequelize.Op.eq]: ingredientId,
+                },
+            },
+        });
+
+        if (!result) {
+            return null;
+        }
+
+        return new SuggestedValue(result.id, result.description, null, null, result.minimum, result.maximum);
     }
 
     private async loadDietGroupParent(dietGroup: DietGroup): Promise<DietGroup> {

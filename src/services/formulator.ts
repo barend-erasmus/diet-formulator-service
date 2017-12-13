@@ -13,6 +13,8 @@ import { IFormulationRepository } from '../repositories/formulation';
 import { IIngredientRepository } from '../repositories/ingredient';
 import { IUserRepository } from '../repositories/user';
 import { BaseService } from './base';
+import { SuggestedValue } from '../entities/suggested-value';
+import { DietGroup } from '../entities/diet-group';
 
 export class FormulatorService extends BaseService {
 
@@ -81,6 +83,30 @@ export class FormulatorService extends BaseService {
         }
 
         return formulation;
+    }
+
+    public async suggestedValue(dietId: number, ingredientId: number, username: string): Promise<SuggestedValue> {
+
+        if (!await this.hasPermission(username, 'view-suggested-value')) {
+            throw new Error('Unauthorized');
+        }
+
+        const diet: Diet = await this.dietRepository.find(dietId);
+
+        let dietGroup: DietGroup = diet.group;
+
+        while (dietGroup) {
+
+            const suggestedValue: SuggestedValue = await this.formulationRepository.findSuggestedValue(dietGroup.id, ingredientId);
+
+            if (suggestedValue) {
+                return suggestedValue;
+            }
+
+            dietGroup = dietGroup.parent;
+        }
+
+        return null;
     }
 
     public async list(username: string): Promise<Formulation[]> {
