@@ -1,13 +1,13 @@
--- Remove special characters
+-- Remove special characters from diets and ingredients
 UPDATE public."diets" SET "name" = REPLACE("name", '�', '');
 UPDATE public."ingredients" SET "name" = REPLACE("name", '�', '');
 
--- Add 'User Defined' diet group
+-- Add 'User Defined' to diet groups
 INSERT INTO public."dietGroups" ("description", "name", "createdAt", "updatedAt", "applicationId")
 VALUES
 (null, 'User Defined', NOW(), NOW(), 1);
 
--- Populate comparison diet table
+-- Add comparison diets
 INSERT INTO
 public."comparisonDiets"
 ("createdAt", "updatedAt" ,"dietId", "comparisonDietId")
@@ -33,7 +33,7 @@ AND
 AND 
 "dietGroup"."dietGroupId" = "comparisonDietGroup"."dietGroupId";
 
--- Update nutrients
+-- Update nutrient abbreviation and name
 UPDATE public."nutrients" SET 
 "abbreviation" = 'Dry Matter',
 "name" = 'Dry Matter'
@@ -308,7 +308,7 @@ WHERE "code" = 'Cholest';
 DELETE FROM public."ingredientValues"
 WHERE "value" = 0;
 
--- Populate supplements
+-- Add supplements
 INSERT INTO public."supplements" ("nutrientId", "ingredientId", "createdAt", "updatedAt") SELECT "nutrient"."id", "ingredient"."id", NOW(), NOW() FROM public."nutrients" AS "nutrient" INNER JOIN public."ingredients" AS "ingredient" ON "ingredient"."name" = 'Arg, as DL-Arginine hydrochloride' AND "nutrient"."code" = 'Arg';
 INSERT INTO public."supplements" ("nutrientId", "ingredientId", "createdAt", "updatedAt") SELECT "nutrient"."id", "ingredient"."id", NOW(), NOW() FROM public."nutrients" AS "nutrient" INNER JOIN public."ingredients" AS "ingredient" ON "ingredient"."name" = 'Arg, as L-Arginine monohydrochloride' AND "nutrient"."code" = 'Arg';
 INSERT INTO public."supplements" ("nutrientId", "ingredientId", "createdAt", "updatedAt") SELECT "nutrient"."id", "ingredient"."id", NOW(), NOW() FROM public."nutrients" AS "nutrient" INNER JOIN public."ingredients" AS "ingredient" ON "ingredient"."name" = 'Biotin, (Vit H2) 2.0%' AND "nutrient"."code" = 'Vit H2';
@@ -394,7 +394,7 @@ INSERT INTO public."supplements" ("nutrientId", "ingredientId", "createdAt", "up
 INSERT INTO public."supplements" ("nutrientId", "ingredientId", "createdAt", "updatedAt") SELECT "nutrient"."id", "ingredient"."id", NOW(), NOW() FROM public."nutrients" AS "nutrient" INNER JOIN public."ingredients" AS "ingredient" ON "ingredient"."name" = 'Zn, from Zinc oxide' AND "nutrient"."code" = 'Zn';
 INSERT INTO public."supplements" ("nutrientId", "ingredientId", "createdAt", "updatedAt") SELECT "nutrient"."id", "ingredient"."id", NOW(), NOW() FROM public."nutrients" AS "nutrient" INNER JOIN public."ingredients" AS "ingredient" ON "ingredient"."name" = 'Zn, from Zinc sulphate monhydrate' AND "nutrient"."code" = 'Zn';
 
--- Update ration groups
+-- Update diet groups
 UPDATE public."dietGroups" SET 
 "description" = 'The ''Micronutrients excluded'' option formulates a least-cost ration in two stages. It first formulates a ration to its macronutrient stage and supplies thereafter a supplement micronutrient mix which, when added to the feed, will rectify all deficiencies found in the initial macronutrient formulation.',
 "name" = 'Micronutrients excluded'
@@ -405,3 +405,9 @@ UPDATE public."dietGroups" SET
 "name" = 'Micronutrients included'
 WHERE "name" = 'MNI';
 
+
+-- Remove unwanted suggested values
+DELETE FROM public."suggestedValues" WHERE "minimum" = 0 AND "maximum" = 0;
+
+-- Update suggested value minimum
+UPDATE public."suggestedValues" SET "minimum" = NULL WHERE "minimum" = 0;
