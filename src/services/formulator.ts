@@ -1,11 +1,13 @@
 import * as solver from 'javascript-lp-solver';
 import * as moment from 'moment';
 import { Diet } from "../entities/diet";
+import { DietGroup } from '../entities/diet-group';
 import { DietValue } from '../entities/diet-value';
 import { Formulation } from '../entities/formulation';
 import { FormulationCompositionValue } from '../entities/formulation-composition-value';
 import { FormulationIngredient } from "../entities/formulation-ingredient";
 import { Ingredient } from '../entities/ingredient';
+import { SuggestedValue } from '../entities/suggested-value';
 import { Supplement } from '../entities/supplement';
 import { SupplementIngredient } from '../entities/supplement-ingredient';
 import { IDietRepository } from '../repositories/diet';
@@ -13,8 +15,6 @@ import { IFormulationRepository } from '../repositories/formulation';
 import { IIngredientRepository } from '../repositories/ingredient';
 import { IUserRepository } from '../repositories/user';
 import { BaseService } from './base';
-import { SuggestedValue } from '../entities/suggested-value';
-import { DietGroup } from '../entities/diet-group';
 
 export class FormulatorService extends BaseService {
 

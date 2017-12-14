@@ -8,9 +8,9 @@ import { Ingredient } from '../../entities/ingredient';
 import { IngredientGroup } from '../../entities/ingredient-group';
 import { IngredientValue } from '../../entities/ingredient-value';
 import { Nutrient } from '../../entities/nutrient';
+import { SuggestedValue } from '../../entities/suggested-value';
 import { IFormulationRepository } from '../formulation';
 import { BaseRepository } from "./base";
-import { SuggestedValue } from '../../entities/suggested-value';
 
 export class FormulationRepository extends BaseRepository implements IFormulationRepository {
 
