@@ -27,6 +27,7 @@
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",
     "express": "^4.16.2",
+    "express-winston": "^2.4.0",
     "javascript-lp-solver": "^0.4.5",
     "moment": "^2.19.3",
     "pg": "^7.3.0",
@@ -34,6 +35,7 @@
     "request": "^2.83.0",
     "request-promise": "^4.2.2",
     "sequelize": "^4.16.0",
+    "winston": "^2.4.0",
     "yargs": "^9.0.1"
   },
   "devDependencies": {
@@ -41,6 +43,7 @@
     "@types/express": "^4.0.39",
     "@types/mocha": "^2.2.44",
     "@types/sequelize": "^4.0.77",
+    "@types/winston": "^2.3.7",
     "chai": "^4.1.2",
     "mocha": "^4.0.1"
   }

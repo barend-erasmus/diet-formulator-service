@@ -5,6 +5,8 @@ import * as express from 'express';
 import * as path from 'path';
 import * as request from 'request-promise';
 import * as yargs from 'yargs';
+import * as winston from 'winston';
+import * as expressWinston from 'express-winston';
 import { config } from './config';
 import { ApplicationRouter } from './routes/application';
 import { DietRouter } from './routes/diet';
@@ -22,6 +24,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json({ limit: '50mb' }));
 
 app.use(cors());
+
+app.use(expressWinston.logger({
+    transports: [
+        new (winston.transports.File)({ filename: path.join(path.dirname(require.main.filename), 'web.log') })
+    ],
+    meta: true, 
+    msg: "{{res.statusCode}} {{req.method}} {{res.responseTime}}ms {{req.url}}", 
+}));
 
 app.get('/api/user/info', UserRouter.info);
 app.post('/api/user/update', UserRouter.update);

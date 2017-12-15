@@ -244,8 +244,8 @@ export class FormulatorService extends BaseService {
 
         for (const value of diet.values) {
             constraints[`nutrient-${value.nutrient.id}`] = {
-                max: value.maximum == null ? 100000000 : value.maximum * mixWeight,
-                min: value.minimum * mixWeight,
+                max: value.maximum === null ? 100000000 : value.maximum * mixWeight,
+                min: value.minimum == null? 0 : value.minimum * mixWeight,
             };
         }
 

@@ -146,19 +146,27 @@ export class DietRepository extends BaseRepository implements IDietRepository {
         for (const value of diet.values) {
             const dietValue = result.dietValues.find((x) => x.nutrient.id === value.nutrient.id);
 
-            if (dietValue) {
+            if (dietValue && (value.minimum !== null || value.maximum !== null)) {
                 dietValue.minimum = value.minimum;
                 dietValue.maximum = value.maximum;
                 await dietValue.save();
-            } else if (value.minimum || value.maximum) {
+            } else if (value.minimum !== null || value.maximum !== null) {
                 await BaseRepository.models.DietValue.create({
                     dietId: result.id,
                     maximum: value.maximum,
                     minimum: value.minimum,
                     nutrientId: value.nutrient.id,
                 });
+            }else if (dietValue) {
+                await BaseRepository.models.DietValue.destroy({
+                    where: {
+                        id: {
+                            [Sequelize.Op.eq]: value.id,
+                        },
+                    },
+                });
             }
-        }
+        }        
 
         await result.save();
 

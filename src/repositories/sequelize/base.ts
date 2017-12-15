@@ -1,5 +1,7 @@
 import * as fs from 'fs';
 import * as Sequelize from 'sequelize';
+import * as winston from 'winston';
+import * as path from 'path';
 
 export class BaseRepository {
     protected static models: {
@@ -316,15 +318,22 @@ export class BaseRepository {
     constructor(private host: string, private username: string, private password: string) {
 
         if (!BaseRepository.sequelize) {
+
+            const logger = new (winston.Logger)({
+                transports: [
+                  new (winston.transports.File)({ filename: path.join(path.dirname(require.main.filename), 'sql.log') })
+                ]
+              });
+
             BaseRepository.sequelize = new Sequelize('diet-formulator', username, password, {
                 dialect: 'postgres',
                 host,
-                logging: false,
-                // logging: (text: string) => {
-                //     if (text.startsWith('Executing (default): INSERT')) {
-                //         fs.appendFileSync('importer-logs.sql', `${text.substring('Executing (default): '.length, text.length - ' RETURNING *;'.length)}; \r\n`);
-                //     }
-                // },
+                // logging: false,
+                logging: (text: string) => {
+                    if (!text.startsWith('Executing (default): SELECT')) {
+                        logger.info(text.substring('Executing (default): '.length, text.length));
+                    }
+                },
                 pool: {
                     idle: 10000,
                     max: 5,
