@@ -405,9 +405,13 @@ UPDATE public."dietGroups" SET
 "name" = 'Micronutrients included'
 WHERE "name" = 'MNI';
 
-
--- Remove unwanted suggested values
-DELETE FROM public."suggestedValues" WHERE "minimum" = 0 AND "maximum" = 0;
-
 -- Update suggested value minimum
 UPDATE public."suggestedValues" SET "minimum" = NULL WHERE "minimum" = 0;
+
+-- Add DERabbits
+UPDATE public."nutrients"
+SET "sortOrder" = "sortOrder" + 1
+WHERE "sortOrder" > 20;
+
+INSERT INTO public."nutrients" ("abbreviation", "code", "description", "name", "sortOrder", "unit", "createdAt", "updatedAt", "applicationId")
+VALUES ('DE', 'DERabbits', NULL, 'Digestible Energy', 21, 'Mcal/kg', NOW(), NOW(), 1);

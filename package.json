@@ -26,7 +26,6 @@
   "dependencies": {
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",
-    "csvtojson": "^1.1.9",
     "express": "^4.16.2",
     "javascript-lp-solver": "^0.4.5",
     "moment": "^2.19.3",
