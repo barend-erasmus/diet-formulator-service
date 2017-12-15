@@ -414,4 +414,4 @@ SET "sortOrder" = "sortOrder" + 1
 WHERE "sortOrder" > 20;
 
 INSERT INTO public."nutrients" ("abbreviation", "code", "description", "name", "sortOrder", "unit", "createdAt", "updatedAt", "applicationId")
-VALUES ('Digestible Energy', 'DERabbits', NULL, 'Digestible Energy', 21, 'Mcal/kg', NOW(), NOW(), 1);
+VALUES ('Digestible Energy', 'DERabbits', NULL, 'Digestible Energy fro Rabbits', 21, 'Mcal/kg', NOW(), NOW(), 1);
