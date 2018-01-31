@@ -24,9 +24,8 @@ export class IngredientRouter {
 
     public static async list(req: express.Request, res: express.Response) {
         try {
-            const applicationId: number = parseInt(req.get('x-application-id'), undefined);
 
-            const result: Ingredient[] = await IngredientRouter.getIngredientService().list(1, req['user'].email);
+            const result: Ingredient[] = await IngredientRouter.getIngredientService().list(req['user'].email);
 
             res.json(result);
         } catch (err) {

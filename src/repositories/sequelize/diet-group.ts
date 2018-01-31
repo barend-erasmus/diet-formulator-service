@@ -1,17 +1,19 @@
+import "reflect-metadata";
+import { injectable, inject } from "inversify";
 import * as Sequelize from 'sequelize';
 import { DietGroup } from "../../entities/diet-group";
 import { IDietGroupRepository } from "../diet-group";
 import { BaseRepository } from "./base";
 
+@injectable()
 export class DietGroupRepository extends BaseRepository implements IDietGroupRepository {
 
     constructor(host: string, username: string, password: string) {
         super(host, username, password);
     }
 
-    public async create(applicationId: number, dietGroup: DietGroup): Promise<DietGroup> {
+    public async create(dietGroup: DietGroup): Promise<DietGroup> {
         const result: any = await BaseRepository.models.DietGroup.create({
-            applicationId,
             description: dietGroup.description,
             dietGroupId: dietGroup.parent ? dietGroup.parent.id : null,
             name: dietGroup.name,
@@ -22,13 +24,10 @@ export class DietGroupRepository extends BaseRepository implements IDietGroupRep
         return dietGroup;
     }
 
-    public async find(applicationId: number, dietGroupId: number): Promise<DietGroup> {
+    public async find(dietGroupId: number): Promise<DietGroup> {
 
         const result: any = await BaseRepository.models.DietGroup.find({
             where: {
-                applicationId: {
-                    [Sequelize.Op.eq]: applicationId,
-                },
                 id: {
                     [Sequelize.Op.eq]: dietGroupId,
                 },
@@ -41,41 +40,33 @@ export class DietGroupRepository extends BaseRepository implements IDietGroupRep
 
         let dietGroup: DietGroup = new DietGroup(result.id, result.name, result.description, result.dietGroupId ? new DietGroup(result.dietGroupId, null, null, null) : null);
 
-        dietGroup = await this.loadDietGroupParent(applicationId, dietGroup);
+        dietGroup = await this.loadDietGroupParent(dietGroup);
 
         return dietGroup;
     }
 
-    public async list(applicationId: number): Promise<DietGroup[]> {
+    public async list(): Promise<DietGroup[]> {
         const result: any[] = await BaseRepository.models.DietGroup.findAll({
             order: [
                 ['name', 'ASC'],
             ],
-            where: {
-                applicationId: {
-                    [Sequelize.Op.eq]: applicationId,
-                },
-            },
         });
 
         const dietGroups: DietGroup[] = result.map((x) => new DietGroup(x.id, x.name, x.description, x.dietGroupId ? new DietGroup(x.dietGroupId, null, null, null) : null));
 
         for (const item of dietGroups) {
-            await this.loadDietGroupParent(applicationId, item);
+            await this.loadDietGroupParent(item);
         }
 
         return dietGroups;
     }
 
-    public async listSubGroups(applicationId: number, dietGroupId: number): Promise<DietGroup[]> {
+    public async listSubGroups(dietGroupId: number): Promise<DietGroup[]> {
         const result: any[] = await BaseRepository.models.DietGroup.findAll({
             order: [
                 ['name', 'ASC'],
             ],
             where: {
-                applicationId: {
-                    [Sequelize.Op.eq]: applicationId,
-                },
                 dietGroupId: {
                     [Sequelize.Op.eq]: dietGroupId,
                 },
@@ -85,19 +76,16 @@ export class DietGroupRepository extends BaseRepository implements IDietGroupRep
         const dietGroups: DietGroup[] = result.map((x) => new DietGroup(x.id, x.name, x.description, x.dietGroupId ? new DietGroup(x.dietGroupId, null, null, null) : null));
 
         for (const item of dietGroups) {
-            await this.loadDietGroupParent(applicationId, item);
+            await this.loadDietGroupParent(item);
         }
 
         return dietGroups;
     }
 
-    public async update(applicationId: number, dietGroup: DietGroup): Promise<DietGroup> {
+    public async update(dietGroup: DietGroup): Promise<DietGroup> {
 
         const result: any = await BaseRepository.models.DietGroup.find({
             where: {
-                applicationId: {
-                    [Sequelize.Op.eq]: applicationId,
-                },
                 id: {
                     [Sequelize.Op.eq]: dietGroup.id,
                 },
@@ -113,9 +101,9 @@ export class DietGroupRepository extends BaseRepository implements IDietGroupRep
         return dietGroup;
     }
 
-    private async loadDietGroupParent(applicationId: number, dietGroup: DietGroup): Promise<DietGroup> {
+    private async loadDietGroupParent(dietGroup: DietGroup): Promise<DietGroup> {
         if (dietGroup.parent) {
-            const parent: DietGroup = await this.find(applicationId, dietGroup.parent.id);
+            const parent: DietGroup = await this.find(dietGroup.parent.id);
             dietGroup.parent = parent;
         }
 

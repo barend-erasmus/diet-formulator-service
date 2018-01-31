@@ -1,5 +1,7 @@
 import * as solver from 'javascript-lp-solver';
 import * as moment from 'moment';
+import "reflect-metadata";
+import { injectable, inject } from "inversify";
 import { Diet } from "../entities/diet";
 import { DietGroup } from '../entities/diet-group';
 import { DietValue } from '../entities/diet-value';
@@ -19,9 +21,13 @@ import { BaseService } from './base';
 export class FormulatorService extends BaseService {
 
     constructor(
+        @inject("IUserRepository")
         userRepository: IUserRepository,
+        @inject("IDietRepository")
         private dietRepository: IDietRepository,
+        @inject("IIngredientRepository")
         private ingredientRepository: IIngredientRepository,
+        @inject("IFormulationRepository")
         private formulationRepository: IFormulationRepository,
     ) {
         super(userRepository);

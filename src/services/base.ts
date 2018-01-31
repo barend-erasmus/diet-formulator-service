@@ -1,5 +1,6 @@
 import { User } from "../entities/user";
 import { IUserRepository } from "../repositories/user";
+import { InsufficientPermissionsError } from "../errors/insufficient-permissions-error";
 
 export class BaseService {
 
@@ -9,7 +10,7 @@ export class BaseService {
 
     }
 
-    public async getUserPermissions(username: string): Promise<string[]> {
+    protected async getUserPermissions(username: string): Promise<string[]> {
 
         const user: User = await this.userRepository.findByUsername(username);
 
@@ -119,7 +120,7 @@ export class BaseService {
         return permissions;
     }
 
-    public async hasPermission(username: string, permission: string): Promise<boolean> {
+    protected async hasPermission(username: string, permission: string): Promise<boolean> {
         const permissions: string[] = await this.getUserPermissions(username);
 
         if (permissions.indexOf(permission) > -1) {
@@ -127,5 +128,11 @@ export class BaseService {
         }
 
         return false;
+    }
+
+    protected async throwIfDoesNotHavePermission(userName: string, permission: string): void {
+        if (!await this.hasPermission(userName, permission)) {
+            throw new InsufficientPermissionsError('insufficient_permissions', 'Insufficient permissions', permission, userName);
+        }
     }
 }

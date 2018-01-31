@@ -1,3 +1,5 @@
+import "reflect-metadata";
+import { injectable, inject } from "inversify";
 import * as Sequelize from 'sequelize';
 import { Diet } from '../../entities/diet';
 import { DietGroup } from '../../entities/diet-group';
@@ -12,6 +14,7 @@ import { SuggestedValue } from '../../entities/suggested-value';
 import { IFormulationRepository } from '../formulation';
 import { BaseRepository } from "./base";
 
+@injectable()
 export class FormulationRepository extends BaseRepository implements IFormulationRepository {
 
     constructor(host: string, username: string, password: string) {

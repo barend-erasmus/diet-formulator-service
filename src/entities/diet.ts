@@ -1,5 +1,7 @@
 import { DietGroup } from "./diet-group";
 import { DietValue } from "./diet-value";
+import { ErrorField } from "../models/error-field";
+import { ValidationError } from "../errors/validation-error";
 
 export class Diet {
     constructor(
@@ -14,22 +16,26 @@ export class Diet {
     }
 
     public validate(): void {
-        const messages: string[] = [];
+        const errorFields: ErrorField[] = [];
 
         if (!this.name) {
-            messages.push('Name cannot be empty');
+            errorFields.push(new ErrorField('diet.name', 'Name cannot be empty'));
         }
 
         if (!this.group) {
-            messages.push('Group cannot be empty');
+            errorFields.push(new ErrorField('diet.group', 'Name cannot be empty'));
         }
 
-        if (messages.length > 0) {
-            throw new Error(messages.join(';'));
+        if (errorFields.length > 0) {
+            throw new ValidationError('invalid_diet', 'Diet is invalid', errorFields);
         }
     }
 
     public removeValues(): void {
         this.values = [];
+    }
+
+    public setUserName(userName: string): void {
+        this.username = userName;
     }
 }

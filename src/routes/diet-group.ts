@@ -11,10 +11,7 @@ export class DietGroupRouter {
 
     public static async create(req: express.Request, res: express.Response) {
         try {
-            const applicationId: number = parseInt(req.get('x-application-id'), undefined);
-
-            const result: DietGroup = await DietGroupRouter.getDietGroupService().create(
-                applicationId, new DietGroup(req.body.id, req.body.name, req.body.description, req.body.parent ?
+            const result: DietGroup = await DietGroupRouter.getDietGroupService().create(new DietGroup(req.body.id, req.body.name, req.body.description, req.body.parent ?
                     new DietGroup(req.body.parent.id, req.body.parent.name, req.body.parent.description, null) :
                     null),
                 req['user'].email);
@@ -30,9 +27,7 @@ export class DietGroupRouter {
 
     public static async find(req: express.Request, res: express.Response) {
         try {
-            const applicationId: number = parseInt(req.get('x-application-id'), undefined);
-
-            const result: DietGroup = await DietGroupRouter.getDietGroupService().find(applicationId, req.query.id, req['user'].email);
+            const result: DietGroup = await DietGroupRouter.getDietGroupService().find(req.query.id, req['user'].email);
 
             res.json(result);
         } catch (err) {
@@ -45,9 +40,7 @@ export class DietGroupRouter {
 
     public static async list(req: express.Request, res: express.Response) {
         try {
-            const applicationId: number = parseInt(req.get('x-application-id'), undefined);
-
-            const result: DietGroup[] = await DietGroupRouter.getDietGroupService().list(applicationId, req.query.dietGroupId ? req.query.dietGroupId : null, req['user'].email);
+            const result: DietGroup[] = await DietGroupRouter.getDietGroupService().list(req.query.dietGroupId ? req.query.dietGroupId : null, req['user'].email);
 
             res.json(result);
         } catch (err) {
@@ -60,9 +53,8 @@ export class DietGroupRouter {
 
     public static async listAll(req: express.Request, res: express.Response) {
         try {
-            const applicationId: number = parseInt(req.get('x-application-id'), undefined);
 
-            const result: DietGroup[] = await DietGroupRouter.getDietGroupService().listAll(applicationId, req['user'].email);
+            const result: DietGroup[] = await DietGroupRouter.getDietGroupService().listAll(req['user'].email);
 
             res.json(result);
         } catch (err) {
@@ -75,10 +67,8 @@ export class DietGroupRouter {
 
     public static async update(req: express.Request, res: express.Response) {
         try {
-            const applicationId: number = parseInt(req.get('x-application-id'), undefined);
 
             const result: DietGroup = await DietGroupRouter.getDietGroupService().update(
-                applicationId,
                 new DietGroup(req.body.id, req.body.name, req.body.description, req.body.parent ?
                     new DietGroup(req.body.parent.id, req.body.parent.name, req.body.parent.description, null) :
                     null),

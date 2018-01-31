@@ -1,82 +1,75 @@
+import "reflect-metadata";
+import { injectable, inject } from "inversify";
 import { DietGroup } from '../entities/diet-group';
 import { IDietGroupRepository } from '../repositories/diet-group';
 import { IUserRepository } from '../repositories/user';
 import { config } from './../config';
 import { BaseService } from './base';
+import { InsufficientPermissionsError } from "../errors/insufficient-permissions-error";
 
+@injectable()
 export class DietGroupService extends BaseService {
 
     constructor(
+        @inject("IUserRepository")
         userRepository: IUserRepository,
+        @inject("IDietGroupRepository")
         private dietGroupRepository: IDietGroupRepository,
     ) {
         super(userRepository);
     }
 
     public async create(
-        applicationId: number,
         dietGroup: DietGroup,
         username: string,
     ): Promise<DietGroup> {
 
-        if (!await this.hasPermission(username, 'create-diet-group')) {
-            throw new Error('Unauthorized');
-        }
+        await this.throwIfDoesNotHavePermission(username, 'create-diet-group');
 
         dietGroup.validate();
 
-        return this.dietGroupRepository.create(applicationId, dietGroup);
+        return this.dietGroupRepository.create(dietGroup);
     }
 
     public async find(
-        applicationId: number,
         dietGroupId: number,
         username: string,
     ): Promise<DietGroup> {
 
-        if (!await this.hasPermission(username, 'view-diet-group')) {
-            throw new Error('Unauthorized');
-        }
+        await this.throwIfDoesNotHavePermission(username, 'view-diet-group');
 
-        return this.dietGroupRepository.find(applicationId, dietGroupId);
+        return this.dietGroupRepository.find(dietGroupId);
     }
 
     public async list(
-        applicationId: number,
         dietGroupId: number,
         username: string,
     ): Promise<DietGroup[]> {
-        if (!await this.hasPermission(username, 'view-diet-group')) {
-            throw new Error('Unauthorized');
-        }
+        
+        await this.throwIfDoesNotHavePermission(username, 'view-diet-group');
 
-        return this.dietGroupRepository.listSubGroups(applicationId, dietGroupId);
+        return this.dietGroupRepository.listSubGroups(dietGroupId);
     }
 
     public async listAll(
-        applicationId: number,
         username: string,
     ): Promise<DietGroup[]> {
-        if (!await this.hasPermission(username, 'view-diet-group')) {
-            throw new Error('Unauthorized');
-        }
+        
+        await this.throwIfDoesNotHavePermission(username, 'view-diet-group');
 
-        return this.dietGroupRepository.list(applicationId);
+        return this.dietGroupRepository.list();
     }
 
     public async update(
-        applicationId: number,
         dietGroup: DietGroup,
         username: string,
     ): Promise<DietGroup> {
 
-        if (!await this.hasPermission(username, 'update-diet-group')) {
-            throw new Error('Unauthorized');
-        }
+        await this.throwIfDoesNotHavePermission(username, 'update-diet-group');
 
         dietGroup.validate();
 
-        return this.dietGroupRepository.update(applicationId, dietGroup);
+        return this.dietGroupRepository.update(dietGroup);
     }
 
 }

@@ -1,20 +1,24 @@
+import "reflect-metadata";
+import { injectable, inject } from "inversify";
 import { Nutrient } from '../entities/nutrient';
 import { INutrientRepository } from '../repositories/nutrient';
 import { IUserRepository } from '../repositories/user';
 import { config } from './../config';
 import { BaseService } from './base';
 
+@injectable()
 export class NutrientService extends BaseService {
 
     constructor(
+        @inject("IUserRepository")
         userRepository: IUserRepository,
+        @inject("INutrientRepository")
         private nutrientRepository: INutrientRepository,
     ) {
         super(userRepository);
     }
 
     public async create(
-        applicationId: number,
         nutrient: Nutrient,
         username: string,
     ): Promise<Nutrient> {
@@ -25,17 +29,16 @@ export class NutrientService extends BaseService {
 
         nutrient.validate();
 
-        const existingNutrient: Nutrient = await this.nutrientRepository.find(applicationId, nutrient.code);
+        const existingNutrient: Nutrient = await this.nutrientRepository.find(nutrient.code);
 
         if (existingNutrient) {
             throw new Error(`Nutrient with code '${nutrient.code}' already exist`);
         }
 
-        return this.nutrientRepository.create(applicationId, nutrient);
+        return this.nutrientRepository.create(nutrient);
     }
 
     public async find(
-        applicationId: number,
         nutrientId: number,
         username: string,
     ): Promise<Nutrient> {
@@ -44,11 +47,10 @@ export class NutrientService extends BaseService {
             throw new Error('Unauthorized');
         }
 
-        return this.nutrientRepository.findById(applicationId, nutrientId);
+        return this.nutrientRepository.findById(nutrientId);
     }
 
     public async list(
-        applicationId: number,
         username: string,
     ): Promise<Nutrient[]> {
 
@@ -56,11 +58,10 @@ export class NutrientService extends BaseService {
             throw new Error('Unauthorized');
         }
 
-        return this.nutrientRepository.list(applicationId);
+        return this.nutrientRepository.list();
     }
 
     public async update(
-        applicationId: number,
         nutrient: Nutrient,
         username: string,
     ): Promise<Nutrient> {
@@ -71,6 +72,6 @@ export class NutrientService extends BaseService {
 
         nutrient.validate();
 
-        return this.nutrientRepository.update(applicationId, nutrient);
+        return this.nutrientRepository.update(nutrient);
     }
 }

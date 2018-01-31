@@ -19,7 +19,7 @@
     ],
     "directories": [
         {
-            "source": "$workspace/src",
+            "source": "$workspace/dist",
             "destination": "/opt/diet-formulator-service/src"
         }
     ],

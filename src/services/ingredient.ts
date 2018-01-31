@@ -1,13 +1,18 @@
+import "reflect-metadata";
+import { injectable, inject } from "inversify";
 import { Ingredient } from '../entities/ingredient';
 import { IIngredientRepository } from '../repositories/ingredient';
 import { IUserRepository } from '../repositories/user';
 import { config } from './../config';
 import { BaseService } from './base';
 
+@injectable()
 export class IngredientService extends BaseService {
 
     constructor(
+        @inject("IUserRepository")
         userRepository: IUserRepository,
+        @inject("IIngredientRepository")
         private ingredientRepository: IIngredientRepository,
     ) {
         super(userRepository);
@@ -28,7 +33,6 @@ export class IngredientService extends BaseService {
     }
 
     public async list(
-        applicationId: number,
         username: string,
     ): Promise<Ingredient[]> {
 
@@ -36,6 +40,6 @@ export class IngredientService extends BaseService {
             throw new Error('Unauthorized');
         }
 
-        return this.ingredientRepository.list(applicationId);
+        return this.ingredientRepository.list();
     }
 }

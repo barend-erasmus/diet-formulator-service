@@ -1,9 +1,13 @@
+import "reflect-metadata";
+import { injectable, inject } from "inversify";
 import { User } from "../entities/user";
 import { IUserRepository } from "../repositories/user";
 import { BaseService } from "./base";
 
+@injectable()
 export class UserService extends BaseService {
     constructor(
+        @inject("IUserRepository")
         userRepository: IUserRepository,
     ) {
         super(userRepository);

@@ -1,3 +1,5 @@
+import "reflect-metadata";
+import { injectable, inject } from "inversify";
 import { Diet } from '../entities/diet';
 import { DietGroup } from '../entities/diet-group';
 import { IDietRepository } from '../repositories/diet';
@@ -9,29 +11,29 @@ import { BaseService } from './base';
 export class DietService extends BaseService {
 
     constructor(
+        @inject("IUserRepository")
         userRepository: IUserRepository,
+        @inject("IDietRepository")
         private dietRepository: IDietRepository,
+        @inject("IDietGroupRepository")
         private dietGroupRepository: IDietGroupRepository,
     ) {
         super(userRepository);
     }
 
     public async create(
-        applicationId: number,
         diet: Diet,
         username: string,
     ): Promise<Diet> {
 
-        diet.username = username;
+        await this.throwIfDoesNotHavePermission(username, 'create-diet');
 
-        if (!await this.hasPermission(username, 'create-diet')) {
-            throw new Error('Unauthorized');
-        }
+        diet.setUserName(username);
 
         diet.validate();
 
         if (!await this.hasPermission(username, 'super-user')) {
-            const dietGroup: DietGroup = await this.dietGroupRepository.find(applicationId, diet.group.id);
+            const dietGroup: DietGroup = await this.dietGroupRepository.find(diet.group.id);
 
             if (dietGroup.name !== 'User Defined') {
                 throw new Error(`Non super users can only update diets under the 'User Defined' group`);
@@ -82,7 +84,6 @@ export class DietService extends BaseService {
     }
 
     public async update(
-        applicationId: number,
         diet: Diet,
         username: string,
     ): Promise<Diet> {
@@ -103,7 +104,7 @@ export class DietService extends BaseService {
                 throw new Error(`Non super users can only update their own diets`);
             }
 
-            const dietGroup: DietGroup = await this.dietGroupRepository.find(applicationId, diet.group.id);
+            const dietGroup: DietGroup = await this.dietGroupRepository.find(diet.group.id);
 
             if (dietGroup.name !== 'User Defined') {
                 throw new Error(`Non super users can only update diets under the 'User Defined' group`);

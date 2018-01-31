@@ -5,7 +5,6 @@ import * as path from 'path';
 
 export class BaseRepository {
     protected static models: {
-        Application: Sequelize.Model<{}, {}>,
         ComparisonDiet: Sequelize.Model<{}, {}>,
         Diet: Sequelize.Model<{}, {}>,
         DietGroup: Sequelize.Model<{}, {}>,
@@ -64,17 +63,6 @@ export class BaseRepository {
             verified: {
                 allowNull: false,
                 type: Sequelize.BOOLEAN,
-            },
-        });
-
-        const Application = BaseRepository.sequelize.define('application', {
-            description: {
-                allowNull: true,
-                type: Sequelize.STRING,
-            },
-            name: {
-                allowNull: false,
-                type: Sequelize.STRING,
             },
         });
 
@@ -240,15 +228,6 @@ export class BaseRepository {
             },
         });
 
-        Application.hasMany(Nutrient, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
-        Nutrient.belongsTo(Application, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
-
-        Application.hasMany(DietGroup, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
-        DietGroup.belongsTo(Application, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
-
-        Application.hasMany(IngredientGroup, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
-        IngredientGroup.belongsTo(Application, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
-
         DietGroup.hasMany(DietGroup, { foreignKey: { allowNull: true }, onDelete: 'CASCADE' });
         DietGroup.belongsTo(DietGroup, { foreignKey: { allowNull: true }, onDelete: 'CASCADE' });
 
@@ -298,7 +277,6 @@ export class BaseRepository {
         Formulation.belongsTo(Diet, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
 
         this.models = {
-            Application,
             ComparisonDiet,
             Diet,
             DietGroup,

@@ -11,10 +11,8 @@ export class NutrientRouter {
 
     public static async create(req: express.Request, res: express.Response) {
         try {
-            const applicationId: number = parseInt(req.get('x-application-id'), undefined);
 
             const result: Nutrient = await NutrientRouter.getNutrientService().create(
-                applicationId,
                 new Nutrient(null, req.body.name, req.body.description, req.body.code, req.body.abbreviation, req.body.unit, parseInt(req.body.sortOrder, undefined)),
                 req['user'].email);
 
@@ -29,9 +27,8 @@ export class NutrientRouter {
 
     public static async find(req: express.Request, res: express.Response) {
         try {
-            const applicationId: number = parseInt(req.get('x-application-id'), undefined);
 
-            const result: Nutrient = await NutrientRouter.getNutrientService().find(applicationId, req.query.nutrientId, req['user'].email);
+            const result: Nutrient = await NutrientRouter.getNutrientService().find(req.query.nutrientId, req['user'].email);
 
             res.json(result);
         } catch (err) {
@@ -44,9 +41,8 @@ export class NutrientRouter {
 
     public static async list(req: express.Request, res: express.Response) {
         try {
-            const applicationId: number = parseInt(req.get('x-application-id'), undefined);
 
-            const result: Nutrient[] = await NutrientRouter.getNutrientService().list(applicationId, req['user'].email);
+            const result: Nutrient[] = await NutrientRouter.getNutrientService().list(req['user'].email);
 
             res.json(result);
         } catch (err) {
@@ -59,10 +55,8 @@ export class NutrientRouter {
 
     public static async update(req: express.Request, res: express.Response) {
         try {
-            const applicationId: number = parseInt(req.get('x-application-id'), undefined);
 
             const result: Nutrient = await NutrientRouter.getNutrientService().update(
-                applicationId,
                 new Nutrient(req.body.id, req.body.name, req.body.description, req.body.code, req.body.abbreviation, req.body.unit, parseInt(req.body.sortOrder, undefined)),
                 req['user'].email,
             );

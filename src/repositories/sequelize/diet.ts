@@ -1,3 +1,5 @@
+import "reflect-metadata";
+import { injectable, inject } from "inversify";
 import * as Sequelize from 'sequelize';
 import { Diet } from '../../entities/diet';
 import { DietGroup } from '../../entities/diet-group';
@@ -6,6 +8,7 @@ import { Nutrient } from '../../entities/nutrient';
 import { IDietRepository } from '../diet';
 import { BaseRepository } from "./base";
 
+@injectable()
 export class DietRepository extends BaseRepository implements IDietRepository {
     constructor(host: string, username: string, password: string) {
         super(host, username, password);

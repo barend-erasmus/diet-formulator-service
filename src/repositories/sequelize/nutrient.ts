@@ -1,19 +1,21 @@
+import "reflect-metadata";
+import { injectable, inject } from "inversify";
 import * as Sequelize from 'sequelize';
 import { Nutrient } from '../../entities/nutrient';
 import { INutrientRepository } from '../nutrient';
 import { BaseRepository } from "./base";
 
+@injectable()
 export class NutrientRepository extends BaseRepository implements INutrientRepository {
 
     constructor(host: string, username: string, password: string) {
         super(host, username, password);
     }
 
-    public async create(applicationId: number, nutrient: Nutrient): Promise<Nutrient> {
+    public async create(nutrient: Nutrient): Promise<Nutrient> {
 
         const result: any = await BaseRepository.models.Nutrient.create({
             abbreviation: nutrient.abbreviation,
-            applicationId,
             code: nutrient.code,
             description: nutrient.description,
             name: nutrient.name,
@@ -26,13 +28,10 @@ export class NutrientRepository extends BaseRepository implements INutrientRepos
         return nutrient;
     }
 
-    public async find(applicationId: number, code: string): Promise<Nutrient> {
+    public async find(code: string): Promise<Nutrient> {
 
         const result: any = await BaseRepository.models.Nutrient.find({
             where: {
-                applicationId: {
-                    [Sequelize.Op.eq]: applicationId,
-                },
                 code: {
                     [Sequelize.Op.eq]: code,
                 },
@@ -46,13 +45,10 @@ export class NutrientRepository extends BaseRepository implements INutrientRepos
         return new Nutrient(result.id, result.name, result.description, result.code, result.abbreviation, result.unit, result.sortOrder);
     }
 
-    public async findById(applicationId: number, nutrientId: number): Promise<Nutrient> {
+    public async findById(nutrientId: number): Promise<Nutrient> {
 
         const result: any = await BaseRepository.models.Nutrient.find({
             where: {
-                applicationId: {
-                    [Sequelize.Op.eq]: applicationId,
-                },
                 id: {
                     [Sequelize.Op.eq]: nutrientId,
                 },
@@ -66,29 +62,21 @@ export class NutrientRepository extends BaseRepository implements INutrientRepos
         return new Nutrient(result.id, result.name, result.description, result.code, result.abbreviation, result.unit, result.sortOrder);
     }
 
-    public async list(applicationId: number): Promise<Nutrient[]> {
+    public async list(): Promise<Nutrient[]> {
 
         const result: any[] = await BaseRepository.models.Nutrient.findAll({
             order: [
                 ['sortOrder', 'ASC'],
             ],
-            where: {
-                applicationId: {
-                    [Sequelize.Op.eq]: applicationId,
-                },
-            },
         });
 
         return result.map((x) => new Nutrient(x.id, x.name, x.description, x.code, x.abbreviation, x.unit, x.sortOrder));
     }
 
-    public async update(applicationId: number, nutrient: Nutrient): Promise<Nutrient> {
+    public async update(nutrient: Nutrient): Promise<Nutrient> {
 
         const result: any = await BaseRepository.models.Nutrient.find({
             where: {
-                applicationId: {
-                    [Sequelize.Op.eq]: applicationId,
-                },
                 id: {
                     [Sequelize.Op.eq]: nutrient.id,
                 },

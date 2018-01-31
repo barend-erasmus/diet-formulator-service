@@ -1,3 +1,5 @@
+import "reflect-metadata";
+import { injectable, inject } from "inversify";
 import * as Sequelize from 'sequelize';
 import { Ingredient } from '../../entities/ingredient';
 import { IngredientGroup } from '../../entities/ingredient-group';
@@ -6,6 +8,7 @@ import { Nutrient } from '../../entities/nutrient';
 import { IIngredientRepository } from '../ingredient';
 import { BaseRepository } from "./base";
 
+@injectable()
 export class IngredientRepository extends BaseRepository implements IIngredientRepository {
 
     constructor(host: string, username: string, password: string) {
@@ -108,17 +111,12 @@ export class IngredientRepository extends BaseRepository implements IIngredientR
                 ).sort((a, b) => a.nutrient.sortOrder - b.nutrient.sortOrder)));
             }
 
-    public async list(applicationId: number): Promise<Ingredient[]> {
+    public async list(): Promise<Ingredient[]> {
 
         const result: any[] = await BaseRepository.models.Ingredient.findAll({
             include: [
                 {
                     model: BaseRepository.models.IngredientGroup,
-                    where: {
-                        applicationId: {
-                            [Sequelize.Op.eq]: applicationId,
-                        },
-                    },
                 },
             ],
             order: [

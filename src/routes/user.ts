@@ -55,7 +55,6 @@ export class UserRouter {
 
     public static async update(req: express.Request, res: express.Response) {
         try {
-            const applicationId: number = parseInt(req.get('x-application-id'), undefined);
 
             const result: User = await UserRouter.getUserService().update(req.body, req.get('Authorization').split(' ')[1]);
 
