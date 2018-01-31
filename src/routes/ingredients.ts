@@ -6,12 +6,13 @@ import { UserRepository } from '../repositories/sequelize/user';
 import { IUserRepository } from '../repositories/user';
 import { IngredientService } from '../services/ingredient';
 import { config } from './../config';
+import { container } from '../ioc';
 
 export class IngredientRouter {
 
     public static async create(req: express.Request, res: express.Response) {
         try {
-            const result: Ingredient = await IngredientRouter.getIngredientService().create(req.body, req['user'].email);
+            const result: Ingredient = await container.get<IngredientService>('IngredientService').create(req.body, req['user'].email);
 
             res.json(result);
         } catch (err) {
@@ -25,7 +26,7 @@ export class IngredientRouter {
     public static async list(req: express.Request, res: express.Response) {
         try {
 
-            const result: Ingredient[] = await IngredientRouter.getIngredientService().list(req['user'].email);
+            const result: Ingredient[] = await container.get<IngredientService>('IngredientService').list(req['user'].email);
 
             res.json(result);
         } catch (err) {
@@ -34,13 +35,5 @@ export class IngredientRouter {
                 stack: err.stack,
             });
         }
-    }
-
-    protected static getIngredientService(): IngredientService {
-        const ingredientRepository: IIngredientRepository = new IngredientRepository(config.database.host, config.database.username, config.database.password);
-        const userRepository: IUserRepository = new UserRepository(config.database.host, config.database.username, config.database.password);
-        const ingredientService: IngredientService = new IngredientService(userRepository, ingredientRepository);
-
-        return ingredientService;
     }
 }

@@ -7,10 +7,12 @@ import { BasicSubscription } from "../subscriptions/basic";
 import { StandardSubscription } from "../subscriptions/standard";
 import { PremiumSubscription } from "../subscriptions/premium";
 import { SuperAdminSubscription } from "../subscriptions/super-admin";
+import { ISubscriptionFactory } from "../interfaces/subscription-factory";
 
 export class BaseService {
 
     constructor(
+        private subscriptionFactory: ISubscriptionFactory,
         protected userRepository: IUserRepository,
     ) {
 
@@ -20,29 +22,7 @@ export class BaseService {
 
         const user: User = await this.userRepository.findByUsername(username);
 
-        let subscription: ISubscription = null;
-
-        if (user.subscriptionType === 'trial') {
-            subscription = new TrialSubscription([]);
-        }
-
-        if (user.subscriptionType === 'basic') {
-            subscription = new BasicSubscription([]);
-        }
-
-        if (user.subscriptionType === 'standard') {
-            subscription = new StandardSubscription([]);
-        }
-
-        if (user.subscriptionType === 'premium') {
-            subscription = new PremiumSubscription([]);
-        }
-
-        if (user.isSuperAdmin) {
-            subscription = new SuperAdminSubscription([]);
-        }
-
-        return subscription;
+        return this.subscriptionFactory.create(user.subscriptionType, user.isSuperAdmin);
     }
 
     protected async hasPermission(username: string, permission: string): Promise<boolean> {

@@ -8,10 +8,13 @@ import { IUserRepository } from '../repositories/user';
 import { config } from './../config';
 import { BaseService } from './base';
 import { InsufficientPermissionsError } from "../errors/insufficient-permissions-error";
+import { ISubscriptionFactory } from "../interfaces/subscription-factory";
 
 export class DietService extends BaseService {
 
     constructor(
+        @inject("ISubscriptionFactory")
+        subscriptionFactory: ISubscriptionFactory,
         @inject("IUserRepository")
         userRepository: IUserRepository,
         @inject("IDietRepository")
@@ -19,7 +22,7 @@ export class DietService extends BaseService {
         @inject("IDietGroupRepository")
         private dietGroupRepository: IDietGroupRepository,
     ) {
-        super(userRepository);
+        super(subscriptionFactory, userRepository);
     }
 
     public async create(
@@ -33,17 +36,13 @@ export class DietService extends BaseService {
 
         diet.validate();
 
-        this.throwIfDietUnderDietGroupWithoutSuperAdminPermission(username, diet.group.id);
+        this.throwIfDietNotUserDefinedGroupWithoutSuperUserPermission(username, diet.group.id);
 
-        if (await this.hasPermission(username, 'super-user')) {
-            diet.clearUserName();
-        }
+        diet = await this.clearUserNameIfSuperUser(username, diet);
 
         diet = await this.dietRepository.create(diet);
 
-        if (!await this.hasPermission(username, 'view-diet-values')) {
-            diet.removeValues();
-        }
+        await this.removeDietValuesIfNotHaveViewDietValuesPermission(username, diet);
 
         return diet;
     }
@@ -57,9 +56,7 @@ export class DietService extends BaseService {
 
         const diet: Diet = await this.dietRepository.find(dietId);
 
-        if (!await this.hasPermission(username, 'view-diet-values')) {
-            diet.removeValues();
-        }
+        await this.removeDietValuesIfNotHaveViewDietValuesPermission(username, diet);
 
         return diet;
     }
@@ -79,11 +76,13 @@ export class DietService extends BaseService {
         username: string,
     ): Promise<Diet> {
 
-        diet.username = username;
+        diet.setUserName(username);
 
         await this.throwIfDoesNotHavePermission(username, 'create-diet');
 
         diet.validate();
+
+        this.throwIfDietNotUserDefinedGroupWithoutSuperUserPermission(username, diet.group.id);
 
         if (!await this.hasPermission(username, 'super-user')) {
 
@@ -92,32 +91,37 @@ export class DietService extends BaseService {
             if (existingDiet.username === username) {
                 throw new InsufficientPermissionsError('insufficient_permissions', `Non super users can only update their own diets`, 'super-user', username);
             }
+        } 
 
-            const dietGroup: DietGroup = await this.dietGroupRepository.find(diet.group.id);
-
-            if (dietGroup.name !== 'User Defined') {
-                throw new InsufficientPermissionsError('insufficient_permissions', `Non super users can only update diets under the 'User Defined' group`, 'super-user', username);
-            }
-
-        } else {
-            diet.clearUserName();
-        }
+        diet = await this.clearUserNameIfSuperUser(username, diet);
 
         diet = await this.dietRepository.update(diet);
 
-        if (!await this.hasPermission(username, 'view-diet-values')) {
-            diet.removeValues();
+        await this.removeDietValuesIfNotHaveViewDietValuesPermission(username, diet);
+
+        return diet;
+    }
+
+    private async clearUserNameIfSuperUser(userName: string, diet: Diet): Promise<Diet> {
+        if (!await this.hasPermission(userName, 'super-user')) {
+            diet.clearUserName();
         }
 
         return diet;
     }
 
-    private async throwIfDietUnderDietGroupWithoutSuperAdminPermission(userName: string, dietGroupId: number): Promise<void> {
+    private async removeDietValuesIfNotHaveViewDietValuesPermission(userName: string, diet: Diet): Promise<void> {
+        if (!await this.hasPermission(userName, 'view-diet-values')) {
+            diet.removeValues();
+        }
+    }
+
+    private async throwIfDietNotUserDefinedGroupWithoutSuperUserPermission(userName: string, dietGroupId: number): Promise<void> {
         if (!await this.hasPermission(userName, 'super-user')) {
             const dietGroup: DietGroup = await this.dietGroupRepository.find(dietGroupId);
 
             if (dietGroup.name !== 'User Defined') {
-                throw new InsufficientPermissionsError('insufficient_permissions', `Non super users can only update diets under the 'User Defined' group`, 'super-user', userName);
+                throw new InsufficientPermissionsError('insufficient_permissions', `Non super users can only create/update diets under the 'User Defined' group`, 'super-user', userName);
             }
         }
     }

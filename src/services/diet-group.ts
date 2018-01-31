@@ -6,17 +6,20 @@ import { IUserRepository } from '../repositories/user';
 import { config } from './../config';
 import { BaseService } from './base';
 import { InsufficientPermissionsError } from "../errors/insufficient-permissions-error";
+import { ISubscriptionFactory } from "../interfaces/subscription-factory";
 
 @injectable()
 export class DietGroupService extends BaseService {
 
     constructor(
+        @inject("ISubscriptionFactory")
+        subscriptionFactory: ISubscriptionFactory,
         @inject("IUserRepository")
         userRepository: IUserRepository,
         @inject("IDietGroupRepository")
         private dietGroupRepository: IDietGroupRepository,
     ) {
-        super(userRepository);
+        super(subscriptionFactory, userRepository);
     }
 
     public async create(

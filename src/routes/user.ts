@@ -5,6 +5,7 @@ import { UserRepository } from '../repositories/sequelize/user';
 import { IUserRepository } from '../repositories/user';
 import { UserService } from '../services/user';
 import { config } from './../config';
+import { container } from '../ioc';
 
 export class UserRouter {
 
@@ -13,7 +14,7 @@ export class UserRouter {
 
             const token: string = req.get('Authorization').split(' ')[1];
 
-            let user: User = await UserRouter.getUserService().find(token);
+            let user: User = await container.get<UserService>('UserService').find(token);
 
             if (!user) {
                 try {
@@ -25,7 +26,7 @@ export class UserRouter {
                         uri: 'https://developersworkspace.auth0.com/userinfo',
                     });
 
-                    user = await UserRouter.getUserService().login(new User(
+                    user = await container.get<UserService>('UserService').login(new User(
                         json.email,
                         json.name,
                         json.email_verified,
@@ -56,7 +57,7 @@ export class UserRouter {
     public static async update(req: express.Request, res: express.Response) {
         try {
 
-            const result: User = await UserRouter.getUserService().update(req.body, req.get('Authorization').split(' ')[1]);
+            const result: User = await container.get<UserService>('UserService').update(req.body, req.get('Authorization').split(' ')[1]);
 
             res.json(result);
         } catch (err) {
@@ -65,12 +66,5 @@ export class UserRouter {
                 stack: err.stack,
             });
         }
-    }
-
-    protected static getUserService(): UserService {
-        const userRepository: IUserRepository = new UserRepository(config.database.host, config.database.username, config.database.password);
-        const userService: UserService = new UserService(userRepository);
-
-        return userService;
     }
 }

@@ -12,3 +12,7 @@ const container: Container = new Container();
 container.bind<IDietGroupRepository>('IDietGroupRepository').to(DietGroupRepository);
 container.bind<IDietRepository>('IDietRepository').to(DietRepository);
 container.bind<IFormulationRepository>('IFormulationRepository').to(FormulationRepository);
+
+export {
+    container,
+};

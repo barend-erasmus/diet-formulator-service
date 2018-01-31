@@ -3,14 +3,17 @@ import { injectable, inject } from "inversify";
 import { User } from "../entities/user";
 import { IUserRepository } from "../repositories/user";
 import { BaseService } from "./base";
+import { ISubscriptionFactory } from "../interfaces/subscription-factory";
 
 @injectable()
 export class UserService extends BaseService {
     constructor(
+        @inject("ISubscriptionFactory")
+        subscriptionFactory: ISubscriptionFactory,
         @inject("IUserRepository")
         userRepository: IUserRepository,
     ) {
-        super(userRepository);
+        super(subscriptionFactory, userRepository);
     }
 
     public async login(user: User, token: string): Promise<User> {

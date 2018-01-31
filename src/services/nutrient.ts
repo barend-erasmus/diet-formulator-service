@@ -5,17 +5,20 @@ import { INutrientRepository } from '../repositories/nutrient';
 import { IUserRepository } from '../repositories/user';
 import { config } from './../config';
 import { BaseService } from './base';
+import { ISubscriptionFactory } from "../interfaces/subscription-factory";
 
 @injectable()
 export class NutrientService extends BaseService {
 
     constructor(
+        @inject("ISubscriptionFactory")
+        subscriptionFactory: ISubscriptionFactory,
         @inject("IUserRepository")
         userRepository: IUserRepository,
         @inject("INutrientRepository")
         private nutrientRepository: INutrientRepository,
     ) {
-        super(userRepository);
+        super(subscriptionFactory, userRepository);
     }
 
     public async create(

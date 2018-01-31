@@ -13,12 +13,12 @@ const pg = require('pg');
 
         const headerLine = lines[0];
 
-        const columns = headerLine.split(';');
+        const columns = headerLine.split(';').filter((x) => x !== 'applicationId');
 
         const pool = new pg.Pool({
             user: 'diet-formulator',
-            host: 'localhost',
-            database: 'diet-formulator',
+            host: 'developersworkspace.co.za',
+            database: 'diet-formulator-2018',
             password: '&UNtpV9B-XeF?%Ks',
             port: 5432,
         });

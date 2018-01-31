@@ -14,14 +14,15 @@ import { FormulationRepository } from '../repositories/sequelize/formulation';
 import { IngredientRepository } from '../repositories/sequelize/ingredient';
 import { UserRepository } from '../repositories/sequelize/user';
 import { IUserRepository } from '../repositories/user';
-import { FormulatorService } from '../services/formulator';
+import { FormulationService } from '../services/formulation';
 import { config } from './../config';
+import { container } from '../ioc';
 
-export class FormulatorRouter {
+export class FormulationRouter {
 
     public static async create(req: express.Request, res: express.Response) {
         try {
-            const result: Formulation = await FormulatorRouter.getFormulatorService().createFormulation(
+            const result: Formulation = await container.get<FormulationService>('FormulationService').create(
                 new Diet(req.body.diet.id, null, null, null, null, null),
                 req.body.formulationIngredients.map((x) => new FormulationIngredient(null, new Ingredient(x.ingredient.id, null, null, null, null, null), x.cost, x.minimum, x.maximum, null)),
                 req.body.mixWeight,
@@ -42,7 +43,7 @@ export class FormulatorRouter {
 
     public static async find(req: express.Request, res: express.Response) {
         try {
-            const result: Formulation = await FormulatorRouter.getFormulatorService().find(req.query.id, req['user'].email);
+            const result: Formulation = await container.get<FormulationService>('FormulationService').find(req.query.id, req['user'].email);
 
             res.json(result);
         } catch (err) {
@@ -55,7 +56,7 @@ export class FormulatorRouter {
 
     public static async list(req: express.Request, res: express.Response) {
         try {
-            const result: Formulation[] = await FormulatorRouter.getFormulatorService().list(req['user'].email);
+            const result: Formulation[] = await container.get<FormulationService>('FormulationService').list(req['user'].email);
 
             res.json(result);
         } catch (err) {
@@ -68,7 +69,7 @@ export class FormulatorRouter {
 
     public static async suggestedValue(req: express.Request, res: express.Response) {
         try {
-            const result: SuggestedValue = await FormulatorRouter.getFormulatorService().suggestedValue(req.query.dietId, req.query.ingredientId, req['user'].email);
+            const result: SuggestedValue = await container.get<FormulationService>('FormulationService').suggestedValue(req.query.dietId, req.query.ingredientId, req['user'].email);
 
             res.json(result);
         } catch (err) {
@@ -81,7 +82,7 @@ export class FormulatorRouter {
 
     public static async supplement(req: express.Request, res: express.Response) {
         try {
-            const result: Supplement[] = await FormulatorRouter.getFormulatorService().supplement(req.query.id, req['user'].email);
+            const result: Supplement[] = await container.get<FormulationService>('FormulationService').supplement(req.query.id, req['user'].email);
 
             res.json(result);
         } catch (err) {
@@ -94,7 +95,7 @@ export class FormulatorRouter {
 
     public static async composition(req: express.Request, res: express.Response) {
         try {
-            const result: FormulationCompositionValue[] = await FormulatorRouter.getFormulatorService().composition(req.query.id, req['user'].email);
+            const result: FormulationCompositionValue[] = await container.get<FormulationService>('FormulationService').composition(req.query.id, req['user'].email);
 
             res.json(result);
         } catch (err) {
@@ -103,15 +104,5 @@ export class FormulatorRouter {
                 stack: err.stack,
             });
         }
-    }
-
-    protected static getFormulatorService(): FormulatorService {
-        const dietRepository: IDietRepository = new DietRepository(config.database.host, config.database.username, config.database.password);
-        const ingredientRepository: IIngredientRepository = new IngredientRepository(config.database.host, config.database.username, config.database.password);
-        const formulationRepository: IFormulationRepository = new FormulationRepository(config.database.host, config.database.username, config.database.password);
-        const userRepository: IUserRepository = new UserRepository(config.database.host, config.database.username, config.database.password);
-        const formulatorService: FormulatorService = new FormulatorService(userRepository, dietRepository, ingredientRepository, formulationRepository, null);
-
-        return formulatorService;
     }
 }

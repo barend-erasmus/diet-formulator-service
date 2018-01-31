@@ -1,9 +1,12 @@
+import "reflect-metadata";
+import { injectable, inject } from "inversify";
 import * as solver from 'javascript-lp-solver';
 import { IFormulator } from "../interfaces/formulator";
 import { Formulation } from "../entities/formulation";
 import { FormulationIngredient } from '../entities/formulation-ingredient';
 import { Diet } from '../entities/diet';
 
+@injectable()
 export class LeastCostRationFormulator implements IFormulator {
 
     public async formulate(formulation: Formulation): Promise<Formulation> {

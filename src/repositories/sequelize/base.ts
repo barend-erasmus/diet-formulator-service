@@ -303,7 +303,7 @@ export class BaseRepository {
                 ]
               });
 
-            BaseRepository.sequelize = new Sequelize('diet-formulator', username, password, {
+            BaseRepository.sequelize = new Sequelize('diet-formulator-2018', username, password, {
                 dialect: 'postgres',
                 host,
                 // logging: false,

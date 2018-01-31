@@ -1,4 +1,3 @@
-// Imports
 import * as bodyParser from 'body-parser';
 import * as cors from 'cors';
 import * as express from 'express';
@@ -10,7 +9,7 @@ import * as expressWinston from 'express-winston';
 import { config } from './config';
 import { DietRouter } from './routes/diet';
 import { DietGroupRouter } from './routes/diet-group';
-import { FormulatorRouter } from './routes/formulator';
+import { FormulationRouter } from './routes/formulation';
 import { IngredientRouter } from './routes/ingredients';
 import { NutrientRouter } from './routes/nutrient';
 import { UserRouter } from './routes/user';
@@ -54,12 +53,12 @@ app.post('/api/diet/update', requireUser, DietRouter.update);
 app.post('/api/ingredient/create', requireUser, IngredientRouter.create);
 app.get('/api/ingredient/list', requireUser, IngredientRouter.list);
 
-app.post('/api/formulator/create', requireUser, FormulatorRouter.create);
-app.get('/api/formulator/find', requireUser, FormulatorRouter.find);
-app.get('/api/formulator/list', requireUser, FormulatorRouter.list);
-app.get('/api/formulator/composition', requireUser, FormulatorRouter.composition);
-app.get('/api/formulator/supplement', requireUser, FormulatorRouter.supplement);
-app.get('/api/formulator/suggestedValue', requireUser, FormulatorRouter.suggestedValue);
+app.post('/api/formulation/create', requireUser, FormulationRouter.create);
+app.get('/api/formulation/find', requireUser, FormulationRouter.find);
+app.get('/api/formulation/list', requireUser, FormulationRouter.list);
+app.get('/api/formulation/composition', requireUser, FormulationRouter.composition);
+app.get('/api/formulation/supplement', requireUser, FormulationRouter.supplement);
+app.get('/api/formulation/suggestedValue', requireUser, FormulationRouter.suggestedValue);
 
 app.use('/api/docs', express.static(path.join(__dirname, './../apidoc')));
 app.use('/api/coverage', express.static(path.join(__dirname, './../coverage/lcov-report')));

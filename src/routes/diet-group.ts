@@ -6,12 +6,14 @@ import { UserRepository } from '../repositories/sequelize/user';
 import { IUserRepository } from '../repositories/user';
 import { DietGroupService } from '../services/diet-group';
 import { config } from './../config';
+import { container } from '../ioc';
+import { DietService } from '../services/diet';
 
 export class DietGroupRouter {
 
     public static async create(req: express.Request, res: express.Response) {
         try {
-            const result: DietGroup = await DietGroupRouter.getDietGroupService().create(new DietGroup(req.body.id, req.body.name, req.body.description, req.body.parent ?
+            const result: DietGroup = await container.get<DietGroupService>('DietGroupService').create(new DietGroup(req.body.id, req.body.name, req.body.description, req.body.parent ?
                     new DietGroup(req.body.parent.id, req.body.parent.name, req.body.parent.description, null) :
                     null),
                 req['user'].email);
@@ -27,7 +29,7 @@ export class DietGroupRouter {
 
     public static async find(req: express.Request, res: express.Response) {
         try {
-            const result: DietGroup = await DietGroupRouter.getDietGroupService().find(req.query.id, req['user'].email);
+            const result: DietGroup = await container.get<DietGroupService>('DietGroupService').find(req.query.id, req['user'].email);
 
             res.json(result);
         } catch (err) {
@@ -40,7 +42,7 @@ export class DietGroupRouter {
 
     public static async list(req: express.Request, res: express.Response) {
         try {
-            const result: DietGroup[] = await DietGroupRouter.getDietGroupService().list(req.query.dietGroupId ? req.query.dietGroupId : null, req['user'].email);
+            const result: DietGroup[] = await container.get<DietGroupService>('DietGroupService').list(req.query.dietGroupId ? req.query.dietGroupId : null, req['user'].email);
 
             res.json(result);
         } catch (err) {
@@ -54,7 +56,7 @@ export class DietGroupRouter {
     public static async listAll(req: express.Request, res: express.Response) {
         try {
 
-            const result: DietGroup[] = await DietGroupRouter.getDietGroupService().listAll(req['user'].email);
+            const result: DietGroup[] = await container.get<DietGroupService>('DietGroupService').listAll(req['user'].email);
 
             res.json(result);
         } catch (err) {
@@ -68,7 +70,7 @@ export class DietGroupRouter {
     public static async update(req: express.Request, res: express.Response) {
         try {
 
-            const result: DietGroup = await DietGroupRouter.getDietGroupService().update(
+            const result: DietGroup = await container.get<DietGroupService>('DietGroupService').update(
                 new DietGroup(req.body.id, req.body.name, req.body.description, req.body.parent ?
                     new DietGroup(req.body.parent.id, req.body.parent.name, req.body.parent.description, null) :
                     null),
@@ -83,11 +85,5 @@ export class DietGroupRouter {
         }
     }
 
-    protected static getDietGroupService(): DietGroupService {
-        const userRepository: IUserRepository = new UserRepository(config.database.host, config.database.username, config.database.password);
-        const dietGroupRepository: IDietGroupRepository = new DietGroupRepository(config.database.host, config.database.username, config.database.password);
-        const dietGroupService: DietGroupService = new DietGroupService(userRepository, dietGroupRepository);
-
-        return dietGroupService;
-    }
+    p
 }

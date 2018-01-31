@@ -17,10 +17,13 @@ import { IIngredientRepository } from '../repositories/ingredient';
 import { IUserRepository } from '../repositories/user';
 import { BaseService } from './base';
 import { IFormulator } from '../interfaces/formulator';
+import { ISubscriptionFactory } from '../interfaces/subscription-factory';
 
-export class FormulatorService extends BaseService {
+export class FormulationService extends BaseService {
 
     constructor(
+        @inject("ISubscriptionFactory")
+        subscriptionFactory: ISubscriptionFactory,
         @inject("IUserRepository")
         userRepository: IUserRepository,
         @inject("IDietRepository")
@@ -32,14 +35,12 @@ export class FormulatorService extends BaseService {
         @inject("IFormulator")
         private formulator: IFormulator,
     ) {
-        super(userRepository);
+        super(subscriptionFactory, userRepository);
     }
 
-    public async createFormulation(diet: Diet, formulationIngredients: FormulationIngredient[], mixWeight: number, username: string): Promise<Formulation> {
+    public async create(diet: Diet, formulationIngredients: FormulationIngredient[], mixWeight: number, username: string): Promise<Formulation> {
 
-        if (!await this.hasPermission(username, 'create-formulation')) {
-            throw new Error('Unauthorized');
-        }
+        await this.throwIfDoesNotHavePermission(username, 'create-formulation');
 
         diet = await this.dietRepository.find(diet.id);
 
