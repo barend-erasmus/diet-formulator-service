@@ -48,13 +48,13 @@ export class BaseRepository {
                 allowNull: true,
                 type: Sequelize.STRING,
             },
-            packageClass: {
-                allowNull: false,
-                type: Sequelize.STRING,
-            },
             picture: {
                 allowNull: true,
                 type: Sequelize.TEXT,
+            },
+            subscriptionType: {
+                allowNull: false,
+                type: Sequelize.STRING,
             },
             token: {
                 allowNull: false,

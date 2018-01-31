@@ -8,7 +8,6 @@ import * as yargs from 'yargs';
 import * as winston from 'winston';
 import * as expressWinston from 'express-winston';
 import { config } from './config';
-import { ApplicationRouter } from './routes/application';
 import { DietRouter } from './routes/diet';
 import { DietGroupRouter } from './routes/diet-group';
 import { FormulatorRouter } from './routes/formulator';
@@ -35,8 +34,6 @@ app.use(expressWinston.logger({
 
 app.get('/api/user/info', UserRouter.info);
 app.post('/api/user/update', UserRouter.update);
-
-app.post('/api/application/create', requireUser, ApplicationRouter.create);
 
 app.post('/api/nutrient/create', requireUser, NutrientRouter.create);
 app.get('/api/nutrient/find', requireUser, NutrientRouter.find);

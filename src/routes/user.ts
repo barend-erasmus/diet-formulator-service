@@ -34,7 +34,7 @@ export class UserRouter {
                         json.user_metadata ? (json.user_metadata.isSuperAdmin ? json.user_metadata.isSuperAdmin : false) : false,
                         json.locale,
                         json.country,
-                        [],
+                        null,
                     ), token);
 
                     res.json(user);

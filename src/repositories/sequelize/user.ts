@@ -21,7 +21,7 @@ export class UserRepository extends BaseRepository implements IUserRepository {
             expiryTimestamp: new Date().getTime() + 3600000,
             isSuperAdmin: user.isSuperAdmin,
             locale: user.locale,
-            packageClass: user.packageClass,
+            subscriptionType: user.subscriptionType,
             picture: user.picture,
             token,
             verified: user.verified,
@@ -47,7 +47,7 @@ export class UserRepository extends BaseRepository implements IUserRepository {
             return null;
         }
 
-        return new User(result.email, result.displayName, result.verified, result.picture, result.packageClass, result.isSuperAdmin, result.locale, result.country, []);
+        return new User(result.email, result.displayName, result.verified, result.picture, result.subscriptionType, result.isSuperAdmin, result.locale, result.country, null);
     }
 
     public async findByUsername(username: string): Promise<User> {
@@ -66,7 +66,7 @@ export class UserRepository extends BaseRepository implements IUserRepository {
             return null;
         }
 
-        return new User(result[0].email, result[0].displayName, result[0].verified, result[0].picture, result[0].packageClass, result[0].isSuperAdmin, result[0].locale, result[0].country, []);
+        return new User(result[0].email, result[0].displayName, result[0].verified, result[0].picture, result[0].packageClass, result[0].isSuperAdmin, result[0].locale, result[0].country, null);
     }
 
     public async update(user: User, token: string): Promise<User> {
@@ -81,7 +81,7 @@ export class UserRepository extends BaseRepository implements IUserRepository {
         result.country = user.country;
         result.displayName = user.displayName;
         result.locale = user.locale;
-        result.packageClass = user.packageClass;
+        result.subscriptionType = user.subscriptionType;
         result.picture = user.picture;
         result.verified = user.verified;
 

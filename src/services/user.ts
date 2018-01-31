@@ -20,12 +20,12 @@ export class UserService extends BaseService {
         if (!result) {
             result = await this.userRepository.create(user, token);
         } else {
-            result.packageClass = user.packageClass;
+            result.subscriptionType = user.subscriptionType;
             result.verified = user.verified;
             result = await this.userRepository.update(result, token);
         }
 
-        result.permissions = await this.getUserPermissions(result.email);
+        result.subscription = await this.getSubscription(result.email);
 
         return result;
     }
@@ -37,7 +37,7 @@ export class UserService extends BaseService {
             return null;
         }
 
-        user.permissions = await this.getUserPermissions(user.email);
+        user.subscription = await this.getSubscription(user.email);
 
         return user;
     }
@@ -60,7 +60,7 @@ export class UserService extends BaseService {
 
         await this.userRepository.update(existingUser, token);
 
-        existingUser.permissions = await this.getUserPermissions(user.email);
+        existingUser.subscription = await this.getSubscription(user.email);
 
         return existingUser;
     }

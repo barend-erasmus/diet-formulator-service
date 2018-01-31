@@ -15,6 +15,10 @@ export class Diet {
 
     }
 
+    public clearUserName(): void {
+        this.username = null;
+    }
+
     public validate(): void {
         const errorFields: ErrorField[] = [];
 

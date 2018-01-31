@@ -110,7 +110,7 @@ export class FormulatorRouter {
         const ingredientRepository: IIngredientRepository = new IngredientRepository(config.database.host, config.database.username, config.database.password);
         const formulationRepository: IFormulationRepository = new FormulationRepository(config.database.host, config.database.username, config.database.password);
         const userRepository: IUserRepository = new UserRepository(config.database.host, config.database.username, config.database.password);
-        const formulatorService: FormulatorService = new FormulatorService(userRepository, dietRepository, ingredientRepository, formulationRepository);
+        const formulatorService: FormulatorService = new FormulatorService(userRepository, dietRepository, ingredientRepository, formulationRepository, null);
 
         return formulatorService;
     }
