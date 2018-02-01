@@ -18,7 +18,9 @@ import { IUserRepository } from '../repositories/user';
 import { BaseService } from './base';
 import { IFormulator } from '../interfaces/formulator';
 import { ISubscriptionFactory } from '../interfaces/subscription-factory';
+import { WorldOfRationsError } from '../errors/world-of-rations-error';
 
+@injectable()
 export class FormulationService extends BaseService {
 
     constructor(
@@ -45,34 +47,18 @@ export class FormulationService extends BaseService {
         diet = await this.dietRepository.find(diet.id);
 
         for (const formulationIngredient of formulationIngredients) {
-            if (formulationIngredient.ingredient.username && formulationIngredient.ingredient.username !== username) {
-                throw new Error(`Cannot use other user's ingredients`);
-            }
-
-            formulationIngredient.ingredient = await this.ingredientRepository.find(formulationIngredient.ingredient.id);
+           await this.loadIngredientForFormulationIngredient(formulationIngredient, username);
         }
 
-        const groupChart: string[] = [];
+        const groupChart: string = this.buildGroupChart(diet.group);
 
-        let group: any = diet.group;
-
-        while (group) {
-            groupChart.push(group.name);
-
-            group = group.parent;
-        }
-
-        groupChart.reverse();
-
-        const formulation: Formulation = new Formulation(null, `${groupChart.join(' - ')} - ${diet.name} - ${moment().format('DD-MM-YYYY')}`, diet, formulationIngredients, null, null, mixWeight, new Date());
+        const formulation: Formulation = new Formulation(null, `${groupChart} - ${diet.name} - ${moment().format('DD-MM-YYYY')}`, diet, formulationIngredients, null, null, mixWeight, new Date());
 
         let result: Formulation = await this.formulator.formulate(formulation);
 
         result = await this.formulationRepository.create(formulation, username);
 
-        if (!await this.hasPermission(username, 'view-formulation-values')) {
-            result.removeValues();
-        }
+        result = await this.removeFormulationValusIfNotHaveViewFormulationValuesPermission(username, result);
 
         return result;
     }
@@ -219,5 +205,37 @@ export class FormulationService extends BaseService {
         }
 
         return result;
+    }
+
+    private buildGroupChart(dietGroup: DietGroup): string {
+        const groupChart: string[] = [];
+
+        while (dietGroup) {
+            groupChart.push(dietGroup.name);
+
+            dietGroup = dietGroup.parent;
+        }
+
+        groupChart.reverse();
+
+        return groupChart.join(' - ');
+    }
+
+    private async loadIngredientForFormulationIngredient(formulationIngredient: FormulationIngredient, userName: string): Promise<FormulationIngredient> {
+        if (formulationIngredient.ingredient.username && formulationIngredient.ingredient.username !== userName) {
+            throw new WorldOfRationsError('mismatched_username', `Cannot use other user's ingredients in your formulation`);
+        }
+
+        formulationIngredient.ingredient = await this.ingredientRepository.find(formulationIngredient.ingredient.id);
+    
+        return formulationIngredient;
+    }
+
+    private async removeFormulationValusIfNotHaveViewFormulationValuesPermission(userName: string, formulation: Formulation): Promise<Formulation> {
+        if (!await this.hasPermission(userName, 'view-formulation-values')) {
+            formulation.removeValues();
+        }
+
+        return formulation;
     }
 }

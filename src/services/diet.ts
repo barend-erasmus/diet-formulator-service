@@ -10,6 +10,7 @@ import { BaseService } from './base';
 import { InsufficientPermissionsError } from "../errors/insufficient-permissions-error";
 import { ISubscriptionFactory } from "../interfaces/subscription-factory";
 
+@injectable()
 export class DietService extends BaseService {
 
     constructor(
@@ -42,7 +43,7 @@ export class DietService extends BaseService {
 
         diet = await this.dietRepository.create(diet);
 
-        await this.removeDietValuesIfNotHaveViewDietValuesPermission(username, diet);
+        diet = await this.removeDietValuesIfNotHaveViewDietValuesPermission(username, diet);
 
         return diet;
     }
@@ -54,9 +55,9 @@ export class DietService extends BaseService {
 
         await this.throwIfDoesNotHavePermission(username, 'view-diet');
 
-        const diet: Diet = await this.dietRepository.find(dietId);
+        let diet: Diet = await this.dietRepository.find(dietId);
 
-        await this.removeDietValuesIfNotHaveViewDietValuesPermission(username, diet);
+        diet = await this.removeDietValuesIfNotHaveViewDietValuesPermission(username, diet);
 
         return diet;
     }
@@ -91,13 +92,13 @@ export class DietService extends BaseService {
             if (existingDiet.username === username) {
                 throw new InsufficientPermissionsError('insufficient_permissions', `Non super users can only update their own diets`, 'super-user', username);
             }
-        } 
+        }
 
         diet = await this.clearUserNameIfSuperUser(username, diet);
 
         diet = await this.dietRepository.update(diet);
 
-        await this.removeDietValuesIfNotHaveViewDietValuesPermission(username, diet);
+        diet = await this.removeDietValuesIfNotHaveViewDietValuesPermission(username, diet);
 
         return diet;
     }
@@ -110,10 +111,12 @@ export class DietService extends BaseService {
         return diet;
     }
 
-    private async removeDietValuesIfNotHaveViewDietValuesPermission(userName: string, diet: Diet): Promise<void> {
+    private async removeDietValuesIfNotHaveViewDietValuesPermission(userName: string, diet: Diet): Promise<Diet> {
         if (!await this.hasPermission(userName, 'view-diet-values')) {
             diet.removeValues();
         }
+
+        return diet;
     }
 
     private async throwIfDietNotUserDefinedGroupWithoutSuperUserPermission(userName: string, dietGroupId: number): Promise<void> {

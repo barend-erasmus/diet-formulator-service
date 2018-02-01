@@ -13,17 +13,21 @@ const pg = require('pg');
 
         const headerLine = lines[0];
 
-        const columns = headerLine.split(';').filter((x) => x !== 'applicationId');
+        const columns = headerLine.split(';');
+
+        const indexOfApplicationId = columns.indexOf('applicationId');
 
         const pool = new pg.Pool({
-            user: 'diet-formulator',
+            user: 'sa',
             host: 'developersworkspace.co.za',
             database: 'diet-formulator-2018',
-            password: '&UNtpV9B-XeF?%Ks',
+            password: 'i8@lltheteaspoon$',
             port: 5432,
         });
 
         const client = await pool.connect();
+
+        let query = null;
 
         try {
             console.log('Beginning transaction');
@@ -34,7 +38,7 @@ const pg = require('pg');
 
             for (let i = 1; i < lines.length - 1; i++) {
                 const values = lines[i].split(';');
-                const query = `INSERT INTO public."${tableName}" (${columns.map((x) => `"${x}"`).join(', ')}) VALUES (${values.map((x) => x === '' ? 'NULL' : (isNaN(x) ? `'${x}'` : x)).join(', ')});`
+                query = `INSERT INTO public."${tableName}" (${columns.filter((x, index) => index !== indexOfApplicationId).map((x) => `"${x}"`).join(', ')}) VALUES (${values.filter((x, index) => index !== indexOfApplicationId).map((x) => x === '' ? 'NULL' : (isNaN(x) ? `'${x.replace(new RegExp(`'`, 'g'), `''`)}'` : x)).join(', ')});`
                 console.log(`${tableName} - ${i} of ${lines.length - 1} (${i / (lines.length - 1) * 100})`);
                 await client.query(query);
             }
@@ -47,6 +51,7 @@ const pg = require('pg');
 
         } catch (e) {
             console.log('Rolling back transaction');
+            console.error(query);
 
             await client.query('ROLLBACK');
         } finally {

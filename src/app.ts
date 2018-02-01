@@ -17,10 +17,8 @@ import { UserRouter } from './routes/user';
 const argv = yargs.argv;
 const app = express();
 
-// Configures body parser
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json({ limit: '50mb' }));
-
 app.use(cors());
 
 app.use(expressWinston.logger({
@@ -82,3 +80,7 @@ function requireUser(req: express.Request, res: express.Response, next: express.
 app.listen(argv.port || 3000, () => {
     console.log(`listening on port ${argv.port || 3000}`);
 });
+
+export {
+    app,
+};

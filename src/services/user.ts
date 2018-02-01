@@ -7,6 +7,7 @@ import { ISubscriptionFactory } from "../interfaces/subscription-factory";
 
 @injectable()
 export class UserService extends BaseService {
+    
     constructor(
         @inject("ISubscriptionFactory")
         subscriptionFactory: ISubscriptionFactory,
