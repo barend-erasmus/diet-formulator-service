@@ -19,6 +19,7 @@ export class BaseRepository {
         Supplement: Sequelize.Model<{}, {}>,
         User: Sequelize.Model<{}, {}>,
     } = null;
+
     protected static sequelize: Sequelize.Sequelize = null;
 
     private static defineModels(): void {
@@ -323,7 +324,7 @@ export class BaseRepository {
         }
     }
 
-    public close(): void {
+    public dispose(): void {
         if (BaseRepository.sequelize) {
             BaseRepository.sequelize.close();
             BaseRepository.sequelize = null;

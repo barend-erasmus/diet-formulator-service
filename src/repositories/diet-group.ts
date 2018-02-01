@@ -1,6 +1,7 @@
 import { DietGroup } from "../entities/diet-group";
+import { IBaseRepository } from "./base";
 
-export interface IDietGroupRepository {
+export interface IDietGroupRepository extends IBaseRepository {
     create(dietGroup: DietGroup): Promise<DietGroup>;
     find(dietGroupId: number): Promise<DietGroup>;
     list(): Promise<DietGroup[]>;

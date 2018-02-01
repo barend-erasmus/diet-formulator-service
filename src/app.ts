@@ -2,7 +2,6 @@ import * as bodyParser from 'body-parser';
 import * as cors from 'cors';
 import * as express from 'express';
 import * as path from 'path';
-import * as request from 'request-promise';
 import * as yargs from 'yargs';
 import * as winston from 'winston';
 import * as expressWinston from 'express-winston';
@@ -13,6 +12,7 @@ import { FormulationRouter } from './routes/formulation';
 import { IngredientRouter } from './routes/ingredients';
 import { NutrientRouter } from './routes/nutrient';
 import { UserRouter } from './routes/user';
+import { AuthenticationMiddleware } from './middleware/authentication';
 
 const argv = yargs.argv;
 const app = express();
@@ -32,50 +32,34 @@ app.use(expressWinston.logger({
 app.get('/api/user/info', UserRouter.info);
 app.post('/api/user/update', UserRouter.update);
 
-app.post('/api/nutrient/create', requireUser, NutrientRouter.create);
-app.get('/api/nutrient/find', requireUser, NutrientRouter.find);
-app.get('/api/nutrient/list', requireUser, NutrientRouter.list);
-app.post('/api/nutrient/update', requireUser, NutrientRouter.update);
+app.post('/api/nutrient/create', AuthenticationMiddleware.shouldBeAuthenticated, NutrientRouter.create);
+app.get('/api/nutrient/find', AuthenticationMiddleware.shouldBeAuthenticated, NutrientRouter.find);
+app.get('/api/nutrient/list', AuthenticationMiddleware.shouldBeAuthenticated, NutrientRouter.list);
+app.post('/api/nutrient/update', AuthenticationMiddleware.shouldBeAuthenticated, NutrientRouter.update);
 
-app.post('/api/dietgroup/create', requireUser, DietGroupRouter.create);
-app.get('/api/dietgroup/find', requireUser, DietGroupRouter.find);
-app.get('/api/dietgroup/list', requireUser, DietGroupRouter.list);
-app.get('/api/dietgroup/listAll', requireUser, DietGroupRouter.listAll);
-app.post('/api/dietgroup/update', requireUser, DietGroupRouter.update);
+app.post('/api/dietgroup/create', AuthenticationMiddleware.shouldBeAuthenticated, DietGroupRouter.create);
+app.get('/api/dietgroup/find', AuthenticationMiddleware.shouldBeAuthenticated, DietGroupRouter.find);
+app.get('/api/dietgroup/list', AuthenticationMiddleware.shouldBeAuthenticated, DietGroupRouter.list);
+app.get('/api/dietgroup/listAll', AuthenticationMiddleware.shouldBeAuthenticated, DietGroupRouter.listAll);
+app.post('/api/dietgroup/update', AuthenticationMiddleware.shouldBeAuthenticated, DietGroupRouter.update);
 
-app.post('/api/diet/create', requireUser, DietRouter.create);
-app.get('/api/diet/find', requireUser, DietRouter.find);
-app.get('/api/diet/list', requireUser, DietRouter.list);
-app.post('/api/diet/update', requireUser, DietRouter.update);
+app.post('/api/diet/create', AuthenticationMiddleware.shouldBeAuthenticated, DietRouter.create);
+app.get('/api/diet/find', AuthenticationMiddleware.shouldBeAuthenticated, DietRouter.find);
+app.get('/api/diet/list', AuthenticationMiddleware.shouldBeAuthenticated, DietRouter.list);
+app.post('/api/diet/update', AuthenticationMiddleware.shouldBeAuthenticated, DietRouter.update);
 
-app.post('/api/ingredient/create', requireUser, IngredientRouter.create);
-app.get('/api/ingredient/list', requireUser, IngredientRouter.list);
+app.post('/api/ingredient/create', AuthenticationMiddleware.shouldBeAuthenticated, IngredientRouter.create);
+app.get('/api/ingredient/list', AuthenticationMiddleware.shouldBeAuthenticated, IngredientRouter.list);
 
-app.post('/api/formulation/create', requireUser, FormulationRouter.create);
-app.get('/api/formulation/find', requireUser, FormulationRouter.find);
-app.get('/api/formulation/list', requireUser, FormulationRouter.list);
-app.get('/api/formulation/composition', requireUser, FormulationRouter.composition);
-app.get('/api/formulation/supplement', requireUser, FormulationRouter.supplement);
-app.get('/api/formulation/suggestedValue', requireUser, FormulationRouter.suggestedValue);
+app.post('/api/formulation/create', AuthenticationMiddleware.shouldBeAuthenticated, FormulationRouter.create);
+app.get('/api/formulation/find', AuthenticationMiddleware.shouldBeAuthenticated, FormulationRouter.find);
+app.get('/api/formulation/list', AuthenticationMiddleware.shouldBeAuthenticated, FormulationRouter.list);
+app.get('/api/formulation/composition', AuthenticationMiddleware.shouldBeAuthenticated, FormulationRouter.composition);
+app.get('/api/formulation/supplement', AuthenticationMiddleware.shouldBeAuthenticated, FormulationRouter.supplement);
+app.get('/api/formulation/suggestedValue', AuthenticationMiddleware.shouldBeAuthenticated, FormulationRouter.suggestedValue);
 
 app.use('/api/docs', express.static(path.join(__dirname, './../apidoc')));
 app.use('/api/coverage', express.static(path.join(__dirname, './../coverage/lcov-report')));
-
-function requireUser(req: express.Request, res: express.Response, next: express.NextFunction): void {
-    request({
-        headers: {
-            Authorization: req.get('Authorization'),
-        },
-        json: true,
-        uri: `${argv.prod ? 'https://api.suite.worldofrations.com' : 'http://localhost:3000'}/api/user/info`,
-    }).then((result) => {
-        req['user'] = result;
-
-        next();
-    }).catch((err) => {
-        res.status(401).end();
-    });
-}
 
 app.listen(argv.port || 3000, () => {
     console.log(`listening on port ${argv.port || 3000}`);

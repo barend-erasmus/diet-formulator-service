@@ -50,6 +50,8 @@ export class FormulationService extends BaseService {
            await this.loadIngredientForFormulationIngredient(formulationIngredient, username);
         }
 
+        console.log(diet);
+
         const groupChart: string = this.buildGroupChart(diet.group);
 
         const formulation: Formulation = new Formulation(null, `${groupChart} - ${diet.name} - ${moment().format('DD-MM-YYYY')}`, diet, formulationIngredients, null, null, mixWeight, new Date());

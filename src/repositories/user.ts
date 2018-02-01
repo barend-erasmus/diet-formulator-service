@@ -1,6 +1,7 @@
 import { User } from "../entities/user";
+import { IBaseRepository } from "./base";
 
-export interface IUserRepository {
+export interface IUserRepository extends IBaseRepository {
     create(user: User, token: string): Promise<User>;
     find(token: string): Promise<User>;
     findByUsername(username: string): Promise<User>;

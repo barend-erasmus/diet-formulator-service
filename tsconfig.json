@@ -6,7 +6,7 @@
         "outDir": "dist",
         "preserveConstEnums": true,
         "removeComments": true,
-        "sourceMap": false,
+        "sourceMap": true,
         "target": "es2017"
     },
     "include": [
