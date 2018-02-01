@@ -1,19 +1,20 @@
 import { expect } from 'chai';
 import 'mocha';
+import { LeastCostRationFormulator } from './least-cost-ration';
+import { IFormulator } from '../interfaces/formulator';
 import { Diet } from '../entities/diet';
 import { DietValue } from '../entities/diet-value';
-import { Formulation } from '../entities/formulation';
-import { FormulationCompositionValue } from '../entities/formulation-composition-value';
-import { FormulationIngredient } from '../entities/formulation-ingredient';
-import { Ingredient } from '../entities/ingredient';
-import { IngredientValue } from '../entities/ingredient-value';
 import { Nutrient } from '../entities/nutrient';
-import { FormulationService } from './formulation';
+import { Ingredient } from '../entities/ingredient';
+import { Formulation } from '../entities/formulation';
+import { FormulationIngredient } from '../entities/formulation-ingredient';
+import { IngredientValue } from '../entities/ingredient-value';
+import { FormulationCompositionValue } from '../entities/formulation-composition-value';
 
-describe('FormulationService', () => {
+describe('LeastCostRationFormulator', () => {
     describe('formulate', () => {
         it('should return feasible formulation', async () => {
-            const formulationService: FormulationService = new FormulationService(null, null, null, null, null, null);
+            const formulator: IFormulator = new LeastCostRationFormulator();
 
             const diet: Diet = new Diet(null, null, null, null, null, [
                 new DietValue(1, 20, 100, new Nutrient(1, 'Nutrient A', null, null, null, null, null)),
@@ -44,12 +45,10 @@ describe('FormulationService', () => {
                 ]), 70, 0, 350, null),
             ], null, null, 750, new Date());
 
-            // const result: Formulation = await formulationService.formulate(formulation, null);
+            const result: Formulation = await formulator.formulate(formulation);
 
-            // const formulationComposition: FormulationCompositionValue[] = await formulationService.calculateFormulationComposition(formulation, diet);
-
-            // expect(result.feasible).to.be.true;
-            // expect(Math.round(result.cost * 100) / 100).to.eq(121.08);
+            expect(result.feasible).to.be.true;
+            expect(Math.round(result.cost * 100) / 100).to.eq(121.08);
         });
     });
 });

@@ -1,5 +1,6 @@
 const fs = require('fs');
 const pg = require('pg');
+const csv = require('csv-parser');
 
 (async () => {
 
@@ -13,7 +14,7 @@ const pg = require('pg');
 
         const headerLine = lines[0];
 
-        const columns = headerLine.split(';');
+        const columns = headerLine.split(/;(?=(?:(?:[^"]*"){2})*[^"]*$)/);
 
         const indexOfApplicationId = columns.indexOf('applicationId');
 
@@ -30,23 +31,23 @@ const pg = require('pg');
         let query = null;
 
         try {
-            console.log('Beginning transaction');
+            console.log(`Beginning transaction - ${tableName}`);
 
             await client.query(`ALTER TABLE public."${tableName}" DISABLE TRIGGER ALL;`);
 
             await client.query('BEGIN');
 
             for (let i = 1; i < lines.length - 1; i++) {
-                const values = lines[i].split(';');
+                const values = lines[i].split(/;(?=(?:(?:[^"]*"){2})*[^"]*$)/);
                 query = `INSERT INTO public."${tableName}" (${columns.filter((x, index) => index !== indexOfApplicationId).map((x) => `"${x}"`).join(', ')}) VALUES (${values.filter((x, index) => index !== indexOfApplicationId).map((x) => x === '' ? 'NULL' : (isNaN(x) ? `'${x.replace(new RegExp(`'`, 'g'), `''`)}'` : x)).join(', ')});`
-                console.log(`${tableName} - ${i} of ${lines.length - 1} (${i / (lines.length - 1) * 100})`);
+                // console.log(`${tableName} - ${i} of ${lines.length - 1} (${i / (lines.length - 1) * 100})`);
                 await client.query(query);
             }
 
             console.log('Committing transaction');
 
             await client.query('COMMIT');
-            
+
             console.log('Successfully commited transaction');
 
         } catch (e) {
@@ -63,4 +64,5 @@ const pg = require('pg');
     }
 
 })().catch(e => console.error(e.message));
+
 
