@@ -1,10 +1,6 @@
 import * as express from 'express';
 import { Nutrient } from '../entities/nutrient';
 import { container } from '../ioc';
-import { INutrientRepository } from '../repositories/nutrient';
-import { NutrientRepository } from '../repositories/sequelize/nutrient';
-import { UserRepository } from '../repositories/sequelize/user';
-import { IUserRepository } from '../repositories/user';
 import { NutrientService } from '../services/nutrient';
 import { config } from './../config';
 

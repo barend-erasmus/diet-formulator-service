@@ -7,14 +7,6 @@ import { Ingredient } from '../entities/ingredient';
 import { SuggestedValue } from '../entities/suggested-value';
 import { Supplement } from '../entities/supplement';
 import { container } from '../ioc';
-import { IDietRepository } from '../repositories/diet';
-import { IFormulationRepository } from '../repositories/formulation';
-import { IIngredientRepository } from '../repositories/ingredient';
-import { DietRepository } from '../repositories/sequelize/diet';
-import { FormulationRepository } from '../repositories/sequelize/formulation';
-import { IngredientRepository } from '../repositories/sequelize/ingredient';
-import { UserRepository } from '../repositories/sequelize/user';
-import { IUserRepository } from '../repositories/user';
 import { FormulationService } from '../services/formulation';
 import { config } from './../config';
 

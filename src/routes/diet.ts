@@ -4,12 +4,6 @@ import { DietGroup } from '../entities/diet-group';
 import { DietValue } from '../entities/diet-value';
 import { Nutrient } from '../entities/nutrient';
 import { container } from '../ioc';
-import { IDietRepository } from '../repositories/diet';
-import { IDietGroupRepository } from '../repositories/diet-group';
-import { DietRepository } from '../repositories/sequelize/diet';
-import { DietGroupRepository } from '../repositories/sequelize/diet-group';
-import { UserRepository } from '../repositories/sequelize/user';
-import { IUserRepository } from '../repositories/user';
 import { DietService } from '../services/diet';
 import { config } from './../config';
 

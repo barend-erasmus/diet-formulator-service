@@ -1,11 +1,6 @@
 import * as express from 'express';
 import { DietGroup } from '../entities/diet-group';
 import { container } from '../ioc';
-import { IDietGroupRepository } from '../repositories/diet-group';
-import { DietGroupRepository } from '../repositories/sequelize/diet-group';
-import { UserRepository } from '../repositories/sequelize/user';
-import { IUserRepository } from '../repositories/user';
-import { DietService } from '../services/diet';
 import { DietGroupService } from '../services/diet-group';
 import { config } from './../config';
 
