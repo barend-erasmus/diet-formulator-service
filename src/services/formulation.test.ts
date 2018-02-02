@@ -45,7 +45,7 @@ describe('FormulationService - Integration', () => {
 
         beforeEach(async () => {
 
-            baseRepository = new BaseRepository(config.database.host, config.database.username, config.database.password);
+            baseRepository = new BaseRepository(config.database.host, config.database.userName, config.database.password);
 
             subscriptionFactory = <SubscriptionFactory>{
                 create: (type: string, isSuperAdmin: boolean) => null,
@@ -57,9 +57,9 @@ describe('FormulationService - Integration', () => {
             };
             sinon.stub(userRepository, 'findByUsername').returns(new User(null, null, null, null, null, null, null, null, null));
 
-            dietRepository = new DietRepository(config.database.host, config.database.username, config.database.password);
+            dietRepository = new DietRepository(config.database.host, config.database.userName, config.database.password);
 
-            ingredientRepository = new IngredientRepository(config.database.host, config.database.username, config.database.password);
+            ingredientRepository = new IngredientRepository(config.database.host, config.database.userName, config.database.password);
 
             formulationRepository = <IFormulationRepository>{
                 create: (formulation: Formulation, userName: string) => null,

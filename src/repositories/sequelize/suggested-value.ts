@@ -8,8 +8,8 @@ import { BaseRepository } from "./base";
 @injectable()
 export class SuggestedValueRepository extends BaseRepository implements ISuggestedValueRepository {
 
-    constructor(host: string, username: string, password: string) {
-        super(host, username, password);
+    constructor(host: string, userName: string, password: string) {
+        super(host, userName, password);
     }
 
     public async create(suggestedValue: SuggestedValue): Promise<SuggestedValue> {

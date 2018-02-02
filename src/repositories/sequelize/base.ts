@@ -114,7 +114,7 @@ export class BaseRepository {
                 allowNull: false,
                 type: Sequelize.STRING,
             },
-            username: {
+            userName: {
                 allowNull: true,
                 type: Sequelize.STRING,
             },
@@ -151,7 +151,7 @@ export class BaseRepository {
                 allowNull: false,
                 type: Sequelize.STRING,
             },
-            username: {
+            userName: {
                 allowNull: true,
                 type: Sequelize.STRING,
             },
@@ -208,7 +208,7 @@ export class BaseRepository {
                 allowNull: false,
                 type: Sequelize.DATE,
             },
-            username: {
+            userName: {
                 allowNull: false,
                 type: Sequelize.STRING,
             },
@@ -294,7 +294,7 @@ export class BaseRepository {
         };
     }
 
-    constructor(private host: string, private username: string, private password: string) {
+    constructor(private host: string, private userName: string, private password: string) {
 
         if (!BaseRepository.sequelize) {
 
@@ -304,7 +304,7 @@ export class BaseRepository {
                 ]
               });
 
-            BaseRepository.sequelize = new Sequelize('diet-formulator-2018', username, password, {
+            BaseRepository.sequelize = new Sequelize('diet-formulator-2018', userName, password, {
                 dialect: 'postgres',
                 host,
                 // logging: false,

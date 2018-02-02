@@ -8,8 +8,8 @@ import { BaseRepository } from "./base";
 @injectable()
 export class UserRepository extends BaseRepository implements IUserRepository {
 
-    constructor(host: string, username: string, password: string) {
-        super(host, username, password);
+    constructor(host: string, userName: string, password: string) {
+        super(host, userName, password);
     }
 
     public async create(user: User, token: string): Promise<User> {
@@ -50,14 +50,14 @@ export class UserRepository extends BaseRepository implements IUserRepository {
         return new User(result.email, result.displayName, result.verified, result.picture, result.subscriptionType, result.isSuperAdmin, result.locale, result.country, null);
     }
 
-    public async findByUsername(username: string): Promise<User> {
+    public async findByUsername(userName: string): Promise<User> {
 
         const result: any[] = await BaseRepository.models.User.findAll({
             limit: 1,
             order: [ [ 'expiryTimestamp', 'DESC' ]],
             where: {
                 email: {
-                    [Sequelize.Op.eq]: username,
+                    [Sequelize.Op.eq]: userName,
                 },
             },
         });

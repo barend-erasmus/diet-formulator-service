@@ -23,15 +23,15 @@ export class BaseService {
 
     }
 
-    protected async getSubscription(username: string): Promise<ISubscription> {
+    protected async getSubscription(userName: string): Promise<ISubscription> {
 
-        const user: User = await this.userRepository.findByUsername(username);
+        const user: User = await this.userRepository.findByUsername(userName);
 
         return this.subscriptionFactory.create(user.subscriptionType, user.isSuperAdmin);
     }
 
-    protected async hasPermission(username: string, permission: string): Promise<boolean> {
-        const subscription: ISubscription = await this.getSubscription(username);
+    protected async hasPermission(userName: string, permission: string): Promise<boolean> {
+        const subscription: ISubscription = await this.getSubscription(userName);
 
         return subscription.hasPermission(permission);
     }

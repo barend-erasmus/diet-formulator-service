@@ -11,8 +11,8 @@ import { BaseRepository } from "./base";
 @injectable()
 export class IngredientRepository extends BaseRepository implements IIngredientRepository {
 
-    constructor(host: string, username: string, password: string) {
-        super(host, username, password);
+    constructor(host: string, userName: string, password: string) {
+        super(host, userName, password);
     }
 
     public async create(ingredient: Ingredient): Promise<Ingredient> {
@@ -27,7 +27,7 @@ export class IngredientRepository extends BaseRepository implements IIngredientR
                 };
             }),
             name: ingredient.name,
-            username: ingredient.username,
+            userName: ingredient.userName,
         }, {
 
                 include: [
@@ -71,7 +71,7 @@ export class IngredientRepository extends BaseRepository implements IIngredientR
 
         const ingredientGroup: IngredientGroup = new IngredientGroup(result.ingredientGroup.id, result.ingredientGroup.name, result.ingredientGroup.description);
 
-        return new Ingredient(result.id, result.name, result.description, result.username, ingredientGroup,
+        return new Ingredient(result.id, result.name, result.description, result.userName, ingredientGroup,
             result.ingredientValues.map((value) =>
                 new IngredientValue(value.id, value.value, new Nutrient(value.nutrient.id, value.nutrient.name, value.nutrient.description, value.nutrient.code, value.nutrient.abbreviation, value.nutrient.unit, value.nutrient.sortOrder)),
             ).sort((a, b) => a.nutrient.sortOrder - b.nutrient.sortOrder));
@@ -105,7 +105,7 @@ export class IngredientRepository extends BaseRepository implements IIngredientR
                     },
                 });
 
-                return result.map((x) => new Ingredient(x.ingredient.id, x.ingredient.name, x.ingredient.description, x.ingredient.username, new IngredientGroup(x.ingredient.ingredientGroup.id, x.ingredient.ingredientGroup.name, x.ingredient.ingredientGroup.description),
+                return result.map((x) => new Ingredient(x.ingredient.id, x.ingredient.name, x.ingredient.description, x.ingredient.userName, new IngredientGroup(x.ingredient.ingredientGroup.id, x.ingredient.ingredientGroup.name, x.ingredient.ingredientGroup.description),
                 x.ingredient.ingredientValues.map((value) =>
                     new IngredientValue(value.id, value.value, new Nutrient(value.nutrient.id, value.nutrient.name, value.nutrient.description, value.nutrient.code, value.nutrient.abbreviation, value.nutrient.unit, value.nutrient.sortOrder)),
                 ).sort((a, b) => a.nutrient.sortOrder - b.nutrient.sortOrder)));
@@ -124,6 +124,6 @@ export class IngredientRepository extends BaseRepository implements IIngredientR
             ],
         });
 
-        return result.map((x) => new Ingredient(x.id, x.name, x.description, x.username, new IngredientGroup(x.ingredientGroup.id, x.ingredientGroup.name, x.ingredientGroup.description), []));
+        return result.map((x) => new Ingredient(x.id, x.name, x.description, x.userName, new IngredientGroup(x.ingredientGroup.id, x.ingredientGroup.name, x.ingredientGroup.description), []));
     }
 }

@@ -24,10 +24,10 @@ export class DietGroupService extends BaseService {
 
     public async create(
         dietGroup: DietGroup,
-        username: string,
+        userName: string,
     ): Promise<DietGroup> {
 
-        await this.throwIfDoesNotHavePermission(username, 'create-diet-group');
+        await this.throwIfDoesNotHavePermission(userName, 'create-diet-group');
 
         dietGroup.validate();
 
@@ -36,39 +36,39 @@ export class DietGroupService extends BaseService {
 
     public async find(
         dietGroupId: number,
-        username: string,
+        userName: string,
     ): Promise<DietGroup> {
 
-        await this.throwIfDoesNotHavePermission(username, 'view-diet-group');
+        await this.throwIfDoesNotHavePermission(userName, 'view-diet-group');
 
         return this.dietGroupRepository.find(dietGroupId);
     }
 
     public async list(
         dietGroupId: number,
-        username: string,
+        userName: string,
     ): Promise<DietGroup[]> {
         
-        await this.throwIfDoesNotHavePermission(username, 'view-diet-group');
+        await this.throwIfDoesNotHavePermission(userName, 'view-diet-group');
 
         return this.dietGroupRepository.listSubGroups(dietGroupId);
     }
 
     public async listAll(
-        username: string,
+        userName: string,
     ): Promise<DietGroup[]> {
         
-        await this.throwIfDoesNotHavePermission(username, 'view-diet-group');
+        await this.throwIfDoesNotHavePermission(userName, 'view-diet-group');
 
         return this.dietGroupRepository.list();
     }
 
     public async update(
         dietGroup: DietGroup,
-        username: string,
+        userName: string,
     ): Promise<DietGroup> {
 
-        await this.throwIfDoesNotHavePermission(username, 'update-diet-group');
+        await this.throwIfDoesNotHavePermission(userName, 'update-diet-group');
 
         dietGroup.validate();
 

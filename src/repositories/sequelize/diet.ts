@@ -10,8 +10,8 @@ import { BaseRepository } from "./base";
 
 @injectable()
 export class DietRepository extends BaseRepository implements IDietRepository {
-    constructor(host: string, username: string, password: string) {
-        super(host, username, password);
+    constructor(host: string, userName: string, password: string) {
+        super(host, userName, password);
     }
 
     public async create(diet: Diet): Promise<Diet> {
@@ -27,7 +27,7 @@ export class DietRepository extends BaseRepository implements IDietRepository {
                 };
             }),
             name: diet.name,
-            username: diet.username,
+            userName: diet.userName,
         }, {
 
                 include: [
@@ -73,7 +73,7 @@ export class DietRepository extends BaseRepository implements IDietRepository {
 
         dietGroup = await this.loadDietGroupParent(dietGroup);
 
-        return new Diet(result.id, result.name, result.description, result.username, dietGroup,
+        return new Diet(result.id, result.name, result.description, result.userName, dietGroup,
             result.dietValues.map((value) =>
                 new DietValue(value.id, value.minimum, value.maximum, new Nutrient(value.nutrient.id, value.nutrient.name, value.nutrient.description, value.nutrient.code, value.nutrient.abbreviation, value.nutrient.unit, value.nutrient.sortOrder)),
             ).sort((a, b) => a.nutrient.sortOrder - b.nutrient.sortOrder));
@@ -96,7 +96,7 @@ export class DietRepository extends BaseRepository implements IDietRepository {
         return this.find(result.comparisonDietId);
     }
 
-    public async list(dietGroupId: number, username: string): Promise<Diet[]> {
+    public async list(dietGroupId: number, userName: string): Promise<Diet[]> {
 
         const result: any[] = await BaseRepository.models.Diet.findAll({
             include: [
@@ -111,13 +111,13 @@ export class DietRepository extends BaseRepository implements IDietRepository {
                 dietGroupId: {
                     [Sequelize.Op.eq]: dietGroupId,
                 },
-                username: {
-                    [Sequelize.Op.or]: [null, username],
+                userName: {
+                    [Sequelize.Op.or]: [null, userName],
                 },
             },
         });
 
-        return result.map((x) => new Diet(x.id, x.name, x.description, x.username, new DietGroup(x.dietGroup.id, x.dietGroup.name, x.dietGroup.description, null), []));
+        return result.map((x) => new Diet(x.id, x.name, x.description, x.userName, new DietGroup(x.dietGroup.id, x.dietGroup.name, x.dietGroup.description, null), []));
     }
 
     public async update(diet: Diet): Promise<Diet> {

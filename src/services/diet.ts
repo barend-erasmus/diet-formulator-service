@@ -28,77 +28,77 @@ export class DietService extends BaseService {
 
     public async create(
         diet: Diet,
-        username: string,
+        userName: string,
     ): Promise<Diet> {
 
-        await this.throwIfDoesNotHavePermission(username, 'create-diet');
+        await this.throwIfDoesNotHavePermission(userName, 'create-diet');
 
-        diet.setUserName(username);
+        diet.setUserName(userName);
 
         diet.validate();
 
-        this.throwIfDietNotUserDefinedGroupWithoutSuperUserPermission(username, diet.group.id);
+        this.throwIfDietNotUserDefinedGroupWithoutSuperUserPermission(userName, diet.group.id);
 
-        diet = await this.clearUserNameIfSuperUser(username, diet);
+        diet = await this.clearUserNameIfSuperUser(userName, diet);
 
         diet = await this.dietRepository.create(diet);
 
-        diet = await this.removeDietValuesIfNotHaveViewDietValuesPermission(username, diet);
+        diet = await this.removeDietValuesIfNotHaveViewDietValuesPermission(userName, diet);
 
         return diet;
     }
 
     public async find(
         dietId: number,
-        username: string,
+        userName: string,
     ): Promise<Diet> {
 
-        await this.throwIfDoesNotHavePermission(username, 'view-diet');
+        await this.throwIfDoesNotHavePermission(userName, 'view-diet');
 
         let diet: Diet = await this.dietRepository.find(dietId);
 
-        diet = await this.removeDietValuesIfNotHaveViewDietValuesPermission(username, diet);
+        diet = await this.removeDietValuesIfNotHaveViewDietValuesPermission(userName, diet);
 
         return diet;
     }
 
     public async list(
         dietGroupId: number,
-        username: string,
+        userName: string,
     ): Promise<Diet[]> {
 
-        await this.throwIfDoesNotHavePermission(username, 'view-diet');
+        await this.throwIfDoesNotHavePermission(userName, 'view-diet');
 
-        return this.dietRepository.list(dietGroupId, username);
+        return this.dietRepository.list(dietGroupId, userName);
     }
 
     public async update(
         diet: Diet,
-        username: string,
+        userName: string,
     ): Promise<Diet> {
 
-        diet.setUserName(username);
+        diet.setUserName(userName);
 
-        await this.throwIfDoesNotHavePermission(username, 'create-diet');
+        await this.throwIfDoesNotHavePermission(userName, 'create-diet');
 
         diet.validate();
 
-        this.throwIfDietNotUserDefinedGroupWithoutSuperUserPermission(username, diet.group.id);
+        this.throwIfDietNotUserDefinedGroupWithoutSuperUserPermission(userName, diet.group.id);
 
-        if (!await this.hasPermission(username, 'super-user')) {
+        if (!await this.hasPermission(userName, 'super-user')) {
 
             const existingDiet: Diet = await this.dietRepository.find(diet.id);
 
-            if (existingDiet.username === username) {
-                throw new InsufficientPermissionsError('insufficient_permissions', `Non super users can only update their own diets`, 'super-user', username);
+            if (existingDiet.userName === userName) {
+                throw new InsufficientPermissionsError('insufficient_permissions', `Non super users can only update their own diets`, 'super-user', userName);
             }
         }
 
-        diet = await this.clearUserNameIfSuperUser(username, diet);
+        diet = await this.clearUserNameIfSuperUser(userName, diet);
 
         diet = await this.dietRepository.update(diet);
 
-        diet = await this.removeDietValuesIfNotHaveViewDietValuesPermission(username, diet);
+        diet = await this.removeDietValuesIfNotHaveViewDietValuesPermission(userName, diet);
 
         return diet;
     }

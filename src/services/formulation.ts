@@ -40,14 +40,14 @@ export class FormulationService extends BaseService {
         super(subscriptionFactory, userRepository);
     }
 
-    public async create(diet: Diet, formulationIngredients: FormulationIngredient[], mixWeight: number, username: string): Promise<Formulation> {
+    public async create(diet: Diet, formulationIngredients: FormulationIngredient[], mixWeight: number, userName: string): Promise<Formulation> {
 
-        await this.throwIfDoesNotHavePermission(username, 'create-formulation');
+        await this.throwIfDoesNotHavePermission(userName, 'create-formulation');
 
         diet = await this.dietRepository.find(diet.id);
 
         for (const formulationIngredient of formulationIngredients) {
-           await this.loadIngredientForFormulationIngredient(formulationIngredient, username);
+           await this.loadIngredientForFormulationIngredient(formulationIngredient, userName);
         }
 
         const groupChart: string = this.buildGroupChart(diet.group);
@@ -56,29 +56,29 @@ export class FormulationService extends BaseService {
 
         let result: Formulation = await this.formulator.formulate(formulation);
 
-        result = await this.formulationRepository.create(formulation, username);
+        result = await this.formulationRepository.create(formulation, userName);
 
-        result = await this.removeFormulationValuesIfNotHaveViewFormulationValuesPermission(username, result);
+        result = await this.removeFormulationValuesIfNotHaveViewFormulationValuesPermission(userName, result);
 
         return result;
     }
 
-    public async find(formulationId: number, username: string): Promise<Formulation> {
+    public async find(formulationId: number, userName: string): Promise<Formulation> {
 
-        await this.throwIfDoesNotHavePermission(username, 'view-formulation');
+        await this.throwIfDoesNotHavePermission(userName, 'view-formulation');
 
         let formulation: Formulation = await this.formulationRepository.find(formulationId);
 
         formulation = await this.formulator.formulate(formulation);
 
-        this.removeFormulationValuesIfNotHaveViewFormulationValuesPermission(username, formulation);
+        this.removeFormulationValuesIfNotHaveViewFormulationValuesPermission(userName, formulation);
 
         return formulation;
     }
 
-    public async suggestedValue(dietId: number, ingredientId: number, username: string): Promise<SuggestedValue> {
+    public async suggestedValue(dietId: number, ingredientId: number, userName: string): Promise<SuggestedValue> {
 
-        await this.throwIfDoesNotHavePermission(username, 'view-suggested-value');
+        await this.throwIfDoesNotHavePermission(userName, 'view-suggested-value');
 
         const diet: Diet = await this.dietRepository.find(dietId);
 
@@ -98,18 +98,18 @@ export class FormulationService extends BaseService {
         return null;
     }
 
-    public async list(username: string): Promise<Formulation[]> {
+    public async list(userName: string): Promise<Formulation[]> {
 
-        await this.throwIfDoesNotHavePermission(username, 'view-formulation');
+        await this.throwIfDoesNotHavePermission(userName, 'view-formulation');
 
-        const formulations: Formulation[] = await this.formulationRepository.list(username);
+        const formulations: Formulation[] = await this.formulationRepository.list(userName);
 
         return formulations;
     }
 
-    public async composition(formulationId: number, username: string): Promise<FormulationCompositionValue[]> {
+    public async composition(formulationId: number, userName: string): Promise<FormulationCompositionValue[]> {
 
-        await this.throwIfDoesNotHavePermission(username, 'view-formulation-composition');
+        await this.throwIfDoesNotHavePermission(userName, 'view-formulation-composition');
 
         let formulation: Formulation = await this.formulationRepository.find(formulationId);
 
@@ -120,9 +120,9 @@ export class FormulationService extends BaseService {
         return this.calculateFormulationComposition(formulation, comparisonDiet);
     }
 
-    public async supplement(formulationId: number, username: string): Promise<Supplement[]> {
+    public async supplement(formulationId: number, userName: string): Promise<Supplement[]> {
 
-        await this.throwIfDoesNotHavePermission(username, 'view-formulation-supplement');
+        await this.throwIfDoesNotHavePermission(userName, 'view-formulation-supplement');
 
         let formulation: Formulation = await this.formulationRepository.find(formulationId);
 
@@ -150,7 +150,7 @@ export class FormulationService extends BaseService {
             }
         }
 
-        if (!await this.hasPermission(username, 'view-formulation-supplement-values')) {
+        if (!await this.hasPermission(userName, 'view-formulation-supplement-values')) {
             for (const supplement of result) {
                 supplement.removeValues();
             }
@@ -205,8 +205,8 @@ export class FormulationService extends BaseService {
     }
 
     private async loadIngredientForFormulationIngredient(formulationIngredient: FormulationIngredient, userName: string): Promise<FormulationIngredient> {
-        if (formulationIngredient.ingredient.username && formulationIngredient.ingredient.username !== userName) {
-            throw new WorldOfRationsError('mismatched_username', `Cannot use other user's ingredients in your formulation`);
+        if (formulationIngredient.ingredient.userName && formulationIngredient.ingredient.userName !== userName) {
+            throw new WorldOfRationsError('mismatched_userName', `Cannot use other user's ingredients in your formulation`);
         }
 
         formulationIngredient.ingredient = await this.ingredientRepository.find(formulationIngredient.ingredient.id);

@@ -23,10 +23,10 @@ export class IngredientService extends BaseService {
 
     public async create(
         ingredient: Ingredient,
-        username: string,
+        userName: string,
     ): Promise<Ingredient> {
 
-        if (!await this.hasPermission(username, 'create-ingredient')) {
+        if (!await this.hasPermission(userName, 'create-ingredient')) {
             throw new Error('Unauthorized');
         }
 
@@ -36,10 +36,10 @@ export class IngredientService extends BaseService {
     }
 
     public async list(
-        username: string,
+        userName: string,
     ): Promise<Ingredient[]> {
 
-        if (!await this.hasPermission(username, 'view-ingredient')) {
+        if (!await this.hasPermission(userName, 'view-ingredient')) {
             throw new Error('Unauthorized');
         }
 

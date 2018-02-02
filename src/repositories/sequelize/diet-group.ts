@@ -8,8 +8,8 @@ import { BaseRepository } from "./base";
 @injectable()
 export class DietGroupRepository extends BaseRepository implements IDietGroupRepository {
 
-    constructor(host: string, username: string, password: string) {
-        super(host, username, password);
+    constructor(host: string, userName: string, password: string) {
+        super(host, userName, password);
     }
 
     public async create(dietGroup: DietGroup): Promise<DietGroup> {

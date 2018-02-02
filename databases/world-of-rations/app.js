@@ -18,7 +18,7 @@ const pg = require('pg');
 
             let queries = buildQueries(tableName, tableData);
 
-            const chunkSize = 60;
+            const chunkSize = 80;
 
             for (let i = 0; i < queries.length; i += chunkSize) {
                 const tempQueries = queries.slice(i, i + chunkSize);

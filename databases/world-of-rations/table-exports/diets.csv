@@ -1,4 +1,4 @@
-id;description;name;username;createdAt;updatedAt;dietGroupId
+id;description;name;userName;createdAt;updatedAt;dietGroupId
 21;;Bobwhite Quail, Breeder ration;;2017-12-05 17:10:08.689+00;2017-12-05 17:10:08.689+00;12
 255;;Fingerling;;2017-12-05 17:24:28.931+00;2017-12-05 17:24:28.931+00;54
 1;;A complete (Full feed) Finisher ration;;2017-12-05 17:09:03.647+00;2017-12-05 17:09:03.647+00;3

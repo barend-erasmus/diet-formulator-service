@@ -6,7 +6,7 @@ export class Ingredient {
         public id: number,
         public name: string,
         public description: string,
-        public username: string,
+        public userName: string,
         public group: IngredientGroup,
         public values: IngredientValue[],
     ) {

@@ -17,11 +17,11 @@ import { BaseRepository } from "./base";
 @injectable()
 export class FormulationRepository extends BaseRepository implements IFormulationRepository {
 
-    constructor(host: string, username: string, password: string) {
-        super(host, username, password);
+    constructor(host: string, userName: string, password: string) {
+        super(host, userName, password);
     }
 
-    public async create(formulation: Formulation, username: string): Promise<Formulation> {
+    public async create(formulation: Formulation, userName: string): Promise<Formulation> {
 
         const result: any = await BaseRepository.models.Formulation.create({
 
@@ -39,7 +39,7 @@ export class FormulationRepository extends BaseRepository implements IFormulatio
             mixWeight: formulation.mixWeight,
             name: formulation.name,
             timestamp: formulation.timestamp,
-            username,
+            userName,
         }, {
 
                 include: [
@@ -111,7 +111,7 @@ export class FormulationRepository extends BaseRepository implements IFormulatio
 
         dietGroup = await this.loadDietGroupParent(dietGroup);
 
-        const diet: Diet = new Diet(result.diet.id, result.diet.name, result.diet.description, result.diet.username, dietGroup,
+        const diet: Diet = new Diet(result.diet.id, result.diet.name, result.diet.description, result.diet.userName, dietGroup,
             result.diet.dietValues.map((value) =>
                 new DietValue(value.id, value.minimum, value.maximum, new Nutrient(value.nutrient.id, value.nutrient.name, value.nutrient.description, value.nutrient.code, value.nutrient.abbreviation, value.nutrient.unit, value.nutrient.sortOrder)),
             ).sort((a, b) => a.nutrient.sortOrder - b.nutrient.sortOrder));
@@ -121,7 +121,7 @@ export class FormulationRepository extends BaseRepository implements IFormulatio
             new Ingredient(formulationIngredient.ingredient.id,
                 formulationIngredient.ingredient.name,
                 formulationIngredient.ingredient.description,
-                formulationIngredient.ingredient.username,
+                formulationIngredient.ingredient.userName,
                 new IngredientGroup(formulationIngredient.ingredient.ingredientGroup.id, formulationIngredient.ingredient.ingredientGroup.name, formulationIngredient.ingredient.ingredientGroup.description),
                 formulationIngredient.ingredient.ingredientValues.map((value) =>
                     new IngredientValue(value.id, value.value, new Nutrient(value.nutrient.id, value.nutrient.nam, value.nutrient.des, value.nutrient.cod, value.nutrient.abb, value.nutrient.uni, value.nutrient.sor)),
@@ -135,14 +135,14 @@ export class FormulationRepository extends BaseRepository implements IFormulatio
         return formulation;
     }
 
-    public async list(username: string): Promise<Formulation[]> {
+    public async list(userName: string): Promise<Formulation[]> {
         const result: any[] = await BaseRepository.models.Formulation.findAll({
             order: [
                 ['timestamp', 'DESC'],
             ],
             where: {
-                username: {
-                    [Sequelize.Op.eq]: username,
+                userName: {
+                    [Sequelize.Op.eq]: userName,
                 },
             },
         });

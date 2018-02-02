@@ -7,6 +7,7 @@ import { config } from './../config';
 import { BaseService } from './base';
 import { ISubscriptionFactory } from "../interfaces/subscription-factory";
 
+
 @injectable()
 export class NutrientService extends BaseService {
 
@@ -23,10 +24,10 @@ export class NutrientService extends BaseService {
 
     public async create(
         nutrient: Nutrient,
-        username: string,
+        userName: string,
     ): Promise<Nutrient> {
 
-        if (!await this.hasPermission(username, 'create-nutrient')) {
+        if (!await this.hasPermission(userName, 'create-nutrient')) {
             throw new Error('Unauthorized');
         }
 
@@ -43,10 +44,10 @@ export class NutrientService extends BaseService {
 
     public async find(
         nutrientId: number,
-        username: string,
+        userName: string,
     ): Promise<Nutrient> {
 
-        if (!await this.hasPermission(username, 'view-nutrient')) {
+        if (!await this.hasPermission(userName, 'view-nutrient')) {
             throw new Error('Unauthorized');
         }
 
@@ -54,10 +55,10 @@ export class NutrientService extends BaseService {
     }
 
     public async list(
-        username: string,
+        userName: string,
     ): Promise<Nutrient[]> {
 
-        if (!await this.hasPermission(username, 'view-nutrient')) {
+        if (!await this.hasPermission(userName, 'view-nutrient')) {
             throw new Error('Unauthorized');
         }
 
@@ -66,10 +67,10 @@ export class NutrientService extends BaseService {
 
     public async update(
         nutrient: Nutrient,
-        username: string,
+        userName: string,
     ): Promise<Nutrient> {
 
-        if (!await this.hasPermission(username, 'update-nutrient')) {
+        if (!await this.hasPermission(userName, 'update-nutrient')) {
             throw new Error('Unauthorized');
         }
 

@@ -1,4 +1,4 @@
-id;description;name;username;createdAt;updatedAt;ingredientGroupId
+id;description;name;userName;createdAt;updatedAt;ingredientGroupId
 1;;Acid Buf (calcified seaweed);;2017-12-05 18:11:30.146+00;2017-12-05 18:11:30.146+00;1
 2;;Alfalfa hay, dehy 17% CP;;2017-12-05 18:11:34.342+00;2017-12-05 18:11:34.342+00;2
 3;;Alfalfa hay, dehy 20% CP;;2017-12-05 18:11:37.785+00;2017-12-05 18:11:37.785+00;2

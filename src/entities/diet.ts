@@ -8,7 +8,7 @@ export class Diet {
         public id: number,
         public name: string,
         public description: string,
-        public username: string,
+        public userName: string,
         public group: DietGroup,
         public values: DietValue[],
     ) {
@@ -16,7 +16,7 @@ export class Diet {
     }
 
     public clearUserName(): void {
-        this.username = null;
+        this.userName = null;
     }
 
     public validate(): void {
@@ -40,6 +40,6 @@ export class Diet {
     }
 
     public setUserName(userName: string): void {
-        this.username = userName;
+        this.userName = userName;
     }
 }
