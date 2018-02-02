@@ -1,6 +1,5 @@
 const fs = require('fs');
 const pg = require('pg');
-const csv = require('csv-parser');
 
 (async () => {
 

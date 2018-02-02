@@ -58,33 +58,27 @@ export class FormulationService extends BaseService {
 
         result = await this.formulationRepository.create(formulation, username);
 
-        result = await this.removeFormulationValusIfNotHaveViewFormulationValuesPermission(username, result);
+        result = await this.removeFormulationValuesIfNotHaveViewFormulationValuesPermission(username, result);
 
         return result;
     }
 
     public async find(formulationId: number, username: string): Promise<Formulation> {
 
-        if (!await this.hasPermission(username, 'view-formulation')) {
-            throw new Error('Unauthorized');
-        }
+        await this.throwIfDoesNotHavePermission(username, 'view-formulation');
 
         let formulation: Formulation = await this.formulationRepository.find(formulationId);
 
         formulation = await this.formulator.formulate(formulation);
 
-        if (!await this.hasPermission(username, 'view-formulation-values')) {
-            formulation.removeValues();
-        }
+        this.removeFormulationValuesIfNotHaveViewFormulationValuesPermission(username, formulation);
 
         return formulation;
     }
 
     public async suggestedValue(dietId: number, ingredientId: number, username: string): Promise<SuggestedValue> {
 
-        if (!await this.hasPermission(username, 'view-suggested-value')) {
-            throw new Error('Unauthorized');
-        }
+        await this.throwIfDoesNotHavePermission(username, 'view-suggested-value');
 
         const diet: Diet = await this.dietRepository.find(dietId);
 
@@ -106,9 +100,7 @@ export class FormulationService extends BaseService {
 
     public async list(username: string): Promise<Formulation[]> {
 
-        if (!await this.hasPermission(username, 'view-formulation')) {
-            throw new Error('Unauthorized');
-        }
+        await this.throwIfDoesNotHavePermission(username, 'view-formulation');
 
         const formulations: Formulation[] = await this.formulationRepository.list(username);
 
@@ -117,9 +109,7 @@ export class FormulationService extends BaseService {
 
     public async composition(formulationId: number, username: string): Promise<FormulationCompositionValue[]> {
 
-        if (!await this.hasPermission(username, 'view-formulation-composition')) {
-            throw new Error('Unauthorized');
-        }
+        await this.throwIfDoesNotHavePermission(username, 'view-formulation-composition');
 
         let formulation: Formulation = await this.formulationRepository.find(formulationId);
 
@@ -132,9 +122,7 @@ export class FormulationService extends BaseService {
 
     public async supplement(formulationId: number, username: string): Promise<Supplement[]> {
 
-        if (!await this.hasPermission(username, 'view-formulation-supplement')) {
-            throw new Error('Unauthorized');
-        }
+        await this.throwIfDoesNotHavePermission(username, 'view-formulation-supplement');
 
         let formulation: Formulation = await this.formulationRepository.find(formulationId);
 
@@ -142,11 +130,7 @@ export class FormulationService extends BaseService {
 
         const comparisonDiet: Diet = await this.dietRepository.findComparison(formulation.diet.id);
 
-        const FormulationCompositionValues: FormulationCompositionValue[] = await this.calculateFormulationComposition(formulation, comparisonDiet);
-
-        if (!comparisonDiet) {
-            throw new Error('Diet does not have a comparison diet');
-        }
+        this.throwIfComparisonDietIsNull(comparisonDiet);
 
         const result: Supplement[] = [];
 
@@ -167,7 +151,6 @@ export class FormulationService extends BaseService {
         }
 
         if (!await this.hasPermission(username, 'view-formulation-supplement-values')) {
-
             for (const supplement of result) {
                 supplement.removeValues();
             }
@@ -231,11 +214,17 @@ export class FormulationService extends BaseService {
         return formulationIngredient;
     }
 
-    private async removeFormulationValusIfNotHaveViewFormulationValuesPermission(userName: string, formulation: Formulation): Promise<Formulation> {
+    private async removeFormulationValuesIfNotHaveViewFormulationValuesPermission(userName: string, formulation: Formulation): Promise<Formulation> {
         if (!await this.hasPermission(userName, 'view-formulation-values')) {
             formulation.removeValues();
         }
 
         return formulation;
+    }
+
+    private throwIfComparisonDietIsNull(comparisonDiet: Diet): void {
+        if (!comparisonDiet) {
+            throw new WorldOfRationsError('no_comparison_diet', 'Diet does not have a comparison diet');
+        }
     }
 }

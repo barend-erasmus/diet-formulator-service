@@ -1,3 +1,5 @@
+import "reflect-metadata";
+import { injectable, inject, unmanaged } from "inversify";
 import { User } from "../entities/user";
 import { IUserRepository } from "../repositories/user";
 import { InsufficientPermissionsError } from "../errors/insufficient-permissions-error";
@@ -9,10 +11,13 @@ import { PremiumSubscription } from "../subscriptions/premium";
 import { SuperAdminSubscription } from "../subscriptions/super-admin";
 import { ISubscriptionFactory } from "../interfaces/subscription-factory";
 
+@injectable()
 export class BaseService {
 
     constructor(
-        private subscriptionFactory: ISubscriptionFactory,
+        @unmanaged()
+        protected subscriptionFactory: ISubscriptionFactory,
+        @unmanaged()
         protected userRepository: IUserRepository,
     ) {
 

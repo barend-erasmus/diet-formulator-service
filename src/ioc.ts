@@ -26,17 +26,18 @@ import { IngredientService } from './services/ingredient';
 import { NutrientService } from './services/nutrient';
 import { UserService } from './services/user';
 import { FormulationService } from './services/formulation';
+import { config } from './config';
 
 const container: Container = new Container();
 
-container.bind<IDietGroupRepository>('IDietGroupRepository').to(DietGroupRepository);
-container.bind<IDietRepository>('IDietRepository').to(DietRepository);
-container.bind<IFormulationRepository>('IFormulationRepository').to(FormulationRepository);
-container.bind<IIngredientGroupRepository>('IIngredientGroupRepository').to(IngredientGroupRepository);
-container.bind<IIngredientRepository>('IIngredientRepository').to(IngredientRepository);
-container.bind<INutrientRepository>('INutrientRepository').to(NutrientRepository);
-container.bind<ISuggestedValueRepository>('ISuggestedValueRepository').to(SuggestedValueRepository);
-container.bind<IUserRepository>('IUserRepository').to(UserRepository);
+container.bind<IDietGroupRepository>('IDietGroupRepository').toConstantValue(new DietGroupRepository(config.database.host, config.database.username, config.database.password));
+container.bind<IDietRepository>('IDietRepository').toConstantValue(new DietRepository(config.database.host, config.database.username, config.database.password));
+container.bind<IFormulationRepository>('IFormulationRepository').toConstantValue(new FormulationRepository(config.database.host, config.database.username, config.database.password));
+container.bind<IIngredientGroupRepository>('IIngredientGroupRepository').toConstantValue(new IngredientGroupRepository(config.database.host, config.database.username, config.database.password));
+container.bind<IIngredientRepository>('IIngredientRepository').toConstantValue(new IngredientRepository(config.database.host, config.database.username, config.database.password));
+container.bind<INutrientRepository>('INutrientRepository').toConstantValue(new NutrientRepository(config.database.host, config.database.username, config.database.password));
+container.bind<ISuggestedValueRepository>('ISuggestedValueRepository').toConstantValue(new SuggestedValueRepository(config.database.host, config.database.username, config.database.password));
+container.bind<IUserRepository>('IUserRepository').toConstantValue(new UserRepository(config.database.host, config.database.username, config.database.password));
 
 container.bind<IFormulator>('IFormulator').to(LeastCostRationFormulator);
 container.bind<ISubscriptionFactory>('ISubscriptionFactory').to(SubscriptionFactory);
