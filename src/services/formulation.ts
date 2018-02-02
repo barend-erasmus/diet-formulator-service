@@ -130,7 +130,7 @@ export class FormulationService extends BaseService {
 
         const comparisonDiet: Diet = await this.dietRepository.findComparison(formulation.diet.id);
 
-        this.throwIfComparisonDietIsNull(comparisonDiet);
+        this.throwIfComparisonDietNull(comparisonDiet);
 
         const result: Supplement[] = [];
 
@@ -222,7 +222,7 @@ export class FormulationService extends BaseService {
         return formulation;
     }
 
-    private throwIfComparisonDietIsNull(comparisonDiet: Diet): void {
+    private throwIfComparisonDietNull(comparisonDiet: Diet): void {
         if (!comparisonDiet) {
             throw new WorldOfRationsError('no_comparison_diet', 'Diet does not have a comparison diet');
         }
