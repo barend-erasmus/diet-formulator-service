@@ -6,13 +6,14 @@ import { UserRepository } from '../repositories/sequelize/user';
 import { IUserRepository } from '../repositories/user';
 import { UserService } from '../services/user';
 import { config } from './../config';
+import { WorldOfRationsError } from '../errors/world-of-rations-error';
 
 export class UserRouter {
 
     public static async info(req: express.Request, res: express.Response) {
         try {
 
-            const token: string = req.get('Authorization').split(' ')[1];
+            const token: string = UserRouter.getAuthorizationToken(req);
 
             let user: User = await container.get<UserService>('UserService').find(token);
 
@@ -48,10 +49,7 @@ export class UserRouter {
 
         } catch (err) {
             console.error(err);
-            res.status(500).json({
-                message: err.message,
-                stack: err.stack,
-            });
+            res.status(500).json(err);
         }
     }
 
@@ -67,5 +65,21 @@ export class UserRouter {
                 stack: err.stack,
             });
         }
+    }
+
+    private static getAuthorizationToken(req: express.Request): string {
+        const authorizationHeader: string = req.get('Authorization');
+
+        if (!authorizationHeader) {
+            throw new WorldOfRationsError('invalid_token', 'Invalid token');
+        }
+
+        const splittedAuthorizationHeader: string[] = authorizationHeader.split(' ');
+
+        if (splittedAuthorizationHeader.length !== 2 && splittedAuthorizationHeader[0].toLowerCase() === 'bearer') {
+            throw new WorldOfRationsError('invalid_token', 'Invalid token');
+        }
+
+        return splittedAuthorizationHeader[1];
     }
 }

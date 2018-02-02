@@ -34,10 +34,7 @@ export class FormulationRouter {
                 id: result.id,
             });
         } catch (err) {
-            res.status(500).json({
-                message: err.message,
-                stack: err.stack,
-            });
+            res.status(500).json(err);
         }
     }
 
@@ -47,10 +44,7 @@ export class FormulationRouter {
 
             res.json(result);
         } catch (err) {
-            res.status(500).json({
-                message: err.message,
-                stack: err.stack,
-            });
+            res.status(500).json(err);
         }
     }
 
@@ -60,10 +54,7 @@ export class FormulationRouter {
 
             res.json(result);
         } catch (err) {
-            res.status(500).json({
-                message: err.message,
-                stack: err.stack,
-            });
+            res.status(500).json(err);
         }
     }
 
@@ -73,10 +64,7 @@ export class FormulationRouter {
 
             res.json(result);
         } catch (err) {
-            res.status(500).json({
-                message: err.message,
-                stack: err.stack,
-            });
+            res.status(500).json(err);
         }
     }
 
@@ -86,10 +74,7 @@ export class FormulationRouter {
 
             res.json(result);
         } catch (err) {
-            res.status(500).json({
-                message: err.message,
-                stack: err.stack,
-            });
+            res.status(500).json(err);
         }
     }
 
@@ -99,10 +84,7 @@ export class FormulationRouter {
 
             res.json(result);
         } catch (err) {
-            res.status(500).json({
-                message: err.message,
-                stack: err.stack,
-            });
+            res.status(500).json(err);
         }
     }
 }

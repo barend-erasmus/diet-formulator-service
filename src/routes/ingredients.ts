@@ -16,10 +16,7 @@ export class IngredientRouter {
 
             res.json(result);
         } catch (err) {
-            res.status(500).json({
-                message: err.message,
-                stack: err.stack,
-            });
+            res.status(500).json(err);
         }
     }
 
@@ -30,10 +27,7 @@ export class IngredientRouter {
 
             res.json(result);
         } catch (err) {
-            res.status(500).json({
-                message: err.message,
-                stack: err.stack,
-            });
+            res.status(500).json(err);
         }
     }
 }
