@@ -1,22 +1,22 @@
-import "reflect-metadata";
-import { injectable, inject } from "inversify";
+import { inject, injectable } from 'inversify';
+import 'reflect-metadata';
 import { DietGroup } from '../entities/diet-group';
+import { InsufficientPermissionsError } from '../errors/insufficient-permissions-error';
+import { ISubscriptionFactory } from '../interfaces/subscription-factory';
 import { IDietGroupRepository } from '../repositories/diet-group';
 import { IUserRepository } from '../repositories/user';
 import { config } from './../config';
 import { BaseService } from './base';
-import { InsufficientPermissionsError } from "../errors/insufficient-permissions-error";
-import { ISubscriptionFactory } from "../interfaces/subscription-factory";
 
 @injectable()
 export class DietGroupService extends BaseService {
 
     constructor(
-        @inject("ISubscriptionFactory")
+        @inject('ISubscriptionFactory')
         subscriptionFactory: ISubscriptionFactory,
-        @inject("IUserRepository")
+        @inject('IUserRepository')
         userRepository: IUserRepository,
-        @inject("IDietGroupRepository")
+        @inject('IDietGroupRepository')
         private dietGroupRepository: IDietGroupRepository,
     ) {
         super(subscriptionFactory, userRepository);
@@ -48,7 +48,7 @@ export class DietGroupService extends BaseService {
         dietGroupId: number,
         userName: string,
     ): Promise<DietGroup[]> {
-        
+
         await this.throwIfDoesNotHavePermission(userName, 'view-diet-group');
 
         return this.dietGroupRepository.listSubGroups(dietGroupId);
@@ -57,7 +57,7 @@ export class DietGroupService extends BaseService {
     public async listAll(
         userName: string,
     ): Promise<DietGroup[]> {
-        
+
         await this.throwIfDoesNotHavePermission(userName, 'view-diet-group');
 
         return this.dietGroupRepository.list();

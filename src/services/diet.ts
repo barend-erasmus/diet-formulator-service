@@ -1,26 +1,26 @@
-import "reflect-metadata";
-import { injectable, inject } from "inversify";
+import { inject, injectable } from 'inversify';
+import 'reflect-metadata';
 import { Diet } from '../entities/diet';
 import { DietGroup } from '../entities/diet-group';
+import { InsufficientPermissionsError } from '../errors/insufficient-permissions-error';
+import { ISubscriptionFactory } from '../interfaces/subscription-factory';
 import { IDietRepository } from '../repositories/diet';
 import { IDietGroupRepository } from '../repositories/diet-group';
 import { IUserRepository } from '../repositories/user';
 import { config } from './../config';
 import { BaseService } from './base';
-import { InsufficientPermissionsError } from "../errors/insufficient-permissions-error";
-import { ISubscriptionFactory } from "../interfaces/subscription-factory";
 
 @injectable()
 export class DietService extends BaseService {
 
     constructor(
-        @inject("ISubscriptionFactory")
+        @inject('ISubscriptionFactory')
         subscriptionFactory: ISubscriptionFactory,
-        @inject("IUserRepository")
+        @inject('IUserRepository')
         userRepository: IUserRepository,
-        @inject("IDietRepository")
+        @inject('IDietRepository')
         private dietRepository: IDietRepository,
-        @inject("IDietGroupRepository")
+        @inject('IDietGroupRepository')
         private dietGroupRepository: IDietGroupRepository,
     ) {
         super(subscriptionFactory, userRepository);

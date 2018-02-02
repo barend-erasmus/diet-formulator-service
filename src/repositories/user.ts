@@ -1,5 +1,5 @@
-import { User } from "../entities/user";
-import { IBaseRepository } from "./base";
+import { User } from '../entities/user';
+import { IBaseRepository } from './base';
 
 export interface IUserRepository extends IBaseRepository {
     create(user: User, token: string): Promise<User>;

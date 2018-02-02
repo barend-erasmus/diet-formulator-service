@@ -1,12 +1,12 @@
-import "reflect-metadata";
-import { injectable, inject } from "inversify";
-import { TrialSubscription } from "../subscriptions/trail";
-import { BasicSubscription } from "../subscriptions/basic";
-import { StandardSubscription } from "../subscriptions/standard";
-import { PremiumSubscription } from "../subscriptions/premium";
-import { SuperAdminSubscription } from "../subscriptions/super-admin";
-import { ISubscriptionFactory } from "../interfaces/subscription-factory";
-import { ISubscription } from "../interfaces/subscription";
+import { inject, injectable } from 'inversify';
+import 'reflect-metadata';
+import { ISubscription } from '../interfaces/subscription';
+import { ISubscriptionFactory } from '../interfaces/subscription-factory';
+import { BasicSubscription } from '../subscriptions/basic';
+import { PremiumSubscription } from '../subscriptions/premium';
+import { StandardSubscription } from '../subscriptions/standard';
+import { SuperAdminSubscription } from '../subscriptions/super-admin';
+import { TrialSubscription } from '../subscriptions/trail';
 
 @injectable()
 export class SubscriptionFactory implements ISubscriptionFactory {

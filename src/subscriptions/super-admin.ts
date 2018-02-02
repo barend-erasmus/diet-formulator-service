@@ -1,4 +1,4 @@
-import { PremiumSubscription} from "./premium";
+import { PremiumSubscription} from './premium';
 
 export class SuperAdminSubscription extends PremiumSubscription {
 

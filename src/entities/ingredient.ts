@@ -1,5 +1,5 @@
-import { IngredientGroup } from "./ingredient-group";
-import { IngredientValue } from "./ingredient-value";
+import { IngredientGroup } from './ingredient-group';
+import { IngredientValue } from './ingredient-value';
 
 export class Ingredient {
     constructor(

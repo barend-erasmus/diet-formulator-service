@@ -1,40 +1,40 @@
+import { inject, injectable } from 'inversify';
 import * as moment from 'moment';
-import "reflect-metadata";
-import { injectable, inject } from "inversify";
-import { Diet } from "../entities/diet";
+import 'reflect-metadata';
+import { Diet } from '../entities/diet';
 import { DietGroup } from '../entities/diet-group';
 import { DietValue } from '../entities/diet-value';
 import { Formulation } from '../entities/formulation';
 import { FormulationCompositionValue } from '../entities/formulation-composition-value';
-import { FormulationIngredient } from "../entities/formulation-ingredient";
+import { FormulationIngredient } from '../entities/formulation-ingredient';
 import { Ingredient } from '../entities/ingredient';
 import { SuggestedValue } from '../entities/suggested-value';
 import { Supplement } from '../entities/supplement';
 import { SupplementIngredient } from '../entities/supplement-ingredient';
+import { WorldOfRationsError } from '../errors/world-of-rations-error';
+import { IFormulator } from '../interfaces/formulator';
+import { ISubscriptionFactory } from '../interfaces/subscription-factory';
 import { IDietRepository } from '../repositories/diet';
 import { IFormulationRepository } from '../repositories/formulation';
 import { IIngredientRepository } from '../repositories/ingredient';
 import { IUserRepository } from '../repositories/user';
 import { BaseService } from './base';
-import { IFormulator } from '../interfaces/formulator';
-import { ISubscriptionFactory } from '../interfaces/subscription-factory';
-import { WorldOfRationsError } from '../errors/world-of-rations-error';
 
 @injectable()
 export class FormulationService extends BaseService {
 
     constructor(
-        @inject("ISubscriptionFactory")
+        @inject('ISubscriptionFactory')
         subscriptionFactory: ISubscriptionFactory,
-        @inject("IUserRepository")
+        @inject('IUserRepository')
         userRepository: IUserRepository,
-        @inject("IDietRepository")
+        @inject('IDietRepository')
         private dietRepository: IDietRepository,
-        @inject("IIngredientRepository")
+        @inject('IIngredientRepository')
         private ingredientRepository: IIngredientRepository,
-        @inject("IFormulationRepository")
+        @inject('IFormulationRepository')
         private formulationRepository: IFormulationRepository,
-        @inject("IFormulator")
+        @inject('IFormulator')
         private formulator: IFormulator,
     ) {
         super(subscriptionFactory, userRepository);
@@ -210,7 +210,7 @@ export class FormulationService extends BaseService {
         }
 
         formulationIngredient.ingredient = await this.ingredientRepository.find(formulationIngredient.ingredient.id);
-    
+
         return formulationIngredient;
     }
 

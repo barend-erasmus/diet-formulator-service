@@ -1,17 +1,17 @@
-import "reflect-metadata";
-import { injectable, inject } from "inversify";
-import { User } from "../entities/user";
-import { IUserRepository } from "../repositories/user";
-import { BaseService } from "./base";
-import { ISubscriptionFactory } from "../interfaces/subscription-factory";
+import { inject, injectable } from 'inversify';
+import 'reflect-metadata';
+import { User } from '../entities/user';
+import { ISubscriptionFactory } from '../interfaces/subscription-factory';
+import { IUserRepository } from '../repositories/user';
+import { BaseService } from './base';
 
 @injectable()
 export class UserService extends BaseService {
-    
+
     constructor(
-        @inject("ISubscriptionFactory")
+        @inject('ISubscriptionFactory')
         subscriptionFactory: ISubscriptionFactory,
-        @inject("IUserRepository")
+        @inject('IUserRepository')
         userRepository: IUserRepository,
     ) {
         super(subscriptionFactory, userRepository);

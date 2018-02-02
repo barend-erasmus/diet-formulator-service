@@ -1,4 +1,4 @@
-import { ISubscription } from "../interfaces/subscription";
+import { ISubscription } from '../interfaces/subscription';
 
 export class User {
     constructor(

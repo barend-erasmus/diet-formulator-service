@@ -1,6 +1,6 @@
-import { Ingredient } from "./ingredient";
-import { IngredientGroup } from "./ingredient-group";
-import { IngredientValue } from "./ingredient-value";
+import { Ingredient } from './ingredient';
+import { IngredientGroup } from './ingredient-group';
+import { IngredientValue } from './ingredient-value';
 
 export class FormulationIngredient {
     constructor(

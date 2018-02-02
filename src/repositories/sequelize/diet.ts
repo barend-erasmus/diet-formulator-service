@@ -1,12 +1,12 @@
-import "reflect-metadata";
-import { injectable, inject } from "inversify";
+import { inject, injectable } from 'inversify';
+import 'reflect-metadata';
 import * as Sequelize from 'sequelize';
 import { Diet } from '../../entities/diet';
 import { DietGroup } from '../../entities/diet-group';
 import { DietValue } from '../../entities/diet-value';
 import { Nutrient } from '../../entities/nutrient';
 import { IDietRepository } from '../diet';
-import { BaseRepository } from "./base";
+import { BaseRepository } from './base';
 
 @injectable()
 export class DietRepository extends BaseRepository implements IDietRepository {
@@ -160,7 +160,7 @@ export class DietRepository extends BaseRepository implements IDietRepository {
                     minimum: value.minimum,
                     nutrientId: value.nutrient.id,
                 });
-            }else if (dietValue) {
+            } else if (dietValue) {
                 await BaseRepository.models.DietValue.destroy({
                     where: {
                         id: {
@@ -169,7 +169,7 @@ export class DietRepository extends BaseRepository implements IDietRepository {
                     },
                 });
             }
-        }        
+        }
 
         await result.save();
 

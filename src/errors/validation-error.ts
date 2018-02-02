@@ -1,5 +1,5 @@
-import { WorldOfRationsError } from "./world-of-rations-error";
-import { ErrorField } from "../models/error-field";
+import { ErrorField } from '../models/error-field';
+import { WorldOfRationsError } from './world-of-rations-error';
 
 export class ValidationError extends WorldOfRationsError {
     constructor(

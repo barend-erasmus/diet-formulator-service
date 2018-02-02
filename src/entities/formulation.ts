@@ -1,5 +1,5 @@
-import { Diet } from "./diet";
-import { FormulationIngredient } from "./formulation-ingredient";
+import { Diet } from './diet';
+import { FormulationIngredient } from './formulation-ingredient';
 
 export class Formulation {
     constructor(

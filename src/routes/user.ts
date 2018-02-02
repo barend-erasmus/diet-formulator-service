@@ -1,11 +1,11 @@
 import * as express from 'express';
 import * as request from 'request-promise';
 import { User } from '../entities/user';
+import { container } from '../ioc';
 import { UserRepository } from '../repositories/sequelize/user';
 import { IUserRepository } from '../repositories/user';
 import { UserService } from '../services/user';
 import { config } from './../config';
-import { container } from '../ioc';
 
 export class UserRouter {
 

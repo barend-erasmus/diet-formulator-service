@@ -1,5 +1,5 @@
-import { DietGroup } from "./diet-group";
-import { Ingredient } from "./ingredient";
+import { DietGroup } from './diet-group';
+import { Ingredient } from './ingredient';
 
 export class SuggestedValue {
     constructor(

@@ -1,28 +1,28 @@
 import { expect } from 'chai';
 import 'mocha';
 import * as sinon from 'sinon';
-import { FormulationService } from './formulation';
-import { ISubscriptionFactory } from '../interfaces/subscription-factory';
-import { IUserRepository } from '../repositories/user';
-import { IDietRepository } from '../repositories/diet';
-import { Formulation } from '../entities/formulation';
-import { Diet } from '../entities/diet';
-import { FormulationIngredient } from '../entities/formulation-ingredient';
-import { IIngredientGroupRepository } from '../repositories/ingredient-group';
-import { IFormulationRepository } from '../repositories/formulation';
-import { IFormulator } from '../interfaces/formulator';
-import { IIngredientRepository } from '../repositories/ingredient';
-import { SubscriptionFactory } from '../factories/subscription';
-import { SuperAdminSubscription } from '../subscriptions/super-admin';
-import { User } from '../entities/user';
-import { DietRepository } from '../repositories/sequelize/diet';
 import { config } from '../config';
-import { IngredientRepository } from '../repositories/sequelize/ingredient';
-import { LeastCostRationFormulator } from '../formulators/least-cost-ration';
-import { Ingredient } from '../entities/ingredient';
+import { Diet } from '../entities/diet';
 import { DietGroup } from '../entities/diet-group';
+import { Formulation } from '../entities/formulation';
+import { FormulationIngredient } from '../entities/formulation-ingredient';
+import { Ingredient } from '../entities/ingredient';
+import { User } from '../entities/user';
+import { SubscriptionFactory } from '../factories/subscription';
+import { LeastCostRationFormulator } from '../formulators/least-cost-ration';
+import { IFormulator } from '../interfaces/formulator';
+import { ISubscriptionFactory } from '../interfaces/subscription-factory';
 import { IBaseRepository } from '../repositories/base';
+import { IDietRepository } from '../repositories/diet';
+import { IFormulationRepository } from '../repositories/formulation';
+import { IIngredientRepository } from '../repositories/ingredient';
+import { IIngredientGroupRepository } from '../repositories/ingredient-group';
 import { BaseRepository } from '../repositories/sequelize/base';
+import { DietRepository } from '../repositories/sequelize/diet';
+import { IngredientRepository } from '../repositories/sequelize/ingredient';
+import { IUserRepository } from '../repositories/user';
+import { SuperAdminSubscription } from '../subscriptions/super-admin';
+import { FormulationService } from './formulation';
 
 describe('FormulationService - Integration', () => {
     describe('create', () => {
@@ -47,23 +47,23 @@ describe('FormulationService - Integration', () => {
 
             baseRepository = new BaseRepository(config.database.host, config.database.userName, config.database.password);
 
-            subscriptionFactory = <SubscriptionFactory>{
+            subscriptionFactory = {
                 create: (type: string, isSuperAdmin: boolean) => null,
-            };
+            } as SubscriptionFactory;
             sinon.stub(subscriptionFactory, 'create').returns(new SuperAdminSubscription([]));
 
-            userRepository = <IUserRepository>{
+            userRepository = {
                 findByUsername: (userName: string) => null,
-            };
+            } as IUserRepository;
             sinon.stub(userRepository, 'findByUsername').returns(new User(null, null, null, null, null, null, null, null, null));
 
             dietRepository = new DietRepository(config.database.host, config.database.userName, config.database.password);
 
             ingredientRepository = new IngredientRepository(config.database.host, config.database.userName, config.database.password);
 
-            formulationRepository = <IFormulationRepository>{
+            formulationRepository = {
                 create: (formulation: Formulation, userName: string) => null,
-            };
+            } as IFormulationRepository;
             sinon.stub(formulationRepository, 'create').callsFake((formulation: Formulation, userName: string) => {
                 return formulation;
             });

@@ -1,15 +1,15 @@
-import "reflect-metadata";
-import { injectable, inject, unmanaged } from "inversify";
-import { User } from "../entities/user";
-import { IUserRepository } from "../repositories/user";
-import { InsufficientPermissionsError } from "../errors/insufficient-permissions-error";
-import { ISubscription } from "../interfaces/subscription";
-import { TrialSubscription } from "../subscriptions/trail";
-import { BasicSubscription } from "../subscriptions/basic";
-import { StandardSubscription } from "../subscriptions/standard";
-import { PremiumSubscription } from "../subscriptions/premium";
-import { SuperAdminSubscription } from "../subscriptions/super-admin";
-import { ISubscriptionFactory } from "../interfaces/subscription-factory";
+import { inject, injectable, unmanaged } from 'inversify';
+import 'reflect-metadata';
+import { User } from '../entities/user';
+import { InsufficientPermissionsError } from '../errors/insufficient-permissions-error';
+import { ISubscription } from '../interfaces/subscription';
+import { ISubscriptionFactory } from '../interfaces/subscription-factory';
+import { IUserRepository } from '../repositories/user';
+import { BasicSubscription } from '../subscriptions/basic';
+import { PremiumSubscription } from '../subscriptions/premium';
+import { StandardSubscription } from '../subscriptions/standard';
+import { SuperAdminSubscription } from '../subscriptions/super-admin';
+import { TrialSubscription } from '../subscriptions/trail';
 
 @injectable()
 export class BaseService {

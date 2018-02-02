@@ -1,4 +1,4 @@
-import { Nutrient } from "./nutrient";
+import { Nutrient } from './nutrient';
 
 export class FormulationCompositionValue {
     constructor(

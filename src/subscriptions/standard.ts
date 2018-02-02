@@ -1,7 +1,7 @@
-import { BasicSubscription } from "./basic";
+import { BasicSubscription } from './basic';
 
 export class StandardSubscription extends BasicSubscription {
-    
+
     constructor(
         additionalPermissions: string[],
     ) {

@@ -1,7 +1,7 @@
-import { StandardSubscription } from "./standard";
+import { StandardSubscription } from './standard';
 
 export class PremiumSubscription extends StandardSubscription {
-    
+
     constructor(
         additionalPermissions: string[],
     ) {

@@ -1,7 +1,7 @@
-import { DietGroup } from "./diet-group";
-import { DietValue } from "./diet-value";
-import { ErrorField } from "../models/error-field";
-import { ValidationError } from "../errors/validation-error";
+import { ValidationError } from '../errors/validation-error';
+import { ErrorField } from '../models/error-field';
+import { DietGroup } from './diet-group';
+import { DietValue } from './diet-value';
 
 export class Diet {
     constructor(

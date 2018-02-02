@@ -1,7 +1,7 @@
-import { ISubscription } from "../interfaces/subscription";
+import { ISubscription } from '../interfaces/subscription';
 
 export class TrialSubscription implements ISubscription {
-    
+
     private permissions: string[] = [
         'view-profile',
         'update-profile',
@@ -14,7 +14,7 @@ export class TrialSubscription implements ISubscription {
         'create-formulation',
         'view-formulation',
     ];
-    
+
     constructor(
         additionalPermissions: string[],
     ) {
@@ -26,6 +26,6 @@ export class TrialSubscription implements ISubscription {
             return true;
         }
 
-        return false;
+       return false;
     }
 }

@@ -1,21 +1,21 @@
-import "reflect-metadata";
-import { injectable, inject } from "inversify";
+import { inject, injectable } from 'inversify';
+import 'reflect-metadata';
 import { Ingredient } from '../entities/ingredient';
+import { ISubscriptionFactory } from '../interfaces/subscription-factory';
 import { IIngredientRepository } from '../repositories/ingredient';
 import { IUserRepository } from '../repositories/user';
 import { config } from './../config';
 import { BaseService } from './base';
-import { ISubscriptionFactory } from "../interfaces/subscription-factory";
 
 @injectable()
 export class IngredientService extends BaseService {
 
     constructor(
-        @inject("ISubscriptionFactory")
+        @inject('ISubscriptionFactory')
         subscriptionFactory: ISubscriptionFactory,
-        @inject("IUserRepository")
+        @inject('IUserRepository')
         userRepository: IUserRepository,
-        @inject("IIngredientRepository")
+        @inject('IIngredientRepository')
         private ingredientRepository: IIngredientRepository,
     ) {
         super(subscriptionFactory, userRepository);

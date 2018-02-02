@@ -1,9 +1,9 @@
-import "reflect-metadata";
-import { injectable, inject } from "inversify";
+import { inject, injectable } from 'inversify';
+import 'reflect-metadata';
 import * as Sequelize from 'sequelize';
 import { SuggestedValue } from '../../entities/suggested-value';
 import { ISuggestedValueRepository } from '../suggested-value';
-import { BaseRepository } from "./base";
+import { BaseRepository } from './base';
 
 @injectable()
 export class SuggestedValueRepository extends BaseRepository implements ISuggestedValueRepository {

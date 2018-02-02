@@ -1,9 +1,9 @@
-import "reflect-metadata";
-import { injectable, inject } from "inversify";
+import { inject, injectable } from 'inversify';
+import 'reflect-metadata';
 import * as Sequelize from 'sequelize';
 import { IngredientGroup } from '../../entities/ingredient-group';
 import { IIngredientGroupRepository } from '../ingredient-group';
-import { BaseRepository } from "./base";
+import { BaseRepository } from './base';
 
 @injectable()
 export class IngredientGroupRepository extends BaseRepository implements IIngredientGroupRepository {

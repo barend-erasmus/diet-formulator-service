@@ -1,10 +1,10 @@
-import "reflect-metadata";
-import { injectable, inject } from "inversify";
+import { inject, injectable } from 'inversify';
 import * as solver from 'javascript-lp-solver';
-import { IFormulator } from "../interfaces/formulator";
-import { Formulation } from "../entities/formulation";
-import { FormulationIngredient } from '../entities/formulation-ingredient';
+import 'reflect-metadata';
 import { Diet } from '../entities/diet';
+import { Formulation } from '../entities/formulation';
+import { FormulationIngredient } from '../entities/formulation-ingredient';
+import { IFormulator } from '../interfaces/formulator';
 
 @injectable()
 export class LeastCostRationFormulator implements IFormulator {
@@ -15,8 +15,8 @@ export class LeastCostRationFormulator implements IFormulator {
 
         const model = {
             constraints: this.buildConstraintsForSolver(formulation.formulationIngredients, formulation.diet, formulation.mixWeight),
-            opType: "min",
-            optimize: "cost",
+            opType: 'min',
+            optimize: 'cost',
             variables: this.buildVariablesForSolver(formulation.formulationIngredients),
         };
 
@@ -42,7 +42,7 @@ export class LeastCostRationFormulator implements IFormulator {
         for (const value of diet.values) {
             constraints[`nutrient-${value.nutrient.id}`] = {
                 max: value.maximum === null ? 100000000 : value.maximum * mixWeight,
-                min: value.minimum == null? 0 : value.minimum * mixWeight,
+                min: value.minimum == null ? 0 : value.minimum * mixWeight,
             };
         }
 

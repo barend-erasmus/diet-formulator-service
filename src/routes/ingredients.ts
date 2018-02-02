@@ -1,12 +1,12 @@
 import * as express from 'express';
 import { Ingredient } from '../entities/ingredient';
+import { container } from '../ioc';
 import { IIngredientRepository } from '../repositories/ingredient';
 import { IngredientRepository } from '../repositories/sequelize/ingredient';
 import { UserRepository } from '../repositories/sequelize/user';
 import { IUserRepository } from '../repositories/user';
 import { IngredientService } from '../services/ingredient';
 import { config } from './../config';
-import { container } from '../ioc';
 
 export class IngredientRouter {
 

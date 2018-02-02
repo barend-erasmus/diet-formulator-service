@@ -1,7 +1,7 @@
-import { TrialSubscription } from "./trail";
+import { TrialSubscription } from './trail';
 
 export class BasicSubscription extends TrialSubscription {
-    
+
     constructor(
         additionalPermissions: string[],
     ) {

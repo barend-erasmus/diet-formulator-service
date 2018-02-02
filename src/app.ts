@@ -1,18 +1,18 @@
 import * as bodyParser from 'body-parser';
 import * as cors from 'cors';
 import * as express from 'express';
-import * as path from 'path';
-import * as yargs from 'yargs';
-import * as winston from 'winston';
 import * as expressWinston from 'express-winston';
+import * as path from 'path';
+import * as winston from 'winston';
+import * as yargs from 'yargs';
 import { config } from './config';
+import { AuthenticationMiddleware } from './middleware/authentication';
 import { DietRouter } from './routes/diet';
 import { DietGroupRouter } from './routes/diet-group';
 import { FormulationRouter } from './routes/formulation';
 import { IngredientRouter } from './routes/ingredients';
 import { NutrientRouter } from './routes/nutrient';
 import { UserRouter } from './routes/user';
-import { AuthenticationMiddleware } from './middleware/authentication';
 
 const argv = yargs.argv;
 const app = express();
@@ -22,11 +22,11 @@ app.use(bodyParser.json({ limit: '50mb' }));
 app.use(cors());
 
 app.use(expressWinston.logger({
+    meta: true,
+    msg: '{{res.statusCode}} {{req.method}} {{res.responseTime}}ms {{req.url}}',
     transports: [
-        new (winston.transports.File)({ filename: path.join(path.dirname(require.main.filename), 'web.log') })
+        new (winston.transports.File)({ filename: path.join(path.dirname(require.main.filename), 'web.log') }),
     ],
-    meta: true, 
-    msg: "{{res.statusCode}} {{req.method}} {{res.responseTime}}ms {{req.url}}", 
 }));
 
 app.get('/api/user/info', UserRouter.info);

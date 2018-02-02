@@ -1,9 +1,9 @@
-import "reflect-metadata";
-import { injectable, inject } from "inversify";
+import { inject, injectable } from 'inversify';
+import 'reflect-metadata';
 import * as Sequelize from 'sequelize';
 import { User } from '../../entities/user';
 import { IUserRepository } from '../user';
-import { BaseRepository } from "./base";
+import { BaseRepository } from './base';
 
 @injectable()
 export class UserRepository extends BaseRepository implements IUserRepository {
@@ -21,8 +21,8 @@ export class UserRepository extends BaseRepository implements IUserRepository {
             expiryTimestamp: new Date().getTime() + 3600000,
             isSuperAdmin: user.isSuperAdmin,
             locale: user.locale,
-            subscriptionType: user.subscriptionType,
             picture: user.picture,
+            subscriptionType: user.subscriptionType,
             token,
             verified: user.verified,
         });

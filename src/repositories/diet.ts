@@ -1,5 +1,5 @@
-import { Diet } from "../entities/diet";
-import { IBaseRepository } from "./base";
+import { Diet } from '../entities/diet';
+import { IBaseRepository } from './base';
 
 export interface IDietRepository extends IBaseRepository {
     create(diet: Diet): Promise<Diet>;

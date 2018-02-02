@@ -1,15 +1,15 @@
 import { expect } from 'chai';
 import 'mocha';
-import { LeastCostRationFormulator } from './least-cost-ration';
-import { IFormulator } from '../interfaces/formulator';
 import { Diet } from '../entities/diet';
 import { DietValue } from '../entities/diet-value';
-import { Nutrient } from '../entities/nutrient';
-import { Ingredient } from '../entities/ingredient';
 import { Formulation } from '../entities/formulation';
-import { FormulationIngredient } from '../entities/formulation-ingredient';
-import { IngredientValue } from '../entities/ingredient-value';
 import { FormulationCompositionValue } from '../entities/formulation-composition-value';
+import { FormulationIngredient } from '../entities/formulation-ingredient';
+import { Ingredient } from '../entities/ingredient';
+import { IngredientValue } from '../entities/ingredient-value';
+import { Nutrient } from '../entities/nutrient';
+import { IFormulator } from '../interfaces/formulator';
+import { LeastCostRationFormulator } from './least-cost-ration';
 
 describe('LeastCostRationFormulator', () => {
     describe('formulate', () => {
