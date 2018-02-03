@@ -22,14 +22,12 @@ export class UserService extends BaseService {
         let result: User = await this.userRepository.findByUsername(user.email);
 
         if (!result) {
+            // TODO: Create subscription
             result = await this.userRepository.create(user, token);
         } else {
-            result.subscriptionType = user.subscriptionType;
             result.verified = user.verified;
             result = await this.userRepository.update(result, token);
         }
-
-        result.subscription = await this.getSubscription(result.email);
 
         return result;
     }
@@ -40,8 +38,6 @@ export class UserService extends BaseService {
         if (!user) {
             return null;
         }
-
-        user.subscription = await this.getSubscription(user.email);
 
         return user;
     }
@@ -63,8 +59,6 @@ export class UserService extends BaseService {
         existingUser.picture = user.picture;
 
         await this.userRepository.update(existingUser, token);
-
-        existingUser.subscription = await this.getSubscription(user.email);
 
         return existingUser;
     }

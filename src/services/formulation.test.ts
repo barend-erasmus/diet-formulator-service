@@ -7,6 +7,7 @@ import { DietGroup } from '../entities/diet-group';
 import { Formulation } from '../entities/formulation';
 import { FormulationIngredient } from '../entities/formulation-ingredient';
 import { Ingredient } from '../entities/ingredient';
+import { SuperAdminSubscription } from '../entities/super-admin-subscription';
 import { User } from '../entities/user';
 import { SubscriptionFactory } from '../factories/subscription';
 import { LeastCostRationFormulator } from '../formulators/least-cost-ration';
@@ -21,7 +22,6 @@ import { BaseRepository } from '../repositories/sequelize/base';
 import { DietRepository } from '../repositories/sequelize/diet';
 import { IngredientRepository } from '../repositories/sequelize/ingredient';
 import { IUserRepository } from '../repositories/user';
-import { SuperAdminSubscription } from '../subscriptions/super-admin';
 import { FormulationService } from './formulation';
 
 describe('FormulationService - Integration', () => {
@@ -48,14 +48,14 @@ describe('FormulationService - Integration', () => {
             baseRepository = new BaseRepository(config.database.host, config.database.userName, config.database.password);
 
             subscriptionFactory = {
-                create: (type: string, isSuperAdmin: boolean) => null,
+                create: (active: boolean, expiryTimestamp: Date, type: string, isSuperAdmin: boolean) => null,
             } as SubscriptionFactory;
-            sinon.stub(subscriptionFactory, 'create').returns(new SuperAdminSubscription([]));
+            sinon.stub(subscriptionFactory, 'create').returns(new SuperAdminSubscription(null, null, []));
 
             userRepository = {
                 findByUsername: (userName: string) => null,
             } as IUserRepository;
-            sinon.stub(userRepository, 'findByUsername').returns(new User(null, null, null, null, null, null, null, null, null));
+            sinon.stub(userRepository, 'findByUsername').returns(new User(null, null, null, null, null, null, null));
 
             dietRepository = new DietRepository(config.database.host, config.database.userName, config.database.password);
 

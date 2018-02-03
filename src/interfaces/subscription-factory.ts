@@ -1,5 +1,5 @@
-import { ISubscription } from '../interfaces/subscription';
+import { Subscription } from '../entities/subscription';
 
 export interface ISubscriptionFactory {
-    create(type: string, isSuperAdmin: boolean): ISubscription;
+    create(active: boolean, expiryTimestamp: Date, type: string, isSuperAdmin: boolean): Subscription;
 }

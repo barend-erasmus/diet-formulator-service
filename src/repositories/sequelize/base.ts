@@ -15,6 +15,7 @@ export class BaseRepository {
         IngredientGroup: Sequelize.Model<{}, {}>,
         IngredientValue: Sequelize.Model<{}, {}>,
         Nutrient: Sequelize.Model<{}, {}>,
+        Subscription: Sequelize.Model<{}, {}>,
         SuggestedValue: Sequelize.Model<{}, {}>,
         Supplement: Sequelize.Model<{}, {}>,
         User: Sequelize.Model<{}, {}>,
@@ -53,10 +54,6 @@ export class BaseRepository {
                 allowNull: true,
                 type: Sequelize.TEXT,
             },
-            subscriptionType: {
-                allowNull: false,
-                type: Sequelize.STRING,
-            },
             token: {
                 allowNull: false,
                 type: Sequelize.STRING,
@@ -64,6 +61,44 @@ export class BaseRepository {
             verified: {
                 allowNull: false,
                 type: Sequelize.BOOLEAN,
+            },
+        });
+
+        const Subscription = BaseRepository.sequelize.define('subscription', {
+            active: {
+                allowNull: false,
+                type: Sequelize.BOOLEAN,
+            },
+            expiryTimestamp: {
+                allowNull: false,
+                type: Sequelize.NUMERIC,
+            },
+            type: {
+                allowNull: false,
+                type: Sequelize.STRING,
+            },
+            userName: {
+                allowNull: false,
+                type: Sequelize.STRING,
+            },
+        });
+
+        const Payment = BaseRepository.sequelize.define('payment', {
+            paid: {
+                allowNull: false,
+                type: Sequelize.BOOLEAN,
+            },
+            paidTimestamp: {
+                allowNull: false,
+                type: Sequelize.NUMERIC,
+            },
+            paymentId: {
+                allowNull: false,
+                type: Sequelize.STRING,
+            },
+            userName: {
+                allowNull: false,
+                type: Sequelize.STRING,
             },
         });
 
@@ -277,7 +312,7 @@ export class BaseRepository {
         Diet.hasMany(Formulation, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
         Formulation.belongsTo(Diet, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
 
-        this.models = {
+        BaseRepository.models = {
             ComparisonDiet,
             Diet,
             DietGroup,
@@ -288,6 +323,7 @@ export class BaseRepository {
             IngredientGroup,
             IngredientValue,
             Nutrient,
+            Subscription,
             SuggestedValue,
             Supplement,
             User,

@@ -22,7 +22,6 @@ export class UserRepository extends BaseRepository implements IUserRepository {
             isSuperAdmin: user.isSuperAdmin,
             locale: user.locale,
             picture: user.picture,
-            subscriptionType: user.subscriptionType,
             token,
             verified: user.verified,
         });
@@ -47,7 +46,7 @@ export class UserRepository extends BaseRepository implements IUserRepository {
             return null;
         }
 
-        return new User(result.email, result.displayName, result.verified, result.picture, result.subscriptionType, result.isSuperAdmin, result.locale, result.country, null);
+        return new User(result.email, result.displayName, result.verified, result.picture, result.isSuperAdmin, result.locale, result.country);
     }
 
     public async findByUsername(userName: string): Promise<User> {
@@ -66,7 +65,7 @@ export class UserRepository extends BaseRepository implements IUserRepository {
             return null;
         }
 
-        return new User(result[0].email, result[0].displayName, result[0].verified, result[0].picture, result[0].packageClass, result[0].isSuperAdmin, result[0].locale, result[0].country, null);
+        return new User(result[0].email, result[0].displayName, result[0].verified, result[0].picture, result[0].isSuperAdmin, result[0].locale, result[0].country);
     }
 
     public async update(user: User, token: string): Promise<User> {
@@ -81,7 +80,6 @@ export class UserRepository extends BaseRepository implements IUserRepository {
         result.country = user.country;
         result.displayName = user.displayName;
         result.locale = user.locale;
-        result.subscriptionType = user.subscriptionType;
         result.picture = user.picture;
         result.verified = user.verified;
 

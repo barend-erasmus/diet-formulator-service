@@ -30,11 +30,9 @@ export class UserRouter {
                         json.name,
                         json.email_verified,
                         json.picture,
-                        json.user_metadata ? (json.user_metadata.packageClass ? json.user_metadata.packageClass : 'trial') : 'trial',
                         json.user_metadata ? (json.user_metadata.isSuperAdmin ? json.user_metadata.isSuperAdmin : false) : false,
                         json.locale,
                         json.country,
-                        null,
                     ), token);
 
                     res.json(user);
