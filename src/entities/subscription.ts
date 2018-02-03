@@ -2,9 +2,12 @@ export class Subscription {
 
     private permissions: string[] = [];
 
+    public type: string = null;
+
     constructor(
-        private active: boolean,
-        private expiryTimestamp: Date,
+        public active: boolean,
+        public expiryTimestamp: Date,
+
         additionalPermissions: string[],
     ) {
         this.permissions = this.permissions.concat(additionalPermissions);

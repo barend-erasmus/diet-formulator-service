@@ -1,7 +1,7 @@
 import { inject, injectable } from 'inversify';
 import 'reflect-metadata';
 import { User } from '../entities/user';
-import { ISubscriptionFactory } from '../interfaces/subscription-factory';
+import { ISubscriptionRepository } from '../repositories/subscription';
 import { IUserRepository } from '../repositories/user';
 import { BaseService } from './base';
 
@@ -9,12 +9,12 @@ import { BaseService } from './base';
 export class UserService extends BaseService {
 
     constructor(
-        @inject('ISubscriptionFactory')
-        subscriptionFactory: ISubscriptionFactory,
+        @inject('ISubscriptionRepository')
+        protected subscriptionRepository: ISubscriptionRepository,
         @inject('IUserRepository')
         userRepository: IUserRepository,
     ) {
-        super(subscriptionFactory, userRepository);
+        super(subscriptionRepository, userRepository);
     }
 
     public async login(user: User, token: string): Promise<User> {

@@ -10,5 +10,7 @@ export class PremiumSubscription extends StandardSubscription {
         const permissions: string[]  = ['view-formulation-supplement'].concat(additionalPermissions);
 
         super(active, expiryTimestamp, permissions);
+
+        this.type = 'premium';
     }
 }

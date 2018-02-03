@@ -3,32 +3,22 @@ import 'reflect-metadata';
 import { Subscription } from '../entities/subscription';
 import { User } from '../entities/user';
 import { InsufficientPermissionsError } from '../errors/insufficient-permissions-error';
-import { ISubscriptionFactory } from '../interfaces/subscription-factory';
+import { ISubscriptionRepository } from '../repositories/subscription';
 import { IUserRepository } from '../repositories/user';
 @injectable()
 export class BaseService {
 
     constructor(
         @unmanaged()
-        protected subscriptionFactory: ISubscriptionFactory,
+        protected subscriptionRepository: ISubscriptionRepository,
         @unmanaged()
         protected userRepository: IUserRepository,
     ) {
 
     }
 
-    protected async getSubscription(userName: string): Promise<Subscription> {
-
-        // const user: User = await this.userRepository.findByUsername(userName);
-
-        // return this.subscriptionFactory.create(user.subscriptionType, user.isSuperAdmin);
-
-        // TODO: Get subscription for repository
-        return null;
-    }
-
     protected async hasPermission(userName: string, permission: string): Promise<boolean> {
-        const subscription: Subscription = await this.getSubscription(userName);
+        const subscription: Subscription = await this.subscriptionRepository.find(userName);
 
         return subscription.hasPermission(permission);
     }

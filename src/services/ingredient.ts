@@ -1,8 +1,8 @@
 import { inject, injectable } from 'inversify';
 import 'reflect-metadata';
 import { Ingredient } from '../entities/ingredient';
-import { ISubscriptionFactory } from '../interfaces/subscription-factory';
 import { IIngredientRepository } from '../repositories/ingredient';
+import { ISubscriptionRepository } from '../repositories/subscription';
 import { IUserRepository } from '../repositories/user';
 import { config } from './../config';
 import { BaseService } from './base';
@@ -11,14 +11,14 @@ import { BaseService } from './base';
 export class IngredientService extends BaseService {
 
     constructor(
-        @inject('ISubscriptionFactory')
-        subscriptionFactory: ISubscriptionFactory,
+        @inject('ISubscriptionRepository')
+        protected subscriptionRepository: ISubscriptionRepository,
         @inject('IUserRepository')
         userRepository: IUserRepository,
         @inject('IIngredientRepository')
         private ingredientRepository: IIngredientRepository,
     ) {
-        super(subscriptionFactory, userRepository);
+        super(subscriptionRepository, userRepository);
     }
 
     public async create(

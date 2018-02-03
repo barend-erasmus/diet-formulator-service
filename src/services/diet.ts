@@ -3,9 +3,9 @@ import 'reflect-metadata';
 import { Diet } from '../entities/diet';
 import { DietGroup } from '../entities/diet-group';
 import { InsufficientPermissionsError } from '../errors/insufficient-permissions-error';
-import { ISubscriptionFactory } from '../interfaces/subscription-factory';
 import { IDietRepository } from '../repositories/diet';
 import { IDietGroupRepository } from '../repositories/diet-group';
+import { ISubscriptionRepository } from '../repositories/subscription';
 import { IUserRepository } from '../repositories/user';
 import { config } from './../config';
 import { BaseService } from './base';
@@ -14,8 +14,8 @@ import { BaseService } from './base';
 export class DietService extends BaseService {
 
     constructor(
-        @inject('ISubscriptionFactory')
-        subscriptionFactory: ISubscriptionFactory,
+        @inject('ISubscriptionRepository')
+        protected subscriptionRepository: ISubscriptionRepository,
         @inject('IUserRepository')
         userRepository: IUserRepository,
         @inject('IDietRepository')
@@ -23,7 +23,7 @@ export class DietService extends BaseService {
         @inject('IDietGroupRepository')
         private dietGroupRepository: IDietGroupRepository,
     ) {
-        super(subscriptionFactory, userRepository);
+        super(subscriptionRepository, userRepository);
     }
 
     public async create(

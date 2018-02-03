@@ -10,5 +10,7 @@ export class BasicSubscription extends TrialSubscription {
         const permissions: string[]  = ['view-suggested-value'].concat(additionalPermissions);
 
         super(active, expiryTimestamp, permissions);
+
+        this.type = 'basic';
     }
 }

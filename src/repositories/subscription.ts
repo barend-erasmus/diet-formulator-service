@@ -1,8 +1,7 @@
+import { Subscription } from '../entities/subscription';
 import { IBaseRepository } from './base';
 
 export interface ISubscriptionRepository extends IBaseRepository {
-    // create(user: User, token: string): Promise<User>;
-    // find(token: string): Promise<User>;
-    // findByUsername(userName: string): Promise<User>;
-    // update(user: User, token: string): Promise<User>;
+    create(subscription: Subscription, userName: string): Promise<Subscription>;
+    find(userName: string): Promise<Subscription>;
 }

@@ -21,6 +21,8 @@ export class TrialSubscription extends Subscription {
                 'create-formulation',
                 'view-formulation',
             ]);
+
+        this.type = 'trail';
     }
 
 }

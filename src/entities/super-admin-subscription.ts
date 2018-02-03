@@ -22,5 +22,7 @@ export class SuperAdminSubscription extends PremiumSubscription {
         ].concat(additionalPermissions);
 
         super(active, expiryTimestamp, permissions);
+
+        this.type = 'super-admin';
     }
 }

@@ -18,14 +18,14 @@ const pg = require('pg');
 
             let queries = buildQueries(tableName, tableData);
 
-            const chunkSize = 80;
+            const chunkSize = 100;
 
             for (let i = 0; i < queries.length; i += chunkSize) {
                 const tempQueries = queries.slice(i, i + chunkSize);
 
                 await client.query(tempQueries.join('\r\n'));
 
-                console.log(`${tableName} - ${i} of ${queries.length} (${i / (queries.length) * 100})`);
+                // console.log(`${tableName} - ${i} of ${queries.length} (${i / (queries.length) * 100})`);
             }
 
             await commitTransaction(client);

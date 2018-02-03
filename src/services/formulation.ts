@@ -13,10 +13,10 @@ import { Supplement } from '../entities/supplement';
 import { SupplementIngredient } from '../entities/supplement-ingredient';
 import { WorldOfRationsError } from '../errors/world-of-rations-error';
 import { IFormulator } from '../interfaces/formulator';
-import { ISubscriptionFactory } from '../interfaces/subscription-factory';
 import { IDietRepository } from '../repositories/diet';
 import { IFormulationRepository } from '../repositories/formulation';
 import { IIngredientRepository } from '../repositories/ingredient';
+import { ISubscriptionRepository } from '../repositories/subscription';
 import { IUserRepository } from '../repositories/user';
 import { BaseService } from './base';
 
@@ -24,8 +24,8 @@ import { BaseService } from './base';
 export class FormulationService extends BaseService {
 
     constructor(
-        @inject('ISubscriptionFactory')
-        subscriptionFactory: ISubscriptionFactory,
+        @inject('ISubscriptionRepository')
+        protected subscriptionRepository: ISubscriptionRepository,
         @inject('IUserRepository')
         userRepository: IUserRepository,
         @inject('IDietRepository')
@@ -37,7 +37,7 @@ export class FormulationService extends BaseService {
         @inject('IFormulator')
         private formulator: IFormulator,
     ) {
-        super(subscriptionFactory, userRepository);
+        super(subscriptionRepository, userRepository);
     }
 
     public async create(diet: Diet, formulationIngredients: FormulationIngredient[], mixWeight: number, userName: string): Promise<Formulation> {

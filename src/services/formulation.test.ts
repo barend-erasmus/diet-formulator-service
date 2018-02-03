@@ -21,6 +21,7 @@ import { IIngredientGroupRepository } from '../repositories/ingredient-group';
 import { BaseRepository } from '../repositories/sequelize/base';
 import { DietRepository } from '../repositories/sequelize/diet';
 import { IngredientRepository } from '../repositories/sequelize/ingredient';
+import { ISubscriptionRepository } from '../repositories/subscription';
 import { IUserRepository } from '../repositories/user';
 import { FormulationService } from './formulation';
 
@@ -28,8 +29,6 @@ describe('FormulationService - Integration', () => {
     describe('create', () => {
 
         let baseRepository: IBaseRepository = null;
-
-        let subscriptionFactory: ISubscriptionFactory = null;
 
         let userRepository: IUserRepository = null;
 
@@ -39,6 +38,8 @@ describe('FormulationService - Integration', () => {
 
         let formulationRepository: IFormulationRepository = null;
 
+        const subscriptionRepository: ISubscriptionRepository = null;
+
         let formulator: IFormulator = null;
 
         let formulationService: FormulationService = null;
@@ -46,11 +47,6 @@ describe('FormulationService - Integration', () => {
         beforeEach(async () => {
 
             baseRepository = new BaseRepository(config.database.host, config.database.userName, config.database.password);
-
-            subscriptionFactory = {
-                create: (active: boolean, expiryTimestamp: Date, type: string, isSuperAdmin: boolean) => null,
-            } as SubscriptionFactory;
-            sinon.stub(subscriptionFactory, 'create').returns(new SuperAdminSubscription(null, null, []));
 
             userRepository = {
                 findByUsername: (userName: string) => null,
@@ -70,7 +66,7 @@ describe('FormulationService - Integration', () => {
 
             formulator = new LeastCostRationFormulator();
 
-            formulationService = new FormulationService(subscriptionFactory, userRepository, dietRepository, ingredientRepository, formulationRepository, formulator);
+            formulationService = new FormulationService(subscriptionRepository, userRepository, dietRepository, ingredientRepository, formulationRepository, formulator);
 
         });
 

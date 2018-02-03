@@ -8,7 +8,7 @@
     "deploy": "tsc & ssh-deployer -f deploy.json --host api.suite.worldofrations.com --username username --password password --workspace ./",
     "docs": "apidoc -i src/routes/ -o apidoc/",
     "init": "tsc & node ./dist/init.js",
-    "lint": "tslint ./src/**/*.ts --exclude ./src/**/*.d.ts",
+    "lint": "tslint ./src/**/*.ts --fix --exclude ./src/**/*.d.ts",
     "start": "tsc & node ./dist/app.js",
     "test": "tsc & mocha --timeout 10000 ./dist/**/*.test.js"
   },
