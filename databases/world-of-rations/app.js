@@ -1,5 +1,6 @@
 const fs = require('fs');
 const pg = require('pg');
+const csv = require('csv-parser');
 
 (async () => {
 
@@ -10,6 +11,8 @@ const pg = require('pg');
         const tableData = getTableData(tableName);
 
         const client = await getClient();
+
+        let query = null;
 
         try {
             await client.query(`ALTER TABLE public."${tableName}" DISABLE TRIGGER ALL;`);
