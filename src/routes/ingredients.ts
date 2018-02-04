@@ -1,5 +1,6 @@
 import * as express from 'express';
 import { Ingredient } from '../entities/ingredient';
+import { WorldOfRationsError } from '../errors/world-of-rations-error';
 import { container } from '../ioc';
 import { IngredientService } from '../services/ingredient';
 import { config } from './../config';
@@ -12,7 +13,7 @@ export class IngredientRouter {
 
             res.json(result);
         } catch (err) {
-            res.status(500).json(err);
+            res.status(500).json(WorldOfRationsError.fromError(err));
         }
     }
 
@@ -23,7 +24,7 @@ export class IngredientRouter {
 
             res.json(result);
         } catch (err) {
-            res.status(500).json(err);
+            res.status(500).json(WorldOfRationsError.fromError(err));
         }
     }
 }

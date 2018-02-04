@@ -3,6 +3,7 @@ import { Diet } from '../entities/diet';
 import { DietGroup } from '../entities/diet-group';
 import { DietValue } from '../entities/diet-value';
 import { Nutrient } from '../entities/nutrient';
+import { WorldOfRationsError } from '../errors/world-of-rations-error';
 import { container } from '../ioc';
 import { DietService } from '../services/diet';
 import { config } from './../config';
@@ -18,7 +19,7 @@ export class DietRouter {
 
             res.json(result);
         } catch (err) {
-            res.status(500).json(err);
+            res.status(500).json(WorldOfRationsError.fromError(err));
         }
     }
 
@@ -28,7 +29,7 @@ export class DietRouter {
 
             res.json(result);
         } catch (err) {
-            res.status(500).json(err);
+            res.status(500).json(WorldOfRationsError.fromError(err));
         }
     }
 
@@ -38,7 +39,7 @@ export class DietRouter {
 
             res.json(result);
         } catch (err) {
-            res.status(500).json(err);
+            res.status(500).json(WorldOfRationsError.fromError(err));
         }
     }
 
@@ -52,7 +53,7 @@ export class DietRouter {
 
             res.json(result);
         } catch (err) {
-            res.status(500).json(err);
+            res.status(500).json(WorldOfRationsError.fromError(err));
         }
     }
 }

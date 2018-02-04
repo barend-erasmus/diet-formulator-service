@@ -1,8 +1,11 @@
 import { Container, interfaces } from 'inversify';
 import 'reflect-metadata';
+import { UserCreatedEventBus } from './bus/user-created-event';
 import { config } from './config';
+import { UserCreatedEvent } from './events/user-created';
 import { SubscriptionFactory } from './factories/subscription';
 import { LeastCostRationFormulator } from './formulators/least-cost-ration';
+import { UserCreatedEventHandler } from './handlers/user-created-event';
 import { IFormulator } from './interfaces/formulator';
 import { ISubscriptionFactory } from './interfaces/subscription-factory';
 import { IDietRepository } from './repositories/diet';
@@ -56,6 +59,9 @@ container.bind<IngredientService>('IngredientService').to(IngredientService);
 container.bind<NutrientService>('NutrientService').to(NutrientService);
 container.bind<SubscriptionService>('SubscriptionService').to(SubscriptionService);
 container.bind<UserService>('UserService').to(UserService);
+
+container.bind<UserCreatedEventBus<UserCreatedEvent>>('UserCreatedEventBus').to(UserCreatedEventBus);
+container.bind<UserCreatedEventHandler>('UserCreatedEventHandler').to(UserCreatedEventHandler);
 
 export {
     container,

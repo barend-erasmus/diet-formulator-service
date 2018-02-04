@@ -5,4 +5,12 @@ export class WorldOfRationsError extends Error {
     ) {
         super(detailedMessage);
     }
+
+    public static fromError(err): WorldOfRationsError {
+        if (!err.detailedMessage) {
+            return new WorldOfRationsError('system_error', err.message);
+        }
+
+        return err;
+    }
 }

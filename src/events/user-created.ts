@@ -1,4 +1,4 @@
-import { IEvent } from "../interfaces/event";
+import { IEvent } from '../interfaces/event';
 
 export class UserCreatedEvent implements IEvent {
     constructor(

@@ -1,13 +1,13 @@
 import { inject, injectable } from 'inversify';
 import 'reflect-metadata';
+import { EventBus } from '../bus/event';
 import { SuperAdminSubscription } from '../entities/super-admin-subscription';
 import { TrialSubscription } from '../entities/trail-subscription';
 import { User } from '../entities/user';
+import { UserCreatedEvent } from '../events/user-created';
 import { ISubscriptionRepository } from '../repositories/subscription';
 import { IUserRepository } from '../repositories/user';
 import { BaseService } from './base';
-import { EventBus } from '../bus/event';
-import { UserCreatedEvent } from '../events/user-created';
 
 @injectable()
 export class UserService extends BaseService {

@@ -1,10 +1,10 @@
 import { inject, injectable } from 'inversify';
-import 'reflect-metadata';
 import * as moment from 'moment';
-import { IEventHandler } from "../interfaces/event-handler";
-import { UserCreatedEvent } from "../events/user-created";
-import { ISubscriptionRepository } from '../repositories/subscription';
+import 'reflect-metadata';
 import { TrialSubscription } from '../entities/trail-subscription';
+import { UserCreatedEvent } from '../events/user-created';
+import { IEventHandler } from '../interfaces/event-handler';
+import { ISubscriptionRepository } from '../repositories/subscription';
 
 @injectable()
 export class UserCreatedEventHandler implements IEventHandler<UserCreatedEvent> {
@@ -18,7 +18,7 @@ export class UserCreatedEventHandler implements IEventHandler<UserCreatedEvent> 
 
     public async handle(event: UserCreatedEvent): Promise<UserCreatedEvent> {
 
-        await this.subscriptionRepository.create(new TrialSubscription(true, this.getDateOneMonthFromNow(), new Date(), []), user.email);
+        await this.subscriptionRepository.create(new TrialSubscription(true, this.getDateOneMonthFromNow(), new Date(), []), event.userName);
 
         return Promise.resolve(event);
     }

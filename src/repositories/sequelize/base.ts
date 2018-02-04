@@ -88,6 +88,10 @@ export class BaseRepository {
         });
 
         const Payment = BaseRepository.sequelize.define('payment', {
+            amount: {
+                allowNull: false,
+                type: Sequelize.NUMERIC,
+            },
             paid: {
                 allowNull: false,
                 type: Sequelize.BOOLEAN,

@@ -1,5 +1,6 @@
 import * as express from 'express';
 import { Subscription } from '../entities/subscription';
+import { WorldOfRationsError } from '../errors/world-of-rations-error';
 import { container } from '../ioc';
 import { SubscriptionService } from '../services/subscription';
 import { config } from './../config';
@@ -13,7 +14,7 @@ export class SubscriptionRouter {
 
             res.json(result);
         } catch (err) {
-            res.status(500).json(err);
+            res.status(500).json(WorldOfRationsError.fromError(err));
         }
     }
 }
