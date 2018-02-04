@@ -73,6 +73,10 @@ export class BaseRepository {
                 allowNull: false,
                 type: Sequelize.NUMERIC,
             },
+            startTimestamp: {
+                allowNull: false,
+                type: Sequelize.NUMERIC,
+            },
             type: {
                 allowNull: false,
                 type: Sequelize.STRING,

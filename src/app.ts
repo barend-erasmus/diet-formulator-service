@@ -12,6 +12,7 @@ import { DietGroupRouter } from './routes/diet-group';
 import { FormulationRouter } from './routes/formulation';
 import { IngredientRouter } from './routes/ingredients';
 import { NutrientRouter } from './routes/nutrient';
+import { SubscriptionRouter } from './routes/subscription';
 import { UserRouter } from './routes/user';
 
 const argv = yargs.argv;
@@ -31,6 +32,8 @@ app.use(expressWinston.logger({
 
 app.get('/api/user/info', UserRouter.info);
 app.post('/api/user/update', UserRouter.update);
+
+app.get('/api/subscription/find', AuthenticationMiddleware.shouldBeAuthenticated, SubscriptionRouter.find);
 
 app.post('/api/nutrient/create', AuthenticationMiddleware.shouldBeAuthenticated, NutrientRouter.create);
 app.get('/api/nutrient/find', AuthenticationMiddleware.shouldBeAuthenticated, NutrientRouter.find);

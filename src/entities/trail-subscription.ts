@@ -5,10 +5,12 @@ export class TrialSubscription extends Subscription {
     constructor(
         active: boolean,
         expiryTimestamp: Date,
+        startTimestamp: Date,
         additionalPermissions: string[],
     ) {
         super(active,
             expiryTimestamp,
+            startTimestamp,
             [
                 'view-profile',
                 'update-profile',
@@ -22,7 +24,7 @@ export class TrialSubscription extends Subscription {
                 'view-formulation',
             ]);
 
-        this.type = 'trail';
+        this.type = 'trial';
     }
 
 }

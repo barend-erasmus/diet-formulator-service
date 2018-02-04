@@ -11,21 +11,19 @@ import { ISubscriptionFactory } from '../interfaces/subscription-factory';
 @injectable()
 export class SubscriptionFactory implements ISubscriptionFactory {
 
-    public create(active: boolean, expiryTimestamp: Date, type: string, isSuperAdmin: boolean): Subscription {
-
-        if (isSuperAdmin) {
-            return new SuperAdminSubscription(active, expiryTimestamp, []);
-        }
+    public create(active: boolean, expiryTimestamp: Date, startTimestamp: Date, type: string): Subscription {
 
         switch (type) {
             case 'trial':
-                return new TrialSubscription(active, expiryTimestamp, []);
+                return new TrialSubscription(active, expiryTimestamp, expiryTimestamp, []);
             case 'basic':
-                return new BasicSubscription(active, expiryTimestamp, []);
+                return new BasicSubscription(active, expiryTimestamp, expiryTimestamp, []);
             case 'standard':
-                return new StandardSubscription(active, expiryTimestamp, []);
+                return new StandardSubscription(active, expiryTimestamp, expiryTimestamp, []);
             case 'premium':
-                return new PremiumSubscription(active, expiryTimestamp, []);
+                return new PremiumSubscription(active, expiryTimestamp, expiryTimestamp, []);
+            case 'super-admin':
+                return new SuperAdminSubscription(active, expiryTimestamp, expiryTimestamp, []);
             default:
                 return null;
         }

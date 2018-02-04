@@ -1,5 +1,8 @@
 import { inject, injectable } from 'inversify';
+import * as moment from 'moment';
 import 'reflect-metadata';
+import { SuperAdminSubscription } from '../entities/super-admin-subscription';
+import { TrialSubscription } from '../entities/trail-subscription';
 import { User } from '../entities/user';
 import { ISubscriptionRepository } from '../repositories/subscription';
 import { IUserRepository } from '../repositories/user';
@@ -10,7 +13,7 @@ export class UserService extends BaseService {
 
     constructor(
         @inject('ISubscriptionRepository')
-        protected subscriptionRepository: ISubscriptionRepository,
+        subscriptionRepository: ISubscriptionRepository,
         @inject('IUserRepository')
         userRepository: IUserRepository,
     ) {
@@ -22,8 +25,9 @@ export class UserService extends BaseService {
         let result: User = await this.userRepository.findByUsername(user.email);
 
         if (!result) {
-            // TODO: Create subscription
             result = await this.userRepository.create(user, token);
+            // TODO: Move to event handler
+            await this.subscriptionRepository.create(new TrialSubscription(true, this.getDateOneMonthFromNow(), new Date(), []), user.email);
         } else {
             result.verified = user.verified;
             result = await this.userRepository.update(result, token);
@@ -61,5 +65,9 @@ export class UserService extends BaseService {
         await this.userRepository.update(existingUser, token);
 
         return existingUser;
+    }
+
+    private getDateOneMonthFromNow(): Date {
+        return moment().add(1, 'months').toDate();
     }
 }

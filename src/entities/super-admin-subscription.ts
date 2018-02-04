@@ -5,6 +5,7 @@ export class SuperAdminSubscription extends PremiumSubscription {
     constructor(
         active: boolean,
         expiryTimestamp: Date,
+        startTimestamp: Date,
         additionalPermissions: string[],
     ) {
         const permissions: string[] = [
@@ -21,7 +22,7 @@ export class SuperAdminSubscription extends PremiumSubscription {
             'super-user',
         ].concat(additionalPermissions);
 
-        super(active, expiryTimestamp, permissions);
+        super(active, expiryTimestamp, startTimestamp, permissions);
 
         this.type = 'super-admin';
     }
