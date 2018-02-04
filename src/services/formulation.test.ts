@@ -49,9 +49,9 @@ describe('FormulationService - Integration', () => {
             baseRepository = new BaseRepository(config.database.host, config.database.userName, config.database.password);
 
             userRepository = {
-                findByUsername: (userName: string) => null,
+                findByUserName: (userName: string) => null,
             } as IUserRepository;
-            sinon.stub(userRepository, 'findByUsername').returns(new User(null, null, null, null, null, null, null));
+            sinon.stub(userRepository, 'findByUserName').returns(new User(null, null, null, null, null, null, null));
 
             dietRepository = new DietRepository(config.database.host, config.database.userName, config.database.password);
 

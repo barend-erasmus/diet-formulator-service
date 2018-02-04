@@ -22,8 +22,7 @@ export class SubscriptionService extends BaseService {
     }
 
     public async find(userName: string): Promise<Subscription> {
-        // TODO: rename from 'findByUsername' to 'findByUserName'
-        const user: User = await this.userRepository.findByUsername(userName);
+        const user: User = await this.userRepository.findByUserName(userName);
 
         if (user.isSuperAdmin) {
             return this.subscriptionFactory.create(true, null, new Date(), 'super-admin');

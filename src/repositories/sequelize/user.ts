@@ -49,7 +49,7 @@ export class UserRepository extends BaseRepository implements IUserRepository {
         return new User(result.email, result.displayName, result.verified, result.picture, result.isSuperAdmin, result.locale, result.country);
     }
 
-    public async findByUsername(userName: string): Promise<User> {
+    public async findByUserName(userName: string): Promise<User> {
 
         const result: any[] = await BaseRepository.models.User.findAll({
             limit: 1,
