@@ -13,19 +13,56 @@ export class SubscriptionFactory implements ISubscriptionFactory {
 
     public create(active: boolean, expiryTimestamp: Date, startTimestamp: Date, type: string): Subscription {
 
+        let subscription: Subscription = null;
+
         switch (type) {
             case 'trial':
-                return new TrialSubscription(active, expiryTimestamp, expiryTimestamp, []);
+                subscription = new TrialSubscription(active, expiryTimestamp, startTimestamp, []);
+                break;
             case 'basic':
-                return new BasicSubscription(active, expiryTimestamp, expiryTimestamp, []);
+                subscription = new BasicSubscription(active, expiryTimestamp, startTimestamp, []);
+                break;
             case 'standard':
-                return new StandardSubscription(active, expiryTimestamp, expiryTimestamp, []);
+                subscription = new StandardSubscription(active, expiryTimestamp, startTimestamp, []);
+                break;
             case 'premium':
-                return new PremiumSubscription(active, expiryTimestamp, expiryTimestamp, []);
+                subscription = new PremiumSubscription(active, expiryTimestamp, startTimestamp, []);
+                break;
             case 'super-admin':
-                return new SuperAdminSubscription(active, expiryTimestamp, expiryTimestamp, []);
-            default:
-                return null;
+                subscription = new SuperAdminSubscription(active, expiryTimestamp, startTimestamp, []);
+                break;
         }
+
+        if (!this.validSubscription(subscription)) {
+            subscription.setPermissions([
+                'view-profile',
+                'update-profile',
+                'view-nutrient',
+                'view-diet-group',
+                'create-diet',
+                'view-diet',
+                'update-diet',
+                'view-ingredient',
+                'create-formulation',
+                'view-formulation',
+            ]);
+
+            subscription.expired = true;
+        }
+
+        return subscription;
+    }
+
+    private validSubscription(subscription: Subscription): boolean {
+
+        if (subscription.expiryTimestamp && subscription.expiryTimestamp.getTime() < new Date().getTime()) {
+            return false;
+        }
+
+        if (subscription.startTimestamp && subscription.startTimestamp.getTime() >= new Date().getTime()) {
+            return false;
+        }
+
+        return true;
     }
 }

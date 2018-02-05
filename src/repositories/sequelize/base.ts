@@ -104,6 +104,10 @@ export class BaseRepository {
                 allowNull: false,
                 type: Sequelize.STRING,
             },
+            subscription: {
+                allowNull: false,
+                type: Sequelize.STRING,
+            },
             userName: {
                 allowNull: false,
                 type: Sequelize.STRING,

@@ -38,12 +38,6 @@ export class SubscriptionRepository extends BaseRepository implements ISubscript
                 active: {
                     [Sequelize.Op.eq]: true,
                 },
-                // expiryTimestamp: {
-                //     [Sequelize.Op.lt]: new Date().getTime(),
-                // },
-                // startTimestamp: {
-                //     [Sequelize.Op.gte]: new Date().getTime(),
-                // },
                 userName: {
                     [Sequelize.Op.eq]: userName,
                 },
@@ -54,6 +48,6 @@ export class SubscriptionRepository extends BaseRepository implements ISubscript
             return null;
         }
 
-        return this.subscriptionFactory.create(result.active, new Date(result.expiryTimestamp), new Date(result.startTimestamp), result.type);
+        return this.subscriptionFactory.create(result.active, new Date(parseInt(result.expiryTimestamp, undefined)), new Date(parseInt(result.startTimestamp, undefined)), result.type);
     }
 }

@@ -2,6 +2,8 @@ export class Subscription {
 
     private permissions: string[] = [];
 
+    public expired: boolean = false;
+
     public type: string = null;
 
     constructor(
@@ -15,9 +17,13 @@ export class Subscription {
 
     public hasPermission(permission: string): boolean {
         if (this.permissions.indexOf(permission) > -1) {
-             return true;
-         }
+            return true;
+        }
 
         return false;
-     }
+    }
+
+    public setPermissions(permissions: string[]): void {
+        this.permissions = permissions;
+    }
 }
