@@ -1,10 +1,10 @@
 import { inject, injectable } from 'inversify';
 import * as moment from 'moment';
 import 'reflect-metadata';
+import { BasicSubscription } from '../entities/basic-subscription';
 import { UserCreatedEvent } from '../events/user-created';
 import { IEventHandler } from '../interfaces/event-handler';
 import { ISubscriptionRepository } from '../repositories/subscription';
-import { BasicSubscription } from '../entities/basic-subscription';
 
 @injectable()
 export class UserCreatedEventHandler implements IEventHandler<UserCreatedEvent> {

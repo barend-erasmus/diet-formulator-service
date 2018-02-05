@@ -1,6 +1,6 @@
-import { IPaymentGateway } from "../interfaces/payment-gateway";
-import { Payment } from "../entities/payment";
 import * as request from 'request-promise';
+import { Payment } from '../entities/payment';
+import { IPaymentGateway } from '../interfaces/payment-gateway';
 
 export class PayPalPaymentGateway implements IPaymentGateway {
 
@@ -22,7 +22,7 @@ export class PayPalPaymentGateway implements IPaymentGateway {
         const response = await request({
             body: this.buildRequestObject(payment),
             headers: {
-                'Authorization': `Bearer ${accessToken}`,
+                Authorization: `Bearer ${accessToken}`,
             },
             json: true,
             method: 'POST',
@@ -38,13 +38,13 @@ export class PayPalPaymentGateway implements IPaymentGateway {
     private buildRequestObject(payment: Payment): any {
         return {
             intent: 'sale',
+            note_to_payer: `${payment.subscription.toUpperCase()} Subscription`,
             payer: {
                 payment_method: 'paypal',
             },
-            note_to_payer: `${payment.subscription.toUpperCase()} Subscription`,
             redirect_urls: {
-                return_url: 'https://worldofrations.com/billing/return',
                 cancel_url: 'https://worldofrations.com/billing/cancel',
+                return_url: 'https://worldofrations.com/billing/return',
             },
             transactions: [
                 {
@@ -66,7 +66,7 @@ export class PayPalPaymentGateway implements IPaymentGateway {
                     'Accept': 'application/json',
                     'Accept-Language': 'en_US',
                     'Authorization': `Basic ${new Buffer(`${this.clientId}:${this.clientSecret}`).toString('base64')}`,
-                    'Content-Type': 'application/x-www-form-urlencoded'
+                    'Content-Type': 'application/x-www-form-urlencoded',
                 },
                 method: 'POST',
                 uri: `${this.baseUri}/oauth2/token`,
@@ -74,7 +74,6 @@ export class PayPalPaymentGateway implements IPaymentGateway {
 
             PayPalPaymentGateway.accessToken = JSON.parse(response).access_token;
         }
-
 
         return PayPalPaymentGateway.accessToken;
     }

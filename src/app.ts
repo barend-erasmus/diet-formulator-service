@@ -12,9 +12,9 @@ import { DietGroupRouter } from './routes/diet-group';
 import { FormulationRouter } from './routes/formulation';
 import { IngredientRouter } from './routes/ingredients';
 import { NutrientRouter } from './routes/nutrient';
+import { PaymentRouter } from './routes/payment';
 import { SubscriptionRouter } from './routes/subscription';
 import { UserRouter } from './routes/user';
-import { PaymentRouter } from './routes/payment';
 
 const argv = yargs.argv;
 const app = express();

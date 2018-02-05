@@ -1,15 +1,15 @@
 import { inject, injectable } from 'inversify';
 import 'reflect-metadata';
+import { Payment } from '../entities/payment';
 import { Subscription } from '../entities/subscription';
 import { User } from '../entities/user';
+import { WorldOfRationsError } from '../errors/world-of-rations-error';
+import { IPaymentGateway } from '../interfaces/payment-gateway';
 import { ISubscriptionFactory } from '../interfaces/subscription-factory';
+import { IPaymentRepository } from '../repositories/payment';
 import { ISubscriptionRepository } from '../repositories/subscription';
 import { IUserRepository } from '../repositories/user';
 import { BaseService } from './base';
-import { Payment } from '../entities/payment';
-import { IPaymentRepository } from '../repositories/payment';
-import { IPaymentGateway } from '../interfaces/payment-gateway';
-import { WorldOfRationsError } from '../errors/world-of-rations-error';
 
 @injectable()
 export class PaymentService extends BaseService {

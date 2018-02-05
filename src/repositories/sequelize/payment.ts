@@ -1,9 +1,9 @@
 import { inject, injectable } from 'inversify';
 import 'reflect-metadata';
 import * as Sequelize from 'sequelize';
-import { BaseRepository } from './base';
-import { IPaymentRepository } from '../payment';
 import { Payment } from '../../entities/payment';
+import { IPaymentRepository } from '../payment';
+import { BaseRepository } from './base';
 
 @injectable()
 export class PaymentRepository extends BaseRepository implements IPaymentRepository {
@@ -21,7 +21,7 @@ export class PaymentRepository extends BaseRepository implements IPaymentReposit
         const result: any = await BaseRepository.models.Payment.create({
             amount: payment.amount,
             paid: payment.paid,
-            paidTimestamp: payment.paidTimestamp? payment.paidTimestamp.getTime() : null,
+            paidTimestamp: payment.paidTimestamp ? payment.paidTimestamp.getTime() : null,
             paymentId: payment.paymentId,
             period: payment.period,
             subscription: payment.subscription,
@@ -41,6 +41,6 @@ export class PaymentRepository extends BaseRepository implements IPaymentReposit
             },
         });
 
-        return result.map((x) => new Payment(x.amount, x.paid, x.paidTimestamp, x.paymentId, x.period, null, x.subscription))
+        return result.map((x) => new Payment(x.amount, x.paid, x.paidTimestamp, x.paymentId, x.period, null, x.subscription));
     }
 }

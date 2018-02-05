@@ -1,9 +1,9 @@
 import * as express from 'express';
+import { Payment } from '../entities/payment';
 import { WorldOfRationsError } from '../errors/world-of-rations-error';
 import { container } from '../ioc';
-import { config } from './../config';
-import { Payment } from '../entities/payment';
 import { PaymentService } from '../services/payment';
+import { config } from './../config';
 
 export class PaymentRouter {
 
