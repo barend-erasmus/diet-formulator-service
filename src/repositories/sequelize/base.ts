@@ -71,7 +71,7 @@ export class BaseRepository {
                 type: Sequelize.BOOLEAN,
             },
             expiryTimestamp: {
-                allowNull: false,
+                allowNull: true,
                 type: Sequelize.NUMERIC,
             },
             startTimestamp: {
@@ -93,6 +93,10 @@ export class BaseRepository {
                 allowNull: false,
                 type: Sequelize.NUMERIC,
             },
+            assigned: {
+                allowNull: false,
+                type: Sequelize.BOOLEAN,
+            },
             paid: {
                 allowNull: false,
                 type: Sequelize.BOOLEAN,
@@ -102,6 +106,10 @@ export class BaseRepository {
                 type: Sequelize.NUMERIC,
             },
             paymentId: {
+                allowNull: false,
+                type: Sequelize.STRING,
+            },
+            paymentUri: {
                 allowNull: false,
                 type: Sequelize.STRING,
             },

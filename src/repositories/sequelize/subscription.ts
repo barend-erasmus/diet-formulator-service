@@ -22,7 +22,7 @@ export class SubscriptionRepository extends BaseRepository implements ISubscript
 
         const result: any = await BaseRepository.models.Subscription.create({
             active: subscription.active,
-            expiryTimestamp: subscription.expiryTimestamp.getTime(),
+            expiryTimestamp: subscription.expiryTimestamp ? subscription.expiryTimestamp.getTime() : null,
             startTimestamp: subscription.startTimestamp.getTime(),
             type: subscription.type,
             userName,

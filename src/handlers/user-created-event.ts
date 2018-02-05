@@ -19,6 +19,6 @@ export class UserCreatedEventHandler implements IEventHandler<UserCreatedEvent> 
 
         await this.subscriptionRepository.create(new BasicSubscription(true, null, new Date(), []), event.userName);
 
-        return Promise.resolve(event);
+        return event;
     }
 }

@@ -20,9 +20,11 @@ export class PaymentRepository extends BaseRepository implements IPaymentReposit
 
         const result: any = await BaseRepository.models.Payment.create({
             amount: payment.amount,
+            assigned: payment.assigned,
             paid: payment.paid,
             paidTimestamp: payment.paidTimestamp ? payment.paidTimestamp.getTime() : null,
             paymentId: payment.paymentId,
+            paymentUri: payment.redirectUri,
             period: payment.period,
             subscription: payment.subscription,
             userName,
@@ -33,7 +35,7 @@ export class PaymentRepository extends BaseRepository implements IPaymentReposit
 
     public async list(userName: string): Promise<Payment[]> {
 
-        const result: any[] = await BaseRepository.models.Subscription.findAll({
+        const result: any[] = await BaseRepository.models.Payment.findAll({
             where: {
                 userName: {
                     [Sequelize.Op.eq]: userName,
@@ -41,6 +43,11 @@ export class PaymentRepository extends BaseRepository implements IPaymentReposit
             },
         });
 
-        return result.map((x) => new Payment(x.amount, x.paid, x.paidTimestamp, x.paymentId, x.period, null, x.subscription));
+        return result.map((x) => new Payment(x.amount, x.assigned, x.paid, x.paidTimestamp ? new Date(x.paidTimestamp) : null, x.paymentId, x.period, x.paymentUri, x.subscription));
+    }
+
+    public async update(payment: Payment, userName: string): Promise<Payment> {
+
+        return payment;
     }
 }

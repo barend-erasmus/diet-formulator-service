@@ -34,9 +34,11 @@ app.use(expressWinston.logger({
 app.get('/api/user/info', UserRouter.info);
 app.post('/api/user/update', UserRouter.update);
 
+app.get('/api/subscription/change', AuthenticationMiddleware.shouldBeAuthenticated, SubscriptionRouter.change);
 app.get('/api/subscription/find', AuthenticationMiddleware.shouldBeAuthenticated, SubscriptionRouter.find);
 
 app.get('/api/payment/create', AuthenticationMiddleware.shouldBeAuthenticated, PaymentRouter.create);
+app.get('/api/payment/list', AuthenticationMiddleware.shouldBeAuthenticated, PaymentRouter.list);
 
 app.post('/api/nutrient/create', AuthenticationMiddleware.shouldBeAuthenticated, NutrientRouter.create);
 app.get('/api/nutrient/find', AuthenticationMiddleware.shouldBeAuthenticated, NutrientRouter.find);

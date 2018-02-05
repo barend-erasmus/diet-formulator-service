@@ -42,7 +42,7 @@ export class PaymentService extends BaseService {
                 break;
         }
 
-        let payment: Payment = new Payment(amount, false, null, null, 30, null, subscription);
+        let payment: Payment = new Payment(amount, false, false, null, null, 30, null, subscription);
 
         payment = await this.paymentGateway.create(payment);
 
