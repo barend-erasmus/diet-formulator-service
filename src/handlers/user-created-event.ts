@@ -1,5 +1,4 @@
 import { inject, injectable } from 'inversify';
-import * as moment from 'moment';
 import 'reflect-metadata';
 import { BasicSubscription } from '../entities/basic-subscription';
 import { UserCreatedEvent } from '../events/user-created';
@@ -18,12 +17,8 @@ export class UserCreatedEventHandler implements IEventHandler<UserCreatedEvent> 
 
     public async handle(event: UserCreatedEvent): Promise<UserCreatedEvent> {
 
-        await this.subscriptionRepository.create(new BasicSubscription(true, this.getDate14DaysFromNow(), new Date(), []), event.userName);
+        await this.subscriptionRepository.create(new BasicSubscription(true, null, new Date(), []), event.userName);
 
         return Promise.resolve(event);
-    }
-
-    private getDate14DaysFromNow(): Date {
-        return moment().add(14, 'days').toDate();
     }
 }

@@ -45,6 +45,7 @@ export class SubscriptionFactory implements ISubscriptionFactory {
                 'view-ingredient',
                 'create-formulation',
                 'view-formulation',
+                'view-suggested-value',
                 'view-billing',
             ]);
 

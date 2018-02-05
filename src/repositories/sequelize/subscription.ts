@@ -50,4 +50,24 @@ export class SubscriptionRepository extends BaseRepository implements ISubscript
 
         return this.subscriptionFactory.create(result.active, new Date(parseInt(result.expiryTimestamp, undefined)), new Date(parseInt(result.startTimestamp, undefined)), result.type);
     }
+
+    public async update(subscription: Subscription, userName: string): Promise<Subscription> {
+
+        const result: any = await BaseRepository.models.Subscription.find({
+            where: {
+                active: {
+                    [Sequelize.Op.eq]: true,
+                },
+                userName: {
+                    [Sequelize.Op.eq]: userName,
+                },
+            },
+        });
+
+        result.active = subscription.active;
+
+        await result.save();
+
+        return subscription;
+    }
 }
