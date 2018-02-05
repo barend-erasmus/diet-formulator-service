@@ -19,4 +19,15 @@ export class PaymentRouter {
             res.status(500).json(WorldOfRationsError.fromError(err));
         }
     }
+
+    public static async list(req: express.Request, res: express.Response) {
+        try {
+
+            const result: Payment[] = await container.get<PaymentService>('PaymentService').list(req['user'].email);
+
+            res.json(result);
+        } catch (err) {
+            res.status(500).json(WorldOfRationsError.fromError(err));
+        }
+    }
 }

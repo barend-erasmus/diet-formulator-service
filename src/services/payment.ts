@@ -51,6 +51,13 @@ export class PaymentService extends BaseService {
         return payment.redirectUri;
     }
 
+    public async list(userName: string): Promise<Payment[]> {
+
+        await this.throwIfDoesNotHavePermission(userName, 'view-billing');
+
+        return this.paymentRepository.list(userName);
+    }
+
     private throwIfSubscriptionInvalid(subscription: string): void {
         if (subscription !== 'standard' && subscription !== 'premium') {
             throw new WorldOfRationsError('invalid_subscription', 'Invalid subscription');
