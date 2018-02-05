@@ -35,6 +35,21 @@ export class PayPalPaymentGateway implements IPaymentGateway {
         return payment;
     }
 
+    public async verify(id: string): Promise<boolean> {
+        const accessToken: string = await this.getAccessToken();
+
+        const response = await request({
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+            },
+            json: true,
+            method: 'GET',
+            uri: `${this.baseUri}/payments/payment/${id}`,
+        });
+
+        return response.payer.status === 'VERIFIED';
+    }
+
     private buildRequestObject(payment: Payment): any {
         return {
             intent: 'sale',
@@ -43,8 +58,8 @@ export class PayPalPaymentGateway implements IPaymentGateway {
                 payment_method: 'paypal',
             },
             redirect_urls: {
-                cancel_url: 'https://worldofrations.com/billing/cancel',
-                return_url: 'https://worldofrations.com/billing/return',
+                cancel_url: 'https://worldofrations.com/billing',
+                return_url: 'https://worldofrations.com/billing',
             },
             transactions: [
                 {

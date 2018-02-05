@@ -33,6 +33,26 @@ export class PaymentRepository extends BaseRepository implements IPaymentReposit
         return payment;
     }
 
+    public async find(id: string, userName: string): Promise<Payment> {
+
+        const result: any = await BaseRepository.models.Payment.find({
+            where: {
+                paymentId: {
+                    [Sequelize.Op.eq]: id,
+                },
+                userName: {
+                    [Sequelize.Op.eq]: userName,
+                },
+            },
+        });
+
+        if (!result) {
+            return null;
+        }
+
+        return new Payment(result.amount, result.assigned, result.paid, result.paidTimestamp ? new Date(parseInt(result.paidTimestamp, undefined)) : null, result.paymentId, result.period, result.paymentUri, result.subscription);
+    }
+
     public async list(userName: string): Promise<Payment[]> {
 
         const result: any[] = await BaseRepository.models.Payment.findAll({
@@ -43,10 +63,27 @@ export class PaymentRepository extends BaseRepository implements IPaymentReposit
             },
         });
 
-        return result.map((x) => new Payment(x.amount, x.assigned, x.paid, x.paidTimestamp ? new Date(x.paidTimestamp) : null, x.paymentId, x.period, x.paymentUri, x.subscription));
+        return result.map((x) => new Payment(x.amount, x.assigned, x.paid, x.paidTimestamp ? new Date(parseInt(x.paidTimestamp, undefined)) : null, x.paymentId, x.period, x.paymentUri, x.subscription));
     }
 
     public async update(payment: Payment, userName: string): Promise<Payment> {
+
+        const result: any = await BaseRepository.models.Payment.find({
+            where: {
+                paymentId: {
+                    [Sequelize.Op.eq]: payment.paymentId,
+                },
+                userName: {
+                    [Sequelize.Op.eq]: userName,
+                },
+            },
+        });
+
+        result.assigned = payment.assigned;
+        result.paid = payment.paid;
+        result.paidTimestamp = payment.paidTimestamp ? payment.paidTimestamp.getTime() : null;
+
+        await result.save();
 
         return payment;
     }

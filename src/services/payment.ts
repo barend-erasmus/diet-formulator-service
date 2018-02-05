@@ -58,6 +58,22 @@ export class PaymentService extends BaseService {
         return this.paymentRepository.list(userName);
     }
 
+    public async verify(id: string, userName: string): Promise<Payment> {
+
+        const paid: boolean = await this.paymentGateway.verify(id);
+
+        if (!paid) {
+            throw new WorldOfRationsError('not_paid', 'Payment has not been made');
+        }
+
+        const payment: Payment = await this.paymentRepository.find(id, userName);
+
+        payment.paid = paid;
+        payment.paidTimestamp = new Date();
+
+        return this.paymentRepository.update(payment, userName);
+    }
+
     private throwIfSubscriptionInvalid(subscription: string): void {
         if (subscription !== 'standard' && subscription !== 'premium') {
             throw new WorldOfRationsError('invalid_subscription', 'Invalid subscription');

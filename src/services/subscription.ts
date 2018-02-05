@@ -16,7 +16,7 @@ export class SubscriptionService extends BaseService {
 
     constructor(
         @inject('IPaymentRepository')
-        private paymentGateway: IPaymentRepository,
+        private paymentRepository: IPaymentRepository,
         @inject('ISubscriptionRepository')
         subscriptionRepository: ISubscriptionRepository,
         @inject('ISubscriptionFactory')
@@ -29,11 +29,15 @@ export class SubscriptionService extends BaseService {
 
     public async change(subscription: string, userName: string): Promise<Subscription> {
 
+        const payment: Payment = null;
+
         if (this.requiresPayment(subscription)) {
             await this.assignPaymentToSubscription(subscription, userName);
         }
 
-        const newSubscription: Subscription = await this.subscriptionRepository.create(this.subscriptionFactory.create(true, this.getExpiryDateForSubscription(subscription), new Date(), subscription), userName);
+        await this.deactivateCurrentSubscription(userName);
+
+        const newSubscription: Subscription = await this.subscriptionRepository.create(this.subscriptionFactory.create(true, this.getExpiryDateForSubscription(subscription, payment ? payment.period : null), new Date(), subscription), userName);
 
         return newSubscription;
     }
@@ -49,7 +53,7 @@ export class SubscriptionService extends BaseService {
     }
 
     private async assignPaymentToSubscription(subscription: string, userName: string): Promise<void> {
-        const payments: Payment[] = await this.paymentGateway.list(userName);
+        const payments: Payment[] = await this.paymentRepository.list(userName);
 
         const payment: Payment = payments.find((x) => x.subscription === subscription && !x.assigned && x.paid);
 
@@ -57,6 +61,12 @@ export class SubscriptionService extends BaseService {
             throw new WorldOfRationsError('no_payment_for_subscription', 'No Payment for this subscription');
         }
 
+        payment.assigned = true;
+
+        await this.paymentRepository.update(payment, userName);
+    }
+
+    private async deactivateCurrentSubscription(userName: string): Promise<void> {
         const currentSubscription: Subscription = await this.subscriptionRepository.find(userName);
 
         if (currentSubscription) {
@@ -64,13 +74,14 @@ export class SubscriptionService extends BaseService {
 
             await this.subscriptionRepository.update(currentSubscription, userName);
         }
-
-        payment.assigned = true;
-
-        await this.paymentGateway.update(payment, userName);
     }
 
-    private getExpiryDateForSubscription(subscription: string): Date {
+    private getExpiryDateForSubscription(subscription: string, period: number): Date {
+
+        if (period) {
+            return moment().add(period, 'days').toDate();
+        }
+
         switch (subscription) {
             case 'trial':
                 return null;
