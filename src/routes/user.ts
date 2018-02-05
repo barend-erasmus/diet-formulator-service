@@ -22,7 +22,7 @@ export class UserRouter {
                             Authorization: req.get('Authorization'),
                         },
                         json: true,
-                        uri: 'https://developersworkspace.auth0.com/userinfo',
+                        uri: 'https://worldofrations.auth0.com/userinfo',
                     });
 
                     user = await container.get<UserService>('UserService').login(new User(

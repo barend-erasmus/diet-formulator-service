@@ -33,6 +33,11 @@ import { IngredientService } from './services/ingredient';
 import { NutrientService } from './services/nutrient';
 import { SubscriptionService } from './services/subscription';
 import { UserService } from './services/user';
+import { IPaymentRepository } from './repositories/payment';
+import { PaymentRepository } from './repositories/sequelize/payment';
+import { IPaymentGateway } from './interfaces/payment-gateway';
+import { PayPalPaymentGateway } from './gateways/paypal-payment';
+import { PaymentService } from './services/payment';
 
 const container: Container = new Container();
 
@@ -42,6 +47,7 @@ container.bind<IFormulationRepository>('IFormulationRepository').toConstantValue
 container.bind<IIngredientGroupRepository>('IIngredientGroupRepository').toConstantValue(new IngredientGroupRepository(config.database.host, config.database.userName, config.database.password));
 container.bind<IIngredientRepository>('IIngredientRepository').toConstantValue(new IngredientRepository(config.database.host, config.database.userName, config.database.password));
 container.bind<INutrientRepository>('INutrientRepository').toConstantValue(new NutrientRepository(config.database.host, config.database.userName, config.database.password));
+container.bind<IPaymentRepository>('IPaymentRepository').toConstantValue(new PaymentRepository(config.database.host, config.database.userName, config.database.password));
 container.bind<ISubscriptionRepository>('ISubscriptionRepository').toDynamicValue((context: interfaces.Context) => {
     const subscriptionFactory: ISubscriptionFactory = context.container.get<ISubscriptionFactory>('ISubscriptionFactory');
     return new SubscriptionRepository(subscriptionFactory, config.database.host, config.database.userName, config.database.password);
@@ -57,11 +63,14 @@ container.bind<DietService>('DietService').to(DietService);
 container.bind<FormulationService>('FormulationService').to(FormulationService);
 container.bind<IngredientService>('IngredientService').to(IngredientService);
 container.bind<NutrientService>('NutrientService').to(NutrientService);
+container.bind<PaymentService>('PaymentService').to(PaymentService);
 container.bind<SubscriptionService>('SubscriptionService').to(SubscriptionService);
 container.bind<UserService>('UserService').to(UserService);
 
 container.bind<UserCreatedEventBus<UserCreatedEvent>>('UserCreatedEventBus').to(UserCreatedEventBus);
 container.bind<UserCreatedEventHandler>('UserCreatedEventHandler').to(UserCreatedEventHandler);
+
+container.bind<IPaymentGateway>('IPaymentGateway').toConstantValue(new PayPalPaymentGateway('ATsfPWiJ0K6vxY92fIqXAD4tAUtR1C8FJeV56Uc_W3vDq3uzhbK1_6ocXNTx4lPm5trdq2b_0OK9z0_W', 'EJ_3nwnFqDsV7i30_xcaNtISfUfjXI8KmebhMvJOmTiNs_d7IFR8SME81IHAoyhjesevdyKtvO2P8-gN'));
 
 export {
     container,

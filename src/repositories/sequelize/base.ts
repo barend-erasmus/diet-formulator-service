@@ -15,6 +15,7 @@ export class BaseRepository {
         IngredientGroup: Sequelize.Model<{}, {}>,
         IngredientValue: Sequelize.Model<{}, {}>,
         Nutrient: Sequelize.Model<{}, {}>,
+        Payment: Sequelize.Model<{}, {}>,
         Subscription: Sequelize.Model<{}, {}>,
         SuggestedValue: Sequelize.Model<{}, {}>,
         Supplement: Sequelize.Model<{}, {}>,
@@ -97,12 +98,16 @@ export class BaseRepository {
                 type: Sequelize.BOOLEAN,
             },
             paidTimestamp: {
-                allowNull: false,
+                allowNull: true,
                 type: Sequelize.NUMERIC,
             },
             paymentId: {
                 allowNull: false,
                 type: Sequelize.STRING,
+            },
+            period: {
+                allowNull: false,
+                type: Sequelize.NUMERIC,
             },
             subscription: {
                 allowNull: false,
@@ -335,6 +340,7 @@ export class BaseRepository {
             IngredientGroup,
             IngredientValue,
             Nutrient,
+            Payment,
             Subscription,
             SuggestedValue,
             Supplement,

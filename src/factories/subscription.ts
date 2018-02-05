@@ -45,6 +45,7 @@ export class SubscriptionFactory implements ISubscriptionFactory {
                 'view-ingredient',
                 'create-formulation',
                 'view-formulation',
+                'view-billing',
             ]);
 
             subscription.expired = true;

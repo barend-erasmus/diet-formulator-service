@@ -14,6 +14,7 @@ import { IngredientRouter } from './routes/ingredients';
 import { NutrientRouter } from './routes/nutrient';
 import { SubscriptionRouter } from './routes/subscription';
 import { UserRouter } from './routes/user';
+import { PaymentRouter } from './routes/payment';
 
 const argv = yargs.argv;
 const app = express();
@@ -34,6 +35,8 @@ app.get('/api/user/info', UserRouter.info);
 app.post('/api/user/update', UserRouter.update);
 
 app.get('/api/subscription/find', AuthenticationMiddleware.shouldBeAuthenticated, SubscriptionRouter.find);
+
+app.get('/api/payment/create', AuthenticationMiddleware.shouldBeAuthenticated, PaymentRouter.create);
 
 app.post('/api/nutrient/create', AuthenticationMiddleware.shouldBeAuthenticated, NutrientRouter.create);
 app.get('/api/nutrient/find', AuthenticationMiddleware.shouldBeAuthenticated, NutrientRouter.find);

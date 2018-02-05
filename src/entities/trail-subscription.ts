@@ -22,6 +22,7 @@ export class TrialSubscription extends Subscription {
                 'view-ingredient',
                 'create-formulation',
                 'view-formulation',
+                'view-billing',
             ]);
 
         this.type = 'trial';
