@@ -1,5 +1,6 @@
 const fs = require('fs');
 const pg = require('pg');
+const titleCase = require('title-case');
 
 (async () => {
 
@@ -20,7 +21,7 @@ const pg = require('pg');
 
             let queries = buildQueries(tableName, tableData);
 
-            const chunkSize = 100;
+            const chunkSize = 150;
 
             for (let i = 0; i < queries.length; i += chunkSize) {
                 const tempQueries = queries.slice(i, i + chunkSize);
@@ -50,14 +51,36 @@ async function beginTransaction(client, tableName) {
 function buildQueries(tableName, tableData) {
     let queries = [];
 
-    const indexOfApplicationId = tableData.columns.indexOf('applicationId');
+    const columns = getFilteredColumns(tableData);
 
     for (let i = 1; i < tableData.lines.length - 1; i++) {
-        const values = tableData.lines[i].split(/;(?=(?:(?:[^"]*"){2})*[^"]*$)/);
-        queries.push(`INSERT INTO public."${tableName}" (${tableData.columns.filter((x, index) => index !== indexOfApplicationId).map((x) => `"${x}"`).join(', ')}) VALUES (${values.filter((x, index) => index !== indexOfApplicationId).map((x) => x === '' ? 'NULL' : (isNaN(x) ? `'${x.replace(new RegExp(`'`, 'g'), `''`)}'` : x)).join(', ')});`);
+        let values = tableData.lines[i].split(/;(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+
+        values = getFilteredValues(tableData, values);
+
+        queries.push(`INSERT INTO public."${tableName}" (${columns.map((x) => `"${x}"`).join(', ')}) VALUES (${values.map((x, index) => parseValue(tableData, index, x)).join(', ')});`);
     }
 
     return queries;
+}
+
+function parseValue(tableData, columnIndex, value) {
+
+    return value === '' ? 'NULL' : (isNaN(value) ? `'${value.replace(new RegExp(`'`, 'g'), `''`)}'` : value);
+}
+
+function getFilteredColumns(tableData) {
+
+    const indexOfApplicationId = tableData.columns.indexOf('applicationId');
+
+    return tableData.columns.filter((x, index) => index !== indexOfApplicationId);
+}
+
+function getFilteredValues(tableData, values) {
+
+    const indexOfApplicationId = tableData.columns.indexOf('applicationId');
+
+    return values.filter((x, index) => index !== indexOfApplicationId)
 }
 
 async function commitTransaction(client) {

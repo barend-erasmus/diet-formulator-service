@@ -58,8 +58,8 @@ export class PayPalPaymentGateway implements IPaymentGateway {
                 payment_method: 'paypal',
             },
             redirect_urls: {
-                cancel_url: 'https://worldofrations.com/billing',
-                return_url: 'https://worldofrations.com/billing',
+                cancel_url: 'https://suite.worldofrations.com/billing',
+                return_url: 'https://suite.worldofrations.com/billing',
             },
             transactions: [
                 {
