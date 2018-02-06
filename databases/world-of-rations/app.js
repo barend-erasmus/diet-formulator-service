@@ -21,7 +21,7 @@ const titleCase = require('title-case');
 
             let queries = buildQueries(tableName, tableData);
 
-            const chunkSize = 150;
+            const chunkSize = 200;
 
             for (let i = 0; i < queries.length; i += chunkSize) {
                 const tempQueries = queries.slice(i, i + chunkSize);
@@ -65,9 +65,21 @@ function buildQueries(tableName, tableData) {
 }
 
 function parseValue(tableData, columnIndex, value) {
+    
+    // if (value && tableData.columns[columnIndex] === 'name') {
+    //     value = toTitleCase(value);
+    // }
 
     return value === '' ? 'NULL' : (isNaN(value) ? `'${value.replace(new RegExp(`'`, 'g'), `''`)}'` : value);
 }
+
+function toTitleCase(str) {
+	str = str.toLowerCase().split(' ');
+	for (var i = 0; i < str.length; i++) {
+		str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1);
+	}
+	return str.join(' ');
+};
 
 function getFilteredColumns(tableData) {
 

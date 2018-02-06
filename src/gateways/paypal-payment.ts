@@ -1,7 +1,11 @@
+import { inject, injectable } from 'inversify';
+import 'reflect-metadata';
 import * as request from 'request-promise';
 import { Payment } from '../entities/payment';
+import { ILogger } from '../interfaces/logger';
 import { IPaymentGateway } from '../interfaces/payment-gateway';
 
+@injectable()
 export class PayPalPaymentGateway implements IPaymentGateway {
 
     private baseUri: string = 'https://api.sandbox.paypal.com/v1';
@@ -11,6 +15,8 @@ export class PayPalPaymentGateway implements IPaymentGateway {
     constructor(
         private clientId: string,
         private clientSecret: string,
+        @inject('ILogger')
+        private logger: ILogger,
     ) {
 
     }
@@ -47,7 +53,15 @@ export class PayPalPaymentGateway implements IPaymentGateway {
             uri: `${this.baseUri}/payments/payment/${paymentId}`,
         });
 
-        return response.payer.status === 'VERIFIED';
+        const result: boolean = response.payer.status === 'VERIFIED';
+
+        if (result) {
+            this.logger.info(`Payment ${paymentId} has been verified`);
+        } else {
+            this.logger.warning(`Payment ${paymentId} has not been verified`);
+        }
+
+        return result;
     }
 
     private buildRequestObject(payment: Payment): any {

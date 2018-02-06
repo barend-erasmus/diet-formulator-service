@@ -27,8 +27,8 @@ app.use(expressWinston.logger({
     meta: true,
     msg: '{{res.statusCode}} {{req.method}} {{res.responseTime}}ms {{req.url}}',
     transports: [
-        new (winston.transports.File)({ filename: path.join(path.dirname(require.main.filename), 'web.log') }),
-    ],
+        new (winston.transports.File)({ filename: 'web.log' }),
+      ],
 }));
 
 app.get('/api/user/info', UserRouter.info);

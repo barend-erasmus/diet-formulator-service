@@ -1,5 +1,6 @@
 import { Container, interfaces } from 'inversify';
 import 'reflect-metadata';
+import * as winston from 'winston';
 import { UserCreatedEventBus } from './bus/user-created-event';
 import { config } from './config';
 import { UserCreatedEvent } from './events/user-created';
@@ -8,8 +9,10 @@ import { LeastCostRationFormulator } from './formulators/least-cost-ration';
 import { PayPalPaymentGateway } from './gateways/paypal-payment';
 import { UserCreatedEventHandler } from './handlers/user-created-event';
 import { IFormulator } from './interfaces/formulator';
+import { ILogger } from './interfaces/logger';
 import { IPaymentGateway } from './interfaces/payment-gateway';
 import { ISubscriptionFactory } from './interfaces/subscription-factory';
+import { WinstonLogger } from './loggers/winston';
 import { IDietRepository } from './repositories/diet';
 import { IDietGroupRepository } from './repositories/diet-group';
 import { IFormulationRepository } from './repositories/formulation';
@@ -70,7 +73,13 @@ container.bind<UserService>('UserService').to(UserService);
 container.bind<UserCreatedEventBus<UserCreatedEvent>>('UserCreatedEventBus').to(UserCreatedEventBus);
 container.bind<UserCreatedEventHandler>('UserCreatedEventHandler').to(UserCreatedEventHandler);
 
-container.bind<IPaymentGateway>('IPaymentGateway').toConstantValue(new PayPalPaymentGateway('ATsfPWiJ0K6vxY92fIqXAD4tAUtR1C8FJeV56Uc_W3vDq3uzhbK1_6ocXNTx4lPm5trdq2b_0OK9z0_W', 'EJ_3nwnFqDsV7i30_xcaNtISfUfjXI8KmebhMvJOmTiNs_d7IFR8SME81IHAoyhjesevdyKtvO2P8-gN'));
+container.bind<IPaymentGateway>('IPaymentGateway').toDynamicValue((context: interfaces.Context) => {
+    const logger: ILogger = context.container.get<ILogger>('ILogger');
+
+    return new PayPalPaymentGateway('ATsfPWiJ0K6vxY92fIqXAD4tAUtR1C8FJeV56Uc_W3vDq3uzhbK1_6ocXNTx4lPm5trdq2b_0OK9z0_W', 'EJ_3nwnFqDsV7i30_xcaNtISfUfjXI8KmebhMvJOmTiNs_d7IFR8SME81IHAoyhjesevdyKtvO2P8-gN', logger);
+});
+
+container.bind<ILogger>('ILogger').to(WinstonLogger);
 
 export {
     container,
