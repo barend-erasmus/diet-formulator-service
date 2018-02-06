@@ -58,15 +58,15 @@ export class PaymentService extends BaseService {
         return this.paymentRepository.list(userName);
     }
 
-    public async verify(id: string, userName: string): Promise<Payment> {
+    public async verify(paymentId: string, userName: string): Promise<Payment> {
 
-        const paid: boolean = await this.paymentGateway.verify(id);
+        const paid: boolean = await this.paymentGateway.verify(paymentId);
 
         if (!paid) {
             throw new WorldOfRationsError('not_paid', 'Payment has not been made');
         }
 
-        const payment: Payment = await this.paymentRepository.find(id, userName);
+        const payment: Payment = await this.paymentRepository.find(paymentId, userName);
 
         payment.paid = paid;
         payment.paidTimestamp = new Date();

@@ -34,7 +34,7 @@ export class PaymentRouter {
     public static async verify(req: express.Request, res: express.Response) {
         try {
 
-            const result: Payment = await container.get<PaymentService>('PaymentService').verify(req.query.id, req['user'].email);
+            const result: Payment = await container.get<PaymentService>('PaymentService').verify(req.query.paymentId, req['user'].email);
 
             res.json(result);
         } catch (err) {

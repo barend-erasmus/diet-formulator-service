@@ -33,12 +33,12 @@ export class PaymentRepository extends BaseRepository implements IPaymentReposit
         return payment;
     }
 
-    public async find(id: string, userName: string): Promise<Payment> {
+    public async find(paymentId: string, userName: string): Promise<Payment> {
 
         const result: any = await BaseRepository.models.Payment.find({
             where: {
                 paymentId: {
-                    [Sequelize.Op.eq]: id,
+                    [Sequelize.Op.eq]: paymentId,
                 },
                 userName: {
                     [Sequelize.Op.eq]: userName,

@@ -13,6 +13,10 @@ export class Ingredient {
 
     }
 
+    public removeValues(): void {
+        this.values = [];
+    }
+
     public validate(): void {
         const messages: string[] = [];
 
@@ -27,9 +31,5 @@ export class Ingredient {
         if (messages.length > 0) {
             throw new Error(messages.join(';'));
         }
-    }
-
-    public removeValues(): void {
-        this.values = [];
     }
 }

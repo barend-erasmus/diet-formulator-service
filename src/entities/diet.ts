@@ -19,6 +19,14 @@ export class Diet {
         this.userName = null;
     }
 
+    public removeValues(): void {
+        this.values = [];
+    }
+
+    public setUserName(userName: string): void {
+        this.userName = userName;
+    }
+
     public validate(): void {
         const errorFields: ErrorField[] = [];
 
@@ -33,13 +41,5 @@ export class Diet {
         if (errorFields.length > 0) {
             throw new ValidationError('invalid_diet', 'Diet is invalid', errorFields);
         }
-    }
-
-    public removeValues(): void {
-        this.values = [];
-    }
-
-    public setUserName(userName: string): void {
-        this.userName = userName;
     }
 }

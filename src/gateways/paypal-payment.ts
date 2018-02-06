@@ -35,7 +35,7 @@ export class PayPalPaymentGateway implements IPaymentGateway {
         return payment;
     }
 
-    public async verify(id: string): Promise<boolean> {
+    public async verify(paymentId: string): Promise<boolean> {
         const accessToken: string = await this.getAccessToken();
 
         const response = await request({
@@ -44,7 +44,7 @@ export class PayPalPaymentGateway implements IPaymentGateway {
             },
             json: true,
             method: 'GET',
-            uri: `${this.baseUri}/payments/payment/${id}`,
+            uri: `${this.baseUri}/payments/payment/${paymentId}`,
         });
 
         return response.payer.status === 'VERIFIED';
