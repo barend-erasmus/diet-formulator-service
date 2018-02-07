@@ -28,14 +28,14 @@ id;description;name;userName;createdAt;updatedAt;dietGroupId
 26;;Bobwhite Quail, Starter Ration For Chicks 0 - 6 Weeks Of Age;;2017-12-05 17:10:30.598+00;2017-12-05 17:10:30.598+00;13
 27;;Breeder Holding Ration, From 42 Weeks To Sexual Maturity;;2017-12-05 17:10:34.193+00;2017-12-05 17:10:34.193+00;16
 28;;Breeder Holding Ration, From 42 Weeks To Sexual Maturity;;2017-12-05 17:10:38.366+00;2017-12-05 17:10:38.366+00;17
-29;;Breeder Holding Ration, From 48 Weeks To sexual maturity;;2017-12-05 17:10:42.135+00;2017-12-05 17:10:42.135+00;20
-30;;Breeder Holding Ration, From 48 Weeks To sexual maturity;;2017-12-05 17:10:46.676+00;2017-12-05 17:10:46.676+00;21
-31;;Breeder Ration For hens laying hatching eggs;;2017-12-05 17:10:50.52+00;2017-12-05 17:10:50.52+00;24
-32;;Breeder Ration For hens laying hatching eggs;;2017-12-05 17:10:55.036+00;2017-12-05 17:10:55.036+00;25
-33;;Breeder Ration, From 3 - 4 Weeks before onset Of egg Production;;2017-12-05 17:10:59.884+00;2017-12-05 17:10:59.884+00;20
-34;;Breeder Ration, From 3 - 4 Weeks before onset Of egg Production;;2017-12-05 17:11:04.726+00;2017-12-05 17:11:04.726+00;21
-35;;Breeder Ration, From 4 - 5 Weeks before onset Of egg Production;;2017-12-05 17:11:09.616+00;2017-12-05 17:11:09.616+00;16
-36;;Breeder Ration, From 4 - 5 Weeks before onset Of egg Production;;2017-12-05 17:11:14.474+00;2017-12-05 17:11:14.474+00;17
+29;;Breeder Holding Ration, From 48 Weeks To sexual Maturity;;2017-12-05 17:10:42.135+00;2017-12-05 17:10:42.135+00;20
+30;;Breeder Holding Ration, From 48 Weeks To sexual Maturity;;2017-12-05 17:10:46.676+00;2017-12-05 17:10:46.676+00;21
+31;;Breeder Ration For hens laying hatching Eggs;;2017-12-05 17:10:50.52+00;2017-12-05 17:10:50.52+00;24
+32;;Breeder Ration For hens laying hatching Eggs;;2017-12-05 17:10:55.036+00;2017-12-05 17:10:55.036+00;25
+33;;Breeder Ration, From 3 - 4 Weeks before onset Of Egg Production;;2017-12-05 17:10:59.884+00;2017-12-05 17:10:59.884+00;20
+34;;Breeder Ration, From 3 - 4 Weeks before onset Of Egg Production;;2017-12-05 17:11:04.726+00;2017-12-05 17:11:04.726+00;21
+35;;Breeder Ration, From 4 - 5 Weeks before onset Of Egg Production;;2017-12-05 17:11:09.616+00;2017-12-05 17:11:09.616+00;16
+36;;Breeder Ration, From 4 - 5 Weeks before onset Of Egg Production;;2017-12-05 17:11:14.474+00;2017-12-05 17:11:14.474+00;17
 37;;Breeder, Pelleted Mix;;2017-12-05 17:11:17.611+00;2017-12-05 17:11:17.611+00;28
 38;;Breeder, Pelleted Mix;;2017-12-05 17:11:22.666+00;2017-12-05 17:11:22.666+00;29
 39;;Breeders, Holding;;2017-12-05 17:11:31.032+00;2017-12-05 17:11:31.032+00;32
@@ -52,8 +52,8 @@ id;description;name;userName;createdAt;updatedAt;dietGroupId
 50;;Broiler Chicks, 0 - 3 Weeks Of Age;;2017-12-05 17:12:34.155+00;2017-12-05 17:12:34.155+00;49
 51;;Broiler Chicks, 3 - 6 Weeks Of Age;;2017-12-05 17:12:40.121+00;2017-12-05 17:12:40.121+00;48
 52;;Broiler Chicks, 3 - 6 Weeks Of Age;;2017-12-05 17:12:45.98+00;2017-12-05 17:12:45.98+00;49
-53;;Broilers, 6 -8 Weeks Of Age, finishing stage;;2017-12-05 17:12:51.939+00;2017-12-05 17:12:51.939+00;48
-54;;Broilers, 6 -8 Weeks Of Age, finishing stage;;2017-12-05 17:12:57.942+00;2017-12-05 17:12:57.942+00;49
+53;;Broilers, 6 -8 Weeks Of Age, Finishing Stage;;2017-12-05 17:12:51.939+00;2017-12-05 17:12:51.939+00;48
+54;;Broilers, 6 -8 Weeks Of Age, Finishing Stage;;2017-12-05 17:12:57.942+00;2017-12-05 17:12:57.942+00;49
 55;;Brood Fish;;2017-12-05 17:13:01.183+00;2017-12-05 17:13:01.183+00;52
 56;;Brood Fish;;2017-12-05 17:13:04.754+00;2017-12-05 17:13:04.754+00;54
 57;;Brood Fish;;2017-12-05 17:13:08.33+00;2017-12-05 17:13:08.33+00;56
@@ -62,104 +62,104 @@ id;description;name;userName;createdAt;updatedAt;dietGroupId
 60;;Brood Fish;;2017-12-05 17:13:20.4+00;2017-12-05 17:13:20.4+00;60
 61;;Brood Fish;;2017-12-05 17:13:24.556+00;2017-12-05 17:13:24.556+00;61
 62;;Brood Fish;;2017-12-05 17:13:28.625+00;2017-12-05 17:13:28.625+00;62
-63;;Brown Egg Layers, Feed Intake ± Around 100 g/bird/day;;2017-12-05 17:13:34.005+00;2017-12-05 17:13:34.005+00;64
-64;;Brown Egg Layers, Feed Intake ± Around 100 g/bird/day;;2017-12-05 17:13:40.031+00;2017-12-05 17:13:40.031+00;65
-65;;Brown Egg Layers, Feed Intake Around 110 g/bird/day;;2017-12-05 17:13:46.218+00;2017-12-05 17:13:46.218+00;64
-66;;Brown Egg Layers, Feed Intake Around 110 g/bird/day;;2017-12-05 17:13:52.444+00;2017-12-05 17:13:52.444+00;65
-67;;Brown Egg Layers, Feed Intake Around 120 g/bird/day;;2017-12-05 17:13:58.797+00;2017-12-05 17:13:58.797+00;64
-68;;Brown Egg Layers, Feed Intake Around 120 g/bird/day;;2017-12-05 17:14:04.986+00;2017-12-05 17:14:04.986+00;65
-69;;Brown Egg Layers, Feed Intake Around 90 g/bird/day;;2017-12-05 17:14:11.365+00;2017-12-05 17:14:11.365+00;64
-70;;Brown Egg Layers, Feed Intake Around 90 g/bird/day;;2017-12-05 17:14:17.655+00;2017-12-05 17:14:17.655+00;65
-71;;Brown Egg Strain, 0 - 6 Weeks, ending aound 500 g BW;;2017-12-05 17:14:23.035+00;2017-12-05 17:14:23.035+00;67
-72;;Brown Egg Strain, 0 - 6 Weeks, ending aound 500 g BW;;2017-12-05 17:14:29.38+00;2017-12-05 17:14:29.38+00;68
-73;;Brown Egg Strain, 12 - 18 Weeks, ending Around 1500 g BW;;2017-12-05 17:14:35.964+00;2017-12-05 17:14:35.964+00;67
-74;;Brown Egg Strain, 12 - 18 Weeks, ending Around 1500 g BW;;2017-12-05 17:14:42.504+00;2017-12-05 17:14:42.504+00;68
-75;;Brown Egg Strain, 18 Weeks To 1st egg, ending Around 1600 g BW;;2017-12-05 17:14:49.198+00;2017-12-05 17:14:49.198+00;67
-76;;Brown Egg Strain, 18 Weeks To 1st egg, ending Around 1600 g BW;;2017-12-05 17:14:55.859+00;2017-12-05 17:14:55.859+00;68
-77;;Brown Egg Strain, 6 - 12 Weeks, ending Around 1100 g BW;;2017-12-05 17:15:02.728+00;2017-12-05 17:15:02.728+00;67
-78;;Brown Egg Strain, 6 - 12 Weeks, ending Around 1100 g BW;;2017-12-05 17:15:09.453+00;2017-12-05 17:15:09.453+00;68
-79;;Bulls Now Weighing Around 500kg (1100 lb), With Moderate Growth intended;;2017-12-05 17:15:12.72+00;2017-12-05 17:15:12.72+00;71
-80;;Bulls Now Weighing Around 500kg (1100 lb), With Moderate Growth intended;;2017-12-05 17:15:15.434+00;2017-12-05 17:15:15.434+00;72
-81;;Bulls Now Weighing Around 635kg (1400 lb), Rapid Growth intended;;2017-12-05 17:15:17.96+00;2017-12-05 17:15:17.96+00;74
-82;;Bulls Now Weighing Around 635kg (1400 lb), Rapid Growth intended;;2017-12-05 17:15:20.821+00;2017-12-05 17:15:20.821+00;75
-83;;Bulls Now Weighing Around 400kg (900 lb), With Moderate Growth intended;;2017-12-05 17:15:23.907+00;2017-12-05 17:15:23.907+00;71
-84;;Bulls Now Weighing Around 400kg (900 lb), With Moderate Growth intended;;2017-12-05 17:15:26.944+00;2017-12-05 17:15:26.944+00;72
-85;;Bulls Now Weighing Around 400kg (900 lb), With Rapid Growth intended;;2017-12-05 17:15:29.997+00;2017-12-05 17:15:29.997+00;71
-86;;Bulls Now Weighing Around 400kg (900 lb), With Rapid Growth intended;;2017-12-05 17:15:33.046+00;2017-12-05 17:15:33.046+00;72
-87;;Bulls Now Weighing Around 450kg (1000 lb), With Moderate Growth intended;;2017-12-05 17:15:36.282+00;2017-12-05 17:15:36.282+00;71
-88;;Bulls Now Weighing Around 450kg (1000 lb), With Moderate Growth intended;;2017-12-05 17:15:39.009+00;2017-12-05 17:15:39.009+00;77
-89;;Bulls Now Weighing Around 450kg (1000 lb), With Moderate Growth intended;;2017-12-05 17:15:42.046+00;2017-12-05 17:15:42.046+00;78
-90;;Bulls Now Weighing Around 450kg (1000 lb), With Moderate Growth intended;;2017-12-05 17:15:45.444+00;2017-12-05 17:15:45.444+00;72
-91;;Bulls Now Weighing Around 450kg (1000 lb), With Rapid Rapid Growth intended;;2017-12-05 17:15:48.674+00;2017-12-05 17:15:48.674+00;77
-92;;Bulls Now Weighing Around 450kg (1000 lb), With Rapid Rapid Growth intended;;2017-12-05 17:15:51.897+00;2017-12-05 17:15:51.897+00;78
-93;;Bulls Now Weighing Around 450kg (1000 lb), With Rapid Growth intended;;2017-12-05 17:15:55.274+00;2017-12-05 17:15:55.274+00;71
+63;;Brown Egg Layers, Feed Intake ± Around 100 g/Bird/Day;;2017-12-05 17:13:34.005+00;2017-12-05 17:13:34.005+00;64
+64;;Brown Egg Layers, Feed Intake ± Around 100 g/Bird/Day;;2017-12-05 17:13:40.031+00;2017-12-05 17:13:40.031+00;65
+65;;Brown Egg Layers, Feed Intake Around 110 g/Bird/Day;;2017-12-05 17:13:46.218+00;2017-12-05 17:13:46.218+00;64
+66;;Brown Egg Layers, Feed Intake Around 110 g/Bird/Day;;2017-12-05 17:13:52.444+00;2017-12-05 17:13:52.444+00;65
+67;;Brown Egg Layers, Feed Intake Around 120 g/Bird/Day;;2017-12-05 17:13:58.797+00;2017-12-05 17:13:58.797+00;64
+68;;Brown Egg Layers, Feed Intake Around 120 g/Bird/Day;;2017-12-05 17:14:04.986+00;2017-12-05 17:14:04.986+00;65
+69;;Brown Egg Layers, Feed Intake Around 90 g/Bird/Day;;2017-12-05 17:14:11.365+00;2017-12-05 17:14:11.365+00;64
+70;;Brown Egg Layers, Feed Intake Around 90 g/Bird/Day;;2017-12-05 17:14:17.655+00;2017-12-05 17:14:17.655+00;65
+71;;Brown Egg Strain, 0 - 6 Weeks, Ending aound 500 g BW;;2017-12-05 17:14:23.035+00;2017-12-05 17:14:23.035+00;67
+72;;Brown Egg Strain, 0 - 6 Weeks, Ending aound 500 g BW;;2017-12-05 17:14:29.38+00;2017-12-05 17:14:29.38+00;68
+73;;Brown Egg Strain, 12 - 18 Weeks, Ending Around 1500 g BW;;2017-12-05 17:14:35.964+00;2017-12-05 17:14:35.964+00;67
+74;;Brown Egg Strain, 12 - 18 Weeks, Ending Around 1500 g BW;;2017-12-05 17:14:42.504+00;2017-12-05 17:14:42.504+00;68
+75;;Brown Egg Strain, 18 Weeks To 1st Egg, Ending Around 1600 g BW;;2017-12-05 17:14:49.198+00;2017-12-05 17:14:49.198+00;67
+76;;Brown Egg Strain, 18 Weeks To 1st Egg, Ending Around 1600 g BW;;2017-12-05 17:14:55.859+00;2017-12-05 17:14:55.859+00;68
+77;;Brown Egg Strain, 6 - 12 Weeks, Ending Around 1100 g BW;;2017-12-05 17:15:02.728+00;2017-12-05 17:15:02.728+00;67
+78;;Brown Egg Strain, 6 - 12 Weeks, Ending Around 1100 g BW;;2017-12-05 17:15:09.453+00;2017-12-05 17:15:09.453+00;68
+79;;Bulls Now Weighing Around 500kg (1100 lb), With Moderate Growth Intended;;2017-12-05 17:15:12.72+00;2017-12-05 17:15:12.72+00;71
+80;;Bulls Now Weighing Around 500kg (1100 lb), With Moderate Growth Intended;;2017-12-05 17:15:15.434+00;2017-12-05 17:15:15.434+00;72
+81;;Bulls Now Weighing Around 635kg (1400 lb), Rapid Growth Intended;;2017-12-05 17:15:17.96+00;2017-12-05 17:15:17.96+00;74
+82;;Bulls Now Weighing Around 635kg (1400 lb), Rapid Growth Intended;;2017-12-05 17:15:20.821+00;2017-12-05 17:15:20.821+00;75
+83;;Bulls Now Weighing Around 400kg (900 lb), With Moderate Growth Intended;;2017-12-05 17:15:23.907+00;2017-12-05 17:15:23.907+00;71
+84;;Bulls Now Weighing Around 400kg (900 lb), With Moderate Growth Intended;;2017-12-05 17:15:26.944+00;2017-12-05 17:15:26.944+00;72
+85;;Bulls Now Weighing Around 400kg (900 lb), With Rapid Growth Intended;;2017-12-05 17:15:29.997+00;2017-12-05 17:15:29.997+00;71
+86;;Bulls Now Weighing Around 400kg (900 lb), With Rapid Growth Intended;;2017-12-05 17:15:33.046+00;2017-12-05 17:15:33.046+00;72
+87;;Bulls Now Weighing Around 450kg (1000 lb), With Moderate Growth Intended;;2017-12-05 17:15:36.282+00;2017-12-05 17:15:36.282+00;71
+88;;Bulls Now Weighing Around 450kg (1000 lb), With Moderate Growth Intended;;2017-12-05 17:15:39.009+00;2017-12-05 17:15:39.009+00;77
+89;;Bulls Now Weighing Around 450kg (1000 lb), With Moderate Growth Intended;;2017-12-05 17:15:42.046+00;2017-12-05 17:15:42.046+00;78
+90;;Bulls Now Weighing Around 450kg (1000 lb), With Moderate Growth Intended;;2017-12-05 17:15:45.444+00;2017-12-05 17:15:45.444+00;72
+91;;Bulls Now Weighing Around 450kg (1000 lb), With Rapid Rapid Growth Intended;;2017-12-05 17:15:48.674+00;2017-12-05 17:15:48.674+00;77
+92;;Bulls Now Weighing Around 450kg (1000 lb), With Rapid Rapid Growth Intended;;2017-12-05 17:15:51.897+00;2017-12-05 17:15:51.897+00;78
+93;;Bulls Now Weighing Around 450kg (1000 lb), With Rapid Growth Intended;;2017-12-05 17:15:55.274+00;2017-12-05 17:15:55.274+00;71
 160;;Cows Weighing Around 400 kg (900 lb);;2017-12-05 17:19:27.497+00;2017-12-05 17:19:27.497+00;89
-94;;Bulls Now Weighing Around 450kg (1000 lb), With Rapid Growth intended;;2017-12-05 17:15:58.548+00;2017-12-05 17:15:58.548+00;72
-95;;Bulls Now Weighing Around 500kg (1100 lb), With Moderate Growth intended;;2017-12-05 17:16:01.763+00;2017-12-05 17:16:01.763+00;77
-96;;Bulls Now Weighing Around 500kg (1100 lb), With Moderate Growth intended;;2017-12-05 17:16:05.138+00;2017-12-05 17:16:05.138+00;78
-97;;Bulls Now Weighing Around 500kg (1100 lb), With Rapid Rapid Growth intended;;2017-12-05 17:16:08.358+00;2017-12-05 17:16:08.358+00;77
-98;;Bulls Now Weighing Around 500kg (1100 lb), With Rapid Rapid Growth intended;;2017-12-05 17:16:11.63+00;2017-12-05 17:16:11.63+00;78
-99;;Bulls Now Weighing Around 500kg (1100 lb), With Rapid Growth intended;;2017-12-05 17:16:15.018+00;2017-12-05 17:16:15.018+00;71
-100;;Bulls Now Weighing Around 500kg (1100 lb), With Rapid Growth intended;;2017-12-05 17:16:18.226+00;2017-12-05 17:16:18.226+00;72
-101;;Bulls Now Weighing Around 540kg (1200 lb), Moderate Growth intended;;2017-12-05 17:16:21.449+00;2017-12-05 17:16:21.449+00;74
-102;;Bulls Now Weighing Around 540kg (1200 lb), Moderate Growth intended;;2017-12-05 17:16:24.825+00;2017-12-05 17:16:24.825+00;75
-103;;Bulls Now Weighing Around 540kg (1200 lb), Rapid Growth intended;;2017-12-05 17:16:28.046+00;2017-12-05 17:16:28.046+00;74
-104;;Bulls Now Weighing Around 540kg (1200 lb), Rapid Growth intended;;2017-12-05 17:16:31.269+00;2017-12-05 17:16:31.269+00;75
-105;;Bulls Now Weighing Around 540kg (1200 lb), With Moderate Growth intended;;2017-12-05 17:16:34.646+00;2017-12-05 17:16:34.646+00;71
-106;;Bulls Now Weighing Around 540kg (1200 lb), With Moderate Growth intended;;2017-12-05 17:16:37.925+00;2017-12-05 17:16:37.925+00;77
-107;;Bulls Now Weighing Around 540kg (1200 lb), With Moderate Growth intended;;2017-12-05 17:16:41.151+00;2017-12-05 17:16:41.151+00;78
-108;;Bulls Now Weighing Around 540kg (1200 lb), With Moderate Growth intended;;2017-12-05 17:16:44.516+00;2017-12-05 17:16:44.516+00;72
-109;;Bulls Now Weighing Around 540kg (1200 lb), With Rapid Rapid Growth intended;;2017-12-05 17:16:47.727+00;2017-12-05 17:16:47.727+00;77
-110;;Bulls Now Weighing Around 540kg (1200 lb), With Rapid Rapid Growth intended;;2017-12-05 17:16:50.971+00;2017-12-05 17:16:50.971+00;78
-111;;Bulls Now Weighing Around 540kg (1200 lb), With Rapid Growth intended;;2017-12-05 17:16:54.265+00;2017-12-05 17:16:54.265+00;71
-112;;Bulls Now Weighing Around 540kg (1200 lb), With Rapid Growth intended;;2017-12-05 17:16:57.455+00;2017-12-05 17:16:57.455+00;72
-113;;Bulls Now Weighing Around 590kg (1300 lb), Moderate Growth intended;;2017-12-05 17:17:00.682+00;2017-12-05 17:17:00.682+00;74
-114;;Bulls Now Weighing Around 590kg (1300 lb), Moderate Growth intended;;2017-12-05 17:17:03.894+00;2017-12-05 17:17:03.894+00;75
-115;;Bulls Now Weighing Around 590kg (1300 lb), Rapid Growth intended;;2017-12-05 17:17:07.119+00;2017-12-05 17:17:07.119+00;74
-116;;Bulls Now Weighing Around 590kg (1300 lb), Rapid Growth intended;;2017-12-05 17:17:10.368+00;2017-12-05 17:17:10.368+00;75
-117;;Bulls Now Weighing Around 590kg (1300 lb), With Moderate Growth intended;;2017-12-05 17:17:13.58+00;2017-12-05 17:17:13.58+00;77
-118;;Bulls Now Weighing Around 590kg (1300 lb), With Moderate Growth intended;;2017-12-05 17:17:16.788+00;2017-12-05 17:17:16.788+00;78
-119;;Bulls Now Weighing Around 590kg (1300 lb), With Rapid Rapid Growth intended;;2017-12-05 17:17:20.003+00;2017-12-05 17:17:20.003+00;77
-120;;Bulls Now Weighing Around 590kg (1300 lb), With Rapid Rapid Growth intended;;2017-12-05 17:17:23.225+00;2017-12-05 17:17:23.225+00;78
-121;;Bulls Now Weighing Around 610kg (1350 lb), With Moderate Growth intended;;2017-12-05 17:17:26.606+00;2017-12-05 17:17:26.606+00;71
-122;;Bulls Now Weighing Around 610kg (1350 lb), With Moderate Growth intended;;2017-12-05 17:17:29.802+00;2017-12-05 17:17:29.802+00;72
-123;;Bulls Now Weighing Around 635kg (1400 lb), Moderate Growth intended;;2017-12-05 17:17:33.018+00;2017-12-05 17:17:33.018+00;74
-124;;Bulls Now Weighing Around 635kg (1400 lb), Moderate Growth intended;;2017-12-05 17:17:36.415+00;2017-12-05 17:17:36.415+00;75
-125;;Bulls Now Weighing Around 660kg (1450 lb), With Moderate Growth intended;;2017-12-05 17:17:39.616+00;2017-12-05 17:17:39.616+00;77
-126;;Bulls Now Weighing Around 660kg (1450 lb), With Moderate Growth intended;;2017-12-05 17:17:42.827+00;2017-12-05 17:17:42.827+00;78
-127;;Bulls Now Weighing Around 700kg (1550 lb), Moderate Growth intended;;2017-12-05 17:17:46.195+00;2017-12-05 17:17:46.195+00;74
-128;;Bulls Now Weighing Around 700kg (1550 lb), Moderate Growth intended;;2017-12-05 17:17:49.438+00;2017-12-05 17:17:49.438+00;75
-129;;Bulls Now Weighing Around 700kg (1550 lb), With Moderate Growth intended;;2017-12-05 17:17:52.63+00;2017-12-05 17:17:52.63+00;71
-130;;Bulls Now Weighing Around 700kg (1550 lb), With Moderate Growth intended;;2017-12-05 17:17:56.039+00;2017-12-05 17:17:56.039+00;72
-131;;Bulls Now Weighing Around 750kg (1650 lb), With Moderate Growth intended;;2017-12-05 17:17:59.248+00;2017-12-05 17:17:59.248+00;77
-132;;Bulls Now Weighing Around 750kg (1650 lb), With Moderate Growth intended;;2017-12-05 17:18:02.456+00;2017-12-05 17:18:02.456+00;78
-133;;Bulls Now Weighing Around 800kg (1760 lb), Moderate Growth intended;;2017-12-05 17:18:05.803+00;2017-12-05 17:18:05.803+00;74
-134;;Bulls Now Weighing Around 800kg (1760 lb), Moderate Growth intended;;2017-12-05 17:18:09.007+00;2017-12-05 17:18:09.007+00;75
-135;;Bulls Now Weighing Around 840kg (1850 lb), With Moderate Growth intended;;2017-12-05 17:18:12.225+00;2017-12-05 17:18:12.225+00;77
-136;;Bulls Now Weighing Around 840kg (1850 lb), With Moderate Growth intended;;2017-12-05 17:18:15.612+00;2017-12-05 17:18:15.612+00;78
-137;;Bulls Now Weighing Around 890kg (1960 lb), Moderate Growth intended;;2017-12-05 17:18:18.829+00;2017-12-05 17:18:18.829+00;74
-138;;Bulls Now Weighing Around 890kg (1960 lb), Moderate Growth intended;;2017-12-05 17:18:22.057+00;2017-12-05 17:18:22.057+00;75
-139;;Bulls Now Weighing Around 980kg (2160 lb), Moderate Growth intended;;2017-12-05 17:18:25.447+00;2017-12-05 17:18:25.447+00;74
-140;;Bulls Now Weighing Around 980kg (2160 lb), Moderate Growth intended;;2017-12-05 17:18:28.648+00;2017-12-05 17:18:28.648+00;75
-141;;BW 10 kg (22 lb) To Gain Around 150 g (0.33 lb)/day;;2017-12-05 17:18:31.22+00;2017-12-05 17:18:31.22+00;81
+94;;Bulls Now Weighing Around 450kg (1000 lb), With Rapid Growth Intended;;2017-12-05 17:15:58.548+00;2017-12-05 17:15:58.548+00;72
+95;;Bulls Now Weighing Around 500kg (1100 lb), With Moderate Growth Intended;;2017-12-05 17:16:01.763+00;2017-12-05 17:16:01.763+00;77
+96;;Bulls Now Weighing Around 500kg (1100 lb), With Moderate Growth Intended;;2017-12-05 17:16:05.138+00;2017-12-05 17:16:05.138+00;78
+97;;Bulls Now Weighing Around 500kg (1100 lb), With Rapid Rapid Growth Intended;;2017-12-05 17:16:08.358+00;2017-12-05 17:16:08.358+00;77
+98;;Bulls Now Weighing Around 500kg (1100 lb), With Rapid Rapid Growth Intended;;2017-12-05 17:16:11.63+00;2017-12-05 17:16:11.63+00;78
+99;;Bulls Now Weighing Around 500kg (1100 lb), With Rapid Growth Intended;;2017-12-05 17:16:15.018+00;2017-12-05 17:16:15.018+00;71
+100;;Bulls Now Weighing Around 500kg (1100 lb), With Rapid Growth Intended;;2017-12-05 17:16:18.226+00;2017-12-05 17:16:18.226+00;72
+101;;Bulls Now Weighing Around 540kg (1200 lb), Moderate Growth Intended;;2017-12-05 17:16:21.449+00;2017-12-05 17:16:21.449+00;74
+102;;Bulls Now Weighing Around 540kg (1200 lb), Moderate Growth Intended;;2017-12-05 17:16:24.825+00;2017-12-05 17:16:24.825+00;75
+103;;Bulls Now Weighing Around 540kg (1200 lb), Rapid Growth Intended;;2017-12-05 17:16:28.046+00;2017-12-05 17:16:28.046+00;74
+104;;Bulls Now Weighing Around 540kg (1200 lb), Rapid Growth Intended;;2017-12-05 17:16:31.269+00;2017-12-05 17:16:31.269+00;75
+105;;Bulls Now Weighing Around 540kg (1200 lb), With Moderate Growth Intended;;2017-12-05 17:16:34.646+00;2017-12-05 17:16:34.646+00;71
+106;;Bulls Now Weighing Around 540kg (1200 lb), With Moderate Growth Intended;;2017-12-05 17:16:37.925+00;2017-12-05 17:16:37.925+00;77
+107;;Bulls Now Weighing Around 540kg (1200 lb), With Moderate Growth Intended;;2017-12-05 17:16:41.151+00;2017-12-05 17:16:41.151+00;78
+108;;Bulls Now Weighing Around 540kg (1200 lb), With Moderate Growth Intended;;2017-12-05 17:16:44.516+00;2017-12-05 17:16:44.516+00;72
+109;;Bulls Now Weighing Around 540kg (1200 lb), With Rapid Rapid Growth Intended;;2017-12-05 17:16:47.727+00;2017-12-05 17:16:47.727+00;77
+110;;Bulls Now Weighing Around 540kg (1200 lb), With Rapid Rapid Growth Intended;;2017-12-05 17:16:50.971+00;2017-12-05 17:16:50.971+00;78
+111;;Bulls Now Weighing Around 540kg (1200 lb), With Rapid Growth Intended;;2017-12-05 17:16:54.265+00;2017-12-05 17:16:54.265+00;71
+112;;Bulls Now Weighing Around 540kg (1200 lb), With Rapid Growth Intended;;2017-12-05 17:16:57.455+00;2017-12-05 17:16:57.455+00;72
+113;;Bulls Now Weighing Around 590kg (1300 lb), Moderate Growth Intended;;2017-12-05 17:17:00.682+00;2017-12-05 17:17:00.682+00;74
+114;;Bulls Now Weighing Around 590kg (1300 lb), Moderate Growth Intended;;2017-12-05 17:17:03.894+00;2017-12-05 17:17:03.894+00;75
+115;;Bulls Now Weighing Around 590kg (1300 lb), Rapid Growth Intended;;2017-12-05 17:17:07.119+00;2017-12-05 17:17:07.119+00;74
+116;;Bulls Now Weighing Around 590kg (1300 lb), Rapid Growth Intended;;2017-12-05 17:17:10.368+00;2017-12-05 17:17:10.368+00;75
+117;;Bulls Now Weighing Around 590kg (1300 lb), With Moderate Growth Intended;;2017-12-05 17:17:13.58+00;2017-12-05 17:17:13.58+00;77
+118;;Bulls Now Weighing Around 590kg (1300 lb), With Moderate Growth Intended;;2017-12-05 17:17:16.788+00;2017-12-05 17:17:16.788+00;78
+119;;Bulls Now Weighing Around 590kg (1300 lb), With Rapid Rapid Growth Intended;;2017-12-05 17:17:20.003+00;2017-12-05 17:17:20.003+00;77
+120;;Bulls Now Weighing Around 590kg (1300 lb), With Rapid Rapid Growth Intended;;2017-12-05 17:17:23.225+00;2017-12-05 17:17:23.225+00;78
+121;;Bulls Now Weighing Around 610kg (1350 lb), With Moderate Growth Intended;;2017-12-05 17:17:26.606+00;2017-12-05 17:17:26.606+00;71
+122;;Bulls Now Weighing Around 610kg (1350 lb), With Moderate Growth Intended;;2017-12-05 17:17:29.802+00;2017-12-05 17:17:29.802+00;72
+123;;Bulls Now Weighing Around 635kg (1400 lb), Moderate Growth Intended;;2017-12-05 17:17:33.018+00;2017-12-05 17:17:33.018+00;74
+124;;Bulls Now Weighing Around 635kg (1400 lb), Moderate Growth Intended;;2017-12-05 17:17:36.415+00;2017-12-05 17:17:36.415+00;75
+125;;Bulls Now Weighing Around 660kg (1450 lb), With Moderate Growth Intended;;2017-12-05 17:17:39.616+00;2017-12-05 17:17:39.616+00;77
+126;;Bulls Now Weighing Around 660kg (1450 lb), With Moderate Growth Intended;;2017-12-05 17:17:42.827+00;2017-12-05 17:17:42.827+00;78
+127;;Bulls Now Weighing Around 700kg (1550 lb), Moderate Growth Intended;;2017-12-05 17:17:46.195+00;2017-12-05 17:17:46.195+00;74
+128;;Bulls Now Weighing Around 700kg (1550 lb), Moderate Growth Intended;;2017-12-05 17:17:49.438+00;2017-12-05 17:17:49.438+00;75
+129;;Bulls Now Weighing Around 700kg (1550 lb), With Moderate Growth Intended;;2017-12-05 17:17:52.63+00;2017-12-05 17:17:52.63+00;71
+130;;Bulls Now Weighing Around 700kg (1550 lb), With Moderate Growth Intended;;2017-12-05 17:17:56.039+00;2017-12-05 17:17:56.039+00;72
+131;;Bulls Now Weighing Around 750kg (1650 lb), With Moderate Growth Intended;;2017-12-05 17:17:59.248+00;2017-12-05 17:17:59.248+00;77
+132;;Bulls Now Weighing Around 750kg (1650 lb), With Moderate Growth Intended;;2017-12-05 17:18:02.456+00;2017-12-05 17:18:02.456+00;78
+133;;Bulls Now Weighing Around 800kg (1760 lb), Moderate Growth Intended;;2017-12-05 17:18:05.803+00;2017-12-05 17:18:05.803+00;74
+134;;Bulls Now Weighing Around 800kg (1760 lb), Moderate Growth Intended;;2017-12-05 17:18:09.007+00;2017-12-05 17:18:09.007+00;75
+135;;Bulls Now Weighing Around 840kg (1850 lb), With Moderate Growth Intended;;2017-12-05 17:18:12.225+00;2017-12-05 17:18:12.225+00;77
+136;;Bulls Now Weighing Around 840kg (1850 lb), With Moderate Growth Intended;;2017-12-05 17:18:15.612+00;2017-12-05 17:18:15.612+00;78
+137;;Bulls Now Weighing Around 890kg (1960 lb), Moderate Growth Intended;;2017-12-05 17:18:18.829+00;2017-12-05 17:18:18.829+00;74
+138;;Bulls Now Weighing Around 890kg (1960 lb), Moderate Growth Intended;;2017-12-05 17:18:22.057+00;2017-12-05 17:18:22.057+00;75
+139;;Bulls Now Weighing Around 980kg (2160 lb), Moderate Growth Intended;;2017-12-05 17:18:25.447+00;2017-12-05 17:18:25.447+00;74
+140;;Bulls Now Weighing Around 980kg (2160 lb), Moderate Growth Intended;;2017-12-05 17:18:28.648+00;2017-12-05 17:18:28.648+00;75
+141;;BW 10 kg (22 lb) To Gain Around 150 g (0.33 lb)/Day;;2017-12-05 17:18:31.22+00;2017-12-05 17:18:31.22+00;81
 487;;Lactating Mares, From Foaling To 3 Months;;2017-12-05 17:41:37.296+00;2017-12-05 17:41:37.296+00;152
-142;;BW 10 kg (22 lb) To Gain Around 150 g (0.33 lb)/day;;2017-12-05 17:18:34.174+00;2017-12-05 17:18:34.174+00;82
-143;;BW 10 kg (22 lb) To Gain Around100 g (0.22 lb)/day;;2017-12-05 17:18:37.05+00;2017-12-05 17:18:37.05+00;81
-144;;BW 10 kg (22 lb) To Gain Around100 g (0.22 lb)/day;;2017-12-05 17:18:39.945+00;2017-12-05 17:18:39.945+00;82
-145;;BW 20 kg (44 lb) To Gain Around 150 g (0.33 lb)/day;;2017-12-05 17:18:42.823+00;2017-12-05 17:18:42.823+00;81
-146;;BW 20 kg (44 lb) To Gain Around 150 g (0.33 lb)/day;;2017-12-05 17:18:45.853+00;2017-12-05 17:18:45.853+00;82
-147;;BW 30 kg (66 lb) To Gain Around 100 g (0.22 lb)/day;;2017-12-05 17:18:48.789+00;2017-12-05 17:18:48.789+00;81
-148;;BW 30 kg (66 lb) To Gain Around 100 g (0.22 lb)/day;;2017-12-05 17:18:51.675+00;2017-12-05 17:18:51.675+00;82
-149;;BW 30 kg (66 lb) To Gain Around 150 g (0.33 lb)/day;;2017-12-05 17:18:54.704+00;2017-12-05 17:18:54.704+00;81
-150;;BW 30 kg (66 lb) To Gain Around 150 g (0.33 lb)/day;;2017-12-05 17:18:57.6+00;2017-12-05 17:18:57.6+00;82
-151;;BW 40 kg (88 lb) To Gain Around 100 g (0.22 lb)/day;;2017-12-05 17:19:00.503+00;2017-12-05 17:19:00.503+00;81
-152;;BW 40 kg (88 lb) To Gain Around 100 g (0.22 lb)/day;;2017-12-05 17:19:03.418+00;2017-12-05 17:19:03.418+00;82
-153;;BW 40 kg (88 lb) To Gain Around 150 g (0.33 lb)/day;;2017-12-05 17:19:06.428+00;2017-12-05 17:19:06.428+00;81
-154;;BW 40 kg (88 lb) To Gain Around 150 g (0.33 lb)/day;;2017-12-05 17:19:09.294+00;2017-12-05 17:19:09.294+00;82
-155;;Cows And heifers close To calving;;2017-12-05 17:19:11.86+00;2017-12-05 17:19:11.86+00;85
-156;;Cows And heifers close To calving;;2017-12-05 17:19:14.688+00;2017-12-05 17:19:14.688+00;86
-157;;Cows And heifers still far From calving;;2017-12-05 17:19:17.974+00;2017-12-05 17:19:17.974+00;85
-158;;Cows And heifers still far From calving;;2017-12-05 17:19:20.947+00;2017-12-05 17:19:20.947+00;86
+142;;BW 10 kg (22 lb) To Gain Around 150 g (0.33 lb)/Day;;2017-12-05 17:18:34.174+00;2017-12-05 17:18:34.174+00;82
+143;;BW 10 kg (22 lb) To Gain Around 100 g (0.22 lb)/Day;;2017-12-05 17:18:37.05+00;2017-12-05 17:18:37.05+00;81
+144;;BW 10 kg (22 lb) To Gain Around 100 g (0.22 lb)/Day;;2017-12-05 17:18:39.945+00;2017-12-05 17:18:39.945+00;82
+145;;BW 20 kg (44 lb) To Gain Around 150 g (0.33 lb)/Day;;2017-12-05 17:18:42.823+00;2017-12-05 17:18:42.823+00;81
+146;;BW 20 kg (44 lb) To Gain Around 150 g (0.33 lb)/Day;;2017-12-05 17:18:45.853+00;2017-12-05 17:18:45.853+00;82
+147;;BW 30 kg (66 lb) To Gain Around 100 g (0.22 lb)/Day;;2017-12-05 17:18:48.789+00;2017-12-05 17:18:48.789+00;81
+148;;BW 30 kg (66 lb) To Gain Around 100 g (0.22 lb)/Day;;2017-12-05 17:18:51.675+00;2017-12-05 17:18:51.675+00;82
+149;;BW 30 kg (66 lb) To Gain Around 150 g (0.33 lb)/Day;;2017-12-05 17:18:54.704+00;2017-12-05 17:18:54.704+00;81
+150;;BW 30 kg (66 lb) To Gain Around 150 g (0.33 lb)/Day;;2017-12-05 17:18:57.6+00;2017-12-05 17:18:57.6+00;82
+151;;BW 40 kg (88 lb) To Gain Around 100 g (0.22 lb)/Day;;2017-12-05 17:19:00.503+00;2017-12-05 17:19:00.503+00;81
+152;;BW 40 kg (88 lb) To Gain Around 100 g (0.22 lb)/Day;;2017-12-05 17:19:03.418+00;2017-12-05 17:19:03.418+00;82
+153;;BW 40 kg (88 lb) To Gain Around 150 g (0.33 lb)/Day;;2017-12-05 17:19:06.428+00;2017-12-05 17:19:06.428+00;81
+154;;BW 40 kg (88 lb) To Gain Around 150 g (0.33 lb)/Day;;2017-12-05 17:19:09.294+00;2017-12-05 17:19:09.294+00;82
+155;;Cows And heifers close To Calving;;2017-12-05 17:19:11.86+00;2017-12-05 17:19:11.86+00;85
+156;;Cows And heifers close To Calving;;2017-12-05 17:19:14.688+00;2017-12-05 17:19:14.688+00;86
+157;;Cows And heifers still far From Calving;;2017-12-05 17:19:17.974+00;2017-12-05 17:19:17.974+00;85
+158;;Cows And heifers still far From Calving;;2017-12-05 17:19:20.947+00;2017-12-05 17:19:20.947+00;86
 159;;Cows Weighing Around 400 kg (900 lb);;2017-12-05 17:19:23.904+00;2017-12-05 17:19:23.904+00;88
 161;;Cows Weighing Around 450 kg (1000 lb);;2017-12-05 17:19:30.896+00;2017-12-05 17:19:30.896+00;88
 162;;Cows Weighing Around 450 kg (1000 lb);;2017-12-05 17:19:34.324+00;2017-12-05 17:19:34.324+00;89
@@ -252,33 +252,33 @@ id;description;name;userName;createdAt;updatedAt;dietGroupId
 248;;Early-Lactation Ration, 0 - 6 Weeks, Fed Ad Lib;;2017-12-05 17:24:06.68+00;2017-12-05 17:24:06.68+00;113
 249;;Early-Lactation Ration, 0 - 6 Weeks, Fed Ad Lib;;2017-12-05 17:24:10.257+00;2017-12-05 17:24:10.257+00;114
 250;;Early-Lactation Ration, 0 - 6 Weeks, Fed Ad Lib;;2017-12-05 17:24:13.84+00;2017-12-05 17:24:13.84+00;115
-251;;Females, Last third Of Pregnancy And also During Lactation;;2017-12-05 17:24:16.01+00;2017-12-05 17:24:16.01+00;117
-252;;Females, Last third Of Pregnancy And also During Lactation;;2017-12-05 17:24:18.924+00;2017-12-05 17:24:18.924+00;118
-253;;Females, Last third Of Pregnancy And During Lactation;;2017-12-05 17:24:21.754+00;2017-12-05 17:24:21.754+00;120
-254;;Females, Last third Of Pregnancy And During Lactation;;2017-12-05 17:24:24.858+00;2017-12-05 17:24:24.858+00;121
+251;;Females, Last Third Of Pregnancy And Also During Lactation;;2017-12-05 17:24:16.01+00;2017-12-05 17:24:16.01+00;117
+252;;Females, Last Third Of Pregnancy And Also During Lactation;;2017-12-05 17:24:18.924+00;2017-12-05 17:24:18.924+00;118
+253;;Females, Last Third Of Pregnancy And During Lactation;;2017-12-05 17:24:21.754+00;2017-12-05 17:24:21.754+00;120
+254;;Females, Last Third Of Pregnancy And During Lactation;;2017-12-05 17:24:24.858+00;2017-12-05 17:24:24.858+00;121
 256;;Fingerling;;2017-12-05 17:24:33.255+00;2017-12-05 17:24:33.255+00;56
 257;;Fingerling;;2017-12-05 17:24:37.656+00;2017-12-05 17:24:37.656+00;59
 258;;Fingerling;;2017-12-05 17:24:41.938+00;2017-12-05 17:24:41.938+00;61
 259;;Finisher Ration, From 36 - 48 Weeks;;2017-12-05 17:24:48.138+00;2017-12-05 17:24:48.138+00;20
 260;;Finisher Ration, From 36 - 48 Weeks;;2017-12-05 17:24:53.955+00;2017-12-05 17:24:53.955+00;21
-261;;Finisher Ration, From 42 Weeks To market weight;;2017-12-05 17:24:59.938+00;2017-12-05 17:24:59.938+00;16
-262;;Finisher Ration, From 42 Weeks To market weight;;2017-12-05 17:25:05.771+00;2017-12-05 17:25:05.771+00;17
-263;;Finishing lambs, Of About 30 kg, 4 - 7 Months old;;2017-12-05 17:25:09.354+00;2017-12-05 17:25:09.354+00;92
-264;;Finishing lambs, Of About 30 kg, 4 - 7 Months old;;2017-12-05 17:25:12.262+00;2017-12-05 17:25:12.262+00;93
-265;;Finishing lambs, Of About 40 kg, 4 - 7 Months old;;2017-12-05 17:25:15.295+00;2017-12-05 17:25:15.295+00;92
-266;;Finishing lambs, Of About 40 kg, 4 - 7 Months old;;2017-12-05 17:25:18.181+00;2017-12-05 17:25:18.181+00;93
-267;;Finishing lambs, Of About 50 kg, 4 - 7 Months old;;2017-12-05 17:25:21.049+00;2017-12-05 17:25:21.049+00;92
-268;;Finishing lambs, Of About 50 kg, 4 - 7 Months old;;2017-12-05 17:25:23.977+00;2017-12-05 17:25:23.977+00;93
+261;;Finisher Ration, From 42 Weeks To Market Weight;;2017-12-05 17:24:59.938+00;2017-12-05 17:24:59.938+00;16
+262;;Finisher Ration, From 42 Weeks To Market Weight;;2017-12-05 17:25:05.771+00;2017-12-05 17:25:05.771+00;17
+263;;Finishing lambs, Of About 30 kg, 4 - 7 Months Old;;2017-12-05 17:25:09.354+00;2017-12-05 17:25:09.354+00;92
+264;;Finishing lambs, Of About 30 kg, 4 - 7 Months Old;;2017-12-05 17:25:12.262+00;2017-12-05 17:25:12.262+00;93
+265;;Finishing lambs, Of About 40 kg, 4 - 7 Months Old;;2017-12-05 17:25:15.295+00;2017-12-05 17:25:15.295+00;92
+266;;Finishing lambs, Of About 40 kg, 4 - 7 Months Old;;2017-12-05 17:25:18.181+00;2017-12-05 17:25:18.181+00;93
+267;;Finishing lambs, Of About 50 kg, 4 - 7 Months Old;;2017-12-05 17:25:21.049+00;2017-12-05 17:25:21.049+00;92
+268;;Finishing lambs, Of About 50 kg, 4 - 7 Months Old;;2017-12-05 17:25:23.977+00;2017-12-05 17:25:23.977+00;93
 269;;Finishing/Velveting Ration, Fed Ad Lib;;2017-12-05 17:25:28.061+00;2017-12-05 17:25:28.061+00;109
 270;;Finishing/Velveting Ration, Fed Ad Lib;;2017-12-05 17:25:31.958+00;2017-12-05 17:25:31.958+00;106
 271;;Finishing/Velveting Ration, Fed Ad Lib;;2017-12-05 17:25:36.024+00;2017-12-05 17:25:36.024+00;112
 272;;Finishing/Velveting Ration, Fed Ad Lib;;2017-12-05 17:25:39.932+00;2017-12-05 17:25:39.932+00;113
 273;;Finishing/Velveting Ration, Fed Ad Lib;;2017-12-05 17:25:43.83+00;2017-12-05 17:25:43.83+00;114
 274;;Finishing/Velveting Ration, Fed Ad Lib;;2017-12-05 17:25:47.878+00;2017-12-05 17:25:47.878+00;115
-275;;Flushing, 2 weeks Pre- To 3 Weeks In Breeding;;2017-12-05 17:25:50.24+00;2017-12-05 17:25:50.24+00;123
-276;;Flushing, 2 weeks Pre- To 3 Weeks In Breeding;;2017-12-05 17:25:52.966+00;2017-12-05 17:25:52.966+00;125
-277;;Flushing, 2 weeks Pre- To 3 Weeks In Breeding;;2017-12-05 17:25:56.022+00;2017-12-05 17:25:56.022+00;126
-278;;Flushing, 2 weeks Pre- To 3 Weeks In Breeding;;2017-12-05 17:25:59.089+00;2017-12-05 17:25:59.089+00;127
+275;;Flushing, 2 Weeks Pre- To 3 Weeks In Breeding;;2017-12-05 17:25:50.24+00;2017-12-05 17:25:50.24+00;123
+276;;Flushing, 2 Weeks Pre- To 3 Weeks In Breeding;;2017-12-05 17:25:52.966+00;2017-12-05 17:25:52.966+00;125
+277;;Flushing, 2 Weeks Pre- To 3 Weeks In Breeding;;2017-12-05 17:25:56.022+00;2017-12-05 17:25:56.022+00;126
+278;;Flushing, 2 Weeks Pre- To 3 Weeks In Breeding;;2017-12-05 17:25:59.089+00;2017-12-05 17:25:59.089+00;127
 279;;Fresh Cows, Producing Around 25 Kg (55 lb) Milk With 3,0 % Fat & 3-4 % Protein;;2017-12-05 17:26:01.974+00;2017-12-05 17:26:01.974+00;130
 280;;Fresh Cows, Producing Around 25 Kg (55 lb) Milk With 3,0 % Fat & 3-4 % Protein;;2017-12-05 17:26:05.807+00;2017-12-05 17:26:05.807+00;131
 281;;Fresh Cows, Producing Around 25 Kg (55 lb) Milk With 4,0 % Fat & 3-4 % Protein;;2017-12-05 17:26:09.016+00;2017-12-05 17:26:09.016+00;133
@@ -339,8 +339,8 @@ id;description;name;userName;createdAt;updatedAt;dietGroupId
 336;;Grower;;2017-12-05 17:29:50.357+00;2017-12-05 17:29:50.357+00;56
 337;;Grower;;2017-12-05 17:29:55.034+00;2017-12-05 17:29:55.034+00;59
 338;;Grower;;2017-12-05 17:29:59.463+00;2017-12-05 17:29:59.463+00;61
-339;;Grower Ration For Ducklings Of Mixed Gender, 2 - 7 Weeks old;;2017-12-05 17:30:05.718+00;2017-12-05 17:30:05.718+00;36
-340;;Grower Ration For Ducklings Of Mixed Gender, 2 - 7 Weeks old;;2017-12-05 17:30:12.429+00;2017-12-05 17:30:12.429+00;37
+339;;Grower Ration For Ducklings Of Mixed Gender, 2 - 7 Weeks Old;;2017-12-05 17:30:05.718+00;2017-12-05 17:30:05.718+00;36
+340;;Grower Ration For Ducklings Of Mixed Gender, 2 - 7 Weeks Old;;2017-12-05 17:30:12.429+00;2017-12-05 17:30:12.429+00;37
 341;;Grower Ration For Goslings Of Mixed Gender, after 4 Weeks Of Age;;2017-12-05 17:30:18.933+00;2017-12-05 17:30:18.933+00;40
 342;;Grower Ration For Goslings Of Mixed Gender, after 4 Weeks Of Age;;2017-12-05 17:30:26.283+00;2017-12-05 17:30:26.283+00;41
 343;;Grower Ration For Pheasant Chicks Of Mixed Gender, 4 - 8 Weeks Of Age;;2017-12-05 17:30:32.194+00;2017-12-05 17:30:32.194+00;44
@@ -379,13 +379,13 @@ id;description;name;userName;createdAt;updatedAt;dietGroupId
 376;;Grower: 10 g To Harvest;;2017-12-05 17:32:51.999+00;2017-12-05 17:32:51.999+00;58
 377;;Grower: 10 g To Harvest;;2017-12-05 17:32:56.442+00;2017-12-05 17:32:56.442+00;60
 378;;Grower: 10 g To Harvest;;2017-12-05 17:33:00.743+00;2017-12-05 17:33:00.743+00;62
-379;;Growing And Finishing lambs, Of About 30 kg, under 4 Months old;;2017-12-05 17:33:04.847+00;2017-12-05 17:33:04.847+00;92
+379;;Growing And Finishing lambs, Of About 30 kg, under 4 Months Old;;2017-12-05 17:33:04.847+00;2017-12-05 17:33:04.847+00;92
 592;;Non Competitive, Pelleted Mix;;2017-12-05 17:48:28.675+00;2017-12-05 17:48:28.675+00;29
-380;;Growing And Finishing lambs, Of About 30 kg, under 4 Months old;;2017-12-05 17:33:08.098+00;2017-12-05 17:33:08.098+00;93
-381;;Growing dogs, 14 Weeks Onwards And Up To maturity;;2017-12-05 17:33:10.275+00;2017-12-05 17:33:10.275+00;120
-382;;Growing dogs, 14 Weeks Onwards And Up To maturity;;2017-12-05 17:33:13.136+00;2017-12-05 17:33:13.136+00;121
-383;;Growing kittens, From 15 Weeks And older To maturity;;2017-12-05 17:33:16.028+00;2017-12-05 17:33:16.028+00;117
-384;;Growing kittens, From 15 Weeks And older To maturity;;2017-12-05 17:33:18.913+00;2017-12-05 17:33:18.913+00;118
+380;;Growing And Finishing lambs, Of About 30 kg, under 4 Months Old;;2017-12-05 17:33:08.098+00;2017-12-05 17:33:08.098+00;93
+381;;Growing dogs, 14 Weeks Onwards And Up To Maturity;;2017-12-05 17:33:10.275+00;2017-12-05 17:33:10.275+00;120
+382;;Growing dogs, 14 Weeks Onwards And Up To Maturity;;2017-12-05 17:33:13.136+00;2017-12-05 17:33:13.136+00;121
+383;;Growing kittens, From 15 Weeks And Older To Maturity;;2017-12-05 17:33:16.028+00;2017-12-05 17:33:16.028+00;117
+384;;Growing kittens, From 15 Weeks And Older To Maturity;;2017-12-05 17:33:18.913+00;2017-12-05 17:33:18.913+00;118
 385;;Growing Turkeys, 0 - 4 Weeks Of Age, Males And Or Females;;2017-12-05 17:33:24.681+00;2017-12-05 17:33:24.681+00;32
 386;;Growing Turkeys, 0 - 4 Weeks Of Age, Males And Or Females;;2017-12-05 17:33:30.684+00;2017-12-05 17:33:30.684+00;33
 387;;Growing Turkeys, 4 - 8 Weeks Of Age, Males And Or Females;;2017-12-05 17:33:36.498+00;2017-12-05 17:33:36.498+00;32
@@ -418,23 +418,23 @@ id;description;name;userName;createdAt;updatedAt;dietGroupId
 414;;In early Lactation, Producing Around 55 Kg (120 lb) Milk With 3,0 % Fat & 3-4 % Protein;;2017-12-05 17:35:45.883+00;2017-12-05 17:35:45.883+00;131
 415;;In Early Lactation, Producing Around 55 Kg (120 lb) Milk With 4,0 % Fat & 3-4 % Protein;;2017-12-05 17:35:51.156+00;2017-12-05 17:35:51.156+00;135
 416;;In Early Lactation, Producing Around 55 Kg (120 lb) Milk With 4,0 % Fat & 3-4 % Protein;;2017-12-05 17:35:56.251+00;2017-12-05 17:35:56.251+00;136
-417;;In late Lactation, Producing Around 25 Kg (55 lb) Milk With 3,0 % Fat & 3-4 % Protein;;2017-12-05 17:36:01.53+00;2017-12-05 17:36:01.53+00;130
-418;;In late Lactation, Producing Around 25 Kg (55 lb) Milk With 3,0 % Fat & 3-4 % Protein;;2017-12-05 17:36:06.694+00;2017-12-05 17:36:06.694+00;131
-419;;In late Lactation, Producing Around 25 Kg (55 lb) Milk With 4,0 % Fat & 3-4 % Protein;;2017-12-05 17:36:11.968+00;2017-12-05 17:36:11.968+00;133
-420;;In late Lactation, Producing Around 25 Kg (55 lb) Milk With 4,0 % Fat & 3-4 % Protein;;2017-12-05 17:36:17.08+00;2017-12-05 17:36:17.08+00;135
-421;;In late Lactation, Producing Around 25 Kg (55 lb) Milk With 4,0 % Fat & 3-4 % Protein;;2017-12-05 17:36:22.402+00;2017-12-05 17:36:22.402+00;136
-422;;In late Lactation, Producing Around 25 Kg (55 lb) Milk With 4,0 % Fat & 3-4 % Protein;;2017-12-05 17:36:27.512+00;2017-12-05 17:36:27.512+00;137
-423;;In late Lactation, Producing Around 25 Kg (55 lb) Milk With 5,0 % Fat & 3-4 % Protein;;2017-12-05 17:36:32.624+00;2017-12-05 17:36:32.624+00;139
+417;;In Late Lactation, Producing Around 25 Kg (55 lb) Milk With 3,0 % Fat & 3-4 % Protein;;2017-12-05 17:36:01.53+00;2017-12-05 17:36:01.53+00;130
+418;;In Late Lactation, Producing Around 25 Kg (55 lb) Milk With 3,0 % Fat & 3-4 % Protein;;2017-12-05 17:36:06.694+00;2017-12-05 17:36:06.694+00;131
+419;;In Late Lactation, Producing Around 25 Kg (55 lb) Milk With 4,0 % Fat & 3-4 % Protein;;2017-12-05 17:36:11.968+00;2017-12-05 17:36:11.968+00;133
+420;;In Late Lactation, Producing Around 25 Kg (55 lb) Milk With 4,0 % Fat & 3-4 % Protein;;2017-12-05 17:36:17.08+00;2017-12-05 17:36:17.08+00;135
+421;;In Late Lactation, Producing Around 25 Kg (55 lb) Milk With 4,0 % Fat & 3-4 % Protein;;2017-12-05 17:36:22.402+00;2017-12-05 17:36:22.402+00;136
+422;;In Late Lactation, Producing Around 25 Kg (55 lb) Milk With 4,0 % Fat & 3-4 % Protein;;2017-12-05 17:36:27.512+00;2017-12-05 17:36:27.512+00;137
+423;;In Late Lactation, Producing Around 25 Kg (55 lb) Milk With 5,0 % Fat & 3-4 % Protein;;2017-12-05 17:36:32.624+00;2017-12-05 17:36:32.624+00;139
 488;;Lactating Mares, From Foaling To 3 Months;;2017-12-05 17:41:40.156+00;2017-12-05 17:41:40.156+00;153
-424;;In late Lactation, Producing Around 25 Kg (55 lb) Milk With 5,0 % Fat & 3-4 % Protein;;2017-12-05 17:36:37.752+00;2017-12-05 17:36:37.752+00;140
-425;;In late Lactation, Producing Around 35 Kg (77 lb) Milk With 3,0 % Fat & 3-4 % Protein;;2017-12-05 17:36:42.847+00;2017-12-05 17:36:42.847+00;130
-426;;In late Lactation, Producing Around 35 Kg (77 lb) Milk With 3,0 % Fat & 3-4 % Protein;;2017-12-05 17:36:47.978+00;2017-12-05 17:36:47.978+00;131
-427;;In late Lactation, Producing Around 35 Kg (77 lb) Milk With 4,0 % Fat & 3-4 % Protein;;2017-12-05 17:36:53.143+00;2017-12-05 17:36:53.143+00;133
-428;;In late Lactation, Producing Around 35 Kg (77 lb) Milk With 4,0 % Fat & 3-4 % Protein;;2017-12-05 17:36:58.262+00;2017-12-05 17:36:58.262+00;135
-429;;In late Lactation, Producing Around 35 Kg (77 lb) Milk With 4,0 % Fat & 3-4 % Protein;;2017-12-05 17:37:03.372+00;2017-12-05 17:37:03.372+00;136
-430;;In late Lactation, Producing Around 35 Kg (77 lb) Milk With 4,0 % Fat & 3-4 % Protein;;2017-12-05 17:37:08.66+00;2017-12-05 17:37:08.66+00;137
-431;;In late Lactation, Producing Around 35 Kg (77 lb) Milk With 5,0 % Fat & 3-4 % Protein;;2017-12-05 17:37:13.795+00;2017-12-05 17:37:13.795+00;139
-432;;In late Lactation, Producing Around 35 Kg (77 lb) Milk With 5,0 % Fat & 3-4 % Protein;;2017-12-05 17:37:19.081+00;2017-12-05 17:37:19.081+00;140
+424;;In Late Lactation, Producing Around 25 Kg (55 lb) Milk With 5,0 % Fat & 3-4 % Protein;;2017-12-05 17:36:37.752+00;2017-12-05 17:36:37.752+00;140
+425;;In Late Lactation, Producing Around 35 Kg (77 lb) Milk With 3,0 % Fat & 3-4 % Protein;;2017-12-05 17:36:42.847+00;2017-12-05 17:36:42.847+00;130
+426;;In Late Lactation, Producing Around 35 Kg (77 lb) Milk With 3,0 % Fat & 3-4 % Protein;;2017-12-05 17:36:47.978+00;2017-12-05 17:36:47.978+00;131
+427;;In Late Lactation, Producing Around 35 Kg (77 lb) Milk With 4,0 % Fat & 3-4 % Protein;;2017-12-05 17:36:53.143+00;2017-12-05 17:36:53.143+00;133
+428;;In Late Lactation, Producing Around 35 Kg (77 lb) Milk With 4,0 % Fat & 3-4 % Protein;;2017-12-05 17:36:58.262+00;2017-12-05 17:36:58.262+00;135
+429;;In Late Lactation, Producing Around 35 Kg (77 lb) Milk With 4,0 % Fat & 3-4 % Protein;;2017-12-05 17:37:03.372+00;2017-12-05 17:37:03.372+00;136
+430;;In Late Lactation, Producing Around 35 Kg (77 lb) Milk With 4,0 % Fat & 3-4 % Protein;;2017-12-05 17:37:08.66+00;2017-12-05 17:37:08.66+00;137
+431;;In Late Lactation, Producing Around 35 Kg (77 lb) Milk With 5,0 % Fat & 3-4 % Protein;;2017-12-05 17:37:13.795+00;2017-12-05 17:37:13.795+00;139
+432;;In Late Lactation, Producing Around 35 Kg (77 lb) Milk With 5,0 % Fat & 3-4 % Protein;;2017-12-05 17:37:19.081+00;2017-12-05 17:37:19.081+00;140
 433;;In mid-Lactation, prodcing Around 55 Kg (120 lb) Milk With 3,0 % Fat & 3-4 % Protein;;2017-12-05 17:37:24.248+00;2017-12-05 17:37:24.248+00;130
 434;;In mid-Lactation, prodcing Around 55 Kg (120 lb) Milk With 3,0 % Fat & 3-4 % Protein;;2017-12-05 17:37:29.55+00;2017-12-05 17:37:29.55+00;131
 435;;In mid-Lactation, Producing Around 25 Kg (55 lb) Milk With 3,0 % Fat & 3-4 % Protein;;2017-12-05 17:37:34.676+00;2017-12-05 17:37:34.676+00;130
@@ -475,12 +475,12 @@ id;description;name;userName;createdAt;updatedAt;dietGroupId
 470;;Juvenile: 1 g To 10 g;;2017-12-05 17:40:35.424+00;2017-12-05 17:40:35.424+00;58
 471;;Juvenile: 1 g To 10 g;;2017-12-05 17:40:39.868+00;2017-12-05 17:40:39.868+00;60
 472;;Juvenile: 1 g To 10 g;;2017-12-05 17:40:44.167+00;2017-12-05 17:40:44.167+00;62
-473;;Lactacting Cows on Grass Hay, Grass Pasture Or Grass silage;;2017-12-05 17:40:48.103+00;2017-12-05 17:40:48.103+00;155
-474;;Lactacting Cows on Grass Hay, Grass Pasture Or Grass silage;;2017-12-05 17:40:51.274+00;2017-12-05 17:40:51.274+00;156
-475;;Lactating Cows on a Mixed Legume-Grass Hay, -Pasture Or -silage;;2017-12-05 17:40:54.605+00;2017-12-05 17:40:54.605+00;155
-476;;Lactating Cows on a Mixed Legume-Grass Hay, -Pasture Or -silage;;2017-12-05 17:40:58.002+00;2017-12-05 17:40:58.002+00;156
-477;;Lactating Cows on Legume Hay Or Legume Pasture Or Legume silage;;2017-12-05 17:41:01.367+00;2017-12-05 17:41:01.367+00;155
-478;;Lactating Cows on Legume Hay Or Legume Pasture Or Legume silage;;2017-12-05 17:41:04.716+00;2017-12-05 17:41:04.716+00;156
+473;;Lactacting Cows On Grass Hay, Grass Pasture Or Grass Silage;;2017-12-05 17:40:48.103+00;2017-12-05 17:40:48.103+00;155
+474;;Lactacting Cows On Grass Hay, Grass Pasture Or Grass Silage;;2017-12-05 17:40:51.274+00;2017-12-05 17:40:51.274+00;156
+475;;Lactating Cows On A Mixed Legume-Grass Hay, -Pasture Or -Silage;;2017-12-05 17:40:54.605+00;2017-12-05 17:40:54.605+00;155
+476;;Lactating Cows On A Mixed Legume-Grass Hay, -Pasture Or -Silage;;2017-12-05 17:40:58.002+00;2017-12-05 17:40:58.002+00;156
+477;;Lactating Cows On Legume Hay Or Legume Pasture Or Legume Silage;;2017-12-05 17:41:01.367+00;2017-12-05 17:41:01.367+00;155
+478;;Lactating Cows On Legume Hay Or Legume Pasture Or Legume Silage;;2017-12-05 17:41:04.716+00;2017-12-05 17:41:04.716+00;156
 479;;Lactating Mares, From 3 Months To weaning;;2017-12-05 17:41:07.618+00;2017-12-05 17:41:07.618+00;152
 480;;Lactating Mares, From 3 Months To weaning;;2017-12-05 17:41:10.439+00;2017-12-05 17:41:10.439+00;153
 481;;Lactating Mares, From 3 Months To weaning, Fed At 0.5% Of BW;;2017-12-05 17:41:13.628+00;2017-12-05 17:41:13.628+00;159
@@ -562,8 +562,8 @@ id;description;name;userName;createdAt;updatedAt;dietGroupId
 560;;Maintenance, Adult Dogs;;2017-12-05 17:46:24.308+00;2017-12-05 17:46:24.308+00;121
 561;;Maintenance, Mares;;2017-12-05 17:46:28.226+00;2017-12-05 17:46:28.226+00;152
 562;;Maintenance, Mares;;2017-12-05 17:46:31.214+00;2017-12-05 17:46:31.214+00;153
-563;;Maintenance, Mature Ewes And Or wethers;;2017-12-05 17:46:34.375+00;2017-12-05 17:46:34.375+00;123
-564;;Maintenance, Mature Ewes And Or wethers;;2017-12-05 17:46:37.778+00;2017-12-05 17:46:37.778+00;126
+563;;Maintenance, Mature Ewes And Or Wethers;;2017-12-05 17:46:34.375+00;2017-12-05 17:46:34.375+00;123
+564;;Maintenance, Mature Ewes And Or Wethers;;2017-12-05 17:46:37.778+00;2017-12-05 17:46:37.778+00;126
 565;;Maintenance, Stallions;;2017-12-05 17:46:41.288+00;2017-12-05 17:46:41.288+00;152
 566;;Maintenance, Stallions;;2017-12-05 17:46:44.268+00;2017-12-05 17:46:44.268+00;153
 567;;Mid-Gestation Ration, 12 - 24 Weeks, Fed Ad Lib;;2017-12-05 17:46:48.643+00;2017-12-05 17:46:48.643+00;109
@@ -582,8 +582,8 @@ id;description;name;userName;createdAt;updatedAt;dietGroupId
 580;;Milk Replacer, 22 % CP;;2017-12-05 17:47:41.497+00;2017-12-05 17:47:41.497+00;176
 581;;Milk Replacer, 26 % CP;;2017-12-05 17:47:45.797+00;2017-12-05 17:47:45.797+00;175
 582;;Milk Replacer, 26 % CP;;2017-12-05 17:47:50.278+00;2017-12-05 17:47:50.278+00;176
-583;;Mixed Gender Pig Creep, From 3.5 To 4 Weeks Or later;;2017-12-05 17:47:53.02+00;2017-12-05 17:47:53.02+00;178
-584;;Mixed Gender Pig Creep, From 3.5 To 4 Weeks Or later;;2017-12-05 17:47:56.934+00;2017-12-05 17:47:56.934+00;179
+583;;Mixed Gender Pig Creep, From 3.5 To 4 Weeks Or Later;;2017-12-05 17:47:53.02+00;2017-12-05 17:47:53.02+00;178
+584;;Mixed Gender Pig Creep, From 3.5 To 4 Weeks Or Later;;2017-12-05 17:47:56.934+00;2017-12-05 17:47:56.934+00;179
 585;;Mixed Gender Pig Grower, BW: 10 - 20 kg (22 - 44 lb);;2017-12-05 17:48:00.971+00;2017-12-05 17:48:00.971+00;178
 586;;Mixed Gender Pig Grower, BW: 10 - 20 kg (22 - 44 lb);;2017-12-05 17:48:05.009+00;2017-12-05 17:48:05.009+00;179
 587;;Mixed Gender Pig Grower, BW: 20 - 50 kg (44 - 110 lb);;2017-12-05 17:48:09.174+00;2017-12-05 17:48:09.174+00;178
@@ -645,42 +645,42 @@ id;description;name;userName;createdAt;updatedAt;dietGroupId
 644;;Pre-starter For Calves Fed Milk Or Milk Replacer;;2017-12-05 17:51:58.692+00;2017-12-05 17:51:58.692+00;176
 645;;Pre-starter For Calves Fed Skimmed Milk;;2017-12-05 17:52:03.113+00;2017-12-05 17:52:03.113+00;175
 646;;Pre-starter For Calves Fed Skimmed Milk;;2017-12-05 17:52:07.542+00;2017-12-05 17:52:07.542+00;176
-647;;Pre-starter For Calves Fed Skimmed Milk whey;;2017-12-05 17:52:11.958+00;2017-12-05 17:52:11.958+00;175
-648;;Pre-starter For Calves Fed Skimmed Milk whey;;2017-12-05 17:52:16.427+00;2017-12-05 17:52:16.427+00;176
+647;;Pre-starter For Calves Fed Skimmed Milk Whey;;2017-12-05 17:52:11.958+00;2017-12-05 17:52:11.958+00;175
+648;;Pre-starter For Calves Fed Skimmed Milk Whey;;2017-12-05 17:52:16.427+00;2017-12-05 17:52:16.427+00;176
 649;;Race Condtioning, Pelleted Mix;;2017-12-05 17:52:19.448+00;2017-12-05 17:52:19.448+00;28
 650;;Race Condtioning, Pelleted Mix;;2017-12-05 17:52:23.043+00;2017-12-05 17:52:23.043+00;29
 651;;Race Fit, Pelleted Mix;;2017-12-05 17:52:26.671+00;2017-12-05 17:52:26.671+00;28
 652;;Race Fit, Pelleted Mix;;2017-12-05 17:52:30.228+00;2017-12-05 17:52:30.228+00;29
-653;;Rations For Heifers From About 6 Months old To maturity, Now Weighing 200 kg (440 lb);;2017-12-05 17:52:34.519+00;2017-12-05 17:52:34.519+00;148
-654;;Rations For Heifers From About 6 Months old To maturity, Now Weighing 200 kg (440 lb);;2017-12-05 17:52:38.209+00;2017-12-05 17:52:38.209+00;149
-655;;Rations For Heifers From About 6 Months old To maturity, Now Weighing 300 kg (660 lb);;2017-12-05 17:52:41.743+00;2017-12-05 17:52:41.743+00;148
-656;;Rations For Heifers From About 6 Months old To maturity, Now Weighing 300 kg (660 lb);;2017-12-05 17:52:45.288+00;2017-12-05 17:52:45.288+00;149
-657;;Rations For Heifers From About 6 Months old To maturity, Now Weighing 450 kg (990 lb);;2017-12-05 17:52:48.984+00;2017-12-05 17:52:48.984+00;148
-658;;Rations For Heifers From About 6 Months old To maturity, Now Weighing 450 kg (990 lb);;2017-12-05 17:52:52.568+00;2017-12-05 17:52:52.568+00;149
-659;;Rations For Heifers From About 6 Months old To maturity, Now Weighing 625 kg (1375 lb);;2017-12-05 17:52:56.123+00;2017-12-05 17:52:56.123+00;148
-660;;Rations For Heifers From About 6 Months old To maturity, Now Weighing 625 kg (1375 lb);;2017-12-05 17:52:59.651+00;2017-12-05 17:52:59.651+00;149
-661;;Receiving Grass Hay, Grass Pasture Or Grass silage;;2017-12-05 17:53:02.155+00;2017-12-05 17:53:02.155+00;187
-662;;Receiving Grass Hay, Grass Pasture Or Grass silage;;2017-12-05 17:53:05.003+00;2017-12-05 17:53:05.003+00;188
-663;;Receiving Mixed Legume-Grass Hay, -Pasture Or -silage;;2017-12-05 17:53:08.196+00;2017-12-05 17:53:08.196+00;187
-664;;Receiving Mixed Legume-Grass Hay, -Pasture Or -silage;;2017-12-05 17:53:11.234+00;2017-12-05 17:53:11.234+00;188
-665;;Receiving very little Or No roughage, drought-type condtions;;2017-12-05 17:53:14.266+00;2017-12-05 17:53:14.266+00;187
-666;;Receiving very little Or No roughage, drought-type condtions;;2017-12-05 17:53:17.449+00;2017-12-05 17:53:17.449+00;188
-667;;Receivng Legume Hay Or Legume Pasture Or Legume silage;;2017-12-05 17:53:20.471+00;2017-12-05 17:53:20.471+00;187
-668;;Receivng Legume Hay Or Legume Pasture Or Legume silage;;2017-12-05 17:53:23.471+00;2017-12-05 17:53:23.471+00;188
-669;;Replacement ewe lambs, 50-70 kg BW;;2017-12-05 17:53:26.47+00;2017-12-05 17:53:26.47+00;190
-670;;Replacement ewe lambs, 50-70 kg BW;;2017-12-05 17:53:29.674+00;2017-12-05 17:53:29.674+00;191
-671;;Replacement ewe lambs, Of About 30 kg BW;;2017-12-05 17:53:33.064+00;2017-12-05 17:53:33.064+00;190
-672;;Replacement ewe lambs, Of About 30 kg BW;;2017-12-05 17:53:36.51+00;2017-12-05 17:53:36.51+00;191
-673;;Replacement ewe lambs, Of About 40 kg BW;;2017-12-05 17:53:39.912+00;2017-12-05 17:53:39.912+00;190
-674;;Replacement ewe lambs, Of About 40 kg BW;;2017-12-05 17:53:43.308+00;2017-12-05 17:53:43.308+00;191
+653;;Rations For Heifers From About 6 Months Old To Maturity, Now Weighing 200 kg (440 lb);;2017-12-05 17:52:34.519+00;2017-12-05 17:52:34.519+00;148
+654;;Rations For Heifers From About 6 Months Old To Maturity, Now Weighing 200 kg (440 lb);;2017-12-05 17:52:38.209+00;2017-12-05 17:52:38.209+00;149
+655;;Rations For Heifers From About 6 Months Old To Maturity, Now Weighing 300 kg (660 lb);;2017-12-05 17:52:41.743+00;2017-12-05 17:52:41.743+00;148
+656;;Rations For Heifers From About 6 Months Old To Maturity, Now Weighing 300 kg (660 lb);;2017-12-05 17:52:45.288+00;2017-12-05 17:52:45.288+00;149
+657;;Rations For Heifers From About 6 Months Old To Maturity, Now Weighing 450 kg (990 lb);;2017-12-05 17:52:48.984+00;2017-12-05 17:52:48.984+00;148
+658;;Rations For Heifers From About 6 Months Old To Maturity, Now Weighing 450 kg (990 lb);;2017-12-05 17:52:52.568+00;2017-12-05 17:52:52.568+00;149
+659;;Rations For Heifers From About 6 Months Old To Maturity, Now Weighing 625 kg (1375 lb);;2017-12-05 17:52:56.123+00;2017-12-05 17:52:56.123+00;148
+660;;Rations For Heifers From About 6 Months Old To Maturity, Now Weighing 625 kg (1375 lb);;2017-12-05 17:52:59.651+00;2017-12-05 17:52:59.651+00;149
+661;;Receiving Grass Hay, Grass Pasture Or Grass Silage;;2017-12-05 17:53:02.155+00;2017-12-05 17:53:02.155+00;187
+662;;Receiving Grass Hay, Grass Pasture Or Grass Silage;;2017-12-05 17:53:05.003+00;2017-12-05 17:53:05.003+00;188
+663;;Receiving Mixed Legume-Grass Hay, -Pasture Or -Silage;;2017-12-05 17:53:08.196+00;2017-12-05 17:53:08.196+00;187
+664;;Receiving Mixed Legume-Grass Hay, -Pasture Or -Silage;;2017-12-05 17:53:11.234+00;2017-12-05 17:53:11.234+00;188
+665;;Receiving Very little Or No Roughage, Drought-Type Condtions;;2017-12-05 17:53:14.266+00;2017-12-05 17:53:14.266+00;187
+666;;Receiving Very little Or No Roughage, Drought-Type Condtions;;2017-12-05 17:53:17.449+00;2017-12-05 17:53:17.449+00;188
+667;;Receivng Legume Hay Or Legume Pasture Or Legume Silage;;2017-12-05 17:53:20.471+00;2017-12-05 17:53:20.471+00;187
+668;;Receivng Legume Hay Or Legume Pasture Or Legume Silage;;2017-12-05 17:53:23.471+00;2017-12-05 17:53:23.471+00;188
+669;;Replacement Ewe lambs, 50-70 kg BW;;2017-12-05 17:53:26.47+00;2017-12-05 17:53:26.47+00;190
+670;;Replacement Ewe lambs, 50-70 kg BW;;2017-12-05 17:53:29.674+00;2017-12-05 17:53:29.674+00;191
+671;;Replacement Ewe lambs, Of About 30 kg BW;;2017-12-05 17:53:33.064+00;2017-12-05 17:53:33.064+00;190
+672;;Replacement Ewe lambs, Of About 30 kg BW;;2017-12-05 17:53:36.51+00;2017-12-05 17:53:36.51+00;191
+673;;Replacement Ewe lambs, Of About 40 kg BW;;2017-12-05 17:53:39.912+00;2017-12-05 17:53:39.912+00;190
+674;;Replacement Ewe lambs, Of About 40 kg BW;;2017-12-05 17:53:43.308+00;2017-12-05 17:53:43.308+00;191
 675;;Replacement Ram lambs, 80-100 kg BW;;2017-12-05 17:53:46.696+00;2017-12-05 17:53:46.696+00;190
 676;;Replacement Ram lambs, 80-100 kg BW;;2017-12-05 17:53:50.098+00;2017-12-05 17:53:50.098+00;191
 677;;Replacement Ram lambs, Of About 40 kg BW;;2017-12-05 17:53:53.486+00;2017-12-05 17:53:53.486+00;190
 678;;Replacement Ram lambs, Of About 40 kg BW;;2017-12-05 17:53:57.06+00;2017-12-05 17:53:57.06+00;191
 679;;Replacement Ram lambs, Of About 60 kg BW;;2017-12-05 17:54:00.569+00;2017-12-05 17:54:00.569+00;190
 680;;Replacement Ram lambs, Of About 60 kg BW;;2017-12-05 17:54:04.019+00;2017-12-05 17:54:04.019+00;191
-681;;Sexually active Boars;;2017-12-05 17:54:07.271+00;2017-12-05 17:54:07.271+00;193
-682;;Sexually active Boars;;2017-12-05 17:54:11.382+00;2017-12-05 17:54:11.382+00;194
+681;;Sexually Active Boars;;2017-12-05 17:54:07.271+00;2017-12-05 17:54:07.271+00;193
+682;;Sexually Active Boars;;2017-12-05 17:54:11.382+00;2017-12-05 17:54:11.382+00;194
 683;;Starter Ration For Calves Fed Milk Or Milk Replacer And Receiving Forage;;2017-12-05 17:54:16.494+00;2017-12-05 17:54:16.494+00;175
 684;;Starter Ration For Calves Fed Milk Or Milk Replacer And Receiving Forage;;2017-12-05 17:54:21.099+00;2017-12-05 17:54:21.099+00;176
 685;;Starter Ration For Calves Fed Milk Or Milk Replacer And Receiving No Forage;;2017-12-05 17:54:25.544+00;2017-12-05 17:54:25.544+00;175
@@ -689,40 +689,40 @@ id;description;name;userName;createdAt;updatedAt;dietGroupId
 688;;Starter Ration For Calves Fed Skimmed Milk And Receiving Forage;;2017-12-05 17:54:39.086+00;2017-12-05 17:54:39.086+00;176
 689;;Starter Ration For Calves Fed Skimmed Milk And Receiving No Forage;;2017-12-05 17:54:43.504+00;2017-12-05 17:54:43.504+00;175
 690;;Starter Ration For Calves Fed Skimmed Milk And Receiving No Forage;;2017-12-05 17:54:48.096+00;2017-12-05 17:54:48.096+00;176
-691;;Starter Ration For Calves Fed whey And Receiving Forage;;2017-12-05 17:54:52.595+00;2017-12-05 17:54:52.595+00;175
-692;;Starter Ration For Calves Fed whey And Receiving Forage;;2017-12-05 17:54:57.022+00;2017-12-05 17:54:57.022+00;176
-693;;Starter Ration For Calves Fed whey And Receiving No Forage;;2017-12-05 17:55:01.506+00;2017-12-05 17:55:01.506+00;175
-694;;Starter Ration For Calves Fed whey And Receiving No Forage;;2017-12-05 17:55:05.92+00;2017-12-05 17:55:05.92+00;176
-695;;Starter Ration For Ducklings Of Mixed Gender, 0 - 2 Weeks old;;2017-12-05 17:55:11.278+00;2017-12-05 17:55:11.278+00;36
-696;;Starter Ration For Ducklings Of Mixed Gender, 0 - 2 Weeks old;;2017-12-05 17:55:17.245+00;2017-12-05 17:55:17.245+00;37
-697;;Starter Ration For Goslings Of Mixed Gender, 0 - 4 Weeks old;;2017-12-05 17:55:23.415+00;2017-12-05 17:55:23.415+00;40
-698;;Starter Ration For Goslings Of Mixed Gender, 0 - 4 Weeks old;;2017-12-05 17:55:29.24+00;2017-12-05 17:55:29.24+00;41
-699;;Starter Ration For Pheasant Chicks Of Mixed Gender, 0 - 4 Weeks old;;2017-12-05 17:55:35.074+00;2017-12-05 17:55:35.074+00;44
-700;;Starter Ration For Pheasant Chicks Of Mixed Gender, 0 - 4 Weeks old;;2017-12-05 17:55:41.139+00;2017-12-05 17:55:41.139+00;45
+691;;Starter Ration For Calves Fed Whey And Receiving Forage;;2017-12-05 17:54:52.595+00;2017-12-05 17:54:52.595+00;175
+692;;Starter Ration For Calves Fed Whey And Receiving Forage;;2017-12-05 17:54:57.022+00;2017-12-05 17:54:57.022+00;176
+693;;Starter Ration For Calves Fed Whey And Receiving No Forage;;2017-12-05 17:55:01.506+00;2017-12-05 17:55:01.506+00;175
+694;;Starter Ration For Calves Fed Whey And Receiving No Forage;;2017-12-05 17:55:05.92+00;2017-12-05 17:55:05.92+00;176
+695;;Starter Ration For Ducklings Of Mixed Gender, 0 - 2 Weeks Old;;2017-12-05 17:55:11.278+00;2017-12-05 17:55:11.278+00;36
+696;;Starter Ration For Ducklings Of Mixed Gender, 0 - 2 Weeks Old;;2017-12-05 17:55:17.245+00;2017-12-05 17:55:17.245+00;37
+697;;Starter Ration For Goslings Of Mixed Gender, 0 - 4 Weeks Old;;2017-12-05 17:55:23.415+00;2017-12-05 17:55:23.415+00;40
+698;;Starter Ration For Goslings Of Mixed Gender, 0 - 4 Weeks Old;;2017-12-05 17:55:29.24+00;2017-12-05 17:55:29.24+00;41
+699;;Starter Ration For Pheasant Chicks Of Mixed Gender, 0 - 4 Weeks Old;;2017-12-05 17:55:35.074+00;2017-12-05 17:55:35.074+00;44
+700;;Starter Ration For Pheasant Chicks Of Mixed Gender, 0 - 4 Weeks Old;;2017-12-05 17:55:41.139+00;2017-12-05 17:55:41.139+00;45
 701;;Starter Ration, 0 - 6 Weeks Of Age;;2017-12-05 17:55:46.938+00;2017-12-05 17:55:46.938+00;20
 702;;Starter Ration, 0 - 6 Weeks Of Age;;2017-12-05 17:55:52.927+00;2017-12-05 17:55:52.927+00;21
 703;;Starter Ration, 0 - 9 Weeks Of Age;;2017-12-05 17:55:58.753+00;2017-12-05 17:55:58.753+00;16
 704;;Starter Ration, 0 - 9 Weeks Of Age;;2017-12-05 17:56:04.617+00;2017-12-05 17:56:04.617+00;17
-705;;Starting From Around 135kg (300lb), With Moderate Growth To finish In About 13.1 Months;;2017-12-05 17:56:08.93+00;2017-12-05 17:56:08.93+00;196
-706;;Starting From Around 135kg (300lb), With Moderate Growth To finish In About 13.1 Months;;2017-12-05 17:56:12.673+00;2017-12-05 17:56:12.673+00;197
-707;;Starting From Around 135kg (300lb), With Rapid Growth To finish In About 8.75 Months;;2017-12-05 17:56:16.6+00;2017-12-05 17:56:16.6+00;196
-708;;Starting From Around 135kg (300lb), With Rapid Growth To finish In About 8.75 Months;;2017-12-05 17:56:20.531+00;2017-12-05 17:56:20.531+00;197
-709;;Starting From Around 180kg (400lb), With Moderate Growth To finish In About 11.5 Months;;2017-12-05 17:56:24.451+00;2017-12-05 17:56:24.451+00;196
-710;;Starting From Around 180kg (400lb), With Moderate Growth To finish In About 11.5 Months;;2017-12-05 17:56:28.546+00;2017-12-05 17:56:28.546+00;197
-711;;Starting From Around 180kg (400lb), With Rapid Growth To finish In About 7.65 Months;;2017-12-05 17:56:32.47+00;2017-12-05 17:56:32.47+00;196
-712;;Starting From Around 180kg (400lb), With Rapid Growth To finish In About 7.65 Months;;2017-12-05 17:56:36.372+00;2017-12-05 17:56:36.372+00;197
-713;;Starting From Around 225kg (500lb), With Moderate Growth To finish In About 9.8 Months;;2017-12-05 17:56:40.286+00;2017-12-05 17:56:40.286+00;196
-714;;Starting From Around 225kg (500lb), With Moderate Growth To finish In About 9.8 Months;;2017-12-05 17:56:44.2+00;2017-12-05 17:56:44.2+00;197
-715;;Starting From Around 225kg (500lb), With Rapid Growth To finish In About 6.6 Months;;2017-12-05 17:56:48.306+00;2017-12-05 17:56:48.306+00;196
-716;;Starting From Around 225kg (500lb), With Rapid Growth To finish In About 6.6 Months;;2017-12-05 17:56:52.271+00;2017-12-05 17:56:52.271+00;197
-717;;Starting From Around 270kg (600lb), With Moderate Growth To finish In About 8.2 Months;;2017-12-05 17:56:56.227+00;2017-12-05 17:56:56.227+00;196
-718;;Starting From Around 270kg (600lb), With Moderate Growth To finish In About 8.2 Months;;2017-12-05 17:57:00.331+00;2017-12-05 17:57:00.331+00;197
-719;;Starting From Around 270kg (600lb), With Rapid Growth To finish In About 5.5 Months;;2017-12-05 17:57:04.267+00;2017-12-05 17:57:04.267+00;196
-720;;Starting From Around 270kg (600lb), With Rapid Growth To finish In About 5.5 Months;;2017-12-05 17:57:08.351+00;2017-12-05 17:57:08.351+00;197
-721;;Starting From Around 320kg (700lb), With Moderate Growth To finish In About 6.6 Months;;2017-12-05 17:57:12.306+00;2017-12-05 17:57:12.306+00;196
-722;;Starting From Around 320kg (700lb), With Moderate Growth To finish In About 6.6 Months;;2017-12-05 17:57:16.265+00;2017-12-05 17:57:16.265+00;197
-723;;Starting From Around 320kg (700lb), With Rapid Growth To finish In About 4.37 Months;;2017-12-05 17:57:20.483+00;2017-12-05 17:57:20.483+00;196
-724;;Starting From Around 320kg (700lb), With Rapid Growth To finish In About 4.37 Months;;2017-12-05 17:57:24.434+00;2017-12-05 17:57:24.434+00;197
+705;;Starting From Around 135kg (300lb), With Moderate Growth To Finish In About 13.1 Months;;2017-12-05 17:56:08.93+00;2017-12-05 17:56:08.93+00;196
+706;;Starting From Around 135kg (300lb), With Moderate Growth To Finish In About 13.1 Months;;2017-12-05 17:56:12.673+00;2017-12-05 17:56:12.673+00;197
+707;;Starting From Around 135kg (300lb), With Rapid Growth To Finish In About 8.75 Months;;2017-12-05 17:56:16.6+00;2017-12-05 17:56:16.6+00;196
+708;;Starting From Around 135kg (300lb), With Rapid Growth To Finish In About 8.75 Months;;2017-12-05 17:56:20.531+00;2017-12-05 17:56:20.531+00;197
+709;;Starting From Around 180kg (400lb), With Moderate Growth To Finish In About 11.5 Months;;2017-12-05 17:56:24.451+00;2017-12-05 17:56:24.451+00;196
+710;;Starting From Around 180kg (400lb), With Moderate Growth To Finish In About 11.5 Months;;2017-12-05 17:56:28.546+00;2017-12-05 17:56:28.546+00;197
+711;;Starting From Around 180kg (400lb), With Rapid Growth To Finish In About 7.65 Months;;2017-12-05 17:56:32.47+00;2017-12-05 17:56:32.47+00;196
+712;;Starting From Around 180kg (400lb), With Rapid Growth To Finish In About 7.65 Months;;2017-12-05 17:56:36.372+00;2017-12-05 17:56:36.372+00;197
+713;;Starting From Around 225kg (500lb), With Moderate Growth To Finish In About 9.8 Months;;2017-12-05 17:56:40.286+00;2017-12-05 17:56:40.286+00;196
+714;;Starting From Around 225kg (500lb), With Moderate Growth To Finish In About 9.8 Months;;2017-12-05 17:56:44.2+00;2017-12-05 17:56:44.2+00;197
+715;;Starting From Around 225kg (500lb), With Rapid Growth To Finish In About 6.6 Months;;2017-12-05 17:56:48.306+00;2017-12-05 17:56:48.306+00;196
+716;;Starting From Around 225kg (500lb), With Rapid Growth To Finish In About 6.6 Months;;2017-12-05 17:56:52.271+00;2017-12-05 17:56:52.271+00;197
+717;;Starting From Around 270kg (600lb), With Moderate Growth To Finish In About 8.2 Months;;2017-12-05 17:56:56.227+00;2017-12-05 17:56:56.227+00;196
+718;;Starting From Around 270kg (600lb), With Moderate Growth To Finish In About 8.2 Months;;2017-12-05 17:57:00.331+00;2017-12-05 17:57:00.331+00;197
+719;;Starting From Around 270kg (600lb), With Rapid Growth To Finish In About 5.5 Months;;2017-12-05 17:57:04.267+00;2017-12-05 17:57:04.267+00;196
+720;;Starting From Around 270kg (600lb), With Rapid Growth To Finish In About 5.5 Months;;2017-12-05 17:57:08.351+00;2017-12-05 17:57:08.351+00;197
+721;;Starting From Around 320kg (700lb), With Moderate Growth To Finish In About 6.6 Months;;2017-12-05 17:57:12.306+00;2017-12-05 17:57:12.306+00;196
+722;;Starting From Around 320kg (700lb), With Moderate Growth To Finish In About 6.6 Months;;2017-12-05 17:57:16.265+00;2017-12-05 17:57:16.265+00;197
+723;;Starting From Around 320kg (700lb), With Rapid Growth To Finish In About 4.37 Months;;2017-12-05 17:57:20.483+00;2017-12-05 17:57:20.483+00;196
+724;;Starting From Around 320kg (700lb), With Rapid Growth To Finish In About 4.37 Months;;2017-12-05 17:57:24.434+00;2017-12-05 17:57:24.434+00;197
 725;;Supplement Mix For Early-Lactation, 0 - 6 Weeks, Fed At 0.5% Of BW;;2017-12-05 17:57:28.272+00;2017-12-05 17:57:28.272+00;199
 726;;Supplement Mix For Early-Lactation, 0 - 6 Weeks, Fed At 0.5% Of BW;;2017-12-05 17:57:31.717+00;2017-12-05 17:57:31.717+00;201
 727;;Supplement Mix For Early-Lactation, 0 - 6 Weeks, Fed At 0.5% Of BW;;2017-12-05 17:57:35.123+00;2017-12-05 17:57:35.123+00;203
@@ -783,18 +783,18 @@ id;description;name;userName;createdAt;updatedAt;dietGroupId
 782;;Supplement Mix For Growers, 9 - 18 Months, Fed At 1% Of BW;;2017-12-05 18:01:58.943+00;2017-12-05 18:01:58.943+00;213
 783;;Supplement Mix For Growers, 9 - 18 Months, Fed At 1% Of BW;;2017-12-05 18:02:03.738+00;2017-12-05 18:02:03.738+00;214
 784;;Supplement Mix For Growers, 9 - 18 Months, Fed At 1% Of BW;;2017-12-05 18:02:08.707+00;2017-12-05 18:02:08.707+00;215
-785;;Supplement Mix For late-Gestation, 24 - 36 Weeks, Fed At 1% Of BW;;2017-12-05 18:02:13.488+00;2017-12-05 18:02:13.488+00;208
-786;;Supplement Mix For late-Gestation, 24 - 36 Weeks, Fed At 1% Of BW;;2017-12-05 18:02:18.259+00;2017-12-05 18:02:18.259+00;210
-787;;Supplement Mix For late-Gestation, 24 - 36 Weeks, Fed At 1% Of BW;;2017-12-05 18:02:23.051+00;2017-12-05 18:02:23.051+00;212
-788;;Supplement Mix For late-Gestation, 24 - 36 Weeks, Fed At 1% Of BW;;2017-12-05 18:02:27.831+00;2017-12-05 18:02:27.831+00;213
-789;;Supplement Mix For late-Gestation, 24 - 36 Weeks, Fed At 1% Of BW;;2017-12-05 18:02:32.663+00;2017-12-05 18:02:32.663+00;214
-790;;Supplement Mix For late-Gestation, 24 - 36 Weeks, Fed At 1% Of BW;;2017-12-05 18:02:37.564+00;2017-12-05 18:02:37.564+00;215
-791;;Supplement Mix For late-Geststion, 24 - 36 Weeks, Fed At 0.5% Of BW;;2017-12-05 18:02:42.776+00;2017-12-05 18:02:42.776+00;199
-792;;Supplement Mix For late-Geststion, 24 - 36 Weeks, Fed At 0.5% Of BW;;2017-12-05 18:02:47.652+00;2017-12-05 18:02:47.652+00;201
-793;;Supplement Mix For late-Geststion, 24 - 36 Weeks, Fed At 0.5% Of BW;;2017-12-05 18:02:52.499+00;2017-12-05 18:02:52.499+00;203
-794;;Supplement Mix For late-Geststion, 24 - 36 Weeks, Fed At 0.5% Of BW;;2017-12-05 18:02:57.254+00;2017-12-05 18:02:57.254+00;204
-795;;Supplement Mix For late-Geststion, 24 - 36 Weeks, Fed At 0.5% Of BW;;2017-12-05 18:03:02.188+00;2017-12-05 18:03:02.188+00;205
-796;;Supplement Mix For late-Geststion, 24 - 36 Weeks, Fed At 0.5% Of BW;;2017-12-05 18:03:06.994+00;2017-12-05 18:03:06.994+00;206
+785;;Supplement Mix For Late-Gestation, 24 - 36 Weeks, Fed At 1% Of BW;;2017-12-05 18:02:13.488+00;2017-12-05 18:02:13.488+00;208
+786;;Supplement Mix For Late-Gestation, 24 - 36 Weeks, Fed At 1% Of BW;;2017-12-05 18:02:18.259+00;2017-12-05 18:02:18.259+00;210
+787;;Supplement Mix For Late-Gestation, 24 - 36 Weeks, Fed At 1% Of BW;;2017-12-05 18:02:23.051+00;2017-12-05 18:02:23.051+00;212
+788;;Supplement Mix For Late-Gestation, 24 - 36 Weeks, Fed At 1% Of BW;;2017-12-05 18:02:27.831+00;2017-12-05 18:02:27.831+00;213
+789;;Supplement Mix For Late-Gestation, 24 - 36 Weeks, Fed At 1% Of BW;;2017-12-05 18:02:32.663+00;2017-12-05 18:02:32.663+00;214
+790;;Supplement Mix For Late-Gestation, 24 - 36 Weeks, Fed At 1% Of BW;;2017-12-05 18:02:37.564+00;2017-12-05 18:02:37.564+00;215
+791;;Supplement Mix For Late-Geststion, 24 - 36 Weeks, Fed At 0.5% Of BW;;2017-12-05 18:02:42.776+00;2017-12-05 18:02:42.776+00;199
+792;;Supplement Mix For Late-Geststion, 24 - 36 Weeks, Fed At 0.5% Of BW;;2017-12-05 18:02:47.652+00;2017-12-05 18:02:47.652+00;201
+793;;Supplement Mix For Late-Geststion, 24 - 36 Weeks, Fed At 0.5% Of BW;;2017-12-05 18:02:52.499+00;2017-12-05 18:02:52.499+00;203
+794;;Supplement Mix For Late-Geststion, 24 - 36 Weeks, Fed At 0.5% Of BW;;2017-12-05 18:02:57.254+00;2017-12-05 18:02:57.254+00;204
+795;;Supplement Mix For Late-Geststion, 24 - 36 Weeks, Fed At 0.5% Of BW;;2017-12-05 18:03:02.188+00;2017-12-05 18:03:02.188+00;205
+796;;Supplement Mix For Late-Geststion, 24 - 36 Weeks, Fed At 0.5% Of BW;;2017-12-05 18:03:06.994+00;2017-12-05 18:03:06.994+00;206
 797;;Supplement Mix For Maintenance, Fed At 0.5% Of BW;;2017-12-05 18:03:11.94+00;2017-12-05 18:03:11.94+00;199
 798;;Supplement Mix For Maintenance, Fed At 0.5% Of BW;;2017-12-05 18:03:16.72+00;2017-12-05 18:03:16.72+00;203
 799;;Supplement Mix For Maintenance, Fed At 0.5% Of BW;;2017-12-05 18:03:21.676+00;2017-12-05 18:03:21.676+00;201
@@ -835,58 +835,58 @@ id;description;name;userName;createdAt;updatedAt;dietGroupId
 834;;Two Year Old, 24 Months - In Training;;2017-12-05 18:06:08.133+00;2017-12-05 18:06:08.133+00;169
 835;;Two Year Old, 24 Months - Not In Training;;2017-12-05 18:06:11.141+00;2017-12-05 18:06:11.141+00;168
 836;;Two Year Old, 24 Months - Not In Training;;2017-12-05 18:06:14.136+00;2017-12-05 18:06:14.136+00;169
-837;;Weaned Kittens, From 4 Weeks To 14 Weeks old;;2017-12-05 18:06:16.336+00;2017-12-05 18:06:16.336+00;117
-838;;Weaned Kittens, From 4 Weeks To 14 Weeks old;;2017-12-05 18:06:19.199+00;2017-12-05 18:06:19.199+00;118
-839;;Weaned Puppies, From 4 Weeks Onwards And Up To 14 Weeks old;;2017-12-05 18:06:22.038+00;2017-12-05 18:06:22.038+00;120
-840;;Weaned Puppies, From 4 Weeks Onwards And Up To 14 Weeks old;;2017-12-05 18:06:24.91+00;2017-12-05 18:06:24.91+00;121
-841;;Weanling Ration, Up To 3 Months old, To Be Fed Ad Lib;;2017-12-05 18:06:30.541+00;2017-12-05 18:06:30.541+00;165
-842;;Weanling Ration, Up To 3 Months old, To Be Fed Ad Lib;;2017-12-05 18:06:35.466+00;2017-12-05 18:06:35.466+00;166
-843;;Weanling Ration, Up To 6 Months old, To Be Fed Ad Lib;;2017-12-05 18:06:40.493+00;2017-12-05 18:06:40.493+00;165
-844;;Weanling Ration, Up To 6 Months old, To Be Fed Ad Lib;;2017-12-05 18:06:45.374+00;2017-12-05 18:06:45.374+00;166
-845;;Weanling Supplement, Up To 3 Months old, Fed At 0.5% Of BW;;2017-12-05 18:06:50.409+00;2017-12-05 18:06:50.409+00;159
-846;;Weanling Supplement, Up To 3 Months old, Fed At 0.5% Of BW;;2017-12-05 18:06:55.402+00;2017-12-05 18:06:55.402+00;160
-847;;Weanling Supplement, Up To 3 Months old, Fed At 1% Of BW;;2017-12-05 18:07:00.512+00;2017-12-05 18:07:00.512+00;162
-848;;Weanling Supplement, Up To 3 Months old, Fed At 1% Of BW;;2017-12-05 18:07:05.543+00;2017-12-05 18:07:05.543+00;163
-849;;Weanling Supplement, Up To 6 Months old, Fed At 0.5% Of BW;;2017-12-05 18:07:10.795+00;2017-12-05 18:07:10.795+00;159
-850;;Weanling Supplement, Up To 6 Months old, Fed At 0.5% Of BW;;2017-12-05 18:07:15.839+00;2017-12-05 18:07:15.839+00;160
-851;;Weanling Supplement, Up To 6 Months old, Fed At 1% Of BW;;2017-12-05 18:07:21.066+00;2017-12-05 18:07:21.066+00;162
-852;;Weanling Supplement, Up To 6 Months old, Fed At 1% Of BW;;2017-12-05 18:07:25.949+00;2017-12-05 18:07:25.949+00;163
+837;;Weaned Kittens, From 4 Weeks To 14 Weeks Old;;2017-12-05 18:06:16.336+00;2017-12-05 18:06:16.336+00;117
+838;;Weaned Kittens, From 4 Weeks To 14 Weeks Old;;2017-12-05 18:06:19.199+00;2017-12-05 18:06:19.199+00;118
+839;;Weaned Puppies, From 4 Weeks Onwards And Up To 14 Weeks Old;;2017-12-05 18:06:22.038+00;2017-12-05 18:06:22.038+00;120
+840;;Weaned Puppies, From 4 Weeks Onwards And Up To 14 Weeks Old;;2017-12-05 18:06:24.91+00;2017-12-05 18:06:24.91+00;121
+841;;Weanling Ration, Up To 3 Months Old, To Be Fed Ad Lib;;2017-12-05 18:06:30.541+00;2017-12-05 18:06:30.541+00;165
+842;;Weanling Ration, Up To 3 Months Old, To Be Fed Ad Lib;;2017-12-05 18:06:35.466+00;2017-12-05 18:06:35.466+00;166
+843;;Weanling Ration, Up To 6 Months Old, To Be Fed Ad Lib;;2017-12-05 18:06:40.493+00;2017-12-05 18:06:40.493+00;165
+844;;Weanling Ration, Up To 6 Months Old, To Be Fed Ad Lib;;2017-12-05 18:06:45.374+00;2017-12-05 18:06:45.374+00;166
+845;;Weanling Supplement, Up To 3 Months Old, Fed At 0.5% Of BW;;2017-12-05 18:06:50.409+00;2017-12-05 18:06:50.409+00;159
+846;;Weanling Supplement, Up To 3 Months Old, Fed At 0.5% Of BW;;2017-12-05 18:06:55.402+00;2017-12-05 18:06:55.402+00;160
+847;;Weanling Supplement, Up To 3 Months Old, Fed At 1% Of BW;;2017-12-05 18:07:00.512+00;2017-12-05 18:07:00.512+00;162
+848;;Weanling Supplement, Up To 3 Months Old, Fed At 1% Of BW;;2017-12-05 18:07:05.543+00;2017-12-05 18:07:05.543+00;163
+849;;Weanling Supplement, Up To 6 Months Old, Fed At 0.5% Of BW;;2017-12-05 18:07:10.795+00;2017-12-05 18:07:10.795+00;159
+850;;Weanling Supplement, Up To 6 Months Old, Fed At 0.5% Of BW;;2017-12-05 18:07:15.839+00;2017-12-05 18:07:15.839+00;160
+851;;Weanling Supplement, Up To 6 Months Old, Fed At 1% Of BW;;2017-12-05 18:07:21.066+00;2017-12-05 18:07:21.066+00;162
+852;;Weanling Supplement, Up To 6 Months Old, Fed At 1% Of BW;;2017-12-05 18:07:25.949+00;2017-12-05 18:07:25.949+00;163
 853;;Weanling, 4 Months;;2017-12-05 18:07:29+00;2017-12-05 18:07:29+00;168
 854;;Weanling, 4 Months;;2017-12-05 18:07:32+00;2017-12-05 18:07:32+00;169
 855;;Weanling, 6 Months - Moderate Growth;;2017-12-05 18:07:35.043+00;2017-12-05 18:07:35.043+00;168
 856;;Weanling, 6 Months - Moderate Growth;;2017-12-05 18:07:38.188+00;2017-12-05 18:07:38.188+00;169
 857;;Weanling, 6 Months - Rapid Growth;;2017-12-05 18:07:41.323+00;2017-12-05 18:07:41.323+00;168
 858;;Weanling, 6 Months - Rapid Growth;;2017-12-05 18:07:44.379+00;2017-12-05 18:07:44.379+00;169
-859;;Weighing Around 450 kg (1000 lb), And In 1st 6 Months Of Gestation.;;2017-12-05 18:07:47.965+00;2017-12-05 18:07:47.965+00;217
-860;;Weighing Around 450 kg (1000 lb), And In 1st 6 Months Of Gestation.;;2017-12-05 18:07:52.046+00;2017-12-05 18:07:52.046+00;218
-861;;Weighing Around 450 kg (1000 lb), And In Last 3 Months Of Gestation.;;2017-12-05 18:07:56.307+00;2017-12-05 18:07:56.307+00;217
-862;;Weighing Around 450 kg (1000 lb), And In Last 3 Months Of Gestation.;;2017-12-05 18:08:00.792+00;2017-12-05 18:08:00.792+00;218
-863;;Weighing Around 500 kg (1100 lb), And In 1st 6 Months Of Gestation.;;2017-12-05 18:08:05.013+00;2017-12-05 18:08:05.013+00;217
-864;;Weighing Around 500 kg (1100 lb), And In 1st 6 Months Of Gestation.;;2017-12-05 18:08:09.294+00;2017-12-05 18:08:09.294+00;218
-865;;Weighing Around 500 kg (1100 lb), And In Last 3 Months Of Gestation.;;2017-12-05 18:08:13.54+00;2017-12-05 18:08:13.54+00;217
-866;;Weighing Around 500 kg (1100 lb), And In Last 3 Months Of Gestation.;;2017-12-05 18:08:17.765+00;2017-12-05 18:08:17.765+00;218
-867;;Weighing Around 545 kg (1200 lb), And In 1st 6 Months Of Gestation.;;2017-12-05 18:08:21.999+00;2017-12-05 18:08:21.999+00;217
-868;;Weighing Around 545 kg (1200 lb), And In 1st 6 Months Of Gestation.;;2017-12-05 18:08:26.22+00;2017-12-05 18:08:26.22+00;218
-869;;Weighing Around 545 kg (1200 lb), And In Last 3 Months Of Gestation.;;2017-12-05 18:08:30.49+00;2017-12-05 18:08:30.49+00;217
-870;;Weighing Around 545 kg (1200 lb), And In Last 3 Months Of Gestation.;;2017-12-05 18:08:34.677+00;2017-12-05 18:08:34.677+00;218
-871;;White Egg Layers, Feed Intake Around 100 g/bird/day;;2017-12-05 18:08:40.764+00;2017-12-05 18:08:40.764+00;64
-872;;White Egg Layers, Feed Intake Around 100 g/bird/day;;2017-12-05 18:08:47.316+00;2017-12-05 18:08:47.316+00;65
-873;;White Egg Layers, Feed Intake Around 110 g/bird/day;;2017-12-05 18:08:54.05+00;2017-12-05 18:08:54.05+00;64
-874;;White Egg Layers, Feed Intake Around 110 g/bird/day;;2017-12-05 18:09:00.877+00;2017-12-05 18:09:00.877+00;65
-875;;White Egg Layers, Feed Intake Around 120 g/bird/day;;2017-12-05 18:09:07.462+00;2017-12-05 18:09:07.462+00;64
-876;;White Egg Layers, Feed Intake Around 120 g/bird/day;;2017-12-05 18:09:14.239+00;2017-12-05 18:09:14.239+00;65
-877;;White Egg Layers, Feed Intake Around 80 g/bird/day;;2017-12-05 18:09:20.998+00;2017-12-05 18:09:20.998+00;64
-878;;White Egg Layers, Feed Intake Around 80 g/bird/day;;2017-12-05 18:09:27.598+00;2017-12-05 18:09:27.598+00;65
-879;;White Egg Layers, Feed Intake Around 90 g/bird/day;;2017-12-05 18:09:34.605+00;2017-12-05 18:09:34.605+00;64
-880;;White Egg Layers, Feed Intake Around 90 g/bird/day;;2017-12-05 18:09:41.583+00;2017-12-05 18:09:41.583+00;65
-881;;White Egg Strain, 0 - 6 Weeks, ending Around 450 g BW;;2017-12-05 18:09:48.799+00;2017-12-05 18:09:48.799+00;67
-882;;White Egg Strain, 0 - 6 Weeks, ending Around 450 g BW;;2017-12-05 18:09:55.444+00;2017-12-05 18:09:55.444+00;68
-883;;White Egg Strain, 12 - 18 Weeks, ending Around 1375 g BW;;2017-12-05 18:10:02.328+00;2017-12-05 18:10:02.328+00;67
-884;;White Egg Strain, 12 - 18 Weeks, ending Around 1375 g BW;;2017-12-05 18:10:09.123+00;2017-12-05 18:10:09.123+00;68
-885;;White Egg Strain, 18 Weeks To 1st egg, ending Around 1475 g BW;;2017-12-05 18:10:15.829+00;2017-12-05 18:10:15.829+00;67
-886;;White Egg Strain, 18 Weeks To 1st egg, ending Around 1475 g BW;;2017-12-05 18:10:22.647+00;2017-12-05 18:10:22.647+00;68
-887;;White Egg Strain, 6 - 12 Weeks, ending ariund 980 g BW;;2017-12-05 18:10:29.2+00;2017-12-05 18:10:29.2+00;67
-888;;White Egg Strain, 6 - 12 Weeks, ending ariund 980 g BW;;2017-12-05 18:10:35.845+00;2017-12-05 18:10:35.845+00;68
+859;;Weighing Around 450 kg (1000 lb), And In 1st 6 Months Of Gestation;;2017-12-05 18:07:47.965+00;2017-12-05 18:07:47.965+00;217
+860;;Weighing Around 450 kg (1000 lb), And In 1st 6 Months Of Gestation;;2017-12-05 18:07:52.046+00;2017-12-05 18:07:52.046+00;218
+861;;Weighing Around 450 kg (1000 lb), And In Last 3 Months Of Gestation;;2017-12-05 18:07:56.307+00;2017-12-05 18:07:56.307+00;217
+862;;Weighing Around 450 kg (1000 lb), And In Last 3 Months Of Gestation;;2017-12-05 18:08:00.792+00;2017-12-05 18:08:00.792+00;218
+863;;Weighing Around 500 kg (1100 lb), And In 1st 6 Months Of Gestation;;2017-12-05 18:08:05.013+00;2017-12-05 18:08:05.013+00;217
+864;;Weighing Around 500 kg (1100 lb), And In 1st 6 Months Of Gestation;;2017-12-05 18:08:09.294+00;2017-12-05 18:08:09.294+00;218
+865;;Weighing Around 500 kg (1100 lb), And In Last 3 Months Of Gestation;;2017-12-05 18:08:13.54+00;2017-12-05 18:08:13.54+00;217
+866;;Weighing Around 500 kg (1100 lb), And In Last 3 Months Of Gestation;;2017-12-05 18:08:17.765+00;2017-12-05 18:08:17.765+00;218
+867;;Weighing Around 545 kg (1200 lb), And In 1st 6 Months Of Gestation;;2017-12-05 18:08:21.999+00;2017-12-05 18:08:21.999+00;217
+868;;Weighing Around 545 kg (1200 lb), And In 1st 6 Months Of Gestation;;2017-12-05 18:08:26.22+00;2017-12-05 18:08:26.22+00;218
+869;;Weighing Around 545 kg (1200 lb), And In Last 3 Months Of Gestation;;2017-12-05 18:08:30.49+00;2017-12-05 18:08:30.49+00;217
+870;;Weighing Around 545 kg (1200 lb), And In Last 3 Months Of Gestation;;2017-12-05 18:08:34.677+00;2017-12-05 18:08:34.677+00;218
+871;;White Egg Layers, Feed Intake Around 100 g/Bird/Day;;2017-12-05 18:08:40.764+00;2017-12-05 18:08:40.764+00;64
+872;;White Egg Layers, Feed Intake Around 100 g/Bird/Day;;2017-12-05 18:08:47.316+00;2017-12-05 18:08:47.316+00;65
+873;;White Egg Layers, Feed Intake Around 110 g/Bird/Day;;2017-12-05 18:08:54.05+00;2017-12-05 18:08:54.05+00;64
+874;;White Egg Layers, Feed Intake Around 110 g/Bird/Day;;2017-12-05 18:09:00.877+00;2017-12-05 18:09:00.877+00;65
+875;;White Egg Layers, Feed Intake Around 120 g/Bird/Day;;2017-12-05 18:09:07.462+00;2017-12-05 18:09:07.462+00;64
+876;;White Egg Layers, Feed Intake Around 120 g/Bird/Day;;2017-12-05 18:09:14.239+00;2017-12-05 18:09:14.239+00;65
+877;;White Egg Layers, Feed Intake Around 80 g/Bird/Day;;2017-12-05 18:09:20.998+00;2017-12-05 18:09:20.998+00;64
+878;;White Egg Layers, Feed Intake Around 80 g/Bird/Day;;2017-12-05 18:09:27.598+00;2017-12-05 18:09:27.598+00;65
+879;;White Egg Layers, Feed Intake Around 90 g/Bird/Day;;2017-12-05 18:09:34.605+00;2017-12-05 18:09:34.605+00;64
+880;;White Egg Layers, Feed Intake Around 90 g/Bird/Day;;2017-12-05 18:09:41.583+00;2017-12-05 18:09:41.583+00;65
+881;;White Egg Strain, 0 - 6 Weeks, Ending Around 450 g BW;;2017-12-05 18:09:48.799+00;2017-12-05 18:09:48.799+00;67
+882;;White Egg Strain, 0 - 6 Weeks, Ending Around 450 g BW;;2017-12-05 18:09:55.444+00;2017-12-05 18:09:55.444+00;68
+883;;White Egg Strain, 12 - 18 Weeks, Ending Around 1375 g BW;;2017-12-05 18:10:02.328+00;2017-12-05 18:10:02.328+00;67
+884;;White Egg Strain, 12 - 18 Weeks, Ending Around 1375 g BW;;2017-12-05 18:10:09.123+00;2017-12-05 18:10:09.123+00;68
+885;;White Egg Strain, 18 Weeks To 1st Egg, Ending Around 1475 g BW;;2017-12-05 18:10:15.829+00;2017-12-05 18:10:15.829+00;67
+886;;White Egg Strain, 18 Weeks To 1st Egg, Ending Around 1475 g BW;;2017-12-05 18:10:22.647+00;2017-12-05 18:10:22.647+00;68
+887;;White Egg Strain, 6 - 12 Weeks, Ending Around 980 g BW;;2017-12-05 18:10:29.2+00;2017-12-05 18:10:29.2+00;67
+888;;White Egg Strain, 6 - 12 Weeks, Ending Around 980 g BW;;2017-12-05 18:10:35.845+00;2017-12-05 18:10:35.845+00;68
 889;;Yearling Ration, At 12 Months Of Age, To Be Fed Ad Lib;;2017-12-05 18:10:41.787+00;2017-12-05 18:10:41.787+00;165
 890;;Yearling Ration, At 12 Months Of Age, To Be Fed Ad Lib;;2017-12-05 18:10:46.71+00;2017-12-05 18:10:46.71+00;166
 891;;Yearling Supplement, At 12 Months Of Age, Fed At 0.5% Of BW;;2017-12-05 18:10:51.751+00;2017-12-05 18:10:51.751+00;159
