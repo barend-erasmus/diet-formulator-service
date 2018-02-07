@@ -2,12 +2,14 @@ import { Container, interfaces } from 'inversify';
 import 'reflect-metadata';
 import * as winston from 'winston';
 import { UserCreatedEventBus } from './bus/user-created-event';
+import { MemoryCache } from './caches/memory';
 import { config } from './config';
 import { UserCreatedEvent } from './events/user-created';
 import { SubscriptionFactory } from './factories/subscription';
 import { LeastCostRationFormulator } from './formulators/least-cost-ration';
 import { PayPalPaymentGateway } from './gateways/paypal-payment';
 import { UserCreatedEventHandler } from './handlers/user-created-event';
+import { ICache } from './interfaces/cache';
 import { IFormulator } from './interfaces/formulator';
 import { ILogger } from './interfaces/logger';
 import { IPaymentGateway } from './interfaces/payment-gateway';
@@ -78,6 +80,8 @@ container.bind<IPaymentGateway>('IPaymentGateway').toDynamicValue((context: inte
 
     return new PayPalPaymentGateway('ATsfPWiJ0K6vxY92fIqXAD4tAUtR1C8FJeV56Uc_W3vDq3uzhbK1_6ocXNTx4lPm5trdq2b_0OK9z0_W', 'EJ_3nwnFqDsV7i30_xcaNtISfUfjXI8KmebhMvJOmTiNs_d7IFR8SME81IHAoyhjesevdyKtvO2P8-gN', logger);
 });
+
+container.bind<ICache>('ICache').toConstantValue(new MemoryCache());
 
 container.bind<ILogger>('ILogger').to(WinstonLogger);
 

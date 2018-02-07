@@ -12,6 +12,7 @@ import { SuggestedValue } from '../entities/suggested-value';
 import { Supplement } from '../entities/supplement';
 import { SupplementIngredient } from '../entities/supplement-ingredient';
 import { WorldOfRationsError } from '../errors/world-of-rations-error';
+import { ICache } from '../interfaces/cache';
 import { IFormulator } from '../interfaces/formulator';
 import { IDietRepository } from '../repositories/diet';
 import { IFormulationRepository } from '../repositories/formulation';
@@ -47,7 +48,7 @@ export class FormulationService extends BaseService {
         diet = await this.dietRepository.find(diet.id);
 
         for (const formulationIngredient of formulationIngredients) {
-           await this.loadIngredientForFormulationIngredient(formulationIngredient, userName);
+            await this.loadIngredientForFormulationIngredient(formulationIngredient, userName);
         }
 
         const groupChart: string = this.buildGroupChart(diet.group);
@@ -67,9 +68,7 @@ export class FormulationService extends BaseService {
 
         await this.throwIfDoesNotHavePermission(userName, 'view-formulation');
 
-        let formulation: Formulation = await this.formulationRepository.find(formulationId);
-
-        formulation = await this.formulator.formulate(formulation);
+        const formulation: Formulation = await this.findFormulatedFormulation(formulationId, userName);
 
         this.removeFormulationValuesIfNotHaveViewFormulationValuesPermission(userName, formulation);
 
@@ -111,9 +110,7 @@ export class FormulationService extends BaseService {
 
         await this.throwIfDoesNotHavePermission(userName, 'view-formulation-composition');
 
-        let formulation: Formulation = await this.formulationRepository.find(formulationId);
-
-        formulation = await this.formulator.formulate(formulation);
+        const formulation: Formulation = await this.findFormulatedFormulation(formulationId, userName);
 
         const comparisonDiet: Diet = await this.dietRepository.findComparison(formulation.diet.id);
 
@@ -124,9 +121,7 @@ export class FormulationService extends BaseService {
 
         await this.throwIfDoesNotHavePermission(userName, 'view-formulation-supplement');
 
-        let formulation: Formulation = await this.formulationRepository.find(formulationId);
-
-        formulation = await this.formulator.formulate(formulation);
+        const formulation: Formulation = await this.findFormulatedFormulation(formulationId, userName);
 
         const comparisonDiet: Diet = await this.dietRepository.findComparison(formulation.diet.id);
 
@@ -202,6 +197,15 @@ export class FormulationService extends BaseService {
         groupChart.reverse();
 
         return groupChart.join(' - ');
+    }
+
+    private async findFormulatedFormulation(formulationId: number, userName: string): Promise<Formulation> {
+
+        let formulation: Formulation = await this.formulationRepository.find(formulationId);
+
+        formulation = await this.formulator.formulate(formulation);
+
+        return formulation;
     }
 
     private async loadIngredientForFormulationIngredient(formulationIngredient: FormulationIngredient, userName: string): Promise<FormulationIngredient> {

@@ -1,6 +1,7 @@
 import { inject, injectable } from 'inversify';
 import 'reflect-metadata';
 import * as request from 'request-promise';
+import * as yargs from 'yargs';
 import { Payment } from '../entities/payment';
 import { ILogger } from '../interfaces/logger';
 import { IPaymentGateway } from '../interfaces/payment-gateway';
@@ -65,6 +66,8 @@ export class PayPalPaymentGateway implements IPaymentGateway {
     }
 
     private buildRequestObject(payment: Payment): any {
+        const argv = yargs.argv;
+
         return {
             intent: 'sale',
             note_to_payer: `${payment.subscription.toUpperCase()} Subscription`,
@@ -72,8 +75,8 @@ export class PayPalPaymentGateway implements IPaymentGateway {
                 payment_method: 'paypal',
             },
             redirect_urls: {
-                cancel_url: 'https://suite.worldofrations.com/billing',
-                return_url: 'https://suite.worldofrations.com/billing',
+                cancel_url: `${argv.port ? 'https://suite.worldofrations.com' : 'http://localhost:4200'}/billing`,
+                return_url: `${argv.port ? 'https://suite.worldofrations.com' : 'http://localhost:4200'}/billing`,
             },
             transactions: [
                 {
