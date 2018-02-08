@@ -43,6 +43,7 @@ import { NutrientService } from './services/nutrient';
 import { PaymentService } from './services/payment';
 import { SubscriptionService } from './services/subscription';
 import { UserService } from './services/user';
+import { NullCache } from './caches/null';
 
 const container: Container = new Container();
 
@@ -81,7 +82,7 @@ container.bind<IPaymentGateway>('IPaymentGateway').toDynamicValue((context: inte
     return new PayPalPaymentGateway('ATsfPWiJ0K6vxY92fIqXAD4tAUtR1C8FJeV56Uc_W3vDq3uzhbK1_6ocXNTx4lPm5trdq2b_0OK9z0_W', 'EJ_3nwnFqDsV7i30_xcaNtISfUfjXI8KmebhMvJOmTiNs_d7IFR8SME81IHAoyhjesevdyKtvO2P8-gN', logger);
 });
 
-container.bind<ICache>('ICache').toConstantValue(new MemoryCache());
+container.bind<ICache>('ICache').toConstantValue(new NullCache());
 
 container.bind<ILogger>('ILogger').to(WinstonLogger);
 

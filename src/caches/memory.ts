@@ -15,7 +15,7 @@ export class MemoryCache implements ICache {
 
         const uniqueKey: string = this.buildUniqueKey(key);
 
-        return this.add(uniqueKey, value, expiry);
+        this.add(uniqueKey, value, expiry);
     }
 
     public async get(key: string): Promise<any> {
