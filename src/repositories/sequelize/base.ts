@@ -362,9 +362,9 @@ export class BaseRepository {
 
             const logger = new (winston.Logger)({
                 transports: [
-                  new (winston.transports.File)({ filename: path.join(path.dirname(require.main.filename), 'sql.log') }),
+                  new (winston.transports.File)({ filename: 'sql.log'}),
                 ],
-              });
+            });
 
             BaseRepository.sequelize = new Sequelize('diet-formulator-2018', userName, password, {
                 dialect: 'postgres',

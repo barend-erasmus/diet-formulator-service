@@ -70,7 +70,7 @@ export class PayPalPaymentGateway implements IPaymentGateway {
 
         return {
             intent: 'sale',
-            note_to_payer: `${payment.subscription.toUpperCase()} Subscription`,
+            note_to_payer: `World of Rations Suite Subscription`,
             payer: {
                 payment_method: 'paypal',
             },
@@ -83,6 +83,17 @@ export class PayPalPaymentGateway implements IPaymentGateway {
                     amount: {
                         currency: 'USD',
                         total: payment.amount.toString(),
+                    },
+                    item_list: {
+                        items: [
+                            {
+                                currency: 'USD',
+                                description: `${payment.subscription.toUpperCase()} Subscription for ${payment.period} Days`,
+                                name: `${payment.subscription.toUpperCase()} Subscription`,
+                                price: payment.amount.toString(),
+                                quantity: '1',
+                            },
+                        ],
                     },
                 },
             ],
