@@ -42,9 +42,11 @@ export class PaymentService extends BaseService {
                 break;
         }
 
+        const user: User = await this.userRepository.findByUserName(userName);
+
         let payment: Payment = new Payment(amount, false, false, null, null, 30, null, subscription);
 
-        payment = await this.paymentGateway.create(payment);
+        payment = await this.paymentGateway.create(payment, user);
 
         await this.paymentRepository.create(payment, userName);
 

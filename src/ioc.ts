@@ -3,10 +3,12 @@ import 'reflect-metadata';
 import * as winston from 'winston';
 import { UserCreatedEventBus } from './bus/user-created-event';
 import { MemoryCache } from './caches/memory';
+import { NullCache } from './caches/null';
 import { config } from './config';
 import { UserCreatedEvent } from './events/user-created';
 import { SubscriptionFactory } from './factories/subscription';
 import { LeastCostRationFormulator } from './formulators/least-cost-ration';
+import { PayFastPaymentGateway } from './gateways/payfast-payment';
 import { PayPalPaymentGateway } from './gateways/paypal-payment';
 import { UserCreatedEventHandler } from './handlers/user-created-event';
 import { ICache } from './interfaces/cache';
@@ -43,7 +45,6 @@ import { NutrientService } from './services/nutrient';
 import { PaymentService } from './services/payment';
 import { SubscriptionService } from './services/subscription';
 import { UserService } from './services/user';
-import { NullCache } from './caches/null';
 
 const container: Container = new Container();
 
@@ -76,10 +77,16 @@ container.bind<UserService>('UserService').to(UserService);
 container.bind<UserCreatedEventBus<UserCreatedEvent>>('UserCreatedEventBus').to(UserCreatedEventBus);
 container.bind<UserCreatedEventHandler>('UserCreatedEventHandler').to(UserCreatedEventHandler);
 
+// container.bind<IPaymentGateway>('IPaymentGateway').toDynamicValue((context: interfaces.Context) => {
+//     const logger: ILogger = context.container.get<ILogger>('ILogger');
+
+//     return new PayPalPaymentGateway('ATsfPWiJ0K6vxY92fIqXAD4tAUtR1C8FJeV56Uc_W3vDq3uzhbK1_6ocXNTx4lPm5trdq2b_0OK9z0_W', 'EJ_3nwnFqDsV7i30_xcaNtISfUfjXI8KmebhMvJOmTiNs_d7IFR8SME81IHAoyhjesevdyKtvO2P8-gN', logger);
+// });
+
 container.bind<IPaymentGateway>('IPaymentGateway').toDynamicValue((context: interfaces.Context) => {
     const logger: ILogger = context.container.get<ILogger>('ILogger');
 
-    return new PayPalPaymentGateway('ATsfPWiJ0K6vxY92fIqXAD4tAUtR1C8FJeV56Uc_W3vDq3uzhbK1_6ocXNTx4lPm5trdq2b_0OK9z0_W', 'EJ_3nwnFqDsV7i30_xcaNtISfUfjXI8KmebhMvJOmTiNs_d7IFR8SME81IHAoyhjesevdyKtvO2P8-gN', logger);
+    return new PayFastPaymentGateway('11223714', 'ak5h6ln1aiwgi', 'mMUQYkYSV7Jf3Nxr', logger);
 });
 
 container.bind<ICache>('ICache').toConstantValue(new NullCache());

@@ -1,6 +1,6 @@
-import { Subscription } from './subscription';
+import { PremiumSubscription } from './premium-subscription';
 
-export class TrialSubscription extends Subscription {
+export class TrialSubscription extends PremiumSubscription {
 
     constructor(
         active: boolean,
@@ -11,19 +11,7 @@ export class TrialSubscription extends Subscription {
         super(active,
             expiryTimestamp,
             startTimestamp,
-            [
-                'view-profile',
-                'update-profile',
-                'view-nutrient',
-                'view-diet-group',
-                'create-diet',
-                'view-diet',
-                'update-diet',
-                'view-ingredient',
-                'create-formulation',
-                'view-formulation',
-                'view-billing',
-            ].concat(additionalPermissions));
+            additionalPermissions);
 
         this.type = 'trial';
     }

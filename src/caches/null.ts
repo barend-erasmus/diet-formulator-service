@@ -6,7 +6,7 @@ import { ICache } from '../interfaces/cache';
 export class NullCache implements ICache {
 
     public async add(key: string, value: any, expiry: number): Promise<void> {
-        
+
     }
 
     public async addUsingObjectKey(key: any, value: any, expiry: number): Promise<void> {

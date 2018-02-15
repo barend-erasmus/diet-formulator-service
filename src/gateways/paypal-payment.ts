@@ -3,6 +3,7 @@ import 'reflect-metadata';
 import * as request from 'request-promise';
 import * as yargs from 'yargs';
 import { Payment } from '../entities/payment';
+import { User } from '../entities/user';
 import { ILogger } from '../interfaces/logger';
 import { IPaymentGateway } from '../interfaces/payment-gateway';
 
@@ -22,7 +23,7 @@ export class PayPalPaymentGateway implements IPaymentGateway {
 
     }
 
-    public async create(payment: Payment): Promise<Payment> {
+    public async create(payment: Payment, user: User): Promise<Payment> {
 
         const accessToken: string = await this.getAccessToken();
 

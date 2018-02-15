@@ -37,15 +37,7 @@ export class SubscriptionFactory implements ISubscriptionFactory {
             subscription.setPermissions([
                 'view-profile',
                 'update-profile',
-                'view-nutrient',
-                'view-diet-group',
-                'create-diet',
-                'view-diet',
-                'update-diet',
-                'view-ingredient',
-                'create-formulation',
                 'view-formulation',
-                'view-suggested-value',
                 'view-billing',
             ]);
 
@@ -56,6 +48,8 @@ export class SubscriptionFactory implements ISubscriptionFactory {
     }
 
     private validSubscription(subscription: Subscription): boolean {
+
+        return false;
 
         if (subscription.expiryTimestamp && subscription.expiryTimestamp.getTime() < new Date().getTime()) {
             return false;

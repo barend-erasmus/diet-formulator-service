@@ -111,7 +111,7 @@ export class BaseRepository {
             },
             paymentUri: {
                 allowNull: false,
-                type: Sequelize.STRING,
+                type: Sequelize.TEXT,
             },
             period: {
                 allowNull: false,

@@ -1,6 +1,6 @@
-import { TrialSubscription } from './trail-subscription';
+import { Subscription } from './subscription';
 
-export class BasicSubscription extends TrialSubscription {
+export class BasicSubscription extends Subscription {
 
     constructor(
         active: boolean,
@@ -8,9 +8,23 @@ export class BasicSubscription extends TrialSubscription {
         startTimestamp: Date,
         additionalPermissions: string[],
     ) {
-        const permissions: string[]  = ['view-suggested-value'].concat(additionalPermissions);
-
-        super(active, expiryTimestamp, startTimestamp, permissions);
+        super(active,
+            expiryTimestamp,
+            startTimestamp,
+            [
+                'view-profile',
+                'update-profile',
+                'view-nutrient',
+                'view-diet-group',
+                'create-diet',
+                'view-diet',
+                'update-diet',
+                'view-ingredient',
+                'create-formulation',
+                'view-formulation',
+                'view-suggested-value',
+                'view-billing',
+            ].concat(additionalPermissions));
 
         this.type = 'basic';
     }
