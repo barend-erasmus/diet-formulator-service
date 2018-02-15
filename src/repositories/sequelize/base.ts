@@ -16,6 +16,7 @@ export class BaseRepository {
         IngredientValue: Sequelize.Model<{}, {}>,
         Nutrient: Sequelize.Model<{}, {}>,
         Payment: Sequelize.Model<{}, {}>,
+        PaymentNotification: Sequelize.Model<{}, {}>,
         Subscription: Sequelize.Model<{}, {}>,
         SuggestedValue: Sequelize.Model<{}, {}>,
         Supplement: Sequelize.Model<{}, {}>,
@@ -122,6 +123,17 @@ export class BaseRepository {
                 type: Sequelize.STRING,
             },
             userName: {
+                allowNull: false,
+                type: Sequelize.STRING,
+            },
+        });
+
+        const PaymentNotification = BaseRepository.sequelize.define('paymentNotification', {
+            paymentId: {
+                allowNull: false,
+                type: Sequelize.STRING,
+            },
+            status: {
                 allowNull: false,
                 type: Sequelize.STRING,
             },
@@ -349,6 +361,7 @@ export class BaseRepository {
             IngredientValue,
             Nutrient,
             Payment,
+            PaymentNotification,
             Subscription,
             SuggestedValue,
             Supplement,

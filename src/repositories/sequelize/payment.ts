@@ -40,9 +40,9 @@ export class PaymentRepository extends BaseRepository implements IPaymentReposit
                 paymentId: {
                     [Sequelize.Op.eq]: paymentId,
                 },
-                userName: {
-                    [Sequelize.Op.eq]: userName,
-                },
+                // userName: {
+                //     [Sequelize.Op.eq]: userName,
+                // },
             },
         });
 
@@ -73,9 +73,9 @@ export class PaymentRepository extends BaseRepository implements IPaymentReposit
                 paymentId: {
                     [Sequelize.Op.eq]: payment.paymentId,
                 },
-                userName: {
-                    [Sequelize.Op.eq]: userName,
-                },
+                // userName: {
+                //     [Sequelize.Op.eq]: userName,
+                // },
             },
         });
 

@@ -49,8 +49,6 @@ export class SubscriptionFactory implements ISubscriptionFactory {
 
     private validSubscription(subscription: Subscription): boolean {
 
-        return false;
-
         if (subscription.expiryTimestamp && subscription.expiryTimestamp.getTime() < new Date().getTime()) {
             return false;
         }

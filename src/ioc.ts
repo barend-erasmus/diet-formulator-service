@@ -24,6 +24,7 @@ import { IIngredientRepository } from './repositories/ingredient';
 import { IIngredientGroupRepository } from './repositories/ingredient-group';
 import { INutrientRepository } from './repositories/nutrient';
 import { IPaymentRepository } from './repositories/payment';
+import { IPaymentNotificationRepository } from './repositories/payment-notification';
 import { DietRepository } from './repositories/sequelize/diet';
 import { DietGroupRepository } from './repositories/sequelize/diet-group';
 import { FormulationRepository } from './repositories/sequelize/formulation';
@@ -31,6 +32,7 @@ import { IngredientRepository } from './repositories/sequelize/ingredient';
 import { IngredientGroupRepository } from './repositories/sequelize/ingredient-group';
 import { NutrientRepository } from './repositories/sequelize/nutrient';
 import { PaymentRepository } from './repositories/sequelize/payment';
+import { PaymentNotificationRepository } from './repositories/sequelize/payment-notification';
 import { SubscriptionRepository } from './repositories/sequelize/subscription';
 import { SuggestedValueRepository } from './repositories/sequelize/suggested-value';
 import { UserRepository } from './repositories/sequelize/user';
@@ -55,6 +57,7 @@ container.bind<IIngredientGroupRepository>('IIngredientGroupRepository').toConst
 container.bind<IIngredientRepository>('IIngredientRepository').toConstantValue(new IngredientRepository(config.database.host, config.database.userName, config.database.password));
 container.bind<INutrientRepository>('INutrientRepository').toConstantValue(new NutrientRepository(config.database.host, config.database.userName, config.database.password));
 container.bind<IPaymentRepository>('IPaymentRepository').toConstantValue(new PaymentRepository(config.database.host, config.database.userName, config.database.password));
+container.bind<IPaymentNotificationRepository>('IPaymentNotificationRepository').toConstantValue(new PaymentNotificationRepository(config.database.host, config.database.userName, config.database.password));
 container.bind<ISubscriptionRepository>('ISubscriptionRepository').toDynamicValue((context: interfaces.Context) => {
     const subscriptionFactory: ISubscriptionFactory = context.container.get<ISubscriptionFactory>('ISubscriptionFactory');
     return new SubscriptionRepository(subscriptionFactory, config.database.host, config.database.userName, config.database.password);
@@ -86,7 +89,9 @@ container.bind<UserCreatedEventHandler>('UserCreatedEventHandler').to(UserCreate
 container.bind<IPaymentGateway>('IPaymentGateway').toDynamicValue((context: interfaces.Context) => {
     const logger: ILogger = context.container.get<ILogger>('ILogger');
 
-    return new PayFastPaymentGateway('11223714', 'ak5h6ln1aiwgi', 'mMUQYkYSV7Jf3Nxr', logger);
+    const paymentNotificationRepository: IPaymentNotificationRepository = context.container.get<IPaymentNotificationRepository>('IPaymentNotificationRepository');
+
+    return new PayFastPaymentGateway('11223714', 'ak5h6ln1aiwgi', 'mMUQYkYSV7Jf3Nxr', logger, paymentNotificationRepository);
 });
 
 container.bind<ICache>('ICache').toConstantValue(new NullCache());
