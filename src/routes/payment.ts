@@ -3,8 +3,8 @@ import * as fs from 'fs';
 import { Payment } from '../entities/payment';
 import { WorldOfRationsError } from '../errors/world-of-rations-error';
 import { container } from '../ioc';
-import { IPaymentNotificationRepository } from '../repositories/payment-notification';
 import { PaymentService } from '../services/payment';
+import { PaymentNotificationService } from '../services/payment-notification';
 import { config } from './../config';
 
 export class PaymentRouter {
@@ -36,7 +36,7 @@ export class PaymentRouter {
     public static async notify(req: express.Request, res: express.Response) {
         try {
 
-            await container.get<IPaymentNotificationRepository>('IPaymentNotificationRepository').create(req.body.m_payment_id, req.body.payment_status);
+            await container.get<PaymentNotificationService>('PaymentNotificationService').create(req.body.m_payment_id, req.body.payment_status);
 
             res.json('OK');
         } catch (err) {

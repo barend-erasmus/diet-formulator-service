@@ -8,10 +8,12 @@ import { config } from './config';
 import { UserCreatedEvent } from './events/user-created';
 import { SubscriptionFactory } from './factories/subscription';
 import { LeastCostRationFormulator } from './formulators/least-cost-ration';
+import { FixerForeignExchangeGateway } from './gateways/fixer-foreign-exchange';
 import { PayFastPaymentGateway } from './gateways/payfast-payment';
 import { PayPalPaymentGateway } from './gateways/paypal-payment';
 import { UserCreatedEventHandler } from './handlers/user-created-event';
 import { ICache } from './interfaces/cache';
+import { IForeignExchangeGateway } from './interfaces/foreign-exchange-gateway';
 import { IFormulator } from './interfaces/formulator';
 import { ILogger } from './interfaces/logger';
 import { IPaymentGateway } from './interfaces/payment-gateway';
@@ -45,6 +47,7 @@ import { FormulationService } from './services/formulation';
 import { IngredientService } from './services/ingredient';
 import { NutrientService } from './services/nutrient';
 import { PaymentService } from './services/payment';
+import { PaymentNotificationService } from './services/payment-notification';
 import { SubscriptionService } from './services/subscription';
 import { UserService } from './services/user';
 
@@ -74,11 +77,14 @@ container.bind<FormulationService>('FormulationService').to(FormulationService);
 container.bind<IngredientService>('IngredientService').to(IngredientService);
 container.bind<NutrientService>('NutrientService').to(NutrientService);
 container.bind<PaymentService>('PaymentService').to(PaymentService);
+container.bind<PaymentNotificationService>('PaymentNotificationService').to(PaymentNotificationService);
 container.bind<SubscriptionService>('SubscriptionService').to(SubscriptionService);
 container.bind<UserService>('UserService').to(UserService);
 
 container.bind<UserCreatedEventBus<UserCreatedEvent>>('UserCreatedEventBus').to(UserCreatedEventBus);
 container.bind<UserCreatedEventHandler>('UserCreatedEventHandler').to(UserCreatedEventHandler);
+
+container.bind<IForeignExchangeGateway>('IForeignExchangeGateway').to(FixerForeignExchangeGateway);
 
 // container.bind<IPaymentGateway>('IPaymentGateway').toDynamicValue((context: interfaces.Context) => {
 //     const logger: ILogger = context.container.get<ILogger>('ILogger');
@@ -91,7 +97,7 @@ container.bind<IPaymentGateway>('IPaymentGateway').toDynamicValue((context: inte
 
     const paymentNotificationRepository: IPaymentNotificationRepository = context.container.get<IPaymentNotificationRepository>('IPaymentNotificationRepository');
 
-    return new PayFastPaymentGateway('11223714', 'ak5h6ln1aiwgi', 'mMUQYkYSV7Jf3Nxr', logger, paymentNotificationRepository);
+    return new PayFastPaymentGateway(logger, '11223714', 'ak5h6ln1aiwgi', 'mMUQYkYSV7Jf3Nxr', paymentNotificationRepository);
 });
 
 container.bind<ICache>('ICache').toConstantValue(new NullCache());

@@ -98,6 +98,10 @@ export class BaseRepository {
                 allowNull: false,
                 type: Sequelize.BOOLEAN,
             },
+            currency: {
+                allowNull: false,
+                type: Sequelize.STRING,
+            },
             paid: {
                 allowNull: false,
                 type: Sequelize.BOOLEAN,

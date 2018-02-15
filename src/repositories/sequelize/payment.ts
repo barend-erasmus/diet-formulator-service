@@ -21,6 +21,7 @@ export class PaymentRepository extends BaseRepository implements IPaymentReposit
         const result: any = await BaseRepository.models.Payment.create({
             amount: payment.amount,
             assigned: payment.assigned,
+            currency: payment.currency,
             paid: payment.paid,
             paidTimestamp: payment.paidTimestamp ? payment.paidTimestamp.getTime() : null,
             paymentId: payment.paymentId,
@@ -50,7 +51,7 @@ export class PaymentRepository extends BaseRepository implements IPaymentReposit
             return null;
         }
 
-        return new Payment(result.amount, result.assigned, result.paid, result.paidTimestamp ? new Date(parseInt(result.paidTimestamp, undefined)) : null, result.paymentId, result.period, result.paymentUri, result.subscription);
+        return new Payment(result.amount, result.assigned, result.currency, result.paid, result.paidTimestamp ? new Date(parseInt(result.paidTimestamp, undefined)) : null, result.paymentId, result.period, result.paymentUri, result.subscription);
     }
 
     public async list(userName: string): Promise<Payment[]> {
@@ -63,7 +64,7 @@ export class PaymentRepository extends BaseRepository implements IPaymentReposit
             },
         });
 
-        return result.map((x) => new Payment(x.amount, x.assigned, x.paid, x.paidTimestamp ? new Date(parseInt(x.paidTimestamp, undefined)) : null, x.paymentId, x.period, x.paymentUri, x.subscription));
+        return result.map((x) => new Payment(x.amount, x.assigned, x.currency, x.paid, x.paidTimestamp ? new Date(parseInt(x.paidTimestamp, undefined)) : null, x.paymentId, x.period, x.paymentUri, x.subscription));
     }
 
     public async update(payment: Payment, userName: string): Promise<Payment> {

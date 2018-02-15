@@ -7,6 +7,7 @@ import * as uuid from 'uuid';
 import * as yargs from 'yargs';
 import { Payment } from '../entities/payment';
 import { User } from '../entities/user';
+import { WorldOfRationsError } from '../errors/world-of-rations-error';
 import { ILogger } from '../interfaces/logger';
 import { IPaymentGateway } from '../interfaces/payment-gateway';
 import { IPaymentNotificationRepository } from '../repositories/payment-notification';
@@ -14,16 +15,14 @@ import { IPaymentNotificationRepository } from '../repositories/payment-notifica
 @injectable()
 export class PayFastPaymentGateway implements IPaymentGateway {
 
-    private baseUri: string = 'https://sandbox.payfast.co.za';
-
-    private sandbox: boolean = true;
+    private sandbox: boolean = false;
 
     constructor(
+        @inject('ILogger')
+        private logger: ILogger,
         private merchantId: string,
         private merchantSecret: string,
         private passPhrase: string,
-        @inject('ILogger')
-        private logger: ILogger,
         @inject('IPaymentNotificationRepository')
         private paymentNotificationRepository: IPaymentNotificationRepository,
     ) {
@@ -31,6 +30,8 @@ export class PayFastPaymentGateway implements IPaymentGateway {
     }
 
     public async create(payment: Payment, user: User): Promise<Payment> {
+
+        await this.throwIfInvalidCurrency(payment);
 
         const paymentId: string = uuid.v4();
 
@@ -43,26 +44,23 @@ export class PayFastPaymentGateway implements IPaymentGateway {
             name_first: user.displayName,
             email_address: user.email,
             m_payment_id: paymentId,
-            amount: (payment.amount * 12).toString(),
+            amount: payment.amount.toString(),
             item_name: 'World of Rations Suite Subscription',
             item_description: `${payment.subscription.toUpperCase()} Subscription for ${payment.period} Days`,
-            payment_method: 'cc',
+            // payment_method: 'cc',
         };
 
         const sortedKeys: string[] = Object.keys(params);
 
         payment.paymentId = params['m_payment_id'];
 
-        payment.redirectUri = `
-        <form action="${this.baseUri}/eng/process" method="POST">
-
-            ${sortedKeys.map((key) => `<input type="hidden" name="${key}" value="${params[key]}">`).join('')}
-
-            <input type="submit" value="Pay" class="btn btn-primary" />
-        </form>
-        `;
+        payment.redirectUri = `${this.sandbox ? 'https://sandbox.payfast.co.za' : 'https://www.payfast.co.za'}/eng/process?${sortedKeys.map((key) => `${key}=${params[key]}`).join('&')}`;
 
         return payment;
+    }
+
+    public async defaultCurrency(): Promise<string> {
+        return 'ZAR';
     }
 
     public async verify(paymentId: string): Promise<boolean> {
@@ -95,6 +93,23 @@ export class PayFastPaymentGateway implements IPaymentGateway {
 
         const status: string = await this.paymentNotificationRepository.status(paymentId);
 
-        return status.toUpperCase() === 'COMPLETE';
+        const result: boolean = status.toUpperCase() === 'COMPLETE';
+
+        if (result) {
+            this.logger.info(`Payment ${paymentId} has been verified`);
+        } else {
+            this.logger.warning(`Payment ${paymentId} has not been verified`);
+        }
+
+        return result;
+    }
+
+    private async throwIfInvalidCurrency(payment: Payment): Promise<void> {
+
+        const defaultCurrency: string = await this.defaultCurrency();
+
+        if (payment.currency !== defaultCurrency) {
+            throw new WorldOfRationsError('invalid_currency', 'Invalid Currency');
+        }
     }
 }

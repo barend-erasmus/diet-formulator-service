@@ -4,6 +4,7 @@ import { Payment } from '../entities/payment';
 import { Subscription } from '../entities/subscription';
 import { User } from '../entities/user';
 import { WorldOfRationsError } from '../errors/world-of-rations-error';
+import { IForeignExchangeGateway } from '../interfaces/foreign-exchange-gateway';
 import { IPaymentGateway } from '../interfaces/payment-gateway';
 import { ISubscriptionFactory } from '../interfaces/subscription-factory';
 import { IPaymentRepository } from '../repositories/payment';
@@ -15,6 +16,8 @@ import { BaseService } from './base';
 export class PaymentService extends BaseService {
 
     constructor(
+        @inject('IForeignExchangeGateway')
+        private foreignExchangeGateway: IForeignExchangeGateway,
         @inject('IPaymentRepository')
         private paymentRepository: IPaymentRepository,
         @inject('IPaymentGateway')
@@ -31,20 +34,9 @@ export class PaymentService extends BaseService {
 
         this.throwIfSubscriptionInvalid(subscription);
 
-        let amount: number = null;
-
-        switch (subscription) {
-            case 'standard':
-                amount = 9.95;
-                break;
-            case 'premium':
-                amount = 19.95;
-                break;
-        }
+        let payment: Payment = await this.buildPayment(30, subscription);
 
         const user: User = await this.userRepository.findByUserName(userName);
-
-        let payment: Payment = new Payment(amount, false, false, null, null, 30, null, subscription);
 
         payment = await this.paymentGateway.create(payment, user);
 
@@ -74,6 +66,45 @@ export class PaymentService extends BaseService {
         payment.paidTimestamp = new Date();
 
         return this.paymentRepository.update(payment, userName);
+    }
+
+    private async buildPayment(period: number, subscription: string): Promise<Payment> {
+
+        const amount: number = this.getAmountOfSubscription(subscription);
+
+        let payment: Payment = new Payment(amount, false, 'USD', false, null, null, 30, null, subscription);
+
+        const defaultCurrency: string = await this.paymentGateway.defaultCurrency();
+
+        payment = await this.convertPaymentToCurrency(defaultCurrency, payment);
+
+        return payment;
+    }
+
+    private async convertPaymentToCurrency(currency: string, payment: Payment): Promise<Payment> {
+        if (currency === payment.currency) {
+            return payment;
+        }
+
+        payment.amount = await this.foreignExchangeGateway.convert(payment.amount, payment.currency, currency);
+        payment.currency = currency;
+
+        return payment;
+    }
+
+    private getAmountOfSubscription(subscription: string): number {
+        let amount: number = null;
+
+        switch (subscription) {
+            case 'standard':
+                amount = 9.95;
+                break;
+            case 'premium':
+                amount = 19.95;
+                break;
+        }
+
+        return amount;
     }
 
     private throwIfSubscriptionInvalid(subscription: string): void {

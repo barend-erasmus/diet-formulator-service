@@ -4,6 +4,7 @@ import * as request from 'request-promise';
 import * as yargs from 'yargs';
 import { Payment } from '../entities/payment';
 import { User } from '../entities/user';
+import { WorldOfRationsError } from '../errors/world-of-rations-error';
 import { ILogger } from '../interfaces/logger';
 import { IPaymentGateway } from '../interfaces/payment-gateway';
 
@@ -25,6 +26,8 @@ export class PayPalPaymentGateway implements IPaymentGateway {
 
     public async create(payment: Payment, user: User): Promise<Payment> {
 
+        await this.throwIfInvalidCurrency(payment);
+
         const accessToken: string = await this.getAccessToken();
 
         const response = await request({
@@ -41,6 +44,10 @@ export class PayPalPaymentGateway implements IPaymentGateway {
         payment.redirectUri = response.links.find((x) => x.method === 'REDIRECT').href;
 
         return payment;
+    }
+
+    public async defaultCurrency(): Promise<string> {
+        return 'USD';
     }
 
     public async verify(paymentId: string): Promise<boolean> {
@@ -120,5 +127,14 @@ export class PayPalPaymentGateway implements IPaymentGateway {
         }
 
         return PayPalPaymentGateway.accessToken;
+    }
+
+    private async throwIfInvalidCurrency(payment: Payment): Promise<void> {
+
+        const defaultCurrency: string = await this.defaultCurrency();
+
+        if (payment.currency !== defaultCurrency) {
+            throw new WorldOfRationsError('invalid_currency', 'Invalid Currency');
+        }
     }
 }
