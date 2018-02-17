@@ -22,7 +22,7 @@ export class UserCreatedEventHandler implements IEventHandler<UserCreatedEvent> 
         const subscription: Subscription = await this.subscriptionRepository.find(event.userName);
 
         if (!subscription) {
-            await this.subscriptionRepository.create(new TrialSubscription(true, this.date14DaysFromNow(), new Date(), []), event.userName);
+            await this.subscriptionRepository.create(new TrialSubscription(true, [], this.date14DaysFromNow(), new Date()), event.userName);
         }
 
         return event;
