@@ -6,6 +6,7 @@ import * as path from 'path';
 import * as winston from 'winston';
 import * as yargs from 'yargs';
 import { config } from './config';
+import { SuggestedValue } from './entities/suggested-value';
 import { AuthenticationMiddleware } from './middleware/authentication';
 import { DietRouter } from './routes/diet';
 import { DietGroupRouter } from './routes/diet-group';
@@ -14,6 +15,7 @@ import { IngredientRouter } from './routes/ingredients';
 import { NutrientRouter } from './routes/nutrient';
 import { PaymentRouter } from './routes/payment';
 import { SubscriptionRouter } from './routes/subscription';
+import { SuggestedValueRouter } from './routes/suggested-value';
 import { UserRouter } from './routes/user';
 
 const argv = yargs.argv;
@@ -66,7 +68,8 @@ app.get('/api/formulation/find', AuthenticationMiddleware.shouldBeAuthenticated,
 app.get('/api/formulation/list', AuthenticationMiddleware.shouldBeAuthenticated, FormulationRouter.list);
 app.get('/api/formulation/composition', AuthenticationMiddleware.shouldBeAuthenticated, FormulationRouter.composition);
 app.get('/api/formulation/supplement', AuthenticationMiddleware.shouldBeAuthenticated, FormulationRouter.supplement);
-app.get('/api/formulation/suggestedValue', AuthenticationMiddleware.shouldBeAuthenticated, FormulationRouter.suggestedValue);
+
+app.get('/api/suggestedvalue/find', AuthenticationMiddleware.shouldBeAuthenticated, SuggestedValueRouter.find);
 
 app.use('/api/docs', express.static(path.join(__dirname, './../apidoc')));
 app.use('/api/coverage', express.static(path.join(__dirname, './../coverage/lcov-report')));

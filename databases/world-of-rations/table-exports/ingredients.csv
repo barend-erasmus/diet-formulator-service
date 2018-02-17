@@ -52,7 +52,7 @@ id;description;name;userName;createdAt;updatedAt;ingredientGroupId
 51;;Casein, Dehydrated;;2017-12-05 18:14:19.64+00;2017-12-05 18:14:19.64+00;9
 52;;Cassava (Tapioca) Meal, Solv Extr.;;2017-12-05 18:14:23.065+00;2017-12-05 18:14:23.065+00;7
 53;;Choice White Grease;;2017-12-05 18:14:26.49+00;2017-12-05 18:14:26.49+00;5
-54;;Cholest, As Feed Grade Cholesterol;;2017-12-05 18:14:29.803+00;2017-12-05 18:14:29.803+00;1
+54;;Cholesterol, As Feed Grade Cholesterol;;2017-12-05 18:14:29.803+00;2017-12-05 18:14:29.803+00;1
 55;;Choline, As Choline Chloride (Vitamin B4) 50%;;2017-12-05 18:14:33.164+00;2017-12-05 18:14:33.164+00;8
 56;;Choline, As Choline Chloride (Vitamin B4) 60%;;2017-12-05 18:14:36.562+00;2017-12-05 18:14:36.562+00;8
 57;;Citrus Pulp, Dehydrated;;2017-12-05 18:14:39.899+00;2017-12-05 18:14:39.899+00;7
@@ -95,7 +95,7 @@ id;description;name;userName;createdAt;updatedAt;ingredientGroupId
 94;;Cu, From Cupric Chloride Dihydrate;;2017-12-05 18:16:40.82+00;2017-12-05 18:16:40.82+00;11
 95;;Cu, From Cupric Oxide;;2017-12-05 18:16:44.13+00;2017-12-05 18:16:44.13+00;11
 96;;Cu, From Cupric Sulphate Pentahydrate;;2017-12-05 18:16:47.365+00;2017-12-05 18:16:47.365+00;11
-97;;Cys, As Cystine Or DL-Cystine;;2017-12-05 18:16:50.608+00;2017-12-05 18:16:50.608+00;6
+97;;Cystine, As Cystine Or DL-Cystine;;2017-12-05 18:16:50.608+00;2017-12-05 18:16:50.608+00;6
 98;;Di-Ammonium Phosphate;;2017-12-05 18:16:53.845+00;2017-12-05 18:16:53.845+00;4
 99;;Distillers Grain, Wet;;2017-12-05 18:16:57.158+00;2017-12-05 18:16:57.158+00;9
 100;;Fababean (Broadbean) Seeds;;2017-12-05 18:16:57.872+00;2017-12-05 18:16:57.872+00;9
@@ -109,8 +109,8 @@ id;description;name;userName;createdAt;updatedAt;ingredientGroupId
 108;;Folic, As Folic Acid (Vitamin B9);;2017-12-05 18:17:23.288+00;2017-12-05 18:17:23.288+00;8
 109;;Gly, As Glycine;;2017-12-05 18:17:26.782+00;2017-12-05 18:17:26.782+00;6
 110;;Herring Oil;;2017-12-05 18:17:30.175+00;2017-12-05 18:17:30.175+00;5
-111;;His, As DL-Histidine;;2017-12-05 18:17:33.6+00;2017-12-05 18:17:33.6+00;6
-112;;His, As L-Histidine Monohydochloride;;2017-12-05 18:17:37.03+00;2017-12-05 18:17:37.03+00;6
+111;;Histidine, As DL-Histidine;;2017-12-05 18:17:33.6+00;2017-12-05 18:17:33.6+00;6
+112;;Histidine, As L-Histidine Monohydochloride;;2017-12-05 18:17:37.03+00;2017-12-05 18:17:37.03+00;6
 113;;I, From Ethylene-Diamino-Dihydroiodide (EDDI);;2017-12-05 18:17:40.416+00;2017-12-05 18:17:40.416+00;11
 114;;I, From Potassium Iodide;;2017-12-05 18:17:43.841+00;2017-12-05 18:17:43.841+00;11
 115;;Inositol, As Myo-Inositol (Previously Known As Vitamin B8);;2017-12-05 18:17:47.384+00;2017-12-05 18:17:47.384+00;8
@@ -127,15 +127,15 @@ id;description;name;userName;createdAt;updatedAt;ingredientGroupId
 126;;Linseed Meal, Mech Extr.;;2017-12-05 18:18:23.833+00;2017-12-05 18:18:23.833+00;9
 127;;Linseed Meal, Solv. Extr.;;2017-12-05 18:18:24.804+00;2017-12-05 18:18:24.804+00;9
 128;;Lupin Meal, (Sweet, White);;2017-12-05 18:18:25.766+00;2017-12-05 18:18:25.766+00;9
-129;;Lys, As L-Lysine;;2017-12-05 18:18:29.042+00;2017-12-05 18:18:29.042+00;6
-130;;Lys, As L-Lysine, Liquid Concentrate;;2017-12-05 18:18:32.518+00;2017-12-05 18:18:32.518+00;6
-131;;Lys, As L-Lysine Monohydrochloride;;2017-12-05 18:18:35.837+00;2017-12-05 18:18:35.837+00;6
-132;;Lys, As L-Lysine Sulphate;;2017-12-05 18:18:39.133+00;2017-12-05 18:18:39.133+00;6
+129;;Lysine, As L-Lysine;;2017-12-05 18:18:29.042+00;2017-12-05 18:18:29.042+00;6
+130;;Lysine, As L-Lysine, Liquid Concentrate;;2017-12-05 18:18:32.518+00;2017-12-05 18:18:32.518+00;6
+131;;Lysine, As L-Lysine Monohydrochloride;;2017-12-05 18:18:35.837+00;2017-12-05 18:18:35.837+00;6
+132;;Lysine, As L-Lysine Sulphate;;2017-12-05 18:18:39.133+00;2017-12-05 18:18:39.133+00;6
 133;;Meat Meal, (Poultry/Swine By Product);;2017-12-05 18:18:42.672+00;2017-12-05 18:18:42.672+00;9
 134;;Meat Meal, (Red-Meat By Product) Without Bones;;2017-12-05 18:18:46.104+00;2017-12-05 18:18:46.104+00;9
 135;;Menhaden Oil;;2017-12-05 18:18:49.396+00;2017-12-05 18:18:49.396+00;5
-136;;Met, As DL-Methionine;;2017-12-05 18:18:52.723+00;2017-12-05 18:18:52.723+00;6
-137;;Met, As DL-Methionine Liquid Concentrate;;2017-12-05 18:18:56.148+00;2017-12-05 18:18:56.148+00;6
+136;;Methionine, As DL-Methionine;;2017-12-05 18:18:52.723+00;2017-12-05 18:18:52.723+00;6
+137;;Methionine, As DL-Methionine Liquid Concentrate;;2017-12-05 18:18:56.148+00;2017-12-05 18:18:56.148+00;6
 138;;Mg, As Magnesium Oxide (MgO);;2017-12-05 18:18:59.606+00;2017-12-05 18:18:59.606+00;10
 139;;MgO (Magnesium Oxide);;2017-12-05 18:19:02.984+00;2017-12-05 18:19:02.984+00;1
 140;;Millet, Grain;;2017-12-05 18:19:06.393+00;2017-12-05 18:19:06.393+00;7
@@ -172,7 +172,7 @@ id;description;name;userName;createdAt;updatedAt;ingredientGroupId
 171;;Peanut O/C Meal, Mech Extr.;;2017-12-05 18:20:51.629+00;2017-12-05 18:20:51.629+00;9
 172;;Peanut O/C Meal, Solv Extr.;;2017-12-05 18:20:54.976+00;2017-12-05 18:20:54.976+00;9
 173;;Peanut Oil;;2017-12-05 18:20:58.382+00;2017-12-05 18:20:58.382+00;5
-174;;Phe, As DL-, D-, Or L-Phenylalanine;;2017-12-05 18:21:01.759+00;2017-12-05 18:21:01.759+00;6
+174;;Phenylalanine, As DL-, D-, Or L-Phenylalanine;;2017-12-05 18:21:01.759+00;2017-12-05 18:21:01.759+00;6
 175;;Poultry Fat;;2017-12-05 18:21:05.09+00;2017-12-05 18:21:05.09+00;5
 176;;Proline, As Proline;;2017-12-05 18:21:08.396+00;2017-12-05 18:21:08.396+00;6
 177;;Restaurant Grease;;2017-12-05 18:21:11.872+00;2017-12-05 18:21:11.872+00;5
@@ -204,7 +204,7 @@ id;description;name;userName;createdAt;updatedAt;ingredientGroupId
 203;;Sunflower Oil;;2017-12-05 18:22:33.633+00;2017-12-05 18:22:33.633+00;5
 204;;Sunflower Seed Hulls;;2017-12-05 18:22:36.957+00;2017-12-05 18:22:36.957+00;2
 205;;Taurine, As Taurine;;2017-12-05 18:22:41.082+00;2017-12-05 18:22:41.082+00;6
-206;;Thr, As L-Threonine;;2017-12-05 18:22:45.829+00;2017-12-05 18:22:45.829+00;6
+206;;Threonine, As L-Threonine;;2017-12-05 18:22:45.829+00;2017-12-05 18:22:45.829+00;6
 207;;Timothy Hay;;2017-12-05 18:22:50.834+00;2017-12-05 18:22:50.834+00;2
 208;;Trace Min Premix Alpacas & Llamas (Formulate Using 1 kg);;2017-12-05 18:22:54.445+00;2017-12-05 18:22:54.445+00;12
 209;;Trace Mineral Premix For Antelope (Formulate Using 1 kg);;2017-12-05 18:23:00.165+00;2017-12-05 18:23:00.165+00;12
@@ -222,10 +222,10 @@ id;description;name;userName;createdAt;updatedAt;ingredientGroupId
 221;;Trace Mineral Premix For Shrimp (Formulate Using 2 kg);;2017-12-05 18:23:44.604+00;2017-12-05 18:23:44.604+00;12
 222;;Trace Mineral Premix For Zebra (Formulate Using 1 kg);;2017-12-05 18:23:47.995+00;2017-12-05 18:23:47.995+00;12
 223;;Triticale, Grain;;2017-12-05 18:23:51.459+00;2017-12-05 18:23:51.459+00;7
-224;;Trp, As L-Tryptophan;;2017-12-05 18:23:55.043+00;2017-12-05 18:23:55.043+00;6
-225;;Tyr, As L-Tyrosine;;2017-12-05 18:23:58.412+00;2017-12-05 18:23:58.412+00;6
+224;;Tryptophan, As L-Tryptophan;;2017-12-05 18:23:55.043+00;2017-12-05 18:23:55.043+00;6
+225;;Tyrosine, As L-Tyrosine;;2017-12-05 18:23:58.412+00;2017-12-05 18:23:58.412+00;6
 226;;Urea, 46% Nitrogen;;2017-12-05 18:24:01.727+00;2017-12-05 18:24:01.727+00;4
-227;;Val, As L-Valine;;2017-12-05 18:24:03.194+00;2017-12-05 18:24:03.194+00;6
+227;;Valine, As L-Valine;;2017-12-05 18:24:03.194+00;2017-12-05 18:24:03.194+00;6
 228;;Vitamin A, From Vitamin A Acetate 250;;2017-12-05 18:24:06.503+00;2017-12-05 18:24:06.503+00;8
 229;;Vitamin A, From Vitamin A Acetate 325;;2017-12-05 18:24:09.734+00;2017-12-05 18:24:09.734+00;8
 230;;Vitamin A, From Vitamin A Acetate 500;;2017-12-05 18:24:12.973+00;2017-12-05 18:24:12.973+00;8

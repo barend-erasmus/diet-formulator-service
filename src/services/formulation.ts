@@ -75,28 +75,6 @@ export class FormulationService extends BaseService {
         return formulation;
     }
 
-    public async suggestedValue(dietId: number, ingredientId: number, userName: string): Promise<SuggestedValue> {
-
-        await this.throwIfDoesNotHavePermission(userName, 'view-suggested-value');
-
-        const diet: Diet = await this.dietRepository.find(dietId);
-
-        let dietGroup: DietGroup = diet.group;
-
-        while (dietGroup) {
-
-            const suggestedValue: SuggestedValue = await this.formulationRepository.findSuggestedValue(dietGroup.id, ingredientId);
-
-            if (suggestedValue) {
-                return suggestedValue;
-            }
-
-            dietGroup = dietGroup.parent;
-        }
-
-        return null;
-    }
-
     public async list(userName: string): Promise<Formulation[]> {
 
         await this.throwIfDoesNotHavePermission(userName, 'view-formulation');

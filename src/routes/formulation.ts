@@ -67,16 +67,6 @@ export class FormulationRouter {
         }
     }
 
-    public static async suggestedValue(req: express.Request, res: express.Response) {
-        try {
-            const result: SuggestedValue = await container.get<FormulationService>('FormulationService').suggestedValue(req.query.dietId, req.query.ingredientId, req['user'].email);
-
-            res.json(result);
-        } catch (err) {
-            res.status(500).json(WorldOfRationsError.fromError(err));
-        }
-    }
-
     public static async supplement(req: express.Request, res: express.Response) {
         try {
 
