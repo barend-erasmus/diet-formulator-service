@@ -17,19 +17,19 @@ export class SubscriptionFactory implements ISubscriptionFactory {
 
         switch (type) {
             case 'trial':
-                subscription = new TrialSubscription(active, expiryTimestamp, startTimestamp, []);
+                subscription = new TrialSubscription(active, [], expiryTimestamp, startTimestamp);
                 break;
             case 'basic':
-                subscription = new BasicSubscription(active, expiryTimestamp, startTimestamp, []);
+                subscription = new BasicSubscription(active, [], expiryTimestamp, startTimestamp);
                 break;
             case 'standard':
-                subscription = new StandardSubscription(active, expiryTimestamp, startTimestamp, []);
+                subscription = new StandardSubscription(active, [], expiryTimestamp, startTimestamp);
                 break;
             case 'premium':
-                subscription = new PremiumSubscription(active, expiryTimestamp, startTimestamp, []);
+                subscription = new PremiumSubscription(active, [], expiryTimestamp, startTimestamp);
                 break;
             case 'super-admin':
-                subscription = new SuperAdminSubscription(active, expiryTimestamp, startTimestamp, []);
+                subscription = new SuperAdminSubscription(active, [], expiryTimestamp, startTimestamp);
                 break;
         }
 

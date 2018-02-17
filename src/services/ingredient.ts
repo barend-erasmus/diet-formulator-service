@@ -4,7 +4,6 @@ import { Ingredient } from '../entities/ingredient';
 import { IIngredientRepository } from '../repositories/ingredient';
 import { ISubscriptionRepository } from '../repositories/subscription';
 import { IUserRepository } from '../repositories/user';
-import { config } from './../config';
 import { BaseService } from './base';
 
 @injectable()

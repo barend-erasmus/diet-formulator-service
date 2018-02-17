@@ -3,7 +3,6 @@ import { DietGroup } from '../entities/diet-group';
 import { WorldOfRationsError } from '../errors/world-of-rations-error';
 import { container } from '../ioc';
 import { DietGroupService } from '../services/diet-group';
-import { config } from './../config';
 
 export class DietGroupRouter {
 

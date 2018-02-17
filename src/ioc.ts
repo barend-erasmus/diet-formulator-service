@@ -1,8 +1,6 @@
 import { Container, interfaces } from 'inversify';
 import 'reflect-metadata';
-import * as winston from 'winston';
 import { UserCreatedEventBus } from './bus/user-created-event';
-import { MemoryCache } from './caches/memory';
 import { NullCache } from './caches/null';
 import { config } from './config';
 import { UserCreatedEvent } from './events/user-created';
@@ -10,7 +8,6 @@ import { SubscriptionFactory } from './factories/subscription';
 import { LeastCostRationFormulator } from './formulators/least-cost-ration';
 import { FixerForeignExchangeGateway } from './gateways/fixer-foreign-exchange';
 import { PayFastPaymentGateway } from './gateways/payfast-payment';
-import { PayPalPaymentGateway } from './gateways/paypal-payment';
 import { UserCreatedEventHandler } from './handlers/user-created-event';
 import { ICache } from './interfaces/cache';
 import { IForeignExchangeGateway } from './interfaces/foreign-exchange-gateway';

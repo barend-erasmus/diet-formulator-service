@@ -5,8 +5,6 @@ import * as expressWinston from 'express-winston';
 import * as path from 'path';
 import * as winston from 'winston';
 import * as yargs from 'yargs';
-import { config } from './config';
-import { SuggestedValue } from './entities/suggested-value';
 import { AuthenticationMiddleware } from './middleware/authentication';
 import { DietRouter } from './routes/diet';
 import { DietGroupRouter } from './routes/diet-group';

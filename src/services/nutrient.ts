@@ -4,7 +4,6 @@ import { Nutrient } from '../entities/nutrient';
 import { INutrientRepository } from '../repositories/nutrient';
 import { ISubscriptionRepository } from '../repositories/subscription';
 import { IUserRepository } from '../repositories/user';
-import { config } from './../config';
 import { BaseService } from './base';
 
 @injectable()

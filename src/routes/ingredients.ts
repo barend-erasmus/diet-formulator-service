@@ -3,7 +3,6 @@ import { Ingredient } from '../entities/ingredient';
 import { WorldOfRationsError } from '../errors/world-of-rations-error';
 import { container } from '../ioc';
 import { IngredientService } from '../services/ingredient';
-import { config } from './../config';
 
 export class IngredientRouter {
 

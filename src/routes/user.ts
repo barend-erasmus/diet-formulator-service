@@ -4,7 +4,6 @@ import { User } from '../entities/user';
 import { WorldOfRationsError } from '../errors/world-of-rations-error';
 import { container } from '../ioc';
 import { UserService } from '../services/user';
-import { config } from './../config';
 
 export class UserRouter {
 

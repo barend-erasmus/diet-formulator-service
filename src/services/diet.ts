@@ -7,7 +7,6 @@ import { IDietRepository } from '../repositories/diet';
 import { IDietGroupRepository } from '../repositories/diet-group';
 import { ISubscriptionRepository } from '../repositories/subscription';
 import { IUserRepository } from '../repositories/user';
-import { config } from './../config';
 import { BaseService } from './base';
 
 @injectable()

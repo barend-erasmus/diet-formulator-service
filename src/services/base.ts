@@ -1,7 +1,6 @@
 import { inject, injectable, unmanaged } from 'inversify';
 import 'reflect-metadata';
 import { Subscription } from '../entities/subscription';
-import { User } from '../entities/user';
 import { InsufficientPermissionsError } from '../errors/insufficient-permissions-error';
 import { ISubscriptionRepository } from '../repositories/subscription';
 import { IUserRepository } from '../repositories/user';

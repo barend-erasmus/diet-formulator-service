@@ -4,13 +4,11 @@ import { Formulation } from '../entities/formulation';
 import { FormulationCompositionValue } from '../entities/formulation-composition-value';
 import { FormulationIngredient } from '../entities/formulation-ingredient';
 import { Ingredient } from '../entities/ingredient';
-import { SuggestedValue } from '../entities/suggested-value';
 import { Supplement } from '../entities/supplement';
 import { WorldOfRationsError } from '../errors/world-of-rations-error';
 import { ICache } from '../interfaces/cache';
 import { container } from '../ioc';
 import { FormulationService } from '../services/formulation';
-import { config } from './../config';
 
 export class FormulationRouter {
 
