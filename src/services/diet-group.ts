@@ -13,7 +13,7 @@ export class DietGroupService extends BaseService {
 
     constructor(
         @inject('ISubscriptionRepository')
-        protected subscriptionRepository: ISubscriptionRepository,
+        subscriptionRepository: ISubscriptionRepository,
         @inject('IUserRepository')
         userRepository: IUserRepository,
         @inject('IDietGroupRepository')

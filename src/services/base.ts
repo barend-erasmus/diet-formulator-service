@@ -5,6 +5,7 @@ import { User } from '../entities/user';
 import { InsufficientPermissionsError } from '../errors/insufficient-permissions-error';
 import { ISubscriptionRepository } from '../repositories/subscription';
 import { IUserRepository } from '../repositories/user';
+
 @injectable()
 export class BaseService {
 

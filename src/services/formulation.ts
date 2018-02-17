@@ -26,7 +26,7 @@ export class FormulationService extends BaseService {
 
     constructor(
         @inject('ISubscriptionRepository')
-        protected subscriptionRepository: ISubscriptionRepository,
+        subscriptionRepository: ISubscriptionRepository,
         @inject('IUserRepository')
         userRepository: IUserRepository,
         @inject('IDietRepository')
