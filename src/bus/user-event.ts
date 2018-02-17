@@ -1,14 +1,15 @@
 import { inject, injectable } from 'inversify';
 import 'reflect-metadata';
+import { UserEvent } from '../events/user';
 import { IEventHandler } from '../interfaces/event-handler';
 import { EventBus } from './event';
 
 @injectable()
-export class UserCreatedEventBus<UserCreatedEvent> extends EventBus<UserCreatedEvent> {
+export class UserEventBus<UserCreatedEvent> extends EventBus<UserEvent> {
 
     constructor(
-        @inject('UserCreatedEventHandler')
-        handler: IEventHandler<UserCreatedEvent>,
+        @inject('UserEventHandler')
+        handler: IEventHandler<UserEvent>,
     ) {
         super(handler);
     }

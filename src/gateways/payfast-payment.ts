@@ -4,7 +4,6 @@ import * as uuid from 'uuid';
 import { Payment } from '../entities/payment';
 import { User } from '../entities/user';
 import { WorldOfRationsError } from '../errors/world-of-rations-error';
-import { ILogger } from '../interfaces/logger';
 import { IPaymentGateway } from '../interfaces/payment-gateway';
 import { IPaymentNotificationRepository } from '../repositories/payment-notification';
 
@@ -14,8 +13,6 @@ export class PayFastPaymentGateway implements IPaymentGateway {
     private sandbox: boolean = false;
 
     constructor(
-        @inject('ILogger')
-        private logger: ILogger,
         private merchantId: string,
         private merchantSecret: string,
         private passPhrase: string,
@@ -90,12 +87,6 @@ export class PayFastPaymentGateway implements IPaymentGateway {
         const status: string = await this.paymentNotificationRepository.status(paymentId);
 
         const result: boolean = status.toUpperCase() === 'COMPLETE';
-
-        if (result) {
-            this.logger.info(`Payment ${paymentId} has been verified`);
-        } else {
-            this.logger.warning(`Payment ${paymentId} has not been verified`);
-        }
 
         return result;
     }

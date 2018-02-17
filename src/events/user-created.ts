@@ -1,9 +1,9 @@
-import { IEvent } from '../interfaces/event';
+import { UserEvent } from './user';
 
-export class UserCreatedEvent implements IEvent {
+export class UserCreatedEvent extends UserEvent {
     constructor(
-        public userName: string,
+        userName: string,
     ) {
-
+        super('created', userName);
     }
 }

@@ -11,7 +11,7 @@ export class Subscription {
         additionalPermissions: string[],
         public expiryTimestamp: Date,
         public startTimestamp: Date,
-        
+
     ) {
         this.permissions = this.permissions.concat(additionalPermissions);
     }

@@ -14,6 +14,5 @@ export class PaymentNotificationService {
 
     public async create(paymentId: string, status: string): Promise<void> {
         await this.paymentNotificationRepository.create(paymentId, status);
-
     }
 }

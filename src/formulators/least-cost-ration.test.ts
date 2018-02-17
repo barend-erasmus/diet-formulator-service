@@ -8,12 +8,16 @@ import { Ingredient } from '../entities/ingredient';
 import { IngredientValue } from '../entities/ingredient-value';
 import { Nutrient } from '../entities/nutrient';
 import { IFormulator } from '../interfaces/formulator';
+import { container } from '../ioc';
 import { LeastCostRationFormulator } from './least-cost-ration';
 
 describe('LeastCostRationFormulator', () => {
+
     describe('formulate', () => {
+
         it('should return feasible formulation', async () => {
-            const formulator: IFormulator = new LeastCostRationFormulator();
+
+            const formulator: IFormulator = container.get<IFormulator>('IFormulator');
 
             const diet: Diet = new Diet(null, null, null, null, null, [
                 new DietValue(1, 20, 100, new Nutrient(1, 'Nutrient A', null, null, null, null, null)),
@@ -48,6 +52,8 @@ describe('LeastCostRationFormulator', () => {
 
             expect(result.feasible).to.be.true;
             expect(Math.round(result.cost * 100) / 100).to.eq(121.08);
+
         });
+
     });
 });

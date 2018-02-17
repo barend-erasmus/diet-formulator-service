@@ -1,14 +1,15 @@
 import { Container, interfaces } from 'inversify';
 import 'reflect-metadata';
-import { UserCreatedEventBus } from './bus/user-created-event';
+import { UserEventBus } from './bus/user-event';
 import { NullCache } from './caches/null';
 import { config } from './config';
+import { UserEvent } from './events/user';
 import { UserCreatedEvent } from './events/user-created';
 import { SubscriptionFactory } from './factories/subscription';
 import { LeastCostRationFormulator } from './formulators/least-cost-ration';
 import { FixerForeignExchangeGateway } from './gateways/fixer-foreign-exchange';
 import { PayFastPaymentGateway } from './gateways/payfast-payment';
-import { UserCreatedEventHandler } from './handlers/user-created-event';
+import { UserEventHandler } from './handlers/user-event';
 import { ICache } from './interfaces/cache';
 import { IForeignExchangeGateway } from './interfaces/foreign-exchange-gateway';
 import { IFormulator } from './interfaces/formulator';
@@ -78,23 +79,15 @@ container.bind<PaymentNotificationService>('PaymentNotificationService').to(Paym
 container.bind<SubscriptionService>('SubscriptionService').to(SubscriptionService);
 container.bind<UserService>('UserService').to(UserService);
 
-container.bind<UserCreatedEventBus<UserCreatedEvent>>('UserCreatedEventBus').to(UserCreatedEventBus);
-container.bind<UserCreatedEventHandler>('UserCreatedEventHandler').to(UserCreatedEventHandler);
+container.bind<UserEventBus<UserEvent>>('UserEventBus').to(UserEventBus);
+container.bind<UserEventHandler>('UserEventHandler').to(UserEventHandler);
 
 container.bind<IForeignExchangeGateway>('IForeignExchangeGateway').to(FixerForeignExchangeGateway);
 
-// container.bind<IPaymentGateway>('IPaymentGateway').toDynamicValue((context: interfaces.Context) => {
-//     const logger: ILogger = context.container.get<ILogger>('ILogger');
-
-//     return new PayPalPaymentGateway('ATsfPWiJ0K6vxY92fIqXAD4tAUtR1C8FJeV56Uc_W3vDq3uzhbK1_6ocXNTx4lPm5trdq2b_0OK9z0_W', 'EJ_3nwnFqDsV7i30_xcaNtISfUfjXI8KmebhMvJOmTiNs_d7IFR8SME81IHAoyhjesevdyKtvO2P8-gN', logger);
-// });
-
 container.bind<IPaymentGateway>('IPaymentGateway').toDynamicValue((context: interfaces.Context) => {
-    const logger: ILogger = context.container.get<ILogger>('ILogger');
-
     const paymentNotificationRepository: IPaymentNotificationRepository = context.container.get<IPaymentNotificationRepository>('IPaymentNotificationRepository');
 
-    return new PayFastPaymentGateway(logger, '11223714', 'ak5h6ln1aiwgi', 'mMUQYkYSV7Jf3Nxr', paymentNotificationRepository);
+    return new PayFastPaymentGateway('11223714', 'ak5h6ln1aiwgi', 'mMUQYkYSV7Jf3Nxr', paymentNotificationRepository);
 });
 
 container.bind<ICache>('ICache').toConstantValue(new NullCache());

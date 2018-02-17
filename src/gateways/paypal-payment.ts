@@ -5,7 +5,6 @@ import * as yargs from 'yargs';
 import { Payment } from '../entities/payment';
 import { User } from '../entities/user';
 import { WorldOfRationsError } from '../errors/world-of-rations-error';
-import { ILogger } from '../interfaces/logger';
 import { IPaymentGateway } from '../interfaces/payment-gateway';
 
 @injectable()
@@ -18,8 +17,6 @@ export class PayPalPaymentGateway implements IPaymentGateway {
     constructor(
         private clientId: string,
         private clientSecret: string,
-        @inject('ILogger')
-        private logger: ILogger,
     ) {
 
     }
@@ -63,12 +60,6 @@ export class PayPalPaymentGateway implements IPaymentGateway {
         });
 
         const result: boolean = response.payer.status === 'VERIFIED';
-
-        if (result) {
-            this.logger.info(`Payment ${paymentId} has been verified`);
-        } else {
-            this.logger.warning(`Payment ${paymentId} has not been verified`);
-        }
 
         return result;
     }
