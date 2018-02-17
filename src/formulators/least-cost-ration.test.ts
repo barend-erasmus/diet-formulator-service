@@ -3,7 +3,6 @@ import 'mocha';
 import { Diet } from '../entities/diet';
 import { DietValue } from '../entities/diet-value';
 import { Formulation } from '../entities/formulation';
-import { FormulationCompositionValue } from '../entities/formulation-composition-value';
 import { FormulationIngredient } from '../entities/formulation-ingredient';
 import { Ingredient } from '../entities/ingredient';
 import { IngredientValue } from '../entities/ingredient-value';

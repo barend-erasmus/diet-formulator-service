@@ -1,10 +1,6 @@
-import * as crypto from 'crypto';
 import { inject, injectable } from 'inversify';
-import * as moment from 'moment';
 import 'reflect-metadata';
-import * as request from 'request-promise';
 import * as uuid from 'uuid';
-import * as yargs from 'yargs';
 import { Payment } from '../entities/payment';
 import { User } from '../entities/user';
 import { WorldOfRationsError } from '../errors/world-of-rations-error';

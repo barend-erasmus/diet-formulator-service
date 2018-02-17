@@ -1,4 +1,4 @@
-import { inject, injectable, unmanaged } from 'inversify';
+import { injectable, unmanaged } from 'inversify';
 import 'reflect-metadata';
 import { IEvent } from '../interfaces/event';
 import { IEventBus } from '../interfaces/event-bus';

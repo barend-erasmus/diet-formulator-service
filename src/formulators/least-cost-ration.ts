@@ -1,4 +1,4 @@
-import { inject, injectable } from 'inversify';
+import { injectable } from 'inversify';
 import * as solver from 'javascript-lp-solver';
 import 'reflect-metadata';
 import { Diet } from '../entities/diet';

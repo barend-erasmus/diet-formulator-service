@@ -1,4 +1,4 @@
-import { inject, injectable } from 'inversify';
+import { injectable } from 'inversify';
 import 'reflect-metadata';
 import * as winston from 'winston';
 import { ILogger } from '../interfaces/logger';
