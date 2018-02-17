@@ -8,9 +8,10 @@ export class Subscription {
 
     constructor(
         public active: boolean,
+        additionalPermissions: string[],
         public expiryTimestamp: Date,
         public startTimestamp: Date,
-        additionalPermissions: string[],
+        
     ) {
         this.permissions = this.permissions.concat(additionalPermissions);
     }

@@ -4,13 +4,11 @@ export class BasicSubscription extends Subscription {
 
     constructor(
         active: boolean,
+        additionalPermissions: string[],
         expiryTimestamp: Date,
         startTimestamp: Date,
-        additionalPermissions: string[],
     ) {
         super(active,
-            expiryTimestamp,
-            startTimestamp,
             [
                 'view-profile',
                 'update-profile',
@@ -24,7 +22,10 @@ export class BasicSubscription extends Subscription {
                 'view-formulation',
                 'view-suggested-value',
                 'view-billing',
-            ].concat(additionalPermissions));
+            ].concat(additionalPermissions),
+            expiryTimestamp,
+            startTimestamp,
+        );
 
         this.type = 'basic';
     }

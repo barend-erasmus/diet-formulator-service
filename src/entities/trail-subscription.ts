@@ -4,14 +4,15 @@ export class TrialSubscription extends PremiumSubscription {
 
     constructor(
         active: boolean,
+        additionalPermissions: string[],
         expiryTimestamp: Date,
         startTimestamp: Date,
-        additionalPermissions: string[],
     ) {
         super(active,
+            additionalPermissions,
             expiryTimestamp,
             startTimestamp,
-            additionalPermissions);
+        );
 
         this.type = 'trial';
     }

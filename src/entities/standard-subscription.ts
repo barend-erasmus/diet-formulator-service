@@ -4,13 +4,13 @@ export class StandardSubscription extends BasicSubscription {
 
     constructor(
         active: boolean,
+        additionalPermissions: string[],
         expiryTimestamp: Date,
         startTimestamp: Date,
-        additionalPermissions: string[],
     ) {
         const permissions: string[]  = ['view-formulation-composition'].concat(additionalPermissions);
 
-        super(active, expiryTimestamp, startTimestamp, permissions);
+        super(active, permissions, expiryTimestamp, startTimestamp);
 
         this.type = 'standard';
     }

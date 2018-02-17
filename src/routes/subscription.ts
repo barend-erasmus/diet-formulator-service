@@ -3,7 +3,6 @@ import { Subscription } from '../entities/subscription';
 import { WorldOfRationsError } from '../errors/world-of-rations-error';
 import { container } from '../ioc';
 import { SubscriptionService } from '../services/subscription';
-import { config } from './../config';
 
 export class SubscriptionRouter {
 

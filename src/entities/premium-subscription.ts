@@ -4,13 +4,13 @@ export class PremiumSubscription extends StandardSubscription {
 
     constructor(
         active: boolean,
+        additionalPermissions: string[],
         expiryTimestamp: Date,
         startTimestamp: Date,
-        additionalPermissions: string[],
     ) {
         const permissions: string[]  = ['view-formulation-supplement'].concat(additionalPermissions);
 
-        super(active, startTimestamp, expiryTimestamp, permissions);
+        super(active, permissions, startTimestamp, expiryTimestamp);
 
         this.type = 'premium';
     }

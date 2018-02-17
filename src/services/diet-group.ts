@@ -1,11 +1,9 @@
 import { inject, injectable } from 'inversify';
 import 'reflect-metadata';
 import { DietGroup } from '../entities/diet-group';
-import { InsufficientPermissionsError } from '../errors/insufficient-permissions-error';
 import { IDietGroupRepository } from '../repositories/diet-group';
 import { ISubscriptionRepository } from '../repositories/subscription';
 import { IUserRepository } from '../repositories/user';
-import { config } from './../config';
 import { BaseService } from './base';
 
 @injectable()

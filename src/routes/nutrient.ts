@@ -3,7 +3,6 @@ import { Nutrient } from '../entities/nutrient';
 import { WorldOfRationsError } from '../errors/world-of-rations-error';
 import { container } from '../ioc';
 import { NutrientService } from '../services/nutrient';
-import { config } from './../config';
 
 export class NutrientRouter {
 

@@ -1,12 +1,10 @@
 import { inject, injectable } from 'inversify';
 import 'reflect-metadata';
 import { Payment } from '../entities/payment';
-import { Subscription } from '../entities/subscription';
 import { User } from '../entities/user';
 import { WorldOfRationsError } from '../errors/world-of-rations-error';
 import { IForeignExchangeGateway } from '../interfaces/foreign-exchange-gateway';
 import { IPaymentGateway } from '../interfaces/payment-gateway';
-import { ISubscriptionFactory } from '../interfaces/subscription-factory';
 import { IPaymentRepository } from '../repositories/payment';
 import { ISubscriptionRepository } from '../repositories/subscription';
 import { IUserRepository } from '../repositories/user';

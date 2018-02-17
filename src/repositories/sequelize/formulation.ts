@@ -1,4 +1,4 @@
-import { inject, injectable } from 'inversify';
+import { injectable } from 'inversify';
 import 'reflect-metadata';
 import * as Sequelize from 'sequelize';
 import { Diet } from '../../entities/diet';
@@ -10,7 +10,6 @@ import { Ingredient } from '../../entities/ingredient';
 import { IngredientGroup } from '../../entities/ingredient-group';
 import { IngredientValue } from '../../entities/ingredient-value';
 import { Nutrient } from '../../entities/nutrient';
-import { SuggestedValue } from '../../entities/suggested-value';
 import { IFormulationRepository } from '../formulation';
 import { BaseRepository } from './base';
 

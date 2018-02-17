@@ -5,7 +5,6 @@ import { WorldOfRationsError } from '../errors/world-of-rations-error';
 import { container } from '../ioc';
 import { PaymentService } from '../services/payment';
 import { PaymentNotificationService } from '../services/payment-notification';
-import { config } from './../config';
 
 export class PaymentRouter {
 
