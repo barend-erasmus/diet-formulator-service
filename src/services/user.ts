@@ -8,6 +8,7 @@ import { UserCreatedEvent } from '../events/user-created';
 import { ISubscriptionRepository } from '../repositories/subscription';
 import { IUserRepository } from '../repositories/user';
 import { BaseService } from './base';
+import { UserEvent } from '../events/user';
 
 @injectable()
 export class UserService extends BaseService {
@@ -15,8 +16,8 @@ export class UserService extends BaseService {
     constructor(
         @inject('ISubscriptionRepository')
         subscriptionRepository: ISubscriptionRepository,
-        @inject('UserCreatedEventBus')
-        private userCreatedEventBus: EventBus<UserCreatedEvent>,
+        @inject('UserEventBus')
+        private userEventBus: EventBus<UserEvent>,
         @inject('IUserRepository')
         userRepository: IUserRepository,
     ) {
@@ -29,7 +30,7 @@ export class UserService extends BaseService {
 
         if (!result) {
             result = await this.userRepository.create(user, token);
-            await this.userCreatedEventBus.publish(new UserCreatedEvent(user.email));
+            await this.userEventBus.publish(new UserCreatedEvent(user.email));
         } else {
             result.verified = user.verified;
             result = await this.userRepository.update(result, token);
