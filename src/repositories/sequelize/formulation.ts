@@ -106,7 +106,17 @@ export class FormulationRepository extends BaseRepository implements IFormulatio
             return null;
         }
 
-        let dietGroup: DietGroup = new DietGroup(result.diet.dietGroup.id, result.diet.dietGroup.name, result.diet.dietGroup.description, result.diet.dietGroup.dietGroupId ? new DietGroup(result.diet.dietGroup.dietGroupId, null, null, null) : null);
+        let dietGroup: DietGroup = new DietGroup(
+            result.diet.dietGroup.id,
+            result.diet.dietGroup.name,
+            result.diet.dietGroup.description,
+            result.diet.dietGroup.dietGroupId ? new DietGroup(
+                result.diet.dietGroup.dietGroupId,
+                null,
+                null,
+                null,
+            ) : null,
+        );
 
         dietGroup = await this.loadDietGroupParent(dietGroup);
 
@@ -146,26 +156,15 @@ export class FormulationRepository extends BaseRepository implements IFormulatio
             },
         });
 
-        return result.map((x) => new Formulation(x.id, x.name, null, [], x.cost, x.feasible, x.mixWeight, x.timestamp));
-    }
-
-    private async loadDietGroupParent(dietGroup: DietGroup): Promise<DietGroup> {
-
-        if (dietGroup.parent) {
-
-            const result: any = await BaseRepository.models.DietGroup.find({
-                where: {
-                    id: {
-                        [Sequelize.Op.eq]: dietGroup.parent.id,
-                    },
-                },
-            });
-
-            const parent: DietGroup = new DietGroup(result.id, result.name, result.description, result.dietGroupId ? new DietGroup(result.dietGroupId, null, null, null) : null);
-
-            dietGroup.parent = await this.loadDietGroupParent(parent);
-        }
-
-        return dietGroup;
+        return result.map((x) => new Formulation(
+            x.id,
+            x.name,
+            null,
+            [],
+            x.cost,
+            x.feasible,
+            x.mixWeight,
+            x.timestamp,
+        ));
     }
 }

@@ -51,7 +51,7 @@ export class PaymentRepository extends BaseRepository implements IPaymentReposit
             return null;
         }
 
-        return new Payment(result.amount, result.assigned, result.currency, result.paid, result.paidTimestamp ? new Date(parseInt(result.paidTimestamp, undefined)) : null, result.paymentId, result.period, result.paymentUri, result.subscription);
+        return this.mapToPayment(result);
     }
 
     public async list(userName: string): Promise<Payment[]> {
@@ -64,7 +64,7 @@ export class PaymentRepository extends BaseRepository implements IPaymentReposit
             },
         });
 
-        return result.map((x) => new Payment(x.amount, x.assigned, x.currency, x.paid, x.paidTimestamp ? new Date(parseInt(x.paidTimestamp, undefined)) : null, x.paymentId, x.period, x.paymentUri, x.subscription));
+        return result.map((x) => this.mapToPayment(x));
     }
 
     public async update(payment: Payment, userName: string): Promise<Payment> {

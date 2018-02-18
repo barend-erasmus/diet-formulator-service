@@ -69,52 +69,52 @@ export class IngredientRepository extends BaseRepository implements IIngredientR
             return null;
         }
 
-        const ingredientGroup: IngredientGroup = new IngredientGroup(result.ingredientGroup.id, result.ingredientGroup.name, result.ingredientGroup.description);
-
-        return new Ingredient(result.id, result.name, result.description, result.userName, ingredientGroup,
-            result.ingredientValues.map((value) =>
-                new IngredientValue(value.id, value.value, new Nutrient(value.nutrient.id, value.nutrient.name, value.nutrient.description, value.nutrient.code, value.nutrient.abbreviation, value.nutrient.unit, value.nutrient.sortOrder)),
-            ).sort((a, b) => a.nutrient.sortOrder - b.nutrient.sortOrder));
+        return this.mapToIngredient(result);
     }
 
     public async listSupplements(nutrientId: number): Promise<Ingredient[]> {
 
-                const result: any[] = await BaseRepository.models.Supplement.findAll({
+        const result: any[] = await BaseRepository.models.Supplement.findAll({
+            include: [
+                {
                     include: [
                         {
                             include: [
                                 {
-                                    include: [
-                                        {
-                                            model: BaseRepository.models.Nutrient,
-                                        },
-                                    ],
-                                    model: BaseRepository.models.IngredientValue,
-                                },
-                                {
-                                    model: BaseRepository.models.IngredientGroup,
+                                    model: BaseRepository.models.Nutrient,
                                 },
                             ],
-                            model: BaseRepository.models.Ingredient,
+                            model: BaseRepository.models.IngredientValue,
+                        },
+                        {
+                            model: BaseRepository.models.IngredientGroup,
                         },
                     ],
-                    where: {
-                        nutrientId: {
-                            [Sequelize.Op.eq]: nutrientId,
-                        },
-                    },
-                });
+                    model: BaseRepository.models.Ingredient,
+                },
+            ],
+            where: {
+                nutrientId: {
+                    [Sequelize.Op.eq]: nutrientId,
+                },
+            },
+        });
 
-                return result.map((x) => new Ingredient(x.ingredient.id, x.ingredient.name, x.ingredient.description, x.ingredient.userName, new IngredientGroup(x.ingredient.ingredientGroup.id, x.ingredient.ingredientGroup.name, x.ingredient.ingredientGroup.description),
-                x.ingredient.ingredientValues.map((value) =>
-                    new IngredientValue(value.id, value.value, new Nutrient(value.nutrient.id, value.nutrient.name, value.nutrient.description, value.nutrient.code, value.nutrient.abbreviation, value.nutrient.unit, value.nutrient.sortOrder)),
-                ).sort((a, b) => a.nutrient.sortOrder - b.nutrient.sortOrder)));
-            }
+        return result.map((x) => this.mapToIngredient(x));
+    }
 
     public async list(): Promise<Ingredient[]> {
 
         const result: any[] = await BaseRepository.models.Ingredient.findAll({
             include: [
+                {
+                    include: [
+                        {
+                            model: BaseRepository.models.Nutrient,
+                        },
+                    ],
+                    model: BaseRepository.models.IngredientValue,
+                },
                 {
                     model: BaseRepository.models.IngredientGroup,
                 },
@@ -124,6 +124,6 @@ export class IngredientRepository extends BaseRepository implements IIngredientR
             ],
         });
 
-        return result.map((x) => new Ingredient(x.id, x.name, x.description, x.userName, new IngredientGroup(x.ingredientGroup.id, x.ingredientGroup.name, x.ingredientGroup.description), []));
+        return result.map((x) => this.mapToIngredient(x));
     }
 }

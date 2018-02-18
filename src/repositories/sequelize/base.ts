@@ -1,5 +1,13 @@
 import * as Sequelize from 'sequelize';
 import * as winston from 'winston';
+import { User } from '../../entities/user';
+import { SuggestedValue } from '../../entities/suggested-value';
+import { DietGroup } from '../../entities/diet-group';
+import { Ingredient } from '../../entities/ingredient';
+import { IngredientGroup } from '../../entities/ingredient-group';
+import { Payment } from '../../entities/payment';
+import { Nutrient } from '../../entities/nutrient';
+import { IngredientValue } from '../../entities/ingredient-value';
 
 export class BaseRepository {
     protected static models: {
@@ -377,7 +385,7 @@ export class BaseRepository {
 
             const logger = new (winston.Logger)({
                 transports: [
-                  new (winston.transports.File)({ filename: 'sql.log'}),
+                    new (winston.transports.File)({ filename: 'sql.log' }),
                 ],
             });
 
@@ -414,5 +422,83 @@ export class BaseRepository {
                 resolve();
             });
         });
+    }
+
+    protected async loadDietGroupParent(dietGroup: DietGroup): Promise<DietGroup> {
+
+        if (dietGroup.parent) {
+
+            const result: any = await BaseRepository.models.DietGroup.find({
+                where: {
+                    id: {
+                        [Sequelize.Op.eq]: dietGroup.parent.id,
+                    },
+                },
+            });
+
+            const parent: DietGroup = this.mapToDietGroup(result);
+
+            dietGroup.parent = await this.loadDietGroupParent(parent);
+        }
+
+        return dietGroup;
+    }
+
+    protected mapToDietGroup(dietGroup: any): DietGroup {
+        return new DietGroup(
+            dietGroup.id,
+            dietGroup.name,
+            dietGroup.description,
+            dietGroup.dietGroupId ? new DietGroup(dietGroup.dietGroupId, null, null, null) : null,
+        );
+    }
+
+    protected mapToIngredient(ingredient: any): Ingredient {
+        return new Ingredient(
+            ingredient.id,
+            ingredient.name,
+            ingredient.description, ingredient.userName,
+            this.mapToIngredientGroup(ingredient.ingredientGroup),
+            ingredient.ingredientValues.map((value) => this.mapToIngredientValue(value),
+            ).sort((a, b) => a.nutrient.sortOrder - b.nutrient.sortOrder));
+    }
+
+    protected mapToIngredientGroup(ingredientGroup: any): IngredientGroup {
+        return new IngredientGroup(ingredientGroup.id, ingredientGroup.name, ingredientGroup.description);
+    }
+
+    protected mapToIngredientValue(ingredientValue: any): IngredientValue {
+        return new IngredientValue(ingredientValue.id, ingredientValue.value, this.mapToNutrient(ingredientValue.nutrient));
+    }
+
+    protected mapToNutrient(nutrient: any): Nutrient {
+        return new Nutrient(nutrient.id, nutrient.name, nutrient.description, nutrient.code, nutrient.abbreviation, nutrient.unit, nutrient.sortOrder);
+    }
+
+    protected mapToPayment(payment: any): Payment {
+        return new Payment(payment.amount, payment.assigned, payment.currency, payment.paid, payment.paidTimestamp ? new Date(parseInt(payment.paidTimestamp, undefined)) : null, payment.paymentId, payment.period, payment.paymentUri, payment.subscription);
+    }
+
+    protected mapToSuggestedValue(suggestedValue: any, dietGroup: DietGroup): SuggestedValue {
+        return new SuggestedValue(
+            suggestedValue.id,
+            suggestedValue.description,
+            dietGroup,
+            this.mapToIngredient(suggestedValue.ingredient),
+            suggestedValue.minimum,
+            suggestedValue.maximum,
+        );
+    }
+
+    protected mapToUser(user: any): User {
+        return new User(
+            user.email,
+            user.displayName,
+            user.verified,
+            user.picture,
+            user.isSuperAdmin,
+            user.locale,
+            user.country,
+        );
     }
 }

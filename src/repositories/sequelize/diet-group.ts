@@ -38,7 +38,12 @@ export class DietGroupRepository extends BaseRepository implements IDietGroupRep
             return null;
         }
 
-        let dietGroup: DietGroup = new DietGroup(result.id, result.name, result.description, result.dietGroupId ? new DietGroup(result.dietGroupId, null, null, null) : null);
+        let dietGroup: DietGroup = new DietGroup(
+            result.id,
+            result.name,
+            result.description,
+            result.dietGroupId ? new DietGroup(result.dietGroupId, null, null, null) : null,
+        );
 
         dietGroup = await this.loadDietGroupParent(dietGroup);
 
@@ -52,7 +57,12 @@ export class DietGroupRepository extends BaseRepository implements IDietGroupRep
             ],
         });
 
-        const dietGroups: DietGroup[] = result.map((x) => new DietGroup(x.id, x.name, x.description, x.dietGroupId ? new DietGroup(x.dietGroupId, null, null, null) : null));
+        const dietGroups: DietGroup[] = result.map((x) => new DietGroup(
+            x.id,
+            x.name,
+            x.description,
+            x.dietGroupId ? new DietGroup(x.dietGroupId, null, null, null) : null,
+        ));
 
         for (const item of dietGroups) {
             await this.loadDietGroupParent(item);
@@ -73,7 +83,12 @@ export class DietGroupRepository extends BaseRepository implements IDietGroupRep
             },
         });
 
-        const dietGroups: DietGroup[] = result.map((x) => new DietGroup(x.id, x.name, x.description, x.dietGroupId ? new DietGroup(x.dietGroupId, null, null, null) : null));
+        const dietGroups: DietGroup[] = result.map((x) => new DietGroup(
+            x.id,
+            x.name,
+            x.description,
+            x.dietGroupId ? new DietGroup(x.dietGroupId, null, null, null) : null,
+        ));
 
         for (const item of dietGroups) {
             await this.loadDietGroupParent(item);
@@ -97,15 +112,6 @@ export class DietGroupRepository extends BaseRepository implements IDietGroupRep
         result.dietGroupId = dietGroup.parent ? dietGroup.parent.id : null;
 
         await result.save();
-
-        return dietGroup;
-    }
-
-    private async loadDietGroupParent(dietGroup: DietGroup): Promise<DietGroup> {
-        if (dietGroup.parent) {
-            const parent: DietGroup = await this.find(dietGroup.parent.id);
-            dietGroup.parent = parent;
-        }
 
         return dietGroup;
     }

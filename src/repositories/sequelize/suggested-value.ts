@@ -5,6 +5,8 @@ import { DietGroup } from '../../entities/diet-group';
 import { SuggestedValue } from '../../entities/suggested-value';
 import { ISuggestedValueRepository } from '../suggested-value';
 import { BaseRepository } from './base';
+import { Ingredient } from '../../entities/ingredient';
+import { IngredientGroup } from '../../entities/ingredient-group';
 
 @injectable()
 export class SuggestedValueRepository extends BaseRepository implements ISuggestedValueRepository {
@@ -61,7 +63,7 @@ export class SuggestedValueRepository extends BaseRepository implements ISuggest
 
         dietGroup = await this.loadDietGroupParent(dietGroup);
 
-        return new SuggestedValue(result.id, result.description, dietGroup, null, result.minimum, result.maximum);
+        return this.mapToSuggestedValue(result, dietGroup);
     }
 
     public async list(): Promise<SuggestedValue[]> {
@@ -84,32 +86,13 @@ export class SuggestedValueRepository extends BaseRepository implements ISuggest
         const suggestedValues: SuggestedValue[] = [];
 
         for (const suggestedValue of result) {
-            let dietGroup: DietGroup = new DietGroup(suggestedValue.dietGroup.id, suggestedValue.dietGroup.name, suggestedValue.dietGroup.description, suggestedValue.dietGroup.dietGroupId ? new DietGroup(suggestedValue.dietGroup.dietGroupId, null, null, null) : null);
+            let dietGroup: DietGroup = this.mapToDietGroup(suggestedValue.dietGroup);
 
             dietGroup = await this.loadDietGroupParent(dietGroup);
 
-            suggestedValues.push(new SuggestedValue(suggestedValue.id, suggestedValue.description, dietGroup, null, suggestedValue.minimum, suggestedValue.maximum));
+            suggestedValues.push(this.mapToSuggestedValue(suggestedValue, dietGroup));
         }
 
         return suggestedValues;
-    }
-
-    private async loadDietGroupParent(dietGroup: DietGroup): Promise<DietGroup> {
-        if (dietGroup.parent) {
-
-            const result: any = await BaseRepository.models.DietGroup.find({
-                where: {
-                    id: {
-                        [Sequelize.Op.eq]: dietGroup.parent.id,
-                    },
-                },
-            });
-
-            const parent: DietGroup = new DietGroup(result.id, result.name, result.description, result.dietGroupId ? new DietGroup(result.dietGroupId, null, null, null) : null);
-
-            dietGroup.parent = await this.loadDietGroupParent(parent);
-        }
-
-        return dietGroup;
     }
 }

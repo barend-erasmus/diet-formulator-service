@@ -46,14 +46,14 @@ export class UserRepository extends BaseRepository implements IUserRepository {
             return null;
         }
 
-        return new User(result.email, result.displayName, result.verified, result.picture, result.isSuperAdmin, result.locale, result.country);
+        return this.mapToUser(result);
     }
 
     public async findByUserName(userName: string): Promise<User> {
 
         const result: any[] = await BaseRepository.models.User.findAll({
             limit: 1,
-            order: [ [ 'expiryTimestamp', 'DESC' ]],
+            order: [['expiryTimestamp', 'DESC']],
             where: {
                 email: {
                     [Sequelize.Op.eq]: userName,
@@ -65,7 +65,7 @@ export class UserRepository extends BaseRepository implements IUserRepository {
             return null;
         }
 
-        return new User(result[0].email, result[0].displayName, result[0].verified, result[0].picture, result[0].isSuperAdmin, result[0].locale, result[0].country);
+        return this.mapToUser(result[0]);
     }
 
     public async update(user: User, token: string): Promise<User> {

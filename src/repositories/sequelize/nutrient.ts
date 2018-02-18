@@ -42,7 +42,7 @@ export class NutrientRepository extends BaseRepository implements INutrientRepos
             return null;
         }
 
-        return new Nutrient(result.id, result.name, result.description, result.code, result.abbreviation, result.unit, result.sortOrder);
+        return this.mapToNutrient(result);
     }
 
     public async findById(nutrientId: number): Promise<Nutrient> {
@@ -59,7 +59,7 @@ export class NutrientRepository extends BaseRepository implements INutrientRepos
             return null;
         }
 
-        return new Nutrient(result.id, result.name, result.description, result.code, result.abbreviation, result.unit, result.sortOrder);
+        return this.mapToNutrient(result);
     }
 
     public async list(): Promise<Nutrient[]> {
@@ -70,7 +70,7 @@ export class NutrientRepository extends BaseRepository implements INutrientRepos
             ],
         });
 
-        return result.map((x) => new Nutrient(x.id, x.name, x.description, x.code, x.abbreviation, x.unit, x.sortOrder));
+        return result.map((x) => this.mapToNutrient(x));
     }
 
     public async update(nutrient: Nutrient): Promise<Nutrient> {

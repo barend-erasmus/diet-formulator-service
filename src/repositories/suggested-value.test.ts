@@ -1,8 +1,8 @@
 import { expect } from 'chai';
 import 'mocha';
-import { SuggestedValue } from '../../entities/suggested-value';
-import { container } from '../../ioc';
-import { ISuggestedValueRepository } from '../suggested-value';
+import { ISuggestedValueRepository } from './suggested-value';
+import { container } from '../ioc';
+import { SuggestedValue } from '../entities/suggested-value';
 
 describe('SuggestedValueRepository - Integration', () => {
 
@@ -35,11 +35,27 @@ describe('SuggestedValueRepository - Integration', () => {
 
         });
 
-        it('should return suggested value with diet group parent', async () => {
+        it('should return suggested value with diet group with parent', async () => {
 
             const result: SuggestedValue = await suggestedValueRepository.find(46, 153);
 
             expect(result.dietGroup.parent).to.be.not.null;
+
+        });
+
+        it('should return suggested value with ingredient', async () => {
+
+            const result: SuggestedValue = await suggestedValueRepository.find(46, 153);
+
+            expect(result.ingredient).to.be.not.null;
+
+        });
+
+        it('should return suggested value with ingredient with group', async () => {
+
+            const result: SuggestedValue = await suggestedValueRepository.find(46, 153);
+
+            expect(result.ingredient.group).to.be.not.null;
 
         });
 
