@@ -69,31 +69,11 @@ export class DietRepository extends BaseRepository implements IDietRepository {
             return null;
         }
 
-        let dietGroup: DietGroup = new DietGroup(
-            result.dietGroup.id,
-            result.dietGroup.name,
-            result.dietGroup.description,
-            result.dietGroup.dietGroupId ? new DietGroup(result.dietGroup.dietGroupId, null, null, null) : null,
-        );
+        let dietGroup: DietGroup = this.mapToDietGroup(result.dietGroup);
 
         dietGroup = await this.loadDietGroupParent(dietGroup);
 
-        return new Diet(result.id, result.name, result.description, result.userName, dietGroup,
-            result.dietValues.map((value) =>
-                new DietValue(
-                    value.id,
-                    value.minimum,
-                    value.maximum,
-                    new Nutrient(
-                        value.nutrient.id,
-                        value.nutrient.name,
-                        value.nutrient.description,
-                        value.nutrient.code,
-                        value.nutrient.abbreviation,
-                        value.nutrient.unit,
-                        value.nutrient.sortOrder,
-                    )),
-            ).sort((a, b) => a.nutrient.sortOrder - b.nutrient.sortOrder));
+        return this.mapToDiet(result, dietGroup);
     }
 
     public async findComparison(dietId: number): Promise<Diet> {
@@ -118,6 +98,14 @@ export class DietRepository extends BaseRepository implements IDietRepository {
         const result: any[] = await BaseRepository.models.Diet.findAll({
             include: [
                 {
+                    include: [
+                        {
+                            model: BaseRepository.models.Nutrient,
+                        },
+                    ],
+                    model: BaseRepository.models.DietValue,
+                },
+                {
                     model: BaseRepository.models.DietGroup,
                 },
             ],
@@ -134,20 +122,7 @@ export class DietRepository extends BaseRepository implements IDietRepository {
             },
         });
 
-        return result.map((x) => new Diet(
-            x.id,
-            x.name,
-            x.description,
-            x.userName,
-            new DietGroup(
-                x.dietGroup.id,
-                x.dietGroup.name,
-                x.dietGroup.description,
-                null,
-            ),
-            [],
-        ),
-        );
+        return result.map((x) => this.mapToDiet(x, this.mapToDietGroup(x.dietGroup)));
     }
 
     public async update(diet: Diet): Promise<Diet> {

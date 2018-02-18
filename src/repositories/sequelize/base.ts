@@ -8,6 +8,8 @@ import { IngredientGroup } from '../../entities/ingredient-group';
 import { Payment } from '../../entities/payment';
 import { Nutrient } from '../../entities/nutrient';
 import { IngredientValue } from '../../entities/ingredient-value';
+import { Diet } from '../../entities/diet';
+import { DietValue } from '../../entities/diet-value';
 
 export class BaseRepository {
     protected static models: {
@@ -397,6 +399,8 @@ export class BaseRepository {
                     if (!text.startsWith('Executing (default): SELECT')) {
                         logger.info(text.substring('Executing (default): '.length, text.length));
                     }
+
+                    console.log(text);
                 },
                 pool: {
                     idle: 10000,
@@ -442,6 +446,25 @@ export class BaseRepository {
         }
 
         return dietGroup;
+    }
+
+    protected mapToDiet(diet: any, dietGroup: DietGroup): Diet {
+        return new Diet(diet.id, diet.name, diet.description, diet.userName, dietGroup,
+            diet.dietValues.map((value) =>
+                new DietValue(
+                    value.id,
+                    value.minimum,
+                    value.maximum,
+                    new Nutrient(
+                        value.nutrient.id,
+                        value.nutrient.name,
+                        value.nutrient.description,
+                        value.nutrient.code,
+                        value.nutrient.abbreviation,
+                        value.nutrient.unit,
+                        value.nutrient.sortOrder,
+                    )),
+            ).sort((a, b) => a.nutrient.sortOrder - b.nutrient.sortOrder));
     }
 
     protected mapToDietGroup(dietGroup: any): DietGroup {

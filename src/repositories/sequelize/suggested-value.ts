@@ -38,6 +38,14 @@ export class SuggestedValueRepository extends BaseRepository implements ISuggest
                         {
                             model: BaseRepository.models.IngredientGroup,
                         },
+                        {
+                            include: [
+                                {
+                                    model: BaseRepository.models.Nutrient,
+                                },
+                            ],
+                            model: BaseRepository.models.IngredientValue,
+                        },
                     ],
                     model: BaseRepository.models.Ingredient,
                 },
@@ -73,6 +81,14 @@ export class SuggestedValueRepository extends BaseRepository implements ISuggest
                     include: [
                         {
                             model: BaseRepository.models.IngredientGroup,
+                        },
+                        {
+                            include: [
+                                {
+                                    model: BaseRepository.models.Nutrient,
+                                },
+                            ],
+                            model: BaseRepository.models.IngredientValue,
                         },
                     ],
                     model: BaseRepository.models.Ingredient,

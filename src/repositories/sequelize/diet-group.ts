@@ -38,12 +38,7 @@ export class DietGroupRepository extends BaseRepository implements IDietGroupRep
             return null;
         }
 
-        let dietGroup: DietGroup = new DietGroup(
-            result.id,
-            result.name,
-            result.description,
-            result.dietGroupId ? new DietGroup(result.dietGroupId, null, null, null) : null,
-        );
+        let dietGroup: DietGroup = this.mapToDietGroup(result);
 
         dietGroup = await this.loadDietGroupParent(dietGroup);
 
@@ -57,12 +52,7 @@ export class DietGroupRepository extends BaseRepository implements IDietGroupRep
             ],
         });
 
-        const dietGroups: DietGroup[] = result.map((x) => new DietGroup(
-            x.id,
-            x.name,
-            x.description,
-            x.dietGroupId ? new DietGroup(x.dietGroupId, null, null, null) : null,
-        ));
+        const dietGroups: DietGroup[] = result.map((x) => this.mapToDietGroup(x));
 
         for (const item of dietGroups) {
             await this.loadDietGroupParent(item);
@@ -83,12 +73,7 @@ export class DietGroupRepository extends BaseRepository implements IDietGroupRep
             },
         });
 
-        const dietGroups: DietGroup[] = result.map((x) => new DietGroup(
-            x.id,
-            x.name,
-            x.description,
-            x.dietGroupId ? new DietGroup(x.dietGroupId, null, null, null) : null,
-        ));
+        const dietGroups: DietGroup[] = result.map((x) => this.mapToDietGroup(x));
 
         for (const item of dietGroups) {
             await this.loadDietGroupParent(item);

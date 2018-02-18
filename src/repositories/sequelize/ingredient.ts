@@ -72,6 +72,30 @@ export class IngredientRepository extends BaseRepository implements IIngredientR
         return this.mapToIngredient(result);
     }
 
+    public async list(): Promise<Ingredient[]> {
+
+        const result: any[] = await BaseRepository.models.Ingredient.findAll({
+            include: [
+                {
+                    include: [
+                        {
+                            model: BaseRepository.models.Nutrient,
+                        },
+                    ],
+                    model: BaseRepository.models.IngredientValue,
+                },
+                {
+                    model: BaseRepository.models.IngredientGroup,
+                },
+            ],
+            order: [
+                ['name', 'ASC'],
+            ],
+        });
+
+        return result.map((x) => this.mapToIngredient(x));
+    }
+
     public async listSupplements(nutrientId: number): Promise<Ingredient[]> {
 
         const result: any[] = await BaseRepository.models.Supplement.findAll({
@@ -100,30 +124,6 @@ export class IngredientRepository extends BaseRepository implements IIngredientR
             },
         });
 
-        return result.map((x) => this.mapToIngredient(x));
-    }
-
-    public async list(): Promise<Ingredient[]> {
-
-        const result: any[] = await BaseRepository.models.Ingredient.findAll({
-            include: [
-                {
-                    include: [
-                        {
-                            model: BaseRepository.models.Nutrient,
-                        },
-                    ],
-                    model: BaseRepository.models.IngredientValue,
-                },
-                {
-                    model: BaseRepository.models.IngredientGroup,
-                },
-            ],
-            order: [
-                ['name', 'ASC'],
-            ],
-        });
-
-        return result.map((x) => this.mapToIngredient(x));
+        return result.map((x) => this.mapToIngredient(x.ingredient));
     }
 }

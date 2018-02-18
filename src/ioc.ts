@@ -48,6 +48,7 @@ import { PaymentService } from './services/payment';
 import { PaymentNotificationService } from './services/payment-notification';
 import { SubscriptionService } from './services/subscription';
 import { UserService } from './services/user';
+import { SuggestedValueService } from './services/suggested-value';
 
 const container: Container = new Container();
 
@@ -77,6 +78,7 @@ container.bind<NutrientService>('NutrientService').to(NutrientService);
 container.bind<PaymentService>('PaymentService').to(PaymentService);
 container.bind<PaymentNotificationService>('PaymentNotificationService').to(PaymentNotificationService);
 container.bind<SubscriptionService>('SubscriptionService').to(SubscriptionService);
+container.bind<SuggestedValueService>('SuggestedValueService').to(SuggestedValueService);
 container.bind<UserService>('UserService').to(UserService);
 
 container.bind<UserEventBus<UserEvent>>('UserEventBus').to(UserEventBus);
