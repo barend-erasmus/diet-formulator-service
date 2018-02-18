@@ -47,8 +47,8 @@ import { NutrientService } from './services/nutrient';
 import { PaymentService } from './services/payment';
 import { PaymentNotificationService } from './services/payment-notification';
 import { SubscriptionService } from './services/subscription';
-import { UserService } from './services/user';
 import { SuggestedValueService } from './services/suggested-value';
+import { UserService } from './services/user';
 
 const container: Container = new Container();
 

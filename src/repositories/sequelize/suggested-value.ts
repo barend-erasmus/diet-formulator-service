@@ -2,11 +2,11 @@ import { injectable } from 'inversify';
 import 'reflect-metadata';
 import * as Sequelize from 'sequelize';
 import { DietGroup } from '../../entities/diet-group';
+import { Ingredient } from '../../entities/ingredient';
+import { IngredientGroup } from '../../entities/ingredient-group';
 import { SuggestedValue } from '../../entities/suggested-value';
 import { ISuggestedValueRepository } from '../suggested-value';
 import { BaseRepository } from './base';
-import { Ingredient } from '../../entities/ingredient';
-import { IngredientGroup } from '../../entities/ingredient-group';
 
 @injectable()
 export class SuggestedValueRepository extends BaseRepository implements ISuggestedValueRepository {

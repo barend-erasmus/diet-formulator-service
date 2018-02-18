@@ -1,15 +1,15 @@
 import * as Sequelize from 'sequelize';
 import * as winston from 'winston';
-import { User } from '../../entities/user';
-import { SuggestedValue } from '../../entities/suggested-value';
+import { Diet } from '../../entities/diet';
 import { DietGroup } from '../../entities/diet-group';
+import { DietValue } from '../../entities/diet-value';
 import { Ingredient } from '../../entities/ingredient';
 import { IngredientGroup } from '../../entities/ingredient-group';
-import { Payment } from '../../entities/payment';
-import { Nutrient } from '../../entities/nutrient';
 import { IngredientValue } from '../../entities/ingredient-value';
-import { Diet } from '../../entities/diet';
-import { DietValue } from '../../entities/diet-value';
+import { Nutrient } from '../../entities/nutrient';
+import { Payment } from '../../entities/payment';
+import { SuggestedValue } from '../../entities/suggested-value';
+import { User } from '../../entities/user';
 
 export class BaseRepository {
     protected static models: {
@@ -35,7 +35,7 @@ export class BaseRepository {
 
     private static defineModels(): void {
 
-        const User = BaseRepository.sequelize.define('user', {
+        const UserModel = BaseRepository.sequelize.define('user', {
             country: {
                 allowNull: true,
                 type: Sequelize.STRING,
@@ -74,7 +74,7 @@ export class BaseRepository {
             },
         });
 
-        const Subscription = BaseRepository.sequelize.define('subscription', {
+        const SubscriptionModel = BaseRepository.sequelize.define('subscription', {
             active: {
                 allowNull: false,
                 type: Sequelize.BOOLEAN,
@@ -97,7 +97,7 @@ export class BaseRepository {
             },
         });
 
-        const Payment = BaseRepository.sequelize.define('payment', {
+        const PaymentModel = BaseRepository.sequelize.define('payment', {
             amount: {
                 allowNull: false,
                 type: Sequelize.NUMERIC,
@@ -140,7 +140,7 @@ export class BaseRepository {
             },
         });
 
-        const PaymentNotification = BaseRepository.sequelize.define('paymentNotification', {
+        const PaymentNotificationModel = BaseRepository.sequelize.define('paymentNotification', {
             paymentId: {
                 allowNull: false,
                 type: Sequelize.STRING,
@@ -151,7 +151,7 @@ export class BaseRepository {
             },
         });
 
-        const Nutrient = BaseRepository.sequelize.define('nutrient', {
+        const NutrientModel = BaseRepository.sequelize.define('nutrient', {
             abbreviation: {
                 allowNull: false,
                 type: Sequelize.STRING,
@@ -178,7 +178,7 @@ export class BaseRepository {
             },
         });
 
-        const DietGroup = BaseRepository.sequelize.define('dietGroup', {
+        const DietGroupModel = BaseRepository.sequelize.define('dietGroup', {
             description: {
                 allowNull: true,
                 type: Sequelize.TEXT,
@@ -189,7 +189,7 @@ export class BaseRepository {
             },
         });
 
-        const Diet = BaseRepository.sequelize.define('diet', {
+        const DietModel = BaseRepository.sequelize.define('diet', {
             description: {
                 allowNull: true,
                 type: Sequelize.STRING,
@@ -204,7 +204,7 @@ export class BaseRepository {
             },
         });
 
-        const DietValue = BaseRepository.sequelize.define('dietValue', {
+        const DietValueModel = BaseRepository.sequelize.define('dietValue', {
             maximum: {
                 allowNull: true,
                 type: Sequelize.FLOAT,
@@ -215,7 +215,7 @@ export class BaseRepository {
             },
         });
 
-        const IngredientGroup = BaseRepository.sequelize.define('ingredientGroup', {
+        const IngredientGroupModel = BaseRepository.sequelize.define('ingredientGroup', {
             description: {
                 allowNull: true,
                 type: Sequelize.STRING,
@@ -226,7 +226,7 @@ export class BaseRepository {
             },
         });
 
-        const Ingredient = BaseRepository.sequelize.define('ingredient', {
+        const IngredientModel = BaseRepository.sequelize.define('ingredient', {
             description: {
                 allowNull: true,
                 type: Sequelize.STRING,
@@ -241,18 +241,18 @@ export class BaseRepository {
             },
         });
 
-        const IngredientValue = BaseRepository.sequelize.define('ingredientValue', {
+        const IngredientValueModel = BaseRepository.sequelize.define('ingredientValue', {
             value: {
                 allowNull: false,
                 type: Sequelize.FLOAT,
             },
         });
 
-        const Supplement = BaseRepository.sequelize.define('supplement', {
+        const SupplementModel = BaseRepository.sequelize.define('supplement', {
 
         });
 
-        const SuggestedValue = BaseRepository.sequelize.define('suggestedValue', {
+        const SuggestedValueModel = BaseRepository.sequelize.define('suggestedValue', {
             description: {
                 allowNull: true,
                 type: Sequelize.STRING,
@@ -267,11 +267,11 @@ export class BaseRepository {
             },
         });
 
-        const ComparisonDiet = BaseRepository.sequelize.define('comparisonDiet', {
+        const ComparisonDietModel = BaseRepository.sequelize.define('comparisonDiet', {
 
         });
 
-        const Formulation = BaseRepository.sequelize.define('formulation', {
+        const FormulationModel = BaseRepository.sequelize.define('formulation', {
             cost: {
                 allowNull: false,
                 type: Sequelize.NUMERIC,
@@ -298,7 +298,7 @@ export class BaseRepository {
             },
         });
 
-        const FormulationIngredient = BaseRepository.sequelize.define('formulationIngredient', {
+        const FormulationIngredientModel = BaseRepository.sequelize.define('formulationIngredient', {
             cost: {
                 allowNull: false,
                 type: Sequelize.FLOAT,
@@ -313,71 +313,71 @@ export class BaseRepository {
             },
         });
 
-        DietGroup.hasMany(DietGroup, { foreignKey: { allowNull: true }, onDelete: 'CASCADE' });
-        DietGroup.belongsTo(DietGroup, { foreignKey: { allowNull: true }, onDelete: 'CASCADE' });
+        DietGroupModel.hasMany(DietGroupModel, { foreignKey: { allowNull: true }, onDelete: 'CASCADE' });
+        DietGroupModel.belongsTo(DietGroupModel, { foreignKey: { allowNull: true }, onDelete: 'CASCADE' });
 
-        DietGroup.hasMany(Diet, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
-        Diet.belongsTo(DietGroup, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
+        DietGroupModel.hasMany(DietModel, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
+        DietModel.belongsTo(DietGroupModel, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
 
-        Diet.hasMany(DietValue, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
-        DietValue.belongsTo(Diet, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
+        DietModel.hasMany(DietValueModel, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
+        DietValueModel.belongsTo(DietModel, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
 
-        Nutrient.hasMany(DietValue, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
-        DietValue.belongsTo(Nutrient, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
+        NutrientModel.hasMany(DietValueModel, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
+        DietValueModel.belongsTo(NutrientModel, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
 
-        IngredientGroup.hasMany(Ingredient, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
-        Ingredient.belongsTo(IngredientGroup, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
+        IngredientGroupModel.hasMany(IngredientModel, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
+        IngredientModel.belongsTo(IngredientGroupModel, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
 
-        Ingredient.hasMany(IngredientValue, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
-        IngredientValue.belongsTo(Ingredient, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
+        IngredientModel.hasMany(IngredientValueModel, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
+        IngredientValueModel.belongsTo(IngredientModel, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
 
-        Nutrient.hasMany(IngredientValue, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
-        IngredientValue.belongsTo(Nutrient, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
+        NutrientModel.hasMany(IngredientValueModel, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
+        IngredientValueModel.belongsTo(NutrientModel, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
 
-        Nutrient.hasMany(Supplement, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
-        Supplement.belongsTo(Nutrient, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
+        NutrientModel.hasMany(SupplementModel, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
+        SupplementModel.belongsTo(NutrientModel, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
 
-        Ingredient.hasMany(Supplement, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
-        Supplement.belongsTo(Ingredient, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
+        IngredientModel.hasMany(SupplementModel, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
+        SupplementModel.belongsTo(IngredientModel, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
 
-        DietGroup.hasMany(SuggestedValue, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
-        SuggestedValue.belongsTo(DietGroup, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
+        DietGroupModel.hasMany(SuggestedValueModel, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
+        SuggestedValueModel.belongsTo(DietGroupModel, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
 
-        Ingredient.hasMany(SuggestedValue, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
-        SuggestedValue.belongsTo(Ingredient, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
+        IngredientModel.hasMany(SuggestedValueModel, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
+        SuggestedValueModel.belongsTo(IngredientModel, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
 
-        Diet.hasMany(ComparisonDiet, { foreignKey: 'dietId', onDelete: 'CASCADE' });
-        ComparisonDiet.belongsTo(Diet, { foreignKey: 'dietId', onDelete: 'CASCADE' });
+        DietModel.hasMany(ComparisonDietModel, { foreignKey: 'dietId', onDelete: 'CASCADE' });
+        ComparisonDietModel.belongsTo(DietModel, { foreignKey: 'dietId', onDelete: 'CASCADE' });
 
-        Diet.hasMany(ComparisonDiet, { foreignKey: 'comparisonDietId', onDelete: 'CASCADE' });
-        ComparisonDiet.belongsTo(Diet, { foreignKey: 'comparisonDietId', onDelete: 'CASCADE' });
+        DietModel.hasMany(ComparisonDietModel, { foreignKey: 'comparisonDietId', onDelete: 'CASCADE' });
+        ComparisonDietModel.belongsTo(DietModel, { foreignKey: 'comparisonDietId', onDelete: 'CASCADE' });
 
-        Formulation.hasMany(FormulationIngredient, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
-        FormulationIngredient.belongsTo(Formulation, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
+        FormulationModel.hasMany(FormulationIngredientModel, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
+        FormulationIngredientModel.belongsTo(FormulationModel, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
 
-        Ingredient.hasMany(FormulationIngredient, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
-        FormulationIngredient.belongsTo(Ingredient, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
+        IngredientModel.hasMany(FormulationIngredientModel, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
+        FormulationIngredientModel.belongsTo(IngredientModel, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
 
-        Diet.hasMany(Formulation, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
-        Formulation.belongsTo(Diet, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
+        DietModel.hasMany(FormulationModel, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
+        FormulationModel.belongsTo(DietModel, { foreignKey: { allowNull: false }, onDelete: 'CASCADE' });
 
         BaseRepository.models = {
-            ComparisonDiet,
-            Diet,
-            DietGroup,
-            DietValue,
-            Formulation,
-            FormulationIngredient,
-            Ingredient,
-            IngredientGroup,
-            IngredientValue,
-            Nutrient,
-            Payment,
-            PaymentNotification,
-            Subscription,
-            SuggestedValue,
-            Supplement,
-            User,
+            ComparisonDiet: ComparisonDietModel,
+            Diet: DietModel,
+            DietGroup: DietGroupModel,
+            DietValue: DietValueModel,
+            Formulation: FormulationModel,
+            FormulationIngredient: FormulationIngredientModel,
+            Ingredient: IngredientModel,
+            IngredientGroup: IngredientGroupModel,
+            IngredientValue: IngredientValueModel,
+            Nutrient: NutrientModel,
+            Payment: PaymentModel,
+            PaymentNotification: PaymentNotificationModel,
+            Subscription: SubscriptionModel,
+            SuggestedValue: SuggestedValueModel,
+            Supplement: SupplementModel,
+            User: UserModel,
         };
     }
 
