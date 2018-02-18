@@ -29,7 +29,11 @@ export class DietGroupService extends BaseService {
 
         dietGroup.validate();
 
-        return this.dietGroupRepository.create(dietGroup);
+        let result: DietGroup = await this.dietGroupRepository.create(dietGroup);
+
+        result = await this.cleanDietGroup(result, userName);
+
+        return result;
     }
 
     public async find(
@@ -39,7 +43,11 @@ export class DietGroupService extends BaseService {
 
         await this.throwIfDoesNotHavePermission(userName, 'view-diet-group');
 
-        return this.dietGroupRepository.find(dietGroupId);
+        let result: DietGroup = await this.dietGroupRepository.find(dietGroupId);
+
+        result = await this.cleanDietGroup(result, userName);
+
+        return result;
     }
 
     public async list(
@@ -49,7 +57,11 @@ export class DietGroupService extends BaseService {
 
         await this.throwIfDoesNotHavePermission(userName, 'view-diet-group');
 
-        return this.dietGroupRepository.listSubGroups(dietGroupId);
+        let result: DietGroup[] = await this.dietGroupRepository.listSubGroups(dietGroupId);
+
+        result = await this.cleanList<DietGroup>(result, userName, this.cleanDietGroup);
+
+        return result;
     }
 
     public async listAll(
@@ -58,7 +70,11 @@ export class DietGroupService extends BaseService {
 
         await this.throwIfDoesNotHavePermission(userName, 'view-diet-group');
 
-        return this.dietGroupRepository.list();
+        let result: DietGroup[] = await this.dietGroupRepository.list();
+
+        result = await this.cleanList<DietGroup>(result, userName, this.cleanDietGroup);
+
+        return result;
     }
 
     public async update(
@@ -70,7 +86,11 @@ export class DietGroupService extends BaseService {
 
         dietGroup.validate();
 
-        return this.dietGroupRepository.update(dietGroup);
+        let result: DietGroup = await this.dietGroupRepository.update(dietGroup);
+
+        result = await this.cleanDietGroup(result, userName);
+
+        return result;
     }
 
 }

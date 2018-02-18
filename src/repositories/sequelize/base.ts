@@ -399,8 +399,6 @@ export class BaseRepository {
                     if (!text.startsWith('Executing (default): SELECT')) {
                         logger.info(text.substring('Executing (default): '.length, text.length));
                     }
-
-                    console.log(text);
                 },
                 pool: {
                     idle: 10000,

@@ -1,5 +1,6 @@
 import { inject, injectable, unmanaged } from 'inversify';
 import 'reflect-metadata';
+import { DietGroup } from '../entities/diet-group';
 import { Subscription } from '../entities/subscription';
 import { InsufficientPermissionsError } from '../errors/insufficient-permissions-error';
 import { ISubscriptionRepository } from '../repositories/subscription';
@@ -21,6 +22,19 @@ export class BaseService {
         const subscription: Subscription = await this.subscriptionRepository.find(userName);
 
         return subscription.hasPermission(permission);
+    }
+
+    protected async cleanList<T>(list: T[], userName: string, fn: (obj: T, userName: string) => Promise<T>): Promise<T[]> {
+
+        for (let obj of list) {
+            obj = await fn(obj, userName);
+        }
+
+        return list;
+    }
+
+    protected async cleanDietGroup(dietGroup: DietGroup, userName: string): Promise<DietGroup> {
+        return dietGroup;
     }
 
     protected async throwIfDoesNotHavePermission(userName: string, permission: string): Promise<void> {
