@@ -3,15 +3,15 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "build": "tsc & gulp build",
-    "coverage": "tsc & gulp build & istanbul cover node_modules/mocha/bin/_mocha --root ./src ./dist/**/*.test.js",
-    "debug": "tsc & gulp build & node --inspect ./dist/app.js",
-    "deploy": "tsc & gulp build & ssh-deployer -f deploy.json --host api.suite.worldofrations.com --username username --password password --workspace ./",
+    "build": "gulp build & tsc",
+    "coverage": "npm run build & istanbul cover node_modules/mocha/bin/_mocha --root ./src ./dist/**/*.test.js",
+    "debug": "npm run build & node --inspect ./dist/app.js",
+    "deploy": "npm run build & ssh-deployer -f deploy.json --host api.suite.worldofrations.com --username username --password password --workspace ./",
     "docs": "apidoc -i src/routes/ -o apidoc/",
-    "init": "tsc & gulp build & node ./dist/init.js",
+    "init": "npm run build & node ./dist/init.js",
     "lint": "tslint ./src/**/*.ts --fix --exclude ./src/**/*.d.ts",
-    "start": "tsc & gulp build & node ./dist/app.js",
-    "test": "tsc & gulp build & mocha --timeout 10000 ./dist/**/*.test.js"
+    "start": "npm run build & node ./dist/app.js",
+    "test": "npm run build & mocha --timeout 10000 ./dist/**/*.test.js"
   },
   "repository": {
     "type": "git",
@@ -51,6 +51,7 @@
     "@types/winston": "^2.3.7",
     "chai": "^4.1.2",
     "gulp": "^3.9.1",
+    "gulp-clean": "^0.4.0",
     "mocha": "^4.0.1",
     "run-sequence": "^2.2.1",
     "sinon": "^4.2.2",
