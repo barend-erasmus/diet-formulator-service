@@ -1,4 +1,5 @@
 import { injectable } from 'inversify';
+import * as path from 'path';
 import 'reflect-metadata';
 import * as winston from 'winston';
 import { ILogger } from '../interfaces/logger';
@@ -8,11 +9,11 @@ export class WinstonLogger implements ILogger {
 
     public logger: any;
 
-    constructor() {
+    constructor(name: string) {
         this.logger = new (winston.Logger)({
             transports: [
                 new (winston.transports.Console)(),
-                new (winston.transports.File)({ filename: 'diet-formulator-service.log' }),
+                new (winston.transports.File)({ filename: path.join(__dirname, `diet-formulator-service-${name}.log`) }),
             ],
         });
     }

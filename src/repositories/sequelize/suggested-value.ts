@@ -16,7 +16,6 @@ export class SuggestedValueRepository extends BaseRepository implements ISuggest
     }
 
     public async create(suggestedValue: SuggestedValue): Promise<SuggestedValue> {
-
         const result: any = await BaseRepository.models.SuggestedValue.create({
             description: suggestedValue.description,
             dietGroupId: suggestedValue.dietGroup.id,

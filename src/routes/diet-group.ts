@@ -9,8 +9,8 @@ export class DietGroupRouter {
     public static async create(req: express.Request, res: express.Response) {
         try {
             const result: DietGroup = await container.get<DietGroupService>('DietGroupService').create(new DietGroup(req.body.id, req.body.name, req.body.description, req.body.parent ?
-                    new DietGroup(req.body.parent.id, req.body.parent.name, req.body.parent.description, null) :
-                    null),
+                new DietGroup(req.body.parent.id, req.body.parent.name, req.body.parent.description, null) :
+                null),
                 req['user'].email);
 
             res.json(result);
@@ -41,7 +41,6 @@ export class DietGroupRouter {
 
     public static async listAll(req: express.Request, res: express.Response) {
         try {
-
             const result: DietGroup[] = await container.get<DietGroupService>('DietGroupService').listAll(req['user'].email);
 
             res.json(result);
@@ -52,7 +51,6 @@ export class DietGroupRouter {
 
     public static async update(req: express.Request, res: express.Response) {
         try {
-
             const result: DietGroup = await container.get<DietGroupService>('DietGroupService').update(
                 new DietGroup(req.body.id, req.body.name, req.body.description, req.body.parent ?
                     new DietGroup(req.body.parent.id, req.body.parent.name, req.body.parent.description, null) :

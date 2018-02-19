@@ -94,7 +94,7 @@ container.bind<IPaymentGateway>('IPaymentGateway').toDynamicValue((context: inte
 
 container.bind<ICache>('ICache').toConstantValue(new NullCache());
 
-container.bind<ILogger>('ILogger').to(WinstonLogger);
+container.bind<ILogger>('IUserEventLogger').toConstantValue(new WinstonLogger('user-event'));
 
 export {
     container,

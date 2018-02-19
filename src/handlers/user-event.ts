@@ -5,12 +5,15 @@ import { Subscription } from '../entities/subscription';
 import { TrialSubscription } from '../entities/trail-subscription';
 import { UserEvent } from '../events/user';
 import { IEventHandler } from '../interfaces/event-handler';
+import { ILogger } from '../interfaces/logger';
 import { ISubscriptionRepository } from '../repositories/subscription';
 
 @injectable()
 export class UserEventHandler implements IEventHandler<UserEvent> {
 
     constructor(
+        @inject('IUserEventLogger')
+        private logger: ILogger,
         @inject('ISubscriptionRepository')
         private subscriptionRepository: ISubscriptionRepository,
     ) {
@@ -18,8 +21,9 @@ export class UserEventHandler implements IEventHandler<UserEvent> {
     }
 
     public async handle(event: UserEvent): Promise<UserEvent> {
+        if (event.type === 'create') {
+            this.logger.info(`User Created: ${event.userName}`);
 
-        if (event.type) {
             const subscription: Subscription = await this.subscriptionRepository.find(event.userName);
 
             if (!subscription) {

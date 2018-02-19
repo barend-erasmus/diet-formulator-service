@@ -24,7 +24,6 @@ export class NutrientService extends BaseService {
         nutrient: Nutrient,
         userName: string,
     ): Promise<Nutrient> {
-
         if (!await this.hasPermission(userName, 'create-nutrient')) {
             throw new Error('Unauthorized');
         }
@@ -44,7 +43,6 @@ export class NutrientService extends BaseService {
         nutrientId: number,
         userName: string,
     ): Promise<Nutrient> {
-
         if (!await this.hasPermission(userName, 'view-nutrient')) {
             throw new Error('Unauthorized');
         }
@@ -55,7 +53,6 @@ export class NutrientService extends BaseService {
     public async list(
         userName: string,
     ): Promise<Nutrient[]> {
-
         if (!await this.hasPermission(userName, 'view-nutrient')) {
             throw new Error('Unauthorized');
         }
@@ -67,7 +64,6 @@ export class NutrientService extends BaseService {
         nutrient: Nutrient,
         userName: string,
     ): Promise<Nutrient> {
-
         if (!await this.hasPermission(userName, 'update-nutrient')) {
             throw new Error('Unauthorized');
         }

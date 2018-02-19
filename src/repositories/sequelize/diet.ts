@@ -15,7 +15,6 @@ export class DietRepository extends BaseRepository implements IDietRepository {
     }
 
     public async create(diet: Diet): Promise<Diet> {
-
         const result: any = await BaseRepository.models.Diet.create({
             description: diet.description,
             dietGroupId: diet.group.id,
@@ -43,7 +42,6 @@ export class DietRepository extends BaseRepository implements IDietRepository {
     }
 
     public async find(dietId: number): Promise<Diet> {
-
         const result: any = await BaseRepository.models.Diet.find({
             include: [
                 {
@@ -77,7 +75,6 @@ export class DietRepository extends BaseRepository implements IDietRepository {
     }
 
     public async findComparison(dietId: number): Promise<Diet> {
-
         const result: any = await BaseRepository.models.ComparisonDiet.find({
             where: {
                 dietId: {
@@ -94,7 +91,6 @@ export class DietRepository extends BaseRepository implements IDietRepository {
     }
 
     public async list(dietGroupId: number, userName: string): Promise<Diet[]> {
-
         const result: any[] = await BaseRepository.models.Diet.findAll({
             include: [
                 {
@@ -126,7 +122,6 @@ export class DietRepository extends BaseRepository implements IDietRepository {
     }
 
     public async update(diet: Diet): Promise<Diet> {
-
         const result: any = await BaseRepository.models.Diet.find({
             include: [
                 {

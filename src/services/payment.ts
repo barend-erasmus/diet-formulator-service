@@ -29,7 +29,6 @@ export class PaymentService extends BaseService {
     }
 
     public async createRedirectUrl(subscription: string, userName: string): Promise<string> {
-
         this.throwIfSubscriptionInvalid(subscription);
 
         let payment: Payment = await this.buildPayment(30, subscription);
@@ -44,14 +43,12 @@ export class PaymentService extends BaseService {
     }
 
     public async list(userName: string): Promise<Payment[]> {
-
         await this.throwIfDoesNotHavePermission(userName, 'view-billing');
 
         return this.paymentRepository.list(userName);
     }
 
     public async verify(paymentId: string, userName: string): Promise<Payment> {
-
         const paid: boolean = await this.paymentGateway.verify(paymentId);
 
         if (!paid) {
@@ -67,7 +64,6 @@ export class PaymentService extends BaseService {
     }
 
     private async buildPayment(period: number, subscription: string): Promise<Payment> {
-
         const amount: number = this.getAmountOfSubscription(subscription);
 
         let payment: Payment = new Payment(amount, false, 'USD', false, null, null, 30, null, subscription);

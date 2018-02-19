@@ -25,7 +25,6 @@ export class UserService extends BaseService {
     }
 
     public async login(user: User, token: string): Promise<User> {
-
         let result: User = await this.userRepository.findByUserName(user.email);
 
         if (!result) {

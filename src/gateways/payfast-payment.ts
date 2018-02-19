@@ -23,24 +23,23 @@ export class PayFastPaymentGateway implements IPaymentGateway {
     }
 
     public async create(payment: Payment, user: User): Promise<Payment> {
-
         await this.throwIfInvalidCurrency(payment);
 
         const paymentId: string = uuid.v4();
 
         const params: any = {
+            amount: payment.amount.toString(),
+            cancel_url: `https://suite.worldofrations.com/billing?paymentId=${paymentId}`,
+            email_address: user.email,
+            item_description: `${payment.subscription.toUpperCase()} Subscription for ${payment.period} Days`,
+            item_name: 'World of Rations Suite Subscription',
+            m_payment_id: paymentId,
             merchant_id: this.sandbox ? '10000100' : this.merchantId,
             merchant_key: this.sandbox ? '46f0cd694581a' : this.merchantSecret,
-            return_url: `https://suite.worldofrations.com/billing?paymentId=${paymentId}`,
-            cancel_url: `https://suite.worldofrations.com/billing?paymentId=${paymentId}`,
-            notify_url: 'https://api.suite.worldofrations.com/api/payment/notify',
             name_first: user.displayName,
-            email_address: user.email,
-            m_payment_id: paymentId,
-            amount: payment.amount.toString(),
-            item_name: 'World of Rations Suite Subscription',
-            item_description: `${payment.subscription.toUpperCase()} Subscription for ${payment.period} Days`,
-            // payment_method: 'cc',
+            notify_url: 'https://api.suite.worldofrations.com/api/payment/notify',
+            payment_method: 'cc',
+            return_url: `https://suite.worldofrations.com/billing?paymentId=${paymentId}`,
         };
 
         const sortedKeys: string[] = Object.keys(params);
@@ -92,7 +91,6 @@ export class PayFastPaymentGateway implements IPaymentGateway {
     }
 
     private async throwIfInvalidCurrency(payment: Payment): Promise<void> {
-
         const defaultCurrency: string = await this.defaultCurrency();
 
         if (payment.currency !== defaultCurrency) {

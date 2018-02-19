@@ -40,7 +40,6 @@ export class FormulationService extends BaseService {
     }
 
     public async create(diet: Diet, formulationIngredients: FormulationIngredient[], mixWeight: number, userName: string): Promise<Formulation> {
-
         await this.throwIfDoesNotHavePermission(userName, 'create-formulation');
 
         diet = await this.dietRepository.find(diet.id);
@@ -63,7 +62,6 @@ export class FormulationService extends BaseService {
     }
 
     public async find(formulationId: number, userName: string): Promise<Formulation> {
-
         await this.throwIfDoesNotHavePermission(userName, 'view-formulation');
 
         const formulation: Formulation = await this.findFormulatedFormulation(formulationId, userName);
@@ -74,7 +72,6 @@ export class FormulationService extends BaseService {
     }
 
     public async list(userName: string): Promise<Formulation[]> {
-
         await this.throwIfDoesNotHavePermission(userName, 'view-formulation');
 
         const formulations: Formulation[] = await this.formulationRepository.list(userName);
@@ -83,7 +80,6 @@ export class FormulationService extends BaseService {
     }
 
     public async composition(formulationId: number, userName: string): Promise<FormulationCompositionValue[]> {
-
         await this.throwIfDoesNotHavePermission(userName, 'view-formulation-composition');
 
         const formulation: Formulation = await this.findFormulatedFormulation(formulationId, userName);
@@ -94,7 +90,6 @@ export class FormulationService extends BaseService {
     }
 
     public async supplement(formulationId: number, userName: string): Promise<Supplement[]> {
-
         await this.throwIfDoesNotHavePermission(userName, 'view-formulation-supplement');
 
         const formulation: Formulation = await this.findFormulatedFormulation(formulationId, userName);
@@ -131,7 +126,6 @@ export class FormulationService extends BaseService {
     }
 
     public async calculateFormulationComposition(formulation: Formulation, comparisonDiet: Diet): Promise<FormulationCompositionValue[]> {
-
         const result: FormulationCompositionValue[] = [];
 
         if (!comparisonDiet) {
@@ -176,7 +170,6 @@ export class FormulationService extends BaseService {
     }
 
     private async findFormulatedFormulation(formulationId: number, userName: string): Promise<Formulation> {
-
         let formulation: Formulation = await this.formulationRepository.find(formulationId);
 
         formulation = await this.formulator.formulate(formulation);

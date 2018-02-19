@@ -18,7 +18,6 @@ export class IngredientRouter {
 
     public static async list(req: express.Request, res: express.Response) {
         try {
-
             const result: Ingredient[] = await container.get<IngredientService>('IngredientService').list(req['user'].email);
 
             res.json(result);

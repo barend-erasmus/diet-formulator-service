@@ -16,7 +16,6 @@ export class PaymentNotificationRepository extends BaseRepository implements IPa
     }
 
     public async create(paymentId: string, status: string): Promise<void> {
-
         const result: any = await BaseRepository.models.PaymentNotification.create({
             paymentId,
             status,
@@ -24,7 +23,6 @@ export class PaymentNotificationRepository extends BaseRepository implements IPa
     }
 
     public async status(paymentId: string): Promise<string> {
-
         const result: any = await BaseRepository.models.PaymentNotification.find({
             where: {
                 paymentId: {

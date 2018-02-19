@@ -21,7 +21,6 @@ export class FormulationRepository extends BaseRepository implements IFormulatio
     }
 
     public async create(formulation: Formulation, userName: string): Promise<Formulation> {
-
         const result: any = await BaseRepository.models.Formulation.create({
 
             cost: formulation.cost,
@@ -54,7 +53,6 @@ export class FormulationRepository extends BaseRepository implements IFormulatio
     }
 
     public async find(formulationId: number): Promise<Formulation> {
-
         const result: any = await BaseRepository.models.Formulation.find({
             include: [
                 {

@@ -16,7 +16,6 @@ export class IngredientRepository extends BaseRepository implements IIngredientR
     }
 
     public async create(ingredient: Ingredient): Promise<Ingredient> {
-
         const result: any = await BaseRepository.models.Ingredient.create({
             description: ingredient.description,
             ingredientGroupId: ingredient.group.id,
@@ -43,7 +42,6 @@ export class IngredientRepository extends BaseRepository implements IIngredientR
     }
 
     public async find(ingredientId: number): Promise<Ingredient> {
-
         const result: any = await BaseRepository.models.Ingredient.find({
             include: [
                 {
@@ -73,7 +71,6 @@ export class IngredientRepository extends BaseRepository implements IIngredientR
     }
 
     public async list(): Promise<Ingredient[]> {
-
         const result: any[] = await BaseRepository.models.Ingredient.findAll({
             include: [
                 {
@@ -97,7 +94,6 @@ export class IngredientRepository extends BaseRepository implements IIngredientR
     }
 
     public async listSupplements(nutrientId: number): Promise<Ingredient[]> {
-
         const result: any[] = await BaseRepository.models.Supplement.findAll({
             include: [
                 {

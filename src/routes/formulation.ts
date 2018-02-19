@@ -32,7 +32,6 @@ export class FormulationRouter {
 
     public static async find(req: express.Request, res: express.Response) {
         try {
-
             let result: Formulation = await container.get<ICache>('ICache').getUsingObjectKey({
                 id: req.query.id,
                 key: 'formulation',
@@ -67,7 +66,6 @@ export class FormulationRouter {
 
     public static async supplement(req: express.Request, res: express.Response) {
         try {
-
             let result: Supplement[] = await container.get<ICache>('ICache').getUsingObjectKey({
                 id: req.query.id,
                 key: 'supplement',
@@ -92,7 +90,6 @@ export class FormulationRouter {
 
     public static async composition(req: express.Request, res: express.Response) {
         try {
-
             let result: FormulationCompositionValue[] = await container.get<ICache>('ICache').getUsingObjectKey({
                 id: req.query.id,
                 key: 'composition',

@@ -12,14 +12,12 @@ export class MemoryCache implements ICache {
     }
 
     public async addUsingObjectKey(key: any, value: any, expiry: number): Promise<void> {
-
         const uniqueKey: string = this.buildUniqueKey(key);
 
         this.add(uniqueKey, value, expiry);
     }
 
     public async get(key: string): Promise<any> {
-
         if (MemoryCache.items[key]) {
             return MemoryCache.items[key];
         }

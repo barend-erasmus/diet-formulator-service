@@ -51,7 +51,6 @@ export class DietService extends BaseService {
         dietId: number,
         userName: string,
     ): Promise<Diet> {
-
         await this.throwIfDoesNotHavePermission(userName, 'view-diet');
 
         let diet: Diet = await this.dietRepository.find(dietId);
@@ -65,7 +64,6 @@ export class DietService extends BaseService {
         dietGroupId: number,
         userName: string,
     ): Promise<Diet[]> {
-
         await this.throwIfDoesNotHavePermission(userName, 'view-diet');
 
         let result: Diet[] = await this.dietRepository.list(dietGroupId, userName);
@@ -79,7 +77,6 @@ export class DietService extends BaseService {
         diet: Diet,
         userName: string,
     ): Promise<Diet> {
-
         diet.setUserName(userName);
 
         await this.throwIfDoesNotHavePermission(userName, 'create-diet');

@@ -9,7 +9,6 @@ export class UserRouter {
 
     public static async info(req: express.Request, res: express.Response) {
         try {
-
             const token: string = UserRouter.getAuthorizationToken(req);
 
             let user: User = await container.get<UserService>('UserService').find(token);
@@ -49,7 +48,6 @@ export class UserRouter {
 
     public static async update(req: express.Request, res: express.Response) {
         try {
-
             const result: User = await container.get<UserService>('UserService').update(req.body, req.get('Authorization').split(' ')[1]);
 
             res.json(result);

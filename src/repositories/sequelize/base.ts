@@ -34,7 +34,6 @@ export class BaseRepository {
     protected static sequelize: Sequelize.Sequelize = null;
 
     private static defineModels(): void {
-
         const UserModel = BaseRepository.sequelize.define('user', {
             country: {
                 allowNull: true,
@@ -382,7 +381,6 @@ export class BaseRepository {
     }
 
     constructor(private host: string, private userName: string, private password: string) {
-
         if (!BaseRepository.sequelize) {
 
             const logger = new (winston.Logger)({
@@ -427,7 +425,6 @@ export class BaseRepository {
     }
 
     protected async loadDietGroupParent(dietGroup: DietGroup): Promise<DietGroup> {
-
         if (dietGroup.parent) {
 
             const result: any = await BaseRepository.models.DietGroup.find({

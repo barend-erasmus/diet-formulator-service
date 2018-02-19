@@ -1,11 +1,11 @@
 import { inject, injectable, unmanaged } from 'inversify';
 import 'reflect-metadata';
+import { Diet } from '../entities/diet';
 import { DietGroup } from '../entities/diet-group';
 import { Subscription } from '../entities/subscription';
 import { InsufficientPermissionsError } from '../errors/insufficient-permissions-error';
 import { ISubscriptionRepository } from '../repositories/subscription';
 import { IUserRepository } from '../repositories/user';
-import { Diet } from '../entities/diet';
 
 @injectable()
 export class BaseService {
@@ -26,7 +26,6 @@ export class BaseService {
     }
 
     protected async cleanDiet(diet: Diet, userName: string): Promise<Diet> {
-
         if (!this.hasPermission(userName, 'view-diet-values')) {
             diet.removeValues();
         }
@@ -43,7 +42,6 @@ export class BaseService {
     }
 
     protected async cleanList<T>(list: T[], userName: string, fn: (obj: T, userName: string) => Promise<T>): Promise<T[]> {
-
         for (let obj of list) {
             obj = await fn(obj, userName);
         }

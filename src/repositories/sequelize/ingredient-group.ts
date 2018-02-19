@@ -13,7 +13,6 @@ export class IngredientGroupRepository extends BaseRepository implements IIngred
     }
 
     public async create(ingredientGroup: IngredientGroup): Promise<IngredientGroup> {
-
         const result: any = await BaseRepository.models.IngredientGroup.create({
             description: ingredientGroup.description,
             name: ingredientGroup.name,
@@ -25,7 +24,6 @@ export class IngredientGroupRepository extends BaseRepository implements IIngred
     }
 
     public async list(): Promise<IngredientGroup[]> {
-
         const result: any[] = await BaseRepository.models.IngredientGroup.findAll({
             order: [
                 ['name', 'ASC'],

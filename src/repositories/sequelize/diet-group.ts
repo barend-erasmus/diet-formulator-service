@@ -25,7 +25,6 @@ export class DietGroupRepository extends BaseRepository implements IDietGroupRep
     }
 
     public async find(dietGroupId: number): Promise<DietGroup> {
-
         const result: any = await BaseRepository.models.DietGroup.find({
             where: {
                 id: {
@@ -83,7 +82,6 @@ export class DietGroupRepository extends BaseRepository implements IDietGroupRep
     }
 
     public async update(dietGroup: DietGroup): Promise<DietGroup> {
-
         const result: any = await BaseRepository.models.DietGroup.find({
             where: {
                 id: {

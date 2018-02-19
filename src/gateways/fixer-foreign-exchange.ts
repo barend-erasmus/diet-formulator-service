@@ -7,7 +7,6 @@ import { IForeignExchangeGateway } from '../interfaces/foreign-exchange-gateway'
 export class FixerForeignExchangeGateway implements IForeignExchangeGateway {
 
     public async convert(amount: number, fromCurrency: string, toCurrency: string): Promise<number> {
-
         const response = await request({
             json: true,
             method: 'GET',

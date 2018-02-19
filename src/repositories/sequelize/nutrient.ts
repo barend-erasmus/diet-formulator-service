@@ -13,7 +13,6 @@ export class NutrientRepository extends BaseRepository implements INutrientRepos
     }
 
     public async create(nutrient: Nutrient): Promise<Nutrient> {
-
         const result: any = await BaseRepository.models.Nutrient.create({
             abbreviation: nutrient.abbreviation,
             code: nutrient.code,
@@ -29,7 +28,6 @@ export class NutrientRepository extends BaseRepository implements INutrientRepos
     }
 
     public async find(code: string): Promise<Nutrient> {
-
         const result: any = await BaseRepository.models.Nutrient.find({
             where: {
                 code: {
@@ -46,7 +44,6 @@ export class NutrientRepository extends BaseRepository implements INutrientRepos
     }
 
     public async findById(nutrientId: number): Promise<Nutrient> {
-
         const result: any = await BaseRepository.models.Nutrient.find({
             where: {
                 id: {
@@ -63,7 +60,6 @@ export class NutrientRepository extends BaseRepository implements INutrientRepos
     }
 
     public async list(): Promise<Nutrient[]> {
-
         const result: any[] = await BaseRepository.models.Nutrient.findAll({
             order: [
                 ['sortOrder', 'ASC'],
@@ -74,7 +70,6 @@ export class NutrientRepository extends BaseRepository implements INutrientRepos
     }
 
     public async update(nutrient: Nutrient): Promise<Nutrient> {
-
         const result: any = await BaseRepository.models.Nutrient.find({
             where: {
                 id: {

@@ -22,7 +22,6 @@ export class PayPalPaymentGateway implements IPaymentGateway {
     }
 
     public async create(payment: Payment, user: User): Promise<Payment> {
-
         await this.throwIfInvalidCurrency(payment);
 
         const accessToken: string = await this.getAccessToken();
@@ -100,7 +99,6 @@ export class PayPalPaymentGateway implements IPaymentGateway {
     }
 
     private async getAccessToken(): Promise<string> {
-
         if (!PayPalPaymentGateway.accessToken) {
             const response = await request({
                 body: 'grant_type=client_credentials',
@@ -121,7 +119,6 @@ export class PayPalPaymentGateway implements IPaymentGateway {
     }
 
     private async throwIfInvalidCurrency(payment: Payment): Promise<void> {
-
         const defaultCurrency: string = await this.defaultCurrency();
 
         if (payment.currency !== defaultCurrency) {

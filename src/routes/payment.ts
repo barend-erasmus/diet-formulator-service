@@ -10,7 +10,6 @@ export class PaymentRouter {
 
     public static async create(req: express.Request, res: express.Response) {
         try {
-
             const result: string = await container.get<PaymentService>('PaymentService').createRedirectUrl(req.query.subscription, req['user'].email);
 
             res.json({
@@ -23,7 +22,6 @@ export class PaymentRouter {
 
     public static async list(req: express.Request, res: express.Response) {
         try {
-
             const result: Payment[] = await container.get<PaymentService>('PaymentService').list(req['user'].email);
 
             res.json(result);
@@ -34,7 +32,6 @@ export class PaymentRouter {
 
     public static async notify(req: express.Request, res: express.Response) {
         try {
-
             await container.get<PaymentNotificationService>('PaymentNotificationService').create(req.body.m_payment_id, req.body.payment_status);
 
             res.json('OK');
@@ -45,7 +42,6 @@ export class PaymentRouter {
 
     public static async verify(req: express.Request, res: express.Response) {
         try {
-
             const result: Payment = await container.get<PaymentService>('PaymentService').verify(req.query.paymentId, req['user'].email);
 
             res.json(result);

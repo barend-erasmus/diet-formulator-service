@@ -13,7 +13,6 @@ export class UserRepository extends BaseRepository implements IUserRepository {
     }
 
     public async create(user: User, token: string): Promise<User> {
-
         const result: any = await BaseRepository.models.User.create({
             country: user.country,
             displayName: user.displayName,
@@ -30,7 +29,6 @@ export class UserRepository extends BaseRepository implements IUserRepository {
     }
 
     public async find(token: string): Promise<User> {
-
         const result: any = await BaseRepository.models.User.find({
             where: {
                 expiryTimestamp: {
@@ -50,7 +48,6 @@ export class UserRepository extends BaseRepository implements IUserRepository {
     }
 
     public async findByUserName(userName: string): Promise<User> {
-
         const result: any[] = await BaseRepository.models.User.findAll({
             limit: 1,
             order: [['expiryTimestamp', 'DESC']],

@@ -10,7 +10,6 @@ import { IFormulator } from '../interfaces/formulator';
 export class LeastCostRationFormulator implements IFormulator {
 
     public async formulate(formulation: Formulation): Promise<Formulation> {
-
         let results: any;
 
         const model = {

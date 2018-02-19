@@ -17,7 +17,6 @@ export class PaymentRepository extends BaseRepository implements IPaymentReposit
     }
 
     public async create(payment: Payment, userName: string): Promise<Payment> {
-
         const result: any = await BaseRepository.models.Payment.create({
             amount: payment.amount,
             assigned: payment.assigned,
@@ -35,7 +34,6 @@ export class PaymentRepository extends BaseRepository implements IPaymentReposit
     }
 
     public async find(paymentId: string, userName: string): Promise<Payment> {
-
         const result: any = await BaseRepository.models.Payment.find({
             where: {
                 paymentId: {
@@ -55,7 +53,6 @@ export class PaymentRepository extends BaseRepository implements IPaymentReposit
     }
 
     public async list(userName: string): Promise<Payment[]> {
-
         const result: any[] = await BaseRepository.models.Payment.findAll({
             where: {
                 userName: {
@@ -68,7 +65,6 @@ export class PaymentRepository extends BaseRepository implements IPaymentReposit
     }
 
     public async update(payment: Payment, userName: string): Promise<Payment> {
-
         const result: any = await BaseRepository.models.Payment.find({
             where: {
                 paymentId: {

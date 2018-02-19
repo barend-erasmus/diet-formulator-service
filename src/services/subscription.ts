@@ -28,7 +28,6 @@ export class SubscriptionService extends BaseService {
     }
 
     public async change(subscription: string, userName: string): Promise<Subscription> {
-
         const payment: Payment = null;
 
         if (this.requiresPayment(subscription)) {
@@ -77,7 +76,6 @@ export class SubscriptionService extends BaseService {
     }
 
     private getExpiryDateForSubscription(subscription: string, period: number): Date {
-
         if (period) {
             return moment().add(period, 'days').toDate();
         }

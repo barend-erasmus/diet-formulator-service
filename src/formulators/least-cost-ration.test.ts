@@ -16,7 +16,6 @@ describe('LeastCostRationFormulator', () => {
     describe('formulate', () => {
 
         it('should return feasible formulation', async () => {
-
             const formulator: IFormulator = container.get<IFormulator>('IFormulator');
 
             const diet: Diet = new Diet(null, null, null, null, null, [
@@ -52,7 +51,6 @@ describe('LeastCostRationFormulator', () => {
 
             expect(result.feasible).to.be.true;
             expect(Math.round(result.cost * 100) / 100).to.eq(121.08);
-
         });
 
     });

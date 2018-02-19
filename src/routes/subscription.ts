@@ -8,7 +8,6 @@ export class SubscriptionRouter {
 
     public static async change(req: express.Request, res: express.Response) {
         try {
-
             const result: Subscription = await container.get<SubscriptionService>('SubscriptionService').change(req.query.subscription, req['user'].email);
 
             res.json(result);
@@ -19,7 +18,6 @@ export class SubscriptionRouter {
 
     public static async find(req: express.Request, res: express.Response) {
         try {
-
             const result: Subscription = await container.get<SubscriptionService>('SubscriptionService').find(req['user'].email);
 
             res.json(result);

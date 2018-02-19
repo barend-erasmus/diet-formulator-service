@@ -12,7 +12,6 @@ import { ISubscriptionFactory } from '../interfaces/subscription-factory';
 export class SubscriptionFactory implements ISubscriptionFactory {
 
     public create(active: boolean, expiryTimestamp: Date, startTimestamp: Date, type: string): Subscription {
-
         let subscription: Subscription = null;
 
         switch (type) {
@@ -48,7 +47,6 @@ export class SubscriptionFactory implements ISubscriptionFactory {
     }
 
     private validSubscription(subscription: Subscription): boolean {
-
         if (subscription.expiryTimestamp && subscription.expiryTimestamp.getTime() < new Date().getTime()) {
             return false;
         }

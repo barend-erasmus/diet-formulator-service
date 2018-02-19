@@ -19,7 +19,6 @@ export class SubscriptionRepository extends BaseRepository implements ISubscript
     }
 
     public async create(subscription: Subscription, userName: string): Promise<Subscription> {
-
         const result: any = await BaseRepository.models.Subscription.create({
             active: subscription.active,
             expiryTimestamp: subscription.expiryTimestamp ? subscription.expiryTimestamp.getTime() : null,
@@ -32,7 +31,6 @@ export class SubscriptionRepository extends BaseRepository implements ISubscript
     }
 
     public async find(userName: string): Promise<Subscription> {
-
         const result: any = await BaseRepository.models.Subscription.find({
             where: {
                 active: {
@@ -52,7 +50,6 @@ export class SubscriptionRepository extends BaseRepository implements ISubscript
     }
 
     public async update(subscription: Subscription, userName: string): Promise<Subscription> {
-
         const result: any = await BaseRepository.models.Subscription.find({
             where: {
                 active: {

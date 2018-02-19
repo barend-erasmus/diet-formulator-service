@@ -26,7 +26,6 @@ export class SuggestedValueService extends BaseService {
     }
 
     public async find(dietId: number, ingredientId: number, userName: string): Promise<SuggestedValue> {
-
         await this.throwIfDoesNotHavePermission(userName, 'view-suggested-value');
 
         const diet: Diet = await this.dietRepository.find(dietId);
@@ -46,5 +45,4 @@ export class SuggestedValueService extends BaseService {
 
         return null;
     }
-
 }
