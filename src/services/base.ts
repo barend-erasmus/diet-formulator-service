@@ -5,6 +5,7 @@ import { Subscription } from '../entities/subscription';
 import { InsufficientPermissionsError } from '../errors/insufficient-permissions-error';
 import { ISubscriptionRepository } from '../repositories/subscription';
 import { IUserRepository } from '../repositories/user';
+import { Diet } from '../entities/diet';
 
 @injectable()
 export class BaseService {
@@ -24,6 +25,23 @@ export class BaseService {
         return subscription.hasPermission(permission);
     }
 
+    protected async cleanDiet(diet: Diet, userName: string): Promise<Diet> {
+
+        if (!this.hasPermission(userName, 'view-diet-values')) {
+            diet.removeValues();
+        }
+
+        if (!await this.hasPermission(userName, 'super-user')) {
+            diet.clearUserName();
+        }
+
+        return diet;
+    }
+
+    protected async cleanDietGroup(dietGroup: DietGroup, userName: string): Promise<DietGroup> {
+        return dietGroup;
+    }
+
     protected async cleanList<T>(list: T[], userName: string, fn: (obj: T, userName: string) => Promise<T>): Promise<T[]> {
 
         for (let obj of list) {
@@ -31,10 +49,6 @@ export class BaseService {
         }
 
         return list;
-    }
-
-    protected async cleanDietGroup(dietGroup: DietGroup, userName: string): Promise<DietGroup> {
-        return dietGroup;
     }
 
     protected async throwIfDoesNotHavePermission(userName: string, permission: string): Promise<void> {

@@ -42,7 +42,7 @@ export class DietService extends BaseService {
 
         diet = await this.dietRepository.create(diet);
 
-        diet = await this.removeDietValuesIfNotHaveViewDietValuesPermission(userName, diet);
+        diet = await this.cleanDiet(diet, userName);
 
         return diet;
     }
@@ -56,7 +56,7 @@ export class DietService extends BaseService {
 
         let diet: Diet = await this.dietRepository.find(dietId);
 
-        diet = await this.removeDietValuesIfNotHaveViewDietValuesPermission(userName, diet);
+        diet = await this.cleanDiet(diet, userName);
 
         return diet;
     }
@@ -68,7 +68,11 @@ export class DietService extends BaseService {
 
         await this.throwIfDoesNotHavePermission(userName, 'view-diet');
 
-        return this.dietRepository.list(dietGroupId, userName);
+        let result: Diet[] = await this.dietRepository.list(dietGroupId, userName);
+
+        result = await this.cleanList(result, userName, this.cleanDiet);
+
+        return result;
     }
 
     public async update(
@@ -97,7 +101,7 @@ export class DietService extends BaseService {
 
         diet = await this.dietRepository.update(diet);
 
-        diet = await this.removeDietValuesIfNotHaveViewDietValuesPermission(userName, diet);
+        diet = await this.cleanDiet(diet, userName);
 
         return diet;
     }
@@ -105,14 +109,6 @@ export class DietService extends BaseService {
     private async clearUserNameIfSuperUser(userName: string, diet: Diet): Promise<Diet> {
         if (!await this.hasPermission(userName, 'super-user')) {
             diet.clearUserName();
-        }
-
-        return diet;
-    }
-
-    private async removeDietValuesIfNotHaveViewDietValuesPermission(userName: string, diet: Diet): Promise<Diet> {
-        if (!await this.hasPermission(userName, 'view-diet-values')) {
-            diet.removeValues();
         }
 
         return diet;
