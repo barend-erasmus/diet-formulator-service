@@ -5,13 +5,15 @@ import { Diet } from '../../entities/diet';
 import { DietGroup } from '../../entities/diet-group';
 import { DietValue } from '../../entities/diet-value';
 import { Nutrient } from '../../entities/nutrient';
+import { ILogger } from '../../interfaces/logger';
 import { IDietRepository } from '../diet';
 import { BaseRepository } from './base';
 
 @injectable()
 export class DietRepository extends BaseRepository implements IDietRepository {
-    constructor(host: string, userName: string, password: string) {
-        super(host, userName, password);
+
+    constructor(host: string, userName: string, password: string, logger: ILogger) {
+        super(host, userName, password, logger);
     }
 
     public async create(diet: Diet): Promise<Diet> {

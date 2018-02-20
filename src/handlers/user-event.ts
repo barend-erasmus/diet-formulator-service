@@ -12,7 +12,7 @@ import { ISubscriptionRepository } from '../repositories/subscription';
 export class UserEventHandler implements IEventHandler<UserEvent> {
 
     constructor(
-        @inject('IUserEventLogger')
+        @inject('UserEventLogger')
         private logger: ILogger,
         @inject('ISubscriptionRepository')
         private subscriptionRepository: ISubscriptionRepository,

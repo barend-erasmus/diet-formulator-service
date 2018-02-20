@@ -2,14 +2,15 @@ import { injectable } from 'inversify';
 import 'reflect-metadata';
 import * as Sequelize from 'sequelize';
 import { Nutrient } from '../../entities/nutrient';
+import { ILogger } from '../../interfaces/logger';
 import { INutrientRepository } from '../nutrient';
 import { BaseRepository } from './base';
 
 @injectable()
 export class NutrientRepository extends BaseRepository implements INutrientRepository {
 
-    constructor(host: string, userName: string, password: string) {
-        super(host, userName, password);
+    constructor(host: string, userName: string, password: string, logger: ILogger) {
+        super(host, userName, password, logger);
     }
 
     public async create(nutrient: Nutrient): Promise<Nutrient> {

@@ -15,4 +15,14 @@ export class SuggestedValueRouter {
             res.status(500).json(WorldOfRationsError.fromError(err));
         }
     }
+
+    public static async list(req: express.Request, res: express.Response) {
+        try {
+            const result: SuggestedValue[] = await container.get<SuggestedValueService>('SuggestedValueService').list(req['user'].email);
+
+            res.json(result);
+        } catch (err) {
+            res.status(500).json(WorldOfRationsError.fromError(err));
+        }
+    }
 }

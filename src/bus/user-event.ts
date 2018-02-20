@@ -5,7 +5,7 @@ import { IEventHandler } from '../interfaces/event-handler';
 import { EventBus } from './event';
 
 @injectable()
-export class UserEventBus<UserCreatedEvent> extends EventBus<UserEvent> {
+export class UserEventBus extends EventBus<UserEvent> {
 
     constructor(
         @inject('UserEventHandler')

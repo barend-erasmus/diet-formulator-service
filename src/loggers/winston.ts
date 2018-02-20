@@ -18,19 +18,19 @@ export class WinstonLogger implements ILogger {
         });
     }
 
-    public debug(message: string): void {
+    public debug(message: string, metaData?: any): void {
         this.logger.debug(message);
     }
 
-    public error(error: Error): void {
+    public error(error: Error, metaData?: any): void {
         this.logger.error(error);
     }
 
-    public info(message: string): void {
+    public info(message: string, metaData?: any): void {
         this.logger.info(message);
     }
 
-    public warning(message: string): void {
+    public warning(message: string, metaData?: any): void {
         this.logger.warn(message);
     }
 }

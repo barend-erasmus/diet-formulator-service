@@ -37,12 +37,22 @@ export class SuggestedValueService extends BaseService {
             const suggestedValue: SuggestedValue = await this.suggestedValueRepository.find(dietGroup.id, ingredientId);
 
             if (suggestedValue) {
-                return suggestedValue;
+                return this.cleanSuggestedValue(suggestedValue, userName);
             }
 
             dietGroup = dietGroup.parent;
         }
 
         return null;
+    }
+
+    public async list(userName: string): Promise<SuggestedValue[]> {
+        await this.throwIfDoesNotHavePermission(userName, 'view-suggested-value');
+
+        let result: SuggestedValue[] = await this.suggestedValueRepository.list();
+
+        result = await this.cleanList(result, userName, this.cleanSuggestedValue);
+
+        return result;
     }
 }

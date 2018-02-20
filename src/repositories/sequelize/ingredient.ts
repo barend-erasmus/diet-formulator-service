@@ -5,14 +5,15 @@ import { Ingredient } from '../../entities/ingredient';
 import { IngredientGroup } from '../../entities/ingredient-group';
 import { IngredientValue } from '../../entities/ingredient-value';
 import { Nutrient } from '../../entities/nutrient';
+import { ILogger } from '../../interfaces/logger';
 import { IIngredientRepository } from '../ingredient';
 import { BaseRepository } from './base';
 
 @injectable()
 export class IngredientRepository extends BaseRepository implements IIngredientRepository {
 
-    constructor(host: string, userName: string, password: string) {
-        super(host, userName, password);
+    constructor(host: string, userName: string, password: string, logger: ILogger) {
+        super(host, userName, password, logger);
     }
 
     public async create(ingredient: Ingredient): Promise<Ingredient> {

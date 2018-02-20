@@ -2,14 +2,15 @@ import { injectable } from 'inversify';
 import 'reflect-metadata';
 import * as Sequelize from 'sequelize';
 import { User } from '../../entities/user';
+import { ILogger } from '../../interfaces/logger';
 import { IUserRepository } from '../user';
 import { BaseRepository } from './base';
 
 @injectable()
 export class UserRepository extends BaseRepository implements IUserRepository {
 
-    constructor(host: string, userName: string, password: string) {
-        super(host, userName, password);
+    constructor(host: string, userName: string, password: string, logger: ILogger) {
+        super(host, userName, password, logger);
     }
 
     public async create(user: User, token: string): Promise<User> {

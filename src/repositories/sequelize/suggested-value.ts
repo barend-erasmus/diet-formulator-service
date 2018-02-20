@@ -5,14 +5,15 @@ import { DietGroup } from '../../entities/diet-group';
 import { Ingredient } from '../../entities/ingredient';
 import { IngredientGroup } from '../../entities/ingredient-group';
 import { SuggestedValue } from '../../entities/suggested-value';
+import { ILogger } from '../../interfaces/logger';
 import { ISuggestedValueRepository } from '../suggested-value';
 import { BaseRepository } from './base';
 
 @injectable()
 export class SuggestedValueRepository extends BaseRepository implements ISuggestedValueRepository {
 
-    constructor(host: string, userName: string, password: string) {
-        super(host, userName, password);
+    constructor(host: string, userName: string, password: string, logger: ILogger) {
+        super(host, userName, password, logger);
     }
 
     public async create(suggestedValue: SuggestedValue): Promise<SuggestedValue> {

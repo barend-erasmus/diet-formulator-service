@@ -1,7 +1,7 @@
 export const config = {
     database: {
-        host: 'developersworkspace.co.za',
+        host: '138.68.188.8',
         password: '&UNtpV9B-XeF?%Ks',
-        userName: 'diet-formulator',
+        userName: 'diet-formulator-service',
     },
 };

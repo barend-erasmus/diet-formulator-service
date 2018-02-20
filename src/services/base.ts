@@ -2,7 +2,9 @@ import { inject, injectable, unmanaged } from 'inversify';
 import 'reflect-metadata';
 import { Diet } from '../entities/diet';
 import { DietGroup } from '../entities/diet-group';
+import { Ingredient } from '../entities/ingredient';
 import { Subscription } from '../entities/subscription';
+import { SuggestedValue } from '../entities/suggested-value';
 import { InsufficientPermissionsError } from '../errors/insufficient-permissions-error';
 import { ISubscriptionRepository } from '../repositories/subscription';
 import { IUserRepository } from '../repositories/user';
@@ -41,12 +43,26 @@ export class BaseService {
         return dietGroup;
     }
 
+    protected async cleanIngredient(ingredient: Ingredient, userName: string): Promise<Ingredient> {
+        if (!await this.hasPermission('view-ingedient-values', userName)) {
+            ingredient.removeValues();
+        }
+
+        return ingredient;
+    }
+
     protected async cleanList<T>(list: T[], userName: string, fn: (obj: T, userName: string) => Promise<T>): Promise<T[]> {
         for (let obj of list) {
             obj = await fn(obj, userName);
         }
 
         return list;
+    }
+
+    protected async cleanSuggestedValue(suggestedValue: SuggestedValue, userName: string): Promise<SuggestedValue> {
+        suggestedValue.ingredient = await this.cleanIngredient(suggestedValue.ingredient, userName);
+
+        return suggestedValue;
     }
 
     protected async throwIfDoesNotHavePermission(userName: string, permission: string): Promise<void> {

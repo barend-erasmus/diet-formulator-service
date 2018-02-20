@@ -1,7 +1,9 @@
 import * as express from 'express';
 import * as fs from 'fs';
+import { EventBus } from '../bus/event';
 import { Payment } from '../entities/payment';
 import { WorldOfRationsError } from '../errors/world-of-rations-error';
+import { PaymentNotificationEvent } from '../events/payment-notification';
 import { container } from '../ioc';
 import { PaymentService } from '../services/payment';
 import { PaymentNotificationService } from '../services/payment-notification';
@@ -32,6 +34,8 @@ export class PaymentRouter {
 
     public static async notify(req: express.Request, res: express.Response) {
         try {
+            await container.get<EventBus<PaymentNotificationEvent>>('PaymentNotificationEventBus').publish(new PaymentNotificationEvent(req.body.m_payment_id, req.body));
+
             await container.get<PaymentNotificationService>('PaymentNotificationService').create(req.body.m_payment_id, req.body.payment_status);
 
             res.json('OK');

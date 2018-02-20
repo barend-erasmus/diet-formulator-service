@@ -11,7 +11,7 @@
     "init": "npm run build & node ./dist/init.js",
     "lint": "tslint ./src/**/*.ts --fix --exclude ./src/**/*.d.ts",
     "start": "npm run build & node ./dist/app.js",
-    "test": "npm run build & mocha --timeout 10000 ./dist/**/*.test.js"
+    "test": "npm run build & mocha --timeout 30000 ./dist/**/*.test.js"
   },
   "repository": {
     "type": "git",
@@ -55,6 +55,8 @@
     "mocha": "^4.0.1",
     "run-sequence": "^2.2.1",
     "sinon": "^4.2.2",
-    "supertest": "^3.0.0"
+    "supertest": "^3.0.0",
+    "tslint": "^5.9.1",
+    "typescript": "^2.6.2"
   }
 }

@@ -1,16 +1,20 @@
 import { Container, interfaces } from 'inversify';
 import 'reflect-metadata';
+import { EventBus } from './bus/event';
+import { PaymentNotificationEventBus } from './bus/payment-notification-event';
 import { UserEventBus } from './bus/user-event';
 import { NullCache } from './caches/null';
 import { config } from './config';
+import { PaymentNotificationEvent } from './events/payment-notification';
 import { UserEvent } from './events/user';
-import { UserCreatedEvent } from './events/user-created';
 import { SubscriptionFactory } from './factories/subscription';
 import { LeastCostRationFormulator } from './formulators/least-cost-ration';
 import { FixerForeignExchangeGateway } from './gateways/fixer-foreign-exchange';
 import { PayFastPaymentGateway } from './gateways/payfast-payment';
+import { PaymentNotificationEventHandler } from './handlers/payment-notification-event';
 import { UserEventHandler } from './handlers/user-event';
 import { ICache } from './interfaces/cache';
+import { IEventHandler } from './interfaces/event-handler';
 import { IForeignExchangeGateway } from './interfaces/foreign-exchange-gateway';
 import { IFormulator } from './interfaces/formulator';
 import { ILogger } from './interfaces/logger';
@@ -52,20 +56,63 @@ import { UserService } from './services/user';
 
 const container: Container = new Container();
 
-container.bind<IDietGroupRepository>('IDietGroupRepository').toConstantValue(new DietGroupRepository(config.database.host, config.database.userName, config.database.password));
-container.bind<IDietRepository>('IDietRepository').toConstantValue(new DietRepository(config.database.host, config.database.userName, config.database.password));
-container.bind<IFormulationRepository>('IFormulationRepository').toConstantValue(new FormulationRepository(config.database.host, config.database.userName, config.database.password));
-container.bind<IIngredientGroupRepository>('IIngredientGroupRepository').toConstantValue(new IngredientGroupRepository(config.database.host, config.database.userName, config.database.password));
-container.bind<IIngredientRepository>('IIngredientRepository').toConstantValue(new IngredientRepository(config.database.host, config.database.userName, config.database.password));
-container.bind<INutrientRepository>('INutrientRepository').toConstantValue(new NutrientRepository(config.database.host, config.database.userName, config.database.password));
-container.bind<IPaymentRepository>('IPaymentRepository').toConstantValue(new PaymentRepository(config.database.host, config.database.userName, config.database.password));
-container.bind<IPaymentNotificationRepository>('IPaymentNotificationRepository').toConstantValue(new PaymentNotificationRepository(config.database.host, config.database.userName, config.database.password));
-container.bind<ISubscriptionRepository>('ISubscriptionRepository').toDynamicValue((context: interfaces.Context) => {
-    const subscriptionFactory: ISubscriptionFactory = context.container.get<ISubscriptionFactory>('ISubscriptionFactory');
-    return new SubscriptionRepository(subscriptionFactory, config.database.host, config.database.userName, config.database.password);
+container.bind<IDietGroupRepository>('IDietGroupRepository').toDynamicValue((context: interfaces.Context) => {
+    const logger: ILogger = context.container.get<ILogger>('SQLLogger');
+
+    return new DietGroupRepository(config.database.host, config.database.userName, config.database.password, logger);
 });
-container.bind<ISuggestedValueRepository>('ISuggestedValueRepository').toConstantValue(new SuggestedValueRepository(config.database.host, config.database.userName, config.database.password));
-container.bind<IUserRepository>('IUserRepository').toConstantValue(new UserRepository(config.database.host, config.database.userName, config.database.password));
+container.bind<IDietRepository>('IDietRepository').toDynamicValue((context: interfaces.Context) => {
+    const logger: ILogger = context.container.get<ILogger>('SQLLogger');
+
+    return new DietRepository(config.database.host, config.database.userName, config.database.password, logger);
+});
+container.bind<IFormulationRepository>('IFormulationRepository').toDynamicValue((context: interfaces.Context) => {
+    const logger: ILogger = context.container.get<ILogger>('SQLLogger');
+
+    return new FormulationRepository(config.database.host, config.database.userName, config.database.password, logger);
+});
+container.bind<IIngredientGroupRepository>('IIngredientGroupRepository').toDynamicValue((context: interfaces.Context) => {
+    const logger: ILogger = context.container.get<ILogger>('SQLLogger');
+
+    return new IngredientGroupRepository(config.database.host, config.database.userName, config.database.password, logger);
+});
+container.bind<IIngredientRepository>('IIngredientRepository').toDynamicValue((context: interfaces.Context) => {
+    const logger: ILogger = context.container.get<ILogger>('SQLLogger');
+
+    return new IngredientRepository(config.database.host, config.database.userName, config.database.password, logger);
+});
+container.bind<INutrientRepository>('INutrientRepository').toDynamicValue((context: interfaces.Context) => {
+    const logger: ILogger = context.container.get<ILogger>('SQLLogger');
+
+    return new NutrientRepository(config.database.host, config.database.userName, config.database.password, logger);
+});
+container.bind<IPaymentRepository>('IPaymentRepository').toDynamicValue((context: interfaces.Context) => {
+    const logger: ILogger = context.container.get<ILogger>('SQLLogger');
+
+    return new PaymentRepository(config.database.host, config.database.userName, config.database.password, logger);
+});
+container.bind<IPaymentNotificationRepository>('IPaymentNotificationRepository').toDynamicValue((context: interfaces.Context) => {
+    const logger: ILogger = context.container.get<ILogger>('SQLLogger');
+
+    return new PaymentNotificationRepository(config.database.host, config.database.userName, config.database.password, logger);
+});
+container.bind<ISubscriptionRepository>('ISubscriptionRepository').toDynamicValue((context: interfaces.Context) => {
+    const logger: ILogger = context.container.get<ILogger>('SQLLogger');
+
+    const subscriptionFactory: ISubscriptionFactory = context.container.get<ISubscriptionFactory>('ISubscriptionFactory');
+
+    return new SubscriptionRepository(subscriptionFactory, config.database.host, config.database.userName, config.database.password, logger);
+});
+container.bind<ISuggestedValueRepository>('ISuggestedValueRepository').toDynamicValue((context: interfaces.Context) => {
+    const logger: ILogger = context.container.get<ILogger>('SQLLogger');
+
+    return new SuggestedValueRepository(config.database.host, config.database.userName, config.database.password, logger);
+});
+container.bind<IUserRepository>('IUserRepository').toDynamicValue((context: interfaces.Context) => {
+    const logger: ILogger = context.container.get<ILogger>('SQLLogger');
+
+    return new UserRepository(config.database.host, config.database.userName, config.database.password, logger);
+});
 
 container.bind<IFormulator>('IFormulator').to(LeastCostRationFormulator);
 container.bind<ISubscriptionFactory>('ISubscriptionFactory').to(SubscriptionFactory);
@@ -81,8 +128,11 @@ container.bind<SubscriptionService>('SubscriptionService').to(SubscriptionServic
 container.bind<SuggestedValueService>('SuggestedValueService').to(SuggestedValueService);
 container.bind<UserService>('UserService').to(UserService);
 
-container.bind<UserEventBus<UserEvent>>('UserEventBus').to(UserEventBus);
-container.bind<UserEventHandler>('UserEventHandler').to(UserEventHandler);
+container.bind<EventBus<UserEvent>>('UserEventBus').to(UserEventBus);
+container.bind<EventBus<PaymentNotificationEvent>>('PaymentNotificationEventBus').to(PaymentNotificationEventBus);
+
+container.bind<IEventHandler<UserEvent>>('UserEventHandler').to(UserEventHandler);
+container.bind<IEventHandler<PaymentNotificationEvent>>('PaymentNotificationEventHandler').to(PaymentNotificationEventHandler);
 
 container.bind<IForeignExchangeGateway>('IForeignExchangeGateway').to(FixerForeignExchangeGateway);
 
@@ -94,7 +144,9 @@ container.bind<IPaymentGateway>('IPaymentGateway').toDynamicValue((context: inte
 
 container.bind<ICache>('ICache').toConstantValue(new NullCache());
 
-container.bind<ILogger>('IUserEventLogger').toConstantValue(new WinstonLogger('user-event'));
+container.bind<ILogger>('SQLLogger').toConstantValue(new WinstonLogger('sql'));
+container.bind<ILogger>('PaymentNotificationEventLogger').toConstantValue(new WinstonLogger('payment-notification-event'));
+container.bind<ILogger>('UserEventLogger').toConstantValue(new WinstonLogger('user-event'));
 
 export {
     container,

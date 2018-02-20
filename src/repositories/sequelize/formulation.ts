@@ -10,14 +10,15 @@ import { Ingredient } from '../../entities/ingredient';
 import { IngredientGroup } from '../../entities/ingredient-group';
 import { IngredientValue } from '../../entities/ingredient-value';
 import { Nutrient } from '../../entities/nutrient';
+import { ILogger } from '../../interfaces/logger';
 import { IFormulationRepository } from '../formulation';
 import { BaseRepository } from './base';
 
 @injectable()
 export class FormulationRepository extends BaseRepository implements IFormulationRepository {
 
-    constructor(host: string, userName: string, password: string) {
-        super(host, userName, password);
+    constructor(host: string, userName: string, password: string, logger: ILogger) {
+        super(host, userName, password, logger);
     }
 
     public async create(formulation: Formulation, userName: string): Promise<Formulation> {

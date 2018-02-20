@@ -1,18 +1,15 @@
 import { injectable } from 'inversify';
 import 'reflect-metadata';
 import * as Sequelize from 'sequelize';
+import { ILogger } from '../../interfaces/logger';
 import { IPaymentNotificationRepository } from '../payment-notification';
 import { BaseRepository } from './base';
 
 @injectable()
 export class PaymentNotificationRepository extends BaseRepository implements IPaymentNotificationRepository {
 
-    constructor(
-        host: string,
-        userName: string,
-        password: string,
-    ) {
-        super(host, userName, password);
+    constructor(host: string, userName: string, password: string, logger: ILogger) {
+        super(host, userName, password, logger);
     }
 
     public async create(paymentId: string, status: string): Promise<void> {
