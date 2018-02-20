@@ -21,7 +21,7 @@ export class UserEventHandler implements IEventHandler<UserEvent> {
     }
 
     public async handle(event: UserEvent): Promise<UserEvent> {
-        if (event.type === 'create') {
+        if (event.type === 'created') {
             this.logger.info(`User Created: ${event.userName}`);
 
             const subscription: Subscription = await this.subscriptionRepository.find(event.userName);

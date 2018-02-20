@@ -15,6 +15,12 @@ export class EventBus<T extends IEvent> implements IEventBus<T> {
     }
 
     public publish(event: T): Promise<T> {
-        return this.handler.handle(event);
+        try {
+            return this.handler.handle(event);
+        } catch (err) {
+            console.error(err);
+            return null;
+        }
+
     }
 }
