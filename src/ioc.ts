@@ -1,5 +1,6 @@
 import { Container, interfaces } from 'inversify';
 import 'reflect-metadata';
+import * as path from 'path';
 import { EventBus } from './bus/event';
 import { PaymentNotificationEventBus } from './bus/payment-notification-event';
 import { UserEventBus } from './bus/user-event';
@@ -53,65 +54,97 @@ import { PaymentNotificationService } from './services/payment-notification';
 import { SubscriptionService } from './services/subscription';
 import { SuggestedValueService } from './services/suggested-value';
 import { UserService } from './services/user';
+import { ICryptographyAlgorithm } from './interfaces/cryptography';
+import { AES128CTRCryptographyAlgorithm } from './cryptography-algorithms/aes-256-ctr';
+import { BaseRepository } from './repositories/sequelize/base';
+import { Importer } from './repositories/sequelize/importer';
 
 const container: Container = new Container();
 
+const cryptographyAlgorithm: ICryptographyAlgorithm = new AES128CTRCryptographyAlgorithm(config.cryptography.password);
+
+const databaseConfig = {
+    host: config.database.host,
+    password: cryptographyAlgorithm.decrypt(config.database.password),
+    superUserPassword: cryptographyAlgorithm.decrypt(config.database.superUserPassword),
+    userName: config.database.userName,
+};
+
+const paymentGatewayConfig = {
+    payfast: {
+        merchantId: config.paymentGateway.payfast.merchantId,
+        merchantSecret: cryptographyAlgorithm.decrypt(config.paymentGateway.payfast.merchantSecret),
+        secret: cryptographyAlgorithm.decrypt(config.paymentGateway.payfast.secret),
+    },
+}
+
+container.bind<ICryptographyAlgorithm>('ICryptographyAlgorithm').toConstantValue(cryptographyAlgorithm);
+
+container.bind<Importer>('Importer').toDynamicValue((context: interfaces.Context) => {
+    return new Importer(databaseConfig.host, databaseConfig.userName, databaseConfig.superUserPassword, path.join(__dirname, '..', 'databases', 'world-of-rations', 'table-exports'))
+});
+
+container.bind<BaseRepository>('BaseRepository').toDynamicValue((context: interfaces.Context) => {
+    const logger: ILogger = context.container.get<ILogger>('SQLLogger');
+
+    return new BaseRepository(databaseConfig.host, databaseConfig.userName, databaseConfig.password, logger);
+});
 container.bind<IDietGroupRepository>('IDietGroupRepository').toDynamicValue((context: interfaces.Context) => {
     const logger: ILogger = context.container.get<ILogger>('SQLLogger');
 
-    return new DietGroupRepository(config.database.host, config.database.userName, config.database.password, logger);
+    return new DietGroupRepository(databaseConfig.host, databaseConfig.userName, databaseConfig.password, logger);
 });
 container.bind<IDietRepository>('IDietRepository').toDynamicValue((context: interfaces.Context) => {
     const logger: ILogger = context.container.get<ILogger>('SQLLogger');
 
-    return new DietRepository(config.database.host, config.database.userName, config.database.password, logger);
+    return new DietRepository(databaseConfig.host, databaseConfig.userName, databaseConfig.password, logger);
 });
 container.bind<IFormulationRepository>('IFormulationRepository').toDynamicValue((context: interfaces.Context) => {
     const logger: ILogger = context.container.get<ILogger>('SQLLogger');
 
-    return new FormulationRepository(config.database.host, config.database.userName, config.database.password, logger);
+    return new FormulationRepository(databaseConfig.host, databaseConfig.userName, databaseConfig.password, logger);
 });
 container.bind<IIngredientGroupRepository>('IIngredientGroupRepository').toDynamicValue((context: interfaces.Context) => {
     const logger: ILogger = context.container.get<ILogger>('SQLLogger');
 
-    return new IngredientGroupRepository(config.database.host, config.database.userName, config.database.password, logger);
+    return new IngredientGroupRepository(databaseConfig.host, databaseConfig.userName, databaseConfig.password, logger);
 });
 container.bind<IIngredientRepository>('IIngredientRepository').toDynamicValue((context: interfaces.Context) => {
     const logger: ILogger = context.container.get<ILogger>('SQLLogger');
 
-    return new IngredientRepository(config.database.host, config.database.userName, config.database.password, logger);
+    return new IngredientRepository(databaseConfig.host, databaseConfig.userName, databaseConfig.password, logger);
 });
 container.bind<INutrientRepository>('INutrientRepository').toDynamicValue((context: interfaces.Context) => {
     const logger: ILogger = context.container.get<ILogger>('SQLLogger');
 
-    return new NutrientRepository(config.database.host, config.database.userName, config.database.password, logger);
+    return new NutrientRepository(databaseConfig.host, databaseConfig.userName, databaseConfig.password, logger);
 });
 container.bind<IPaymentRepository>('IPaymentRepository').toDynamicValue((context: interfaces.Context) => {
     const logger: ILogger = context.container.get<ILogger>('SQLLogger');
 
-    return new PaymentRepository(config.database.host, config.database.userName, config.database.password, logger);
+    return new PaymentRepository(databaseConfig.host, databaseConfig.userName, databaseConfig.password, logger);
 });
 container.bind<IPaymentNotificationRepository>('IPaymentNotificationRepository').toDynamicValue((context: interfaces.Context) => {
     const logger: ILogger = context.container.get<ILogger>('SQLLogger');
 
-    return new PaymentNotificationRepository(config.database.host, config.database.userName, config.database.password, logger);
+    return new PaymentNotificationRepository(databaseConfig.host, databaseConfig.userName, databaseConfig.password, logger);
 });
 container.bind<ISubscriptionRepository>('ISubscriptionRepository').toDynamicValue((context: interfaces.Context) => {
     const logger: ILogger = context.container.get<ILogger>('SQLLogger');
 
     const subscriptionFactory: ISubscriptionFactory = context.container.get<ISubscriptionFactory>('ISubscriptionFactory');
 
-    return new SubscriptionRepository(subscriptionFactory, config.database.host, config.database.userName, config.database.password, logger);
+    return new SubscriptionRepository(subscriptionFactory, databaseConfig.host, databaseConfig.userName, databaseConfig.password, logger);
 });
 container.bind<ISuggestedValueRepository>('ISuggestedValueRepository').toDynamicValue((context: interfaces.Context) => {
     const logger: ILogger = context.container.get<ILogger>('SQLLogger');
 
-    return new SuggestedValueRepository(config.database.host, config.database.userName, config.database.password, logger);
+    return new SuggestedValueRepository(databaseConfig.host, databaseConfig.userName, databaseConfig.password, logger);
 });
 container.bind<IUserRepository>('IUserRepository').toDynamicValue((context: interfaces.Context) => {
     const logger: ILogger = context.container.get<ILogger>('SQLLogger');
 
-    return new UserRepository(config.database.host, config.database.userName, config.database.password, logger);
+    return new UserRepository(databaseConfig.host, databaseConfig.userName, databaseConfig.password, logger);
 });
 
 container.bind<IFormulator>('IFormulator').to(LeastCostRationFormulator);
@@ -139,7 +172,7 @@ container.bind<IForeignExchangeGateway>('IForeignExchangeGateway').to(FixerForei
 container.bind<IPaymentGateway>('IPaymentGateway').toDynamicValue((context: interfaces.Context) => {
     const paymentNotificationRepository: IPaymentNotificationRepository = context.container.get<IPaymentNotificationRepository>('IPaymentNotificationRepository');
 
-    return new PayFastPaymentGateway('11223714', 'ak5h6ln1aiwgi', 'mMUQYkYSV7Jf3Nxr', paymentNotificationRepository);
+    return new PayFastPaymentGateway(paymentGatewayConfig.payfast.merchantId, paymentGatewayConfig.payfast.merchantSecret, paymentGatewayConfig.payfast.secret, paymentNotificationRepository);
 });
 
 container.bind<ICache>('ICache').toConstantValue(new NullCache());
