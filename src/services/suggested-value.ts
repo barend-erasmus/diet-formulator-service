@@ -51,8 +51,22 @@ export class SuggestedValueService extends BaseService {
 
         let result: SuggestedValue[] = await this.suggestedValueRepository.list();
 
+        result = result.sort(this.sortSuggestedValue);
+
         result = await this.cleanList(result, userName, this.cleanSuggestedValue);
 
         return result;
+    }
+
+    private sortSuggestedValue(a: SuggestedValue, b: SuggestedValue) {
+        if (a.ingredient.name < b.ingredient.name) {
+            return -1;
+        }
+
+        if (a.ingredient.name > b.ingredient.name) {
+            return 1;
+        }
+
+        return 0;
     }
 }

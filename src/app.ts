@@ -68,6 +68,7 @@ app.get('/api/formulation/composition', AuthenticationMiddleware.shouldBeAuthent
 app.get('/api/formulation/supplement', AuthenticationMiddleware.shouldBeAuthenticated, FormulationRouter.supplement);
 
 app.get('/api/suggestedvalue/find', AuthenticationMiddleware.shouldBeAuthenticated, SuggestedValueRouter.find);
+app.get('/api/suggestedvalue/list', AuthenticationMiddleware.shouldBeAuthenticated, SuggestedValueRouter.list);
 
 app.use('/api/docs', express.static(path.join(__dirname, './../apidoc')));
 app.use('/api/coverage', express.static(path.join(__dirname, './../coverage/lcov-report')));
