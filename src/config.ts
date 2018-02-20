@@ -8,6 +8,11 @@ export const config = {
         superUserPassword: '3a59758c276fcbb3377858108ce1ccbf8d',
         userName: 'diet-formulator-service',
     },
+    email: {
+        sendgrid: {
+            apiKey: '00261bb91d53c5b910477c32c5a3fce0fe52754c3aa95222b4b48af0c436f253c048ba36684e1f4475089aaa0e27ff9545f4156a9c94b4a882e3288b8ec582340e038bf224',
+        },
+    },
     paymentGateway: {
         payfast: {
             merchantId: '11223714',
