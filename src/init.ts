@@ -1,6 +1,6 @@
+import { container } from './ioc';
 import { BaseRepository } from './repositories/sequelize/base';
 import { Importer } from './repositories/sequelize/importer';
-import { container } from './ioc';
 
 const baseRepository = container.get<BaseRepository>('BaseRepository');
 

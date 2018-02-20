@@ -13,6 +13,6 @@ export const config = {
             merchantId: '11223714',
             merchantSecret: '320a00887d77cde722744e0495',
             secret: '3e2c60b11270fa85152a7305cfc0dba3',
-        }
-    }
+        },
+    },
 };

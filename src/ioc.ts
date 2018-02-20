@@ -1,11 +1,12 @@
 import { Container, interfaces } from 'inversify';
-import 'reflect-metadata';
 import * as path from 'path';
+import 'reflect-metadata';
 import { EventBus } from './bus/event';
 import { PaymentNotificationEventBus } from './bus/payment-notification-event';
 import { UserEventBus } from './bus/user-event';
 import { NullCache } from './caches/null';
 import { config } from './config';
+import { AES128CTRCryptographyAlgorithm } from './cryptography-algorithms/aes-256-ctr';
 import { PaymentNotificationEvent } from './events/payment-notification';
 import { UserEvent } from './events/user';
 import { SubscriptionFactory } from './factories/subscription';
@@ -15,6 +16,7 @@ import { PayFastPaymentGateway } from './gateways/payfast-payment';
 import { PaymentNotificationEventHandler } from './handlers/payment-notification-event';
 import { UserEventHandler } from './handlers/user-event';
 import { ICache } from './interfaces/cache';
+import { ICryptographyAlgorithm } from './interfaces/cryptography';
 import { IEventHandler } from './interfaces/event-handler';
 import { IForeignExchangeGateway } from './interfaces/foreign-exchange-gateway';
 import { IFormulator } from './interfaces/formulator';
@@ -30,9 +32,11 @@ import { IIngredientGroupRepository } from './repositories/ingredient-group';
 import { INutrientRepository } from './repositories/nutrient';
 import { IPaymentRepository } from './repositories/payment';
 import { IPaymentNotificationRepository } from './repositories/payment-notification';
+import { BaseRepository } from './repositories/sequelize/base';
 import { DietRepository } from './repositories/sequelize/diet';
 import { DietGroupRepository } from './repositories/sequelize/diet-group';
 import { FormulationRepository } from './repositories/sequelize/formulation';
+import { Importer } from './repositories/sequelize/importer';
 import { IngredientRepository } from './repositories/sequelize/ingredient';
 import { IngredientGroupRepository } from './repositories/sequelize/ingredient-group';
 import { NutrientRepository } from './repositories/sequelize/nutrient';
@@ -54,10 +58,6 @@ import { PaymentNotificationService } from './services/payment-notification';
 import { SubscriptionService } from './services/subscription';
 import { SuggestedValueService } from './services/suggested-value';
 import { UserService } from './services/user';
-import { ICryptographyAlgorithm } from './interfaces/cryptography';
-import { AES128CTRCryptographyAlgorithm } from './cryptography-algorithms/aes-256-ctr';
-import { BaseRepository } from './repositories/sequelize/base';
-import { Importer } from './repositories/sequelize/importer';
 
 const container: Container = new Container();
 
@@ -76,12 +76,12 @@ const paymentGatewayConfig = {
         merchantSecret: cryptographyAlgorithm.decrypt(config.paymentGateway.payfast.merchantSecret),
         secret: cryptographyAlgorithm.decrypt(config.paymentGateway.payfast.secret),
     },
-}
+};
 
 container.bind<ICryptographyAlgorithm>('ICryptographyAlgorithm').toConstantValue(cryptographyAlgorithm);
 
 container.bind<Importer>('Importer').toDynamicValue((context: interfaces.Context) => {
-    return new Importer(databaseConfig.host, databaseConfig.userName, databaseConfig.superUserPassword, path.join(__dirname, '..', 'databases', 'world-of-rations', 'table-exports'))
+    return new Importer(databaseConfig.host, databaseConfig.userName, databaseConfig.superUserPassword, path.join(__dirname, '..', 'databases', 'world-of-rations', 'table-exports'));
 });
 
 container.bind<BaseRepository>('BaseRepository').toDynamicValue((context: interfaces.Context) => {
