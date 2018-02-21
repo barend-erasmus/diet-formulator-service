@@ -4,6 +4,7 @@ import 'reflect-metadata';
 import { EventBus } from './bus/event';
 import { PaymentNotificationEventBus } from './bus/payment-notification-event';
 import { UserEventBus } from './bus/user-event';
+import { MemcachedCache } from './caches/memcached';
 import { NullCache } from './caches/null';
 import { config } from './config';
 import { AES128CTRCryptographyAlgorithm } from './cryptography-algorithms/aes-256-ctr';
@@ -183,7 +184,7 @@ container.bind<IPaymentGateway>('IPaymentGateway').toDynamicValue((context: inte
     return new PayFastPaymentGateway(paymentGatewayConfig.payfast.merchantId, paymentGatewayConfig.payfast.merchantSecret, paymentGatewayConfig.payfast.secret, paymentNotificationRepository);
 });
 
-container.bind<ICache>('ICache').toConstantValue(new NullCache());
+container.bind<ICache>('ICache').toConstantValue(new MemcachedCache(config.cache.memcached.uri));
 
 container.bind<ILogger>('SQLLogger').toConstantValue(new WinstonLogger('sql'));
 container.bind<ILogger>('PaymentNotificationEventLogger').toConstantValue(new WinstonLogger('payment-notification-event'));

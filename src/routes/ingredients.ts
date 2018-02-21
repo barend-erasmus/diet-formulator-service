@@ -1,6 +1,7 @@
 import * as express from 'express';
 import { Ingredient } from '../entities/ingredient';
 import { WorldOfRationsError } from '../errors/world-of-rations-error';
+import { ICache } from '../interfaces/cache';
 import { container } from '../ioc';
 import { IngredientService } from '../services/ingredient';
 
@@ -18,7 +19,17 @@ export class IngredientRouter {
 
     public static async list(req: express.Request, res: express.Response) {
         try {
-            const result: Ingredient[] = await container.get<IngredientService>('IngredientService').list(req['user'].email);
+            let result: Ingredient[] = await container.get<ICache>('ICache').getUsingObjectKey({
+                key: 'IngredientRouter.list',
+            }, req['user'].email);
+
+            if (!result) {
+                result = await container.get<IngredientService>('IngredientService').list(req['user'].email);
+
+                await container.get<ICache>('ICache').addUsingObjectKey({
+                    key: 'IngredientRouter.list',
+                }, result, null, req['user'].email);
+            }
 
             res.json(result);
         } catch (err) {

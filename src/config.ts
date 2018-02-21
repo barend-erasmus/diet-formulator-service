@@ -1,4 +1,9 @@
 export const config = {
+    cache: {
+        memcached: {
+            uri: 'api.suite.worldofrations.com:11211',
+        },
+    },
     cryptography: {
         password: 'RP!t3LwwkcazCae8',
     },

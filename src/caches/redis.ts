@@ -1,14 +1,21 @@
 import { injectable } from 'inversify';
+import * as Redis from 'ioredis';
 import 'reflect-metadata';
 import { ICache } from '../interfaces/cache';
 
 @injectable()
-export class MemoryCache implements ICache {
+export class RedisCache implements ICache {
 
-    private static items: {} = {};
+    private client: any = null;
+
+    constructor(
+        private url: string,
+    ) {
+        this.client = new Redis(this.url);
+    }
 
     public async add(key: string, value: any, expiry: number, userName: string): Promise<void> {
-        MemoryCache.items[key] = value;
+        await this.client.set(key, JSON.stringify(value));
     }
 
     public async addUsingObjectKey(key: any, value: any, expiry: number, userName: string): Promise<void> {
@@ -18,11 +25,13 @@ export class MemoryCache implements ICache {
     }
 
     public async get(key: string, userName: string): Promise<any> {
-        if (MemoryCache.items[key]) {
-            return MemoryCache.items[key];
+        const result: string = await this.client.get(key);
+
+        if (!result) {
+            return null;
         }
 
-        return null;
+        return JSON.stringify(result);
     }
 
     public async getUsingObjectKey(key: string, userName: string): Promise<any> {

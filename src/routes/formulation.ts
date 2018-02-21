@@ -34,18 +34,16 @@ export class FormulationRouter {
         try {
             let result: Formulation = await container.get<ICache>('ICache').getUsingObjectKey({
                 id: req.query.id,
-                key: 'formulation',
-                userName: req['user'].email,
-            });
+                key: 'FormulationRouter.find',
+            }, req['user'].email);
 
             if (!result) {
                 result = await container.get<FormulationService>('FormulationService').find(req.query.id, req['user'].email);
 
                 await container.get<ICache>('ICache').addUsingObjectKey({
                     id: req.query.id,
-                    key: 'formulation',
-                    userName: req['user'].email,
-                }, result, null);
+                    key: 'FormulationRouter.find',
+                }, result, null, req['user'].email);
             }
 
             res.json(result);
@@ -68,18 +66,16 @@ export class FormulationRouter {
         try {
             let result: Supplement[] = await container.get<ICache>('ICache').getUsingObjectKey({
                 id: req.query.id,
-                key: 'supplement',
-                userName: req['user'].email,
-            });
+                key: 'FormulationRouter.supplement',
+            }, req['user'].email);
 
             if (!result) {
                 result = await container.get<FormulationService>('FormulationService').supplement(req.query.id, req['user'].email);
 
                 await container.get<ICache>('ICache').addUsingObjectKey({
                     id: req.query.id,
-                    key: 'supplement',
-                    userName: req['user'].email,
-                }, result, null);
+                    key: 'FormulationRouter.supplement',
+                }, result, null, req['user'].email);
             }
 
             res.json(result);
@@ -92,18 +88,16 @@ export class FormulationRouter {
         try {
             let result: FormulationCompositionValue[] = await container.get<ICache>('ICache').getUsingObjectKey({
                 id: req.query.id,
-                key: 'composition',
-                userName: req['user'].email,
-            });
+                key: 'FormulationRouter.composition',
+            }, req['user'].email);
 
             if (!result) {
                 result = await container.get<FormulationService>('FormulationService').composition(req.query.id, req['user'].email);
 
                 await container.get<ICache>('ICache').addUsingObjectKey({
                     id: req.query.id,
-                    key: 'composition',
-                    userName: req['user'].email,
-                }, result, null);
+                    key: 'FormulationRouter.composition',
+                }, result, null, req['user'].email);
             }
 
             res.json(result);
