@@ -189,7 +189,7 @@ container.bind<ILogger>('SQLLogger').toConstantValue(new WinstonLogger('sql'));
 container.bind<ILogger>('PaymentNotificationEventLogger').toConstantValue(new WinstonLogger('payment-notification-event'));
 container.bind<ILogger>('UserEventLogger').toConstantValue(new WinstonLogger('user-event'));
 
-container.bind<IMailSender>('IMailSender').toConstantValue(new SendGridMailSender(config.email.sendgrid.apiKey));
+container.bind<IMailSender>('IMailSender').toConstantValue(new SendGridMailSender(emailConfig.sendgrid.apiKey));
 
 export {
     container,

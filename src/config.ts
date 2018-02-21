@@ -10,7 +10,7 @@ export const config = {
     },
     email: {
         sendgrid: {
-            apiKey: '00261bb91d53c5b910477c32c5a3fce0fe52754c3aa95222b4b48af0c436f253c048ba36684e1f4475089aaa0e27ff9545f4156a9c94b4a882e3288b8ec582340e038bf224',
+            apiKey: '00261b8204768ee10b2a7032aee3c0a3c1697f421a9a2e0fb4b4d1f9b500ad5bc300d107736c1421410d8bfe2e4c8ba434c40406829dd89481de06a2bffbd7051133a5d95d',
         },
     },
     paymentGateway: {
