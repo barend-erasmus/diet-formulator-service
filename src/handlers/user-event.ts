@@ -6,7 +6,7 @@ import { TrialSubscription } from '../entities/trail-subscription';
 import { UserEvent } from '../events/user';
 import { IEventHandler } from '../interfaces/event-handler';
 import { ILogger } from '../interfaces/logger';
-import { ISubscriptionRepository } from '../repositories/subscription';
+import { SubscriptionService } from '../services/subscription';
 
 @injectable()
 export class UserEventHandler implements IEventHandler<UserEvent> {
@@ -14,8 +14,8 @@ export class UserEventHandler implements IEventHandler<UserEvent> {
     constructor(
         @inject('UserEventLogger')
         private logger: ILogger,
-        @inject('ISubscriptionRepository')
-        private subscriptionRepository: ISubscriptionRepository,
+        @inject('SubscriptionService')
+        private subscriptionService: SubscriptionService,
     ) {
 
     }
@@ -24,17 +24,14 @@ export class UserEventHandler implements IEventHandler<UserEvent> {
         if (event.type === 'created') {
             this.logger.info(`User Created: ${event.userName}`);
 
-            const subscription: Subscription = await this.subscriptionRepository.find(event.userName);
+            const subscription: Subscription = await this.subscriptionService.find(event.userName);
 
             if (!subscription) {
-                await this.subscriptionRepository.create(new TrialSubscription(true, [], this.date14DaysFromNow(), new Date()), event.userName);
+                await this.subscriptionService.change('trial', event.userName);
             }
         }
 
         return event;
     }
 
-    private date14DaysFromNow(): Date {
-        return moment().add('14', 'days').toDate();
-    }
 }

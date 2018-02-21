@@ -46,6 +46,14 @@ export class SuggestedValueService extends BaseService {
         return null;
     }
 
+    public async findById(suggestedValueId: number, userName: string): Promise<SuggestedValue> {
+        await this.throwIfDoesNotHavePermission(userName, 'view-suggested-value');
+
+        const suggestedValue: SuggestedValue = await this.suggestedValueRepository.findById(suggestedValueId);
+
+        return this.cleanSuggestedValue(suggestedValue, userName);
+    }
+
     public async list(userName: string): Promise<SuggestedValue[]> {
         await this.throwIfDoesNotHavePermission(userName, 'view-suggested-value');
 

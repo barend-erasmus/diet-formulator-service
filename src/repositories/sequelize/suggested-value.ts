@@ -74,6 +74,47 @@ export class SuggestedValueRepository extends BaseRepository implements ISuggest
         return this.mapToSuggestedValue(result, dietGroup);
     }
 
+    public async findById(suggestedValueId: number): Promise<SuggestedValue> {
+        const result: any = await BaseRepository.models.SuggestedValue.find({
+            include: [
+                {
+                    include: [
+                        {
+                            model: BaseRepository.models.IngredientGroup,
+                        },
+                        {
+                            include: [
+                                {
+                                    model: BaseRepository.models.Nutrient,
+                                },
+                            ],
+                            model: BaseRepository.models.IngredientValue,
+                        },
+                    ],
+                    model: BaseRepository.models.Ingredient,
+                },
+                {
+                    model: BaseRepository.models.DietGroup,
+                },
+            ],
+            where: {
+                id: {
+                    [Sequelize.Op.eq]: suggestedValueId,
+                },
+            },
+        });
+
+        if (!result) {
+            return null;
+        }
+
+        let dietGroup: DietGroup = new DietGroup(result.dietGroup.id, result.dietGroup.name, result.dietGroup.description, result.dietGroup.dietGroupId ? new DietGroup(result.dietGroup.dietGroupId, null, null, null) : null);
+
+        dietGroup = await this.loadDietGroupParent(dietGroup);
+
+        return this.mapToSuggestedValue(result, dietGroup);
+    }
+
     public async list(): Promise<SuggestedValue[]> {
         const result: any[] = await BaseRepository.models.SuggestedValue.findAll({
             include: [

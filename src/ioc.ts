@@ -21,9 +21,11 @@ import { IEventHandler } from './interfaces/event-handler';
 import { IForeignExchangeGateway } from './interfaces/foreign-exchange-gateway';
 import { IFormulator } from './interfaces/formulator';
 import { ILogger } from './interfaces/logger';
+import { IMailSender } from './interfaces/mail-sender';
 import { IPaymentGateway } from './interfaces/payment-gateway';
 import { ISubscriptionFactory } from './interfaces/subscription-factory';
 import { WinstonLogger } from './loggers/winston';
+import { SendGridMailSender } from './mail-senders/send-grid';
 import { IDietRepository } from './repositories/diet';
 import { IDietGroupRepository } from './repositories/diet-group';
 import { IFormulationRepository } from './repositories/formulation';
@@ -68,6 +70,12 @@ const databaseConfig = {
     password: cryptographyAlgorithm.decrypt(config.database.password),
     superUserPassword: cryptographyAlgorithm.decrypt(config.database.superUserPassword),
     userName: config.database.userName,
+};
+
+const emailConfig = {
+    sendgrid: {
+        apiKey: cryptographyAlgorithm.decrypt(config.email.sendgrid.apiKey),
+    },
 };
 
 const paymentGatewayConfig = {
@@ -180,6 +188,8 @@ container.bind<ICache>('ICache').toConstantValue(new NullCache());
 container.bind<ILogger>('SQLLogger').toConstantValue(new WinstonLogger('sql'));
 container.bind<ILogger>('PaymentNotificationEventLogger').toConstantValue(new WinstonLogger('payment-notification-event'));
 container.bind<ILogger>('UserEventLogger').toConstantValue(new WinstonLogger('user-event'));
+
+container.bind<IMailSender>('IMailSender').toConstantValue(new SendGridMailSender(config.email.sendgrid.apiKey));
 
 export {
     container,

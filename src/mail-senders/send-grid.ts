@@ -6,7 +6,7 @@ export class SendGridMailSender implements IMailSender {
     constructor(
         private apiKey: string,
     ) {
-
+        sendGrid.setApiKey('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');
     }
 
     public async send(body: string, from: string, subject: string, to: string): Promise<void> {
@@ -17,6 +17,6 @@ export class SendGridMailSender implements IMailSender {
             to,
           };
 
-        sendGrid.send(msg);
+        const result: any = await sendGrid.send(msg);
     }
 }

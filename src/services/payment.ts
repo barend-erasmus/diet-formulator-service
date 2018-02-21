@@ -91,10 +91,10 @@ export class PaymentService extends BaseService {
 
         switch (subscription) {
             case 'standard':
-                amount = 9.95;
+                amount = 39.95;
                 break;
             case 'premium':
-                amount = 19.95;
+                amount = 64.95;
                 break;
         }
 

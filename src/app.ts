@@ -10,6 +10,7 @@ import { DietRouter } from './routes/diet';
 import { DietGroupRouter } from './routes/diet-group';
 import { FormulationRouter } from './routes/formulation';
 import { IngredientRouter } from './routes/ingredients';
+import { MailRouter } from './routes/mail';
 import { NutrientRouter } from './routes/nutrient';
 import { PaymentRouter } from './routes/payment';
 import { SubscriptionRouter } from './routes/subscription';
@@ -69,6 +70,8 @@ app.get('/api/formulation/supplement', AuthenticationMiddleware.shouldBeAuthenti
 
 app.get('/api/suggestedvalue/find', AuthenticationMiddleware.shouldBeAuthenticated, SuggestedValueRouter.find);
 app.get('/api/suggestedvalue/list', AuthenticationMiddleware.shouldBeAuthenticated, SuggestedValueRouter.list);
+
+app.post('/api/mail/send', MailRouter.send);
 
 app.use('/api/docs', express.static(path.join(__dirname, './../apidoc')));
 app.use('/api/coverage', express.static(path.join(__dirname, './../coverage/lcov-report')));
