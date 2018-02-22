@@ -1,5 +1,6 @@
 import * as Sequelize from 'sequelize';
 import * as winston from 'winston';
+import { CacheKeys } from '../../contants/cache-keys';
 import { Diet } from '../../entities/diet';
 import { DietGroup } from '../../entities/diet-group';
 import { DietValue } from '../../entities/diet-value';
@@ -85,8 +86,8 @@ export class BaseRepository {
 
             let parent: DietGroup = await this.cache.getUsingObjectKey({
                 id: dietGroup.parent.id,
-                key: 'BaseRepository.loadDietGroupParent',
-            }, 'system');
+                key: CacheKeys.BASE_REPOSITORY_LOAD_DIET_GROUP_PARENT,
+            }, CacheKeys.SYSTEM_USER_NAME);
 
             if (!parent) {
                 const result: any = await BaseRepository.models.DietGroup.find({
@@ -101,8 +102,8 @@ export class BaseRepository {
 
                 await this.cache.addUsingObjectKey({
                     id: dietGroup.parent.id,
-                    key: 'BaseRepository.loadDietGroupParent',
-                }, parent, null, 'system');
+                    key: CacheKeys.BASE_REPOSITORY_LOAD_DIET_GROUP_PARENT,
+                }, parent, null, CacheKeys.SYSTEM_USER_NAME);
             }
 
             dietGroup.parent = await this.loadDietGroupParent(parent);

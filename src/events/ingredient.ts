@@ -1,6 +1,6 @@
 import { IEvent } from '../interfaces/event';
 
-export class SubscriptionEvent implements IEvent {
+export class IngredientEvent implements IEvent {
     constructor(
         public type: string,
         public userName: string,

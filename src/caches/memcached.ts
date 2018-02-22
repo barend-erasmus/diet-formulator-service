@@ -21,7 +21,7 @@ export class MemcachedCache implements ICache {
 
     public async add(key: string, value: any, expiry: number, userName: string): Promise<void> {
         new Promise((resolve, reject) => {
-            this.client.set(key, this.deflateObjectToString(value), expiry ? expiry : 21600, (err: Error, data: any) => {
+            this.client.set(key, this.deflateObjectToString(value), expiry ? expiry : 900, (err: Error, data: any) => {
                 if (err) {
                     reject(err);
                     return;
@@ -42,7 +42,17 @@ export class MemcachedCache implements ICache {
         this.add(uniqueKey, value, expiry, userName);
     }
 
-    public async clearAll(userName: string): Promise<void> {
+    public async clearAllByPattern(pattern: RegExp): Promise<void> {
+        const keys: string[] = await this.keysAll();
+
+        for (const key of keys) {
+            if (pattern.test(key)) {
+                await this.removeKey(key);
+            }
+        }
+    }
+
+    public async clearAllByUserName(userName: string): Promise<void> {
         const keys: string[] = await this.keysAll();
 
         for (const key of keys) {
@@ -88,11 +98,17 @@ export class MemcachedCache implements ICache {
     }
 
     private deflateObjectToString(obj: any): string {
-        return zlib.deflateSync(JSON.stringify(obj)).toString('base64');
+        const result: string = zlib.deflateSync(JSON.stringify(obj)).toString('base64');
+
+        this.logger.debug(`MemcachedCache.deflateObjectToString(...) => ${result.length} bytes`);
+
+        return result;
     }
 
     private inflateStringToObject(str: any): any {
-        return JSON.parse(zlib.inflateSync(new Buffer(str, 'base64')).toString());
+        const result: any = JSON.parse(zlib.inflateSync(new Buffer(str, 'base64')).toString());
+
+        return result;
     }
 
     private keys(server: string, slabId: number, n: number): Promise<string[]> {

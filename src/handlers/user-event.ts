@@ -35,7 +35,7 @@ export class UserEventHandler implements IEventHandler<UserEvent> {
         } else if (event.type === 'updated') {
             this.logger.info(`User Updated: ${event.userName}`);
 
-            await this.cache.clearAll(event.userName);
+            await this.cache.clearAllByUserName(event.userName);
         }
 
         return event;

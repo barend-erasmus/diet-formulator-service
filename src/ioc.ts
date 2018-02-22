@@ -2,6 +2,7 @@ import { Container, interfaces } from 'inversify';
 import * as path from 'path';
 import 'reflect-metadata';
 import { EventBus } from './bus/event';
+import { IngredientEventBus } from './bus/ingredient-event';
 import { PaymentNotificationEventBus } from './bus/payment-notification-event';
 import { SubscriptionEventBus } from './bus/subscription-event';
 import { UserEventBus } from './bus/user-event';
@@ -9,6 +10,7 @@ import { MemcachedCache } from './caches/memcached';
 import { NullCache } from './caches/null';
 import { config } from './config';
 import { AES128CTRCryptographyAlgorithm } from './cryptography-algorithms/aes-256-ctr';
+import { IngredientEvent } from './events/ingredient';
 import { PaymentNotificationEvent } from './events/payment-notification';
 import { SubscriptionEvent } from './events/subscription';
 import { UserEvent } from './events/user';
@@ -16,6 +18,7 @@ import { SubscriptionFactory } from './factories/subscription';
 import { LeastCostRationFormulator } from './formulators/least-cost-ration';
 import { FixerForeignExchangeGateway } from './gateways/fixer-foreign-exchange';
 import { PayFastPaymentGateway } from './gateways/payfast-payment';
+import { IngredientEventHandler } from './handlers/ingredient-event';
 import { PaymentNotificationEventHandler } from './handlers/payment-notification-event';
 import { SubscriptionEventHandler } from './handlers/subscription-event';
 import { UserEventHandler } from './handlers/user-event';
@@ -185,10 +188,12 @@ container.bind<SubscriptionService>('SubscriptionService').to(SubscriptionServic
 container.bind<SuggestedValueService>('SuggestedValueService').to(SuggestedValueService);
 container.bind<UserService>('UserService').to(UserService);
 
+container.bind<EventBus<IngredientEvent>>('IngredientEventBus').to(IngredientEventBus);
 container.bind<EventBus<PaymentNotificationEvent>>('PaymentNotificationEventBus').to(PaymentNotificationEventBus);
 container.bind<EventBus<SubscriptionEvent>>('SubscriptionEventBus').to(SubscriptionEventBus);
 container.bind<EventBus<UserEvent>>('UserEventBus').to(UserEventBus);
 
+container.bind<IEventHandler<IngredientEvent>>('IngredientEventHandler').to(IngredientEventHandler);
 container.bind<IEventHandler<PaymentNotificationEvent>>('PaymentNotificationEventHandler').to(PaymentNotificationEventHandler);
 container.bind<IEventHandler<SubscriptionEvent>>('SubscriptionEventHandler').to(SubscriptionEventHandler);
 container.bind<IEventHandler<UserEvent>>('UserEventHandler').to(UserEventHandler);

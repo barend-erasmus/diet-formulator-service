@@ -1,4 +1,5 @@
 import * as express from 'express';
+import { CacheKeys } from '../contants/cache-keys';
 import { Ingredient } from '../entities/ingredient';
 import { WorldOfRationsError } from '../errors/world-of-rations-error';
 import { ICache } from '../interfaces/cache';
@@ -20,14 +21,14 @@ export class IngredientRouter {
     public static async list(req: express.Request, res: express.Response) {
         try {
             let result: Ingredient[] = await container.get<ICache>('ICache').getUsingObjectKey({
-                key: 'IngredientRouter.list',
+                key: CacheKeys.INGREDIENT_ROUTER_LIST,
             }, req['user'].email);
 
             if (!result) {
                 result = await container.get<IngredientService>('IngredientService').list(req['user'].email);
 
                 await container.get<ICache>('ICache').addUsingObjectKey({
-                    key: 'IngredientRouter.list',
+                    key: CacheKeys.INGREDIENT_ROUTER_LIST,
                 }, result, null, req['user'].email);
             }
 

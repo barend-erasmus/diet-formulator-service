@@ -15,7 +15,6 @@ export class PaymentNotificationEventHandler implements IEventHandler<PaymentNot
     }
 
     public async handle(event: PaymentNotificationEvent): Promise<PaymentNotificationEvent> {
-
         this.logger.info(`Payment Notification: ${event.id}`);
 
         return event;

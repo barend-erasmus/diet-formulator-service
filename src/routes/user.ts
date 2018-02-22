@@ -1,5 +1,6 @@
 import * as express from 'express';
 import * as request from 'request-promise';
+import { CacheKeys } from '../contants/cache-keys';
 import { User } from '../entities/user';
 import { WorldOfRationsError } from '../errors/world-of-rations-error';
 import { ICache } from '../interfaces/cache';
@@ -13,17 +14,17 @@ export class UserRouter {
             const token: string = UserRouter.getAuthorizationToken(req);
 
             let user: User = await container.get<ICache>('ICache').getUsingObjectKey({
-                key: 'UserRouter.info',
+                key: CacheKeys.USER_ROUTER_FIND,
                 token,
-            }, 'system');
+            }, CacheKeys.SYSTEM_USER_NAME);
 
             if (!user) {
                 user = await container.get<UserService>('UserService').find(token);
 
                 await container.get<ICache>('ICache').addUsingObjectKey({
-                    key: 'UserRouter.info',
+                    key: CacheKeys.USER_ROUTER_FIND,
                     token,
-                }, user, null, 'system');
+                }, user, null, CacheKeys.SYSTEM_USER_NAME);
             }
 
             if (!user) {

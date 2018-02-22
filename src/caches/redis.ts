@@ -24,7 +24,11 @@ export class RedisCache implements ICache {
         this.add(uniqueKey, value, expiry, userName);
     }
 
-    public async clearAll(userName: string): Promise<void> {
+    public async clearAllByPattern(pattern: RegExp): Promise<void> {
+
+    }
+
+    public async clearAllByUserName(userName: string): Promise<void> {
 
     }
 

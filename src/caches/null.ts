@@ -13,7 +13,11 @@ export class NullCache implements ICache {
 
     }
 
-    public async clearAll(userName: string): Promise<void> {
+    public async clearAllByPattern(pattern: RegExp): Promise<void> {
+
+    }
+
+    public async clearAllByUserName(userName: string): Promise<void> {
 
     }
 

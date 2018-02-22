@@ -1,6 +1,9 @@
 import { inject, injectable } from 'inversify';
 import 'reflect-metadata';
+import { EventBus } from '../bus/event';
 import { Ingredient } from '../entities/ingredient';
+import { IngredientEvent } from '../events/ingredient';
+import { IngredientCreatedEvent } from '../events/ingredient-created';
 import { IIngredientRepository } from '../repositories/ingredient';
 import { ISubscriptionRepository } from '../repositories/subscription';
 import { IUserRepository } from '../repositories/user';
@@ -16,6 +19,8 @@ export class IngredientService extends BaseService {
         userRepository: IUserRepository,
         @inject('IIngredientRepository')
         private ingredientRepository: IIngredientRepository,
+        @inject('IngredientEventBus')
+        private ingredientEventBus: EventBus<IngredientEvent>,
     ) {
         super(subscriptionRepository, userRepository);
     }
@@ -30,7 +35,11 @@ export class IngredientService extends BaseService {
 
         ingredient.validate();
 
-        return this.ingredientRepository.create(ingredient);
+        const result: Ingredient = await this.ingredientRepository.create(ingredient);
+
+        await this.ingredientEventBus.publish(new IngredientCreatedEvent(userName));
+
+        return result;
     }
 
     public async list(

@@ -1,4 +1,5 @@
 import * as express from 'express';
+import { CacheKeys } from '../contants/cache-keys';
 import { Diet } from '../entities/diet';
 import { Formulation } from '../entities/formulation';
 import { FormulationCompositionValue } from '../entities/formulation-composition-value';
@@ -34,7 +35,7 @@ export class FormulationRouter {
         try {
             let result: Formulation = await container.get<ICache>('ICache').getUsingObjectKey({
                 id: req.query.id,
-                key: 'FormulationRouter.find',
+                key: CacheKeys.FORMULATION_ROUTER_FIND,
             }, req['user'].email);
 
             if (!result) {
@@ -42,7 +43,7 @@ export class FormulationRouter {
 
                 await container.get<ICache>('ICache').addUsingObjectKey({
                     id: req.query.id,
-                    key: 'FormulationRouter.find',
+                    key: CacheKeys.FORMULATION_ROUTER_FIND,
                 }, result, null, req['user'].email);
             }
 
@@ -66,7 +67,7 @@ export class FormulationRouter {
         try {
             let result: Supplement[] = await container.get<ICache>('ICache').getUsingObjectKey({
                 id: req.query.id,
-                key: 'FormulationRouter.supplement',
+                key: CacheKeys.FORMULATION_ROUTER_SUPPLEMENT,
             }, req['user'].email);
 
             if (!result) {
@@ -74,7 +75,7 @@ export class FormulationRouter {
 
                 await container.get<ICache>('ICache').addUsingObjectKey({
                     id: req.query.id,
-                    key: 'FormulationRouter.supplement',
+                    key: CacheKeys.FORMULATION_ROUTER_SUPPLEMENT,
                 }, result, null, req['user'].email);
             }
 
@@ -88,7 +89,7 @@ export class FormulationRouter {
         try {
             let result: FormulationCompositionValue[] = await container.get<ICache>('ICache').getUsingObjectKey({
                 id: req.query.id,
-                key: 'FormulationRouter.composition',
+                key: CacheKeys.FORMULATION_ROUTER_COMPOSITION,
             }, req['user'].email);
 
             if (!result) {
@@ -96,7 +97,7 @@ export class FormulationRouter {
 
                 await container.get<ICache>('ICache').addUsingObjectKey({
                     id: req.query.id,
-                    key: 'FormulationRouter.composition',
+                    key: CacheKeys.FORMULATION_ROUTER_COMPOSITION,
                 }, result, null, req['user'].email);
             }
 

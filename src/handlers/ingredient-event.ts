@@ -1,12 +1,12 @@
 import { inject, injectable } from 'inversify';
 import 'reflect-metadata';
-import { SubscriptionEvent } from '../events/subscription';
+import { IngredientEvent } from '../events/ingredient';
 import { ICache } from '../interfaces/cache';
 import { IEventHandler } from '../interfaces/event-handler';
 import { ILogger } from '../interfaces/logger';
 
 @injectable()
-export class SubscriptionEventHandler implements IEventHandler<SubscriptionEvent> {
+export class IngredientEventHandler implements IEventHandler<IngredientEvent> {
 
     constructor(
         @inject('ICache')
@@ -17,9 +17,13 @@ export class SubscriptionEventHandler implements IEventHandler<SubscriptionEvent
 
     }
 
-    public async handle(event: SubscriptionEvent): Promise<SubscriptionEvent> {
-        if (event.type === 'changed') {
-            this.logger.info(`Subscription Changed: ${event.userName}`);
+    public async handle(event: IngredientEvent): Promise<IngredientEvent> {
+        if (event.type === 'created') {
+            this.logger.info(`Ingredient Created: ${event.userName}`);
+
+            await this.cache.clearAllByUserName(event.userName);
+        } else if (event.type === 'updated') {
+            this.logger.info(`Ingredient Updated: ${event.userName}`);
 
             await this.cache.clearAllByUserName(event.userName);
         }
