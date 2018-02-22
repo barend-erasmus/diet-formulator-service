@@ -2,6 +2,7 @@ import { injectable } from 'inversify';
 import 'reflect-metadata';
 import * as Sequelize from 'sequelize';
 import { DietGroup } from '../../entities/diet-group';
+import { ICache } from '../../interfaces/cache';
 import { ILogger } from '../../interfaces/logger';
 import { IDietGroupRepository } from '../diet-group';
 import { BaseRepository } from './base';
@@ -9,8 +10,14 @@ import { BaseRepository } from './base';
 @injectable()
 export class DietGroupRepository extends BaseRepository implements IDietGroupRepository {
 
-    constructor(host: string, userName: string, password: string, logger: ILogger) {
-        super(host, userName, password, logger);
+    constructor(
+        host: string,
+        userName: string,
+        password: string,
+        logger: ILogger,
+        cache: ICache,
+    ) {
+        super(host, userName, password, logger, cache);
     }
 
     public async create(dietGroup: DietGroup): Promise<DietGroup> {
@@ -27,6 +34,11 @@ export class DietGroupRepository extends BaseRepository implements IDietGroupRep
 
     public async find(dietGroupId: number): Promise<DietGroup> {
         const result: any = await BaseRepository.models.DietGroup.find({
+            include: [
+                {
+                    model: BaseRepository.models.DietGroup,
+                },
+            ],
             where: {
                 id: {
                     [Sequelize.Op.eq]: dietGroupId,
@@ -47,6 +59,11 @@ export class DietGroupRepository extends BaseRepository implements IDietGroupRep
 
     public async list(): Promise<DietGroup[]> {
         const result: any[] = await BaseRepository.models.DietGroup.findAll({
+            include: [
+                {
+                    model: BaseRepository.models.DietGroup,
+                },
+            ],
             order: [
                 ['name', 'ASC'],
             ],
@@ -63,6 +80,11 @@ export class DietGroupRepository extends BaseRepository implements IDietGroupRep
 
     public async listSubGroups(dietGroupId: number): Promise<DietGroup[]> {
         const result: any[] = await BaseRepository.models.DietGroup.findAll({
+            include: [
+                {
+                    model: BaseRepository.models.DietGroup,
+                },
+            ],
             order: [
                 ['name', 'ASC'],
             ],
@@ -75,8 +97,8 @@ export class DietGroupRepository extends BaseRepository implements IDietGroupRep
 
         const dietGroups: DietGroup[] = result.map((x) => this.mapToDietGroup(x));
 
-        for (const item of dietGroups) {
-            await this.loadDietGroupParent(item);
+        for (const dietGroup of dietGroups) {
+            await this.loadDietGroupParent(dietGroup);
         }
 
         return dietGroups;

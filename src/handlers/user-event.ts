@@ -4,6 +4,7 @@ import 'reflect-metadata';
 import { Subscription } from '../entities/subscription';
 import { TrialSubscription } from '../entities/trail-subscription';
 import { UserEvent } from '../events/user';
+import { ICache } from '../interfaces/cache';
 import { IEventHandler } from '../interfaces/event-handler';
 import { ILogger } from '../interfaces/logger';
 import { SubscriptionService } from '../services/subscription';
@@ -12,7 +13,9 @@ import { SubscriptionService } from '../services/subscription';
 export class UserEventHandler implements IEventHandler<UserEvent> {
 
     constructor(
-        @inject('UserEventLogger')
+        @inject('ICache')
+        private cache: ICache,
+        @inject('EventLogger')
         private logger: ILogger,
         @inject('SubscriptionService')
         private subscriptionService: SubscriptionService,
@@ -29,6 +32,10 @@ export class UserEventHandler implements IEventHandler<UserEvent> {
             if (!subscription) {
                 await this.subscriptionService.change('trial', event.userName);
             }
+        } else if (event.type === 'updated') {
+            this.logger.info(`User Updated: ${event.userName}`);
+
+            await this.cache.clearAll(event.userName);
         }
 
         return event;

@@ -5,6 +5,7 @@ import { Diet } from '../../entities/diet';
 import { DietGroup } from '../../entities/diet-group';
 import { DietValue } from '../../entities/diet-value';
 import { Nutrient } from '../../entities/nutrient';
+import { ICache } from '../../interfaces/cache';
 import { ILogger } from '../../interfaces/logger';
 import { IDietRepository } from '../diet';
 import { BaseRepository } from './base';
@@ -12,8 +13,14 @@ import { BaseRepository } from './base';
 @injectable()
 export class DietRepository extends BaseRepository implements IDietRepository {
 
-    constructor(host: string, userName: string, password: string, logger: ILogger) {
-        super(host, userName, password, logger);
+    constructor(
+        host: string,
+        userName: string,
+        password: string,
+        logger: ILogger,
+        cache: ICache,
+    ) {
+        super(host, userName, password, logger, cache);
     }
 
     public async create(diet: Diet): Promise<Diet> {
@@ -120,7 +127,13 @@ export class DietRepository extends BaseRepository implements IDietRepository {
             },
         });
 
-        return result.map((x) => this.mapToDiet(x, this.mapToDietGroup(x.dietGroup)));
+        const diets: Diet[] = result.map((x) => this.mapToDiet(x, this.mapToDietGroup(x.dietGroup)));
+
+        for (const diet of diets) {
+            diet.group = await this.loadDietGroupParent(diet.group);
+        }
+
+        return diets;
     }
 
     public async update(diet: Diet): Promise<Diet> {

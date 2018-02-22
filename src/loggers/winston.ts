@@ -11,6 +11,7 @@ export class WinstonLogger implements ILogger {
 
     constructor(name: string) {
         this.logger = new (winston.Logger)({
+            level: 'debug',
             transports: [
                 new (winston.transports.Console)(),
                 new (winston.transports.File)({ filename: path.join(__dirname, `diet-formulator-service-${name}.log`) }),

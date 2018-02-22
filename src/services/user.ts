@@ -6,6 +6,7 @@ import { TrialSubscription } from '../entities/trail-subscription';
 import { User } from '../entities/user';
 import { UserEvent } from '../events/user';
 import { UserCreatedEvent } from '../events/user-created';
+import { UserUpdatedEvent } from '../events/user-updated';
 import { ISubscriptionRepository } from '../repositories/subscription';
 import { IUserRepository } from '../repositories/user';
 import { BaseService } from './base';
@@ -29,10 +30,13 @@ export class UserService extends BaseService {
 
         if (!result) {
             result = await this.userRepository.create(user, token);
+
             await this.userEventBus.publish(new UserCreatedEvent(user.email));
         } else {
             result.verified = user.verified;
             result = await this.userRepository.update(result, token);
+
+            await this.userEventBus.publish(new UserUpdatedEvent(user.email));
         }
 
         return result;
@@ -65,6 +69,8 @@ export class UserService extends BaseService {
         existingUser.picture = user.picture;
 
         await this.userRepository.update(existingUser, token);
+
+        await this.userEventBus.publish(new UserUpdatedEvent(user.email));
 
         return existingUser;
     }

@@ -2,6 +2,7 @@ import * as express from 'express';
 import * as request from 'request-promise';
 import { User } from '../entities/user';
 import { WorldOfRationsError } from '../errors/world-of-rations-error';
+import { ICache } from '../interfaces/cache';
 import { container } from '../ioc';
 import { UserService } from '../services/user';
 
@@ -11,7 +12,19 @@ export class UserRouter {
         try {
             const token: string = UserRouter.getAuthorizationToken(req);
 
-            let user: User = await container.get<UserService>('UserService').find(token);
+            let user: User = await container.get<ICache>('ICache').getUsingObjectKey({
+                key: 'UserRouter.info',
+                token,
+            }, 'system');
+
+            if (!user) {
+                user = await container.get<UserService>('UserService').find(token);
+
+                await container.get<ICache>('ICache').addUsingObjectKey({
+                    key: 'UserRouter.info',
+                    token,
+                }, user, null, 'system');
+            }
 
             if (!user) {
                 try {

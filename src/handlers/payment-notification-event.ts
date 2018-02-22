@@ -8,7 +8,7 @@ import { ILogger } from '../interfaces/logger';
 export class PaymentNotificationEventHandler implements IEventHandler<PaymentNotificationEvent> {
 
     constructor(
-        @inject('PaymentNotificationEventLogger')
+        @inject('EventLogger')
         private logger: ILogger,
     ) {
 

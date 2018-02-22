@@ -1,10 +1,13 @@
 import { inject, injectable } from 'inversify';
 import * as moment from 'moment';
 import 'reflect-metadata';
+import { EventBus } from '../bus/event';
 import { Payment } from '../entities/payment';
 import { Subscription } from '../entities/subscription';
 import { User } from '../entities/user';
 import { WorldOfRationsError } from '../errors/world-of-rations-error';
+import { SubscriptionEvent } from '../events/subscription';
+import { SubscriptionChangedEvent } from '../events/subscription-changed';
 import { ISubscriptionFactory } from '../interfaces/subscription-factory';
 import { IPaymentRepository } from '../repositories/payment';
 import { ISubscriptionRepository } from '../repositories/subscription';
@@ -17,6 +20,8 @@ export class SubscriptionService extends BaseService {
     constructor(
         @inject('IPaymentRepository')
         private paymentRepository: IPaymentRepository,
+        @inject('SubscriptionEventBus')
+        private subscriptionEventBus: EventBus<SubscriptionEvent>,
         @inject('ISubscriptionRepository')
         subscriptionRepository: ISubscriptionRepository,
         @inject('ISubscriptionFactory')
@@ -37,6 +42,8 @@ export class SubscriptionService extends BaseService {
         await this.deactivateCurrentSubscription(userName);
 
         const newSubscription: Subscription = await this.subscriptionRepository.create(this.subscriptionFactory.create(true, this.getExpiryDateForSubscription(subscription, payment ? payment.period : null), new Date(), subscription), userName);
+
+        this.subscriptionEventBus.publish(new SubscriptionChangedEvent(userName));
 
         return newSubscription;
     }

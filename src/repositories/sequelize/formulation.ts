@@ -10,6 +10,7 @@ import { Ingredient } from '../../entities/ingredient';
 import { IngredientGroup } from '../../entities/ingredient-group';
 import { IngredientValue } from '../../entities/ingredient-value';
 import { Nutrient } from '../../entities/nutrient';
+import { ICache } from '../../interfaces/cache';
 import { ILogger } from '../../interfaces/logger';
 import { IFormulationRepository } from '../formulation';
 import { BaseRepository } from './base';
@@ -17,8 +18,14 @@ import { BaseRepository } from './base';
 @injectable()
 export class FormulationRepository extends BaseRepository implements IFormulationRepository {
 
-    constructor(host: string, userName: string, password: string, logger: ILogger) {
-        super(host, userName, password, logger);
+    constructor(
+        host: string,
+        userName: string,
+        password: string,
+        logger: ILogger,
+        cache: ICache,
+    ) {
+        super(host, userName, password, logger, cache);
     }
 
     public async create(formulation: Formulation, userName: string): Promise<Formulation> {

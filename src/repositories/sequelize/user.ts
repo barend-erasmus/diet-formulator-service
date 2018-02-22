@@ -2,6 +2,7 @@ import { injectable } from 'inversify';
 import 'reflect-metadata';
 import * as Sequelize from 'sequelize';
 import { User } from '../../entities/user';
+import { ICache } from '../../interfaces/cache';
 import { ILogger } from '../../interfaces/logger';
 import { IUserRepository } from '../user';
 import { BaseRepository } from './base';
@@ -9,8 +10,14 @@ import { BaseRepository } from './base';
 @injectable()
 export class UserRepository extends BaseRepository implements IUserRepository {
 
-    constructor(host: string, userName: string, password: string, logger: ILogger) {
-        super(host, userName, password, logger);
+    constructor(
+        host: string,
+        userName: string,
+        password: string,
+        logger: ILogger,
+        cache: ICache,
+    ) {
+        super(host, userName, password, logger, cache);
     }
 
     public async create(user: User, token: string): Promise<User> {

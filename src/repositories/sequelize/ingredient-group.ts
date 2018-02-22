@@ -2,6 +2,7 @@ import { injectable } from 'inversify';
 import 'reflect-metadata';
 import * as Sequelize from 'sequelize';
 import { IngredientGroup } from '../../entities/ingredient-group';
+import { ICache } from '../../interfaces/cache';
 import { ILogger } from '../../interfaces/logger';
 import { IIngredientGroupRepository } from '../ingredient-group';
 import { BaseRepository } from './base';
@@ -9,8 +10,14 @@ import { BaseRepository } from './base';
 @injectable()
 export class IngredientGroupRepository extends BaseRepository implements IIngredientGroupRepository {
 
-    constructor(host: string, userName: string, password: string, logger: ILogger) {
-        super(host, userName, password, logger);
+    constructor(
+        host: string,
+        userName: string,
+        password: string,
+        logger: ILogger,
+        cache: ICache,
+    ) {
+        super(host, userName, password, logger, cache);
     }
 
     public async create(ingredientGroup: IngredientGroup): Promise<IngredientGroup> {

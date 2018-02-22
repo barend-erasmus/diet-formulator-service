@@ -2,6 +2,7 @@ import { injectable } from 'inversify';
 import 'reflect-metadata';
 import * as Sequelize from 'sequelize';
 import { Payment } from '../../entities/payment';
+import { ICache } from '../../interfaces/cache';
 import { ILogger } from '../../interfaces/logger';
 import { IPaymentRepository } from '../payment';
 import { BaseRepository } from './base';
@@ -9,8 +10,14 @@ import { BaseRepository } from './base';
 @injectable()
 export class PaymentRepository extends BaseRepository implements IPaymentRepository {
 
-    constructor(host: string, userName: string, password: string, logger: ILogger) {
-        super(host, userName, password, logger);
+    constructor(
+        host: string,
+        userName: string,
+        password: string,
+        logger: ILogger,
+        cache: ICache,
+    ) {
+        super(host, userName, password, logger, cache);
     }
 
     public async create(payment: Payment, userName: string): Promise<Payment> {

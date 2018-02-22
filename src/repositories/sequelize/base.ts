@@ -10,6 +10,7 @@ import { Nutrient } from '../../entities/nutrient';
 import { Payment } from '../../entities/payment';
 import { SuggestedValue } from '../../entities/suggested-value';
 import { User } from '../../entities/user';
+import { ICache } from '../../interfaces/cache';
 import { ILogger } from '../../interfaces/logger';
 import { Models } from './models';
 
@@ -35,7 +36,13 @@ export class BaseRepository {
 
     protected static sequelize: Sequelize.Sequelize = null;
 
-    constructor(private host: string, private userName: string, private password: string, private logger: ILogger) {
+    constructor(
+        private host: string,
+        private userName: string,
+        private password: string,
+        private logger: ILogger,
+        private cache: ICache,
+    ) {
         if (!BaseRepository.sequelize) {
 
             BaseRepository.sequelize = new Sequelize('world-of-rations', userName, password, {
@@ -76,15 +83,27 @@ export class BaseRepository {
     protected async loadDietGroupParent(dietGroup: DietGroup): Promise<DietGroup> {
         if (dietGroup.parent) {
 
-            const result: any = await BaseRepository.models.DietGroup.find({
-                where: {
-                    id: {
-                        [Sequelize.Op.eq]: dietGroup.parent.id,
-                    },
-                },
-            });
+            let parent: DietGroup = await this.cache.getUsingObjectKey({
+                id: dietGroup.parent.id,
+                key: 'BaseRepository.loadDietGroupParent',
+            }, 'system');
 
-            const parent: DietGroup = this.mapToDietGroup(result);
+            if (!parent) {
+                const result: any = await BaseRepository.models.DietGroup.find({
+                    where: {
+                        id: {
+                            [Sequelize.Op.eq]: dietGroup.parent.id,
+                        },
+                    },
+                });
+
+                parent = this.mapToDietGroup(result);
+
+                await this.cache.addUsingObjectKey({
+                    id: dietGroup.parent.id,
+                    key: 'BaseRepository.loadDietGroupParent',
+                }, parent, null, 'system');
+            }
 
             dietGroup.parent = await this.loadDietGroupParent(parent);
         }

@@ -2,6 +2,7 @@ import { injectable } from 'inversify';
 import 'reflect-metadata';
 import * as Sequelize from 'sequelize';
 import { Subscription } from '../../entities/subscription';
+import { ICache } from '../../interfaces/cache';
 import { ILogger } from '../../interfaces/logger';
 import { ISubscriptionFactory } from '../../interfaces/subscription-factory';
 import { ISubscriptionRepository } from '../subscription';
@@ -16,8 +17,9 @@ export class SubscriptionRepository extends BaseRepository implements ISubscript
         userName: string,
         password: string,
         logger: ILogger,
+        cache: ICache,
     ) {
-        super(host, userName, password, logger);
+        super(host, userName, password, logger, cache);
     }
 
     public async create(subscription: Subscription, userName: string): Promise<Subscription> {

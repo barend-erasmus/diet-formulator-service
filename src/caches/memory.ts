@@ -17,6 +17,10 @@ export class MemoryCache implements ICache {
         this.add(uniqueKey, value, expiry, userName);
     }
 
+    public async clearAll(userName: string): Promise<void> {
+
+    }
+
     public async get(key: string, userName: string): Promise<any> {
         if (MemoryCache.items[key]) {
             return MemoryCache.items[key];
