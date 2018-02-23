@@ -4,6 +4,7 @@ import { IngredientEvent } from '../events/ingredient';
 import { ICache } from '../interfaces/cache';
 import { IEventHandler } from '../interfaces/event-handler';
 import { ILogger } from '../interfaces/logger';
+import { CacheKeys } from '../contants/cache-keys';
 
 @injectable()
 export class IngredientEventHandler implements IEventHandler<IngredientEvent> {
@@ -21,11 +22,11 @@ export class IngredientEventHandler implements IEventHandler<IngredientEvent> {
         if (event.type === 'created') {
             this.logger.info(`Ingredient Created: ${event.userName}`);
 
-            await this.cache.clearAllByUserName(event.userName);
+            await this.cache.clearAllByUserName(CacheKeys.INGREDIENT_ROUTER_LIST, event.userName);
         } else if (event.type === 'updated') {
             this.logger.info(`Ingredient Updated: ${event.userName}`);
 
-            await this.cache.clearAllByUserName(event.userName);
+            await this.cache.clearAllByUserName(CacheKeys.INGREDIENT_ROUTER_LIST, event.userName);
         }
 
         return event;

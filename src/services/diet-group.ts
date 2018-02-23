@@ -5,11 +5,17 @@ import { IDietGroupRepository } from '../repositories/diet-group';
 import { ISubscriptionRepository } from '../repositories/subscription';
 import { IUserRepository } from '../repositories/user';
 import { BaseService } from './base';
+import { DietGroupEvent } from '../events/diet-group';
+import { EventBus } from '../bus/event';
+import { DietGroupUpdatedEvent } from '../events/diet-group-updated';
+import { DietGroupCreatedEvent } from '../events/diet-group-created';
 
 @injectable()
 export class DietGroupService extends BaseService {
 
     constructor(
+        @inject('DietGroupEventBus')
+        private dietGroupEventBus: EventBus<DietGroupEvent>,
         @inject('ISubscriptionRepository')
         subscriptionRepository: ISubscriptionRepository,
         @inject('IUserRepository')
@@ -29,6 +35,8 @@ export class DietGroupService extends BaseService {
         dietGroup.validate();
 
         let result: DietGroup = await this.dietGroupRepository.create(dietGroup);
+
+        await this.dietGroupEventBus.publish(new DietGroupCreatedEvent(userName));
 
         result = await this.cleanDietGroup(result, userName);
 
@@ -82,6 +90,8 @@ export class DietGroupService extends BaseService {
         dietGroup.validate();
 
         let result: DietGroup = await this.dietGroupRepository.update(dietGroup);
+
+        await this.dietGroupEventBus.publish(new DietGroupUpdatedEvent(userName));
 
         result = await this.cleanDietGroup(result, userName);
 

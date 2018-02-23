@@ -7,7 +7,6 @@ import { PaymentNotificationEventBus } from './bus/payment-notification-event';
 import { SubscriptionEventBus } from './bus/subscription-event';
 import { UserEventBus } from './bus/user-event';
 import { MemcachedCache } from './caches/memcached';
-import { NullCache } from './caches/null';
 import { config } from './config';
 import { AES128CTRCryptographyAlgorithm } from './cryptography-algorithms/aes-256-ctr';
 import { IngredientEvent } from './events/ingredient';
@@ -67,6 +66,11 @@ import { PaymentNotificationService } from './services/payment-notification';
 import { SubscriptionService } from './services/subscription';
 import { SuggestedValueService } from './services/suggested-value';
 import { UserService } from './services/user';
+import { DietGroupEventHandler } from './handlers/diet-group-event';
+import { DietGroupEvent } from './events/diet-group';
+import { DietGroupEventBus } from './bus/diet-group-event';
+import { NullLogger } from './loggers/null';
+import { MemoryCache } from './caches/memory';
 
 const container: Container = new Container();
 
@@ -188,11 +192,13 @@ container.bind<SubscriptionService>('SubscriptionService').to(SubscriptionServic
 container.bind<SuggestedValueService>('SuggestedValueService').to(SuggestedValueService);
 container.bind<UserService>('UserService').to(UserService);
 
+container.bind<EventBus<DietGroupEvent>>('DietGroupEventBus').to(DietGroupEventBus);
 container.bind<EventBus<IngredientEvent>>('IngredientEventBus').to(IngredientEventBus);
 container.bind<EventBus<PaymentNotificationEvent>>('PaymentNotificationEventBus').to(PaymentNotificationEventBus);
 container.bind<EventBus<SubscriptionEvent>>('SubscriptionEventBus').to(SubscriptionEventBus);
 container.bind<EventBus<UserEvent>>('UserEventBus').to(UserEventBus);
 
+container.bind<IEventHandler<DietGroupEvent>>('DietGroupEventHandler').to(DietGroupEventHandler);
 container.bind<IEventHandler<IngredientEvent>>('IngredientEventHandler').to(IngredientEventHandler);
 container.bind<IEventHandler<PaymentNotificationEvent>>('PaymentNotificationEventHandler').to(PaymentNotificationEventHandler);
 container.bind<IEventHandler<SubscriptionEvent>>('SubscriptionEventHandler').to(SubscriptionEventHandler);
@@ -218,6 +224,15 @@ container.bind<ILogger>('SQLLogger').toConstantValue(new WinstonLogger('sql'));
 
 container.bind<IMailSender>('IMailSender').toConstantValue(new SendGridMailSender(emailConfig.sendgrid.apiKey));
 
+
+function configureForTesting(): void {
+    container.rebind<ICache>('ICache').to(MemoryCache);
+
+    container.rebind<ILogger>('CacheLogger').toConstantValue(new NullLogger());
+    container.rebind<ILogger>('EventLogger').toConstantValue(new NullLogger());
+    container.rebind<ILogger>('SQLLogger').toConstantValue(new NullLogger());
+}
 export {
+    configureForTesting,
     container,
 };

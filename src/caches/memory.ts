@@ -21,7 +21,7 @@ export class MemoryCache implements ICache {
 
     }
 
-    public async clearAllByUserName(userName: string): Promise<void> {
+    public async clearAllByUserName(key: string, userName: string): Promise<void> {
 
     }
 

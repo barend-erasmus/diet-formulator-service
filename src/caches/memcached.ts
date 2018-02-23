@@ -52,7 +52,7 @@ export class MemcachedCache implements ICache {
         }
     }
 
-    public async clearAllByUserName(userName: string): Promise<void> {
+    public async clearAllByUserName(key: string, userName: string): Promise<void> {
         const keys: string[] = await this.keysAll();
 
         for (const key of keys) {
@@ -90,11 +90,15 @@ export class MemcachedCache implements ICache {
     }
 
     private buildUniqueKey(obj: any, userName: string): string {
-        const keys: string[] = Object.keys(obj).sort();
+        const keys: string[] = Object.keys(obj).filter((key) => key !== 'key').sort();
 
         const uniqueKey: string = keys.map((x) => `${x}=${obj[x]}`).join('|');
 
-        return `${userName}-${uniqueKey}`;
+        if (obj.key) {
+            return `${userName}-${obj.key}-${uniqueKey}`;
+        } else {
+            return `${userName}-${uniqueKey}`;
+        }
     }
 
     private deflateObjectToString(obj: any): string {

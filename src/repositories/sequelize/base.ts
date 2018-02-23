@@ -55,6 +55,7 @@ export class BaseRepository {
                         this.logger.info(text.substring('Executing (default): '.length, text.length));
                     }
                 },
+                operatorsAliases: false,
                 pool: {
                     idle: 10000,
                     max: 5,

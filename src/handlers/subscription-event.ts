@@ -4,6 +4,7 @@ import { SubscriptionEvent } from '../events/subscription';
 import { ICache } from '../interfaces/cache';
 import { IEventHandler } from '../interfaces/event-handler';
 import { ILogger } from '../interfaces/logger';
+import { CacheKeys } from '../contants/cache-keys';
 
 @injectable()
 export class SubscriptionEventHandler implements IEventHandler<SubscriptionEvent> {
@@ -21,7 +22,7 @@ export class SubscriptionEventHandler implements IEventHandler<SubscriptionEvent
         if (event.type === 'changed') {
             this.logger.info(`Subscription Changed: ${event.userName}`);
 
-            await this.cache.clearAllByUserName(event.userName);
+            await this.cache.clearAllByUserName(CacheKeys.SUBSCRIPTION_ROUTER_FIND, event.userName);
         }
 
         return event;

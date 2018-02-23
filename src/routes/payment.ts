@@ -34,9 +34,7 @@ export class PaymentRouter {
 
     public static async notify(req: express.Request, res: express.Response) {
         try {
-            await container.get<EventBus<PaymentNotificationEvent>>('PaymentNotificationEventBus').publish(new PaymentNotificationEvent(req.body.m_payment_id, req.body));
-
-            await container.get<PaymentNotificationService>('PaymentNotificationService').create(req.body.m_payment_id, req.body.payment_status);
+            await container.get<PaymentNotificationService>('PaymentNotificationService').create(req.body.m_payment_id, req.body.payment_status, req.body);
 
             res.json('OK');
         } catch (err) {

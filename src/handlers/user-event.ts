@@ -8,6 +8,7 @@ import { ICache } from '../interfaces/cache';
 import { IEventHandler } from '../interfaces/event-handler';
 import { ILogger } from '../interfaces/logger';
 import { SubscriptionService } from '../services/subscription';
+import { CacheKeys } from '../contants/cache-keys';
 
 @injectable()
 export class UserEventHandler implements IEventHandler<UserEvent> {
@@ -35,7 +36,7 @@ export class UserEventHandler implements IEventHandler<UserEvent> {
         } else if (event.type === 'updated') {
             this.logger.info(`User Updated: ${event.userName}`);
 
-            await this.cache.clearAllByUserName(event.userName);
+            await this.cache.clearAllByUserName(CacheKeys.USER_ROUTER_FIND, event.userName);
         }
 
         return event;
