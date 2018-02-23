@@ -18,7 +18,7 @@ describe('AES128CTRCryptographyAlgorithm', () => {
             const result: string = crytographyAlgoritm.decrypt('f8c9d08f9e923824fd9aad');
 
             expect(result).to.be.eq('hello world');
-            
+
         });
 
     });
@@ -30,7 +30,7 @@ describe('AES128CTRCryptographyAlgorithm', () => {
             const result: string = crytographyAlgoritm.encrypt('hello world');
 
             expect(result).to.be.eq('f8c9d08f9e923824fd9aad');
-            
+
         });
 
     });

@@ -1,8 +1,8 @@
 import { inject, injectable } from 'inversify';
 import 'reflect-metadata';
+import { DietGroupEvent } from '../events/diet-group';
 import { IEventHandler } from '../interfaces/event-handler';
 import { EventBus } from './event';
-import { DietGroupEvent } from '../events/diet-group';
 
 @injectable()
 export class DietGroupEventBus extends EventBus<DietGroupEvent> {

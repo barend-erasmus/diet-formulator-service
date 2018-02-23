@@ -1,8 +1,8 @@
 import { inject, injectable } from 'inversify';
 import 'reflect-metadata';
-import { IPaymentNotificationRepository } from '../repositories/payment-notification';
-import { PaymentNotificationEvent } from '../events/payment-notification';
 import { EventBus } from '../bus/event';
+import { PaymentNotificationEvent } from '../events/payment-notification';
+import { IPaymentNotificationRepository } from '../repositories/payment-notification';
 
 @injectable()
 export class PaymentNotificationService {

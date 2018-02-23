@@ -1,14 +1,14 @@
 import { inject, injectable } from 'inversify';
 import 'reflect-metadata';
+import { EventBus } from '../bus/event';
 import { DietGroup } from '../entities/diet-group';
+import { DietGroupEvent } from '../events/diet-group';
+import { DietGroupCreatedEvent } from '../events/diet-group-created';
+import { DietGroupUpdatedEvent } from '../events/diet-group-updated';
 import { IDietGroupRepository } from '../repositories/diet-group';
 import { ISubscriptionRepository } from '../repositories/subscription';
 import { IUserRepository } from '../repositories/user';
 import { BaseService } from './base';
-import { DietGroupEvent } from '../events/diet-group';
-import { EventBus } from '../bus/event';
-import { DietGroupUpdatedEvent } from '../events/diet-group-updated';
-import { DietGroupCreatedEvent } from '../events/diet-group-created';
 
 @injectable()
 export class DietGroupService extends BaseService {

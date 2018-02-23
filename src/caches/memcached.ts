@@ -55,11 +55,11 @@ export class MemcachedCache implements ICache {
     public async clearAllByUserName(key: string, userName: string): Promise<void> {
         const keys: string[] = await this.keysAll();
 
-        for (const key of keys) {
-            const pattern: RegExp = new RegExp(`${userName}-.*`);
+        for (const item of keys) {
+            const pattern: RegExp = new RegExp(`${userName}-${key}.*`);
 
-            if (pattern.test(key)) {
-                await this.removeKey(key);
+            if (pattern.test(item)) {
+                await this.removeKey(item);
             }
         }
     }

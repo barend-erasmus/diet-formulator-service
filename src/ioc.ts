@@ -1,14 +1,17 @@
 import { Container, interfaces } from 'inversify';
 import * as path from 'path';
 import 'reflect-metadata';
+import { DietGroupEventBus } from './bus/diet-group-event';
 import { EventBus } from './bus/event';
 import { IngredientEventBus } from './bus/ingredient-event';
 import { PaymentNotificationEventBus } from './bus/payment-notification-event';
 import { SubscriptionEventBus } from './bus/subscription-event';
 import { UserEventBus } from './bus/user-event';
 import { MemcachedCache } from './caches/memcached';
+import { MemoryCache } from './caches/memory';
 import { config } from './config';
 import { AES128CTRCryptographyAlgorithm } from './cryptography-algorithms/aes-256-ctr';
+import { DietGroupEvent } from './events/diet-group';
 import { IngredientEvent } from './events/ingredient';
 import { PaymentNotificationEvent } from './events/payment-notification';
 import { SubscriptionEvent } from './events/subscription';
@@ -17,6 +20,7 @@ import { SubscriptionFactory } from './factories/subscription';
 import { LeastCostRationFormulator } from './formulators/least-cost-ration';
 import { FixerForeignExchangeGateway } from './gateways/fixer-foreign-exchange';
 import { PayFastPaymentGateway } from './gateways/payfast-payment';
+import { DietGroupEventHandler } from './handlers/diet-group-event';
 import { IngredientEventHandler } from './handlers/ingredient-event';
 import { PaymentNotificationEventHandler } from './handlers/payment-notification-event';
 import { SubscriptionEventHandler } from './handlers/subscription-event';
@@ -30,6 +34,7 @@ import { ILogger } from './interfaces/logger';
 import { IMailSender } from './interfaces/mail-sender';
 import { IPaymentGateway } from './interfaces/payment-gateway';
 import { ISubscriptionFactory } from './interfaces/subscription-factory';
+import { NullLogger } from './loggers/null';
 import { WinstonLogger } from './loggers/winston';
 import { SendGridMailSender } from './mail-senders/send-grid';
 import { IDietRepository } from './repositories/diet';
@@ -66,11 +71,6 @@ import { PaymentNotificationService } from './services/payment-notification';
 import { SubscriptionService } from './services/subscription';
 import { SuggestedValueService } from './services/suggested-value';
 import { UserService } from './services/user';
-import { DietGroupEventHandler } from './handlers/diet-group-event';
-import { DietGroupEvent } from './events/diet-group';
-import { DietGroupEventBus } from './bus/diet-group-event';
-import { NullLogger } from './loggers/null';
-import { MemoryCache } from './caches/memory';
 
 const container: Container = new Container();
 
@@ -223,7 +223,6 @@ container.bind<ILogger>('EventLogger').toConstantValue(new WinstonLogger('event'
 container.bind<ILogger>('SQLLogger').toConstantValue(new WinstonLogger('sql'));
 
 container.bind<IMailSender>('IMailSender').toConstantValue(new SendGridMailSender(emailConfig.sendgrid.apiKey));
-
 
 function configureForTesting(): void {
     container.rebind<ICache>('ICache').to(MemoryCache);

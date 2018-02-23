@@ -1,10 +1,10 @@
 import { inject, injectable } from 'inversify';
 import 'reflect-metadata';
+import { CacheKeys } from '../contants/cache-keys';
 import { SubscriptionEvent } from '../events/subscription';
 import { ICache } from '../interfaces/cache';
 import { IEventHandler } from '../interfaces/event-handler';
 import { ILogger } from '../interfaces/logger';
-import { CacheKeys } from '../contants/cache-keys';
 
 @injectable()
 export class SubscriptionEventHandler implements IEventHandler<SubscriptionEvent> {

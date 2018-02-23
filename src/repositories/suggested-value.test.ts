@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import 'mocha';
 import { SuggestedValue } from '../entities/suggested-value';
-import { container, configureForTesting } from '../ioc';
+import { configureForTesting, container } from '../ioc';
 import { ISuggestedValueRepository } from './suggested-value';
 
 describe('SuggestedValueRepository - Integration', () => {

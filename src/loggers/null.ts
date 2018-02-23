@@ -5,7 +5,7 @@ import { ILogger } from '../interfaces/logger';
 export class NullLogger implements ILogger {
 
     constructor() {
-        
+
     }
 
     public debug(message: string, metaData?: any): void {

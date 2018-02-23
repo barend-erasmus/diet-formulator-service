@@ -18,7 +18,7 @@ describe('FixerForeignExchangeGateway - Integration', () => {
             const result: number = await foreignExchangeGateway.convert(10, 'ZAR', 'USD');
 
             expect(result).to.be.not.null;
-            
+
         });
 
         it('should return number given USD to ZAR', async () => {
@@ -26,7 +26,7 @@ describe('FixerForeignExchangeGateway - Integration', () => {
             const result: number = await foreignExchangeGateway.convert(10, 'USD', 'ZAR');
 
             expect(result).to.be.not.null;
-            
+
         });
 
         it('should return number given ZAR to EUR', async () => {
@@ -34,7 +34,7 @@ describe('FixerForeignExchangeGateway - Integration', () => {
             const result: number = await foreignExchangeGateway.convert(10, 'ZAR', 'EUR');
 
             expect(result).to.be.not.null;
-            
+
         });
 
         it('should return number given EUR to ZAR', async () => {
@@ -42,7 +42,7 @@ describe('FixerForeignExchangeGateway - Integration', () => {
             const result: number = await foreignExchangeGateway.convert(10, 'EUR', 'ZAR');
 
             expect(result).to.be.not.null;
-            
+
         });
 
     });

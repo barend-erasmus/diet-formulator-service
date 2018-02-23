@@ -1,13 +1,13 @@
 import { inject, injectable } from 'inversify';
 import * as moment from 'moment';
 import 'reflect-metadata';
+import { CacheKeys } from '../contants/cache-keys';
 import { Subscription } from '../entities/subscription';
 import { TrialSubscription } from '../entities/trail-subscription';
+import { DietGroupEvent } from '../events/diet-group';
 import { ICache } from '../interfaces/cache';
 import { IEventHandler } from '../interfaces/event-handler';
 import { ILogger } from '../interfaces/logger';
-import { DietGroupEvent } from '../events/diet-group';
-import { CacheKeys } from '../contants/cache-keys';
 
 @injectable()
 export class DietGroupEventHandler implements IEventHandler<DietGroupEvent> {

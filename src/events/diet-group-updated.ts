@@ -1,4 +1,4 @@
-import { DietGroupEvent } from "./diet-group";
+import { DietGroupEvent } from './diet-group';
 
 export class DietGroupUpdatedEvent extends DietGroupEvent {
     constructor(

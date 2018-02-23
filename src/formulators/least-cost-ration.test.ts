@@ -13,7 +13,7 @@ import { LeastCostRationFormulator } from './least-cost-ration';
 describe('LeastCostRationFormulator', () => {
 
     let formulator: IFormulator = null;
-    
+
     before(async () => {
         formulator = new LeastCostRationFormulator();
     });
@@ -55,7 +55,7 @@ describe('LeastCostRationFormulator', () => {
 
             expect(result.feasible).to.be.true;
             expect(Math.round(result.cost * 100) / 100).to.eq(121.08);
-            
+
         });
 
     });
