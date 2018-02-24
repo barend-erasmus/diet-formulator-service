@@ -1,5 +1,5 @@
 import * as express from 'express';
-import { CacheKeys } from '../contants/cache-keys';
+import { CacheKeys } from '../constants/cache-keys';
 import { Ingredient } from '../entities/ingredient';
 import { DietFormulatorError } from '../errors/diet-formulator-error';
 import { ICache } from '../interfaces/cache';

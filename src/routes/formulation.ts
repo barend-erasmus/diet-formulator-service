@@ -1,5 +1,5 @@
 import * as express from 'express';
-import { CacheKeys } from '../contants/cache-keys';
+import { CacheKeys } from '../constants/cache-keys';
 import { Diet } from '../entities/diet';
 import { Formulation } from '../entities/formulation';
 import { FormulationCompositionValue } from '../entities/formulation-composition-value';

@@ -1,6 +1,6 @@
 import * as express from 'express';
 import * as request from 'request-promise';
-import { CacheKeys } from '../contants/cache-keys';
+import { CacheKeys } from '../constants/cache-keys';
 import { User } from '../entities/user';
 import { DietFormulatorError } from '../errors/diet-formulator-error';
 import { ICache } from '../interfaces/cache';

@@ -1,6 +1,6 @@
 import { inject, injectable } from 'inversify';
 import 'reflect-metadata';
-import { CacheKeys } from '../contants/cache-keys';
+import { CacheKeys } from '../constants/cache-keys';
 import { IngredientEvent } from '../events/ingredient';
 import { ICache } from '../interfaces/cache';
 import { IEventHandler } from '../interfaces/event-handler';

@@ -1,7 +1,7 @@
 import { inject, injectable } from 'inversify';
 import * as moment from 'moment';
 import 'reflect-metadata';
-import { CacheKeys } from '../contants/cache-keys';
+import { CacheKeys } from '../constants/cache-keys';
 import { Subscription } from '../entities/subscription';
 import { TrialSubscription } from '../entities/trail-subscription';
 import { UserEvent } from '../events/user';
