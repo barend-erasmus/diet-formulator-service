@@ -1,5 +1,5 @@
-import { ErrorField } from "../models/error-field";
-import { ValidationError } from "../errors/validation-error";
+import { ValidationError } from '../errors/validation-error';
+import { ErrorField } from '../models/error-field';
 
 export class IngredientGroup {
     constructor(

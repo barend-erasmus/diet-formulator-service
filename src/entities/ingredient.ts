@@ -1,7 +1,7 @@
+import { ValidationError } from '../errors/validation-error';
+import { ErrorField } from '../models/error-field';
 import { IngredientGroup } from './ingredient-group';
 import { IngredientValue } from './ingredient-value';
-import { ErrorField } from '../models/error-field';
-import { ValidationError } from '../errors/validation-error';
 
 export class Ingredient {
     constructor(

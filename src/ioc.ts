@@ -80,10 +80,10 @@ const container: Container = new Container();
 const cryptographyAlgorithm: ICryptographyAlgorithm = new AES128CTRCryptographyAlgorithm(config.cryptography.password);
 
 const databaseConfig = {
-    host: argv.dev? 'localhost' : config.database.host,
-    password: argv.dev? 'password' : cryptographyAlgorithm.decrypt(config.database.password),
-    superUserPassword: argv.dev? 'password' : cryptographyAlgorithm.decrypt(config.database.superUserPassword),
-    userName: argv.dev? 'postgres' : config.database.userName,
+    host: argv.dev ? 'localhost' : config.database.host,
+    password: argv.dev ? 'password' : cryptographyAlgorithm.decrypt(config.database.password),
+    superUserPassword: argv.dev ? 'password' : cryptographyAlgorithm.decrypt(config.database.superUserPassword),
+    userName: argv.dev ? 'postgres' : config.database.userName,
 };
 
 const emailConfig = {

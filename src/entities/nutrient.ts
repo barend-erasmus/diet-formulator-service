@@ -1,5 +1,5 @@
-import { ErrorField } from "../models/error-field";
-import { ValidationError } from "../errors/validation-error";
+import { ValidationError } from '../errors/validation-error';
+import { ErrorField } from '../models/error-field';
 
 export class Nutrient {
     constructor(
@@ -16,7 +16,7 @@ export class Nutrient {
 
     public validate(): void {
         const errorFields: ErrorField[] = [];
-        
+
         if (!this.name) {
           errorFields.push(new ErrorField('nutrient.name', 'Name cannot be empty'));
         }
