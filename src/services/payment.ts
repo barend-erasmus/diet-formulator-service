@@ -2,7 +2,7 @@ import { inject, injectable } from 'inversify';
 import 'reflect-metadata';
 import { Payment } from '../entities/payment';
 import { User } from '../entities/user';
-import { WorldOfRationsError } from '../errors/world-of-rations-error';
+import { DietFormulatorError } from '../errors/diet-formulator-error';
 import { IForeignExchangeGateway } from '../interfaces/foreign-exchange-gateway';
 import { IPaymentGateway } from '../interfaces/payment-gateway';
 import { IPaymentRepository } from '../repositories/payment';
@@ -52,7 +52,7 @@ export class PaymentService extends BaseService {
         const paid: boolean = await this.paymentGateway.verify(paymentId);
 
         if (!paid) {
-            throw new WorldOfRationsError('not_paid', 'Payment has not been made');
+            throw new DietFormulatorError('not_paid', 'Payment has not been made');
         }
 
         const payment: Payment = await this.paymentRepository.find(paymentId, userName);
@@ -103,7 +103,7 @@ export class PaymentService extends BaseService {
 
     private throwIfSubscriptionInvalid(subscription: string): void {
         if (subscription !== 'standard' && subscription !== 'premium') {
-            throw new WorldOfRationsError('invalid_subscription', 'Invalid subscription');
+            throw new DietFormulatorError('invalid_subscription', 'Invalid subscription');
         }
     }
 }

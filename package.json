@@ -10,7 +10,7 @@
     "docs": "apidoc -i src/routes/ -o apidoc/",
     "init": "npm run build & node ./dist/init.js",
     "lint": "tslint ./src/**/*.ts --fix --exclude ./src/**/*.d.ts",
-    "start": "npm run build & node ./dist/app.js",
+    "start": "npm run build & node --dev ./dist/app.js",
     "test": "npm run build & mocha --timeout 30000 ./dist/**/*.test.js"
   },
   "repository": {

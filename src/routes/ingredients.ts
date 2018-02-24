@@ -1,7 +1,7 @@
 import * as express from 'express';
 import { CacheKeys } from '../contants/cache-keys';
 import { Ingredient } from '../entities/ingredient';
-import { WorldOfRationsError } from '../errors/world-of-rations-error';
+import { DietFormulatorError } from '../errors/diet-formulator-error';
 import { ICache } from '../interfaces/cache';
 import { container } from '../ioc';
 import { IngredientService } from '../services/ingredient';
@@ -14,7 +14,7 @@ export class IngredientRouter {
 
             res.json(result);
         } catch (err) {
-            res.status(500).json(WorldOfRationsError.fromError(err));
+            res.status(500).json(DietFormulatorError.fromError(err));
         }
     }
 
@@ -34,7 +34,7 @@ export class IngredientRouter {
 
             res.json(result);
         } catch (err) {
-            res.status(500).json(WorldOfRationsError.fromError(err));
+            res.status(500).json(DietFormulatorError.fromError(err));
         }
     }
 }

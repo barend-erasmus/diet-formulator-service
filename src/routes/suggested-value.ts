@@ -1,6 +1,6 @@
 import * as express from 'express';
 import { SuggestedValue } from '../entities/suggested-value';
-import { WorldOfRationsError } from '../errors/world-of-rations-error';
+import { DietFormulatorError } from '../errors/diet-formulator-error';
 import { container } from '../ioc';
 import { SuggestedValueService } from '../services/suggested-value';
 
@@ -12,7 +12,7 @@ export class SuggestedValueRouter {
 
             res.json(result);
         } catch (err) {
-            res.status(500).json(WorldOfRationsError.fromError(err));
+            res.status(500).json(DietFormulatorError.fromError(err));
         }
     }
 
@@ -22,7 +22,7 @@ export class SuggestedValueRouter {
 
             res.json(result);
         } catch (err) {
-            res.status(500).json(WorldOfRationsError.fromError(err));
+            res.status(500).json(DietFormulatorError.fromError(err));
         }
     }
 
@@ -32,7 +32,7 @@ export class SuggestedValueRouter {
 
             res.json(result);
         } catch (err) {
-            res.status(500).json(WorldOfRationsError.fromError(err));
+            res.status(500).json(DietFormulatorError.fromError(err));
         }
     }
 }

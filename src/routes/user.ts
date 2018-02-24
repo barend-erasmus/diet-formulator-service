@@ -2,7 +2,7 @@ import * as express from 'express';
 import * as request from 'request-promise';
 import { CacheKeys } from '../contants/cache-keys';
 import { User } from '../entities/user';
-import { WorldOfRationsError } from '../errors/world-of-rations-error';
+import { DietFormulatorError } from '../errors/diet-formulator-error';
 import { ICache } from '../interfaces/cache';
 import { container } from '../ioc';
 import { UserService } from '../services/user';
@@ -56,7 +56,7 @@ export class UserRouter {
             }
 
         } catch (err) {
-            res.status(500).json(WorldOfRationsError.fromError(err));
+            res.status(500).json(DietFormulatorError.fromError(err));
         }
     }
 
@@ -66,7 +66,7 @@ export class UserRouter {
 
             res.json(result);
         } catch (err) {
-            res.status(500).json(WorldOfRationsError.fromError(err));
+            res.status(500).json(DietFormulatorError.fromError(err));
         }
     }
 
@@ -74,13 +74,13 @@ export class UserRouter {
         const authorizationHeader: string = req.get('Authorization');
 
         if (!authorizationHeader) {
-            throw new WorldOfRationsError('invalid_token', 'Invalid token');
+            throw new DietFormulatorError('invalid_token', 'Invalid token');
         }
 
         const splittedAuthorizationHeader: string[] = authorizationHeader.split(' ');
 
         if (splittedAuthorizationHeader.length !== 2 && splittedAuthorizationHeader[0].toLowerCase() === 'bearer') {
-            throw new WorldOfRationsError('invalid_token', 'Invalid token');
+            throw new DietFormulatorError('invalid_token', 'Invalid token');
         }
 
         return splittedAuthorizationHeader[1];

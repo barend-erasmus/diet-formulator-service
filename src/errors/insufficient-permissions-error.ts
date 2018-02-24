@@ -1,6 +1,6 @@
-import { WorldOfRationsError } from './world-of-rations-error';
+import { DietFormulatorError } from './diet-formulator-error';
 
-export class InsufficientPermissionsError extends WorldOfRationsError {
+export class InsufficientPermissionsError extends DietFormulatorError {
     constructor(
         code: string,
         detailedMessage: string,

@@ -5,7 +5,7 @@ import { EventBus } from '../bus/event';
 import { Payment } from '../entities/payment';
 import { Subscription } from '../entities/subscription';
 import { User } from '../entities/user';
-import { WorldOfRationsError } from '../errors/world-of-rations-error';
+import { DietFormulatorError } from '../errors/diet-formulator-error';
 import { SubscriptionEvent } from '../events/subscription';
 import { SubscriptionChangedEvent } from '../events/subscription-changed';
 import { ISubscriptionFactory } from '../interfaces/subscription-factory';
@@ -64,7 +64,7 @@ export class SubscriptionService extends BaseService {
         const payment: Payment = payments.find((x) => x.subscription === subscription && !x.assigned && x.paid);
 
         if (!payment) {
-            throw new WorldOfRationsError('no_payment_for_subscription', 'No Payment for this subscription');
+            throw new DietFormulatorError('no_payment_for_subscription', 'No Payment for this subscription');
         }
 
         payment.assigned = true;
@@ -100,7 +100,7 @@ export class SubscriptionService extends BaseService {
     }
 
     private requiresPayment(subscription: string): boolean {
-        if (subscription !== 'trail' && subscription !== 'basic') {
+        if (subscription !== 'trial' && subscription !== 'basic') {
             return true;
         }
 

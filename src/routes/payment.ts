@@ -2,7 +2,7 @@ import * as express from 'express';
 import * as fs from 'fs';
 import { EventBus } from '../bus/event';
 import { Payment } from '../entities/payment';
-import { WorldOfRationsError } from '../errors/world-of-rations-error';
+import { DietFormulatorError } from '../errors/diet-formulator-error';
 import { PaymentNotificationEvent } from '../events/payment-notification';
 import { container } from '../ioc';
 import { PaymentService } from '../services/payment';
@@ -18,7 +18,7 @@ export class PaymentRouter {
                 uri: result,
             });
         } catch (err) {
-            res.status(500).json(WorldOfRationsError.fromError(err));
+            res.status(500).json(DietFormulatorError.fromError(err));
         }
     }
 
@@ -28,7 +28,7 @@ export class PaymentRouter {
 
             res.json(result);
         } catch (err) {
-            res.status(500).json(WorldOfRationsError.fromError(err));
+            res.status(500).json(DietFormulatorError.fromError(err));
         }
     }
 
@@ -38,7 +38,7 @@ export class PaymentRouter {
 
             res.json('OK');
         } catch (err) {
-            res.status(500).json(WorldOfRationsError.fromError(err));
+            res.status(500).json(DietFormulatorError.fromError(err));
         }
     }
 
@@ -48,7 +48,7 @@ export class PaymentRouter {
 
             res.json(result);
         } catch (err) {
-            res.status(500).json(WorldOfRationsError.fromError(err));
+            res.status(500).json(DietFormulatorError.fromError(err));
         }
     }
 }

@@ -1,7 +1,7 @@
 import { ErrorField } from '../models/error-field';
-import { WorldOfRationsError } from './world-of-rations-error';
+import { DietFormulatorError } from './diet-formulator-error';
 
-export class ValidationError extends WorldOfRationsError {
+export class ValidationError extends DietFormulatorError {
     constructor(
         code: string,
         detailedMessage: string,

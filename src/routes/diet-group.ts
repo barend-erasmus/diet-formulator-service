@@ -1,6 +1,6 @@
 import * as express from 'express';
 import { DietGroup } from '../entities/diet-group';
-import { WorldOfRationsError } from '../errors/world-of-rations-error';
+import { DietFormulatorError } from '../errors/diet-formulator-error';
 import { container } from '../ioc';
 import { DietGroupService } from '../services/diet-group';
 
@@ -15,7 +15,7 @@ export class DietGroupRouter {
 
             res.json(result);
         } catch (err) {
-            res.status(500).json(WorldOfRationsError.fromError(err));
+            res.status(500).json(DietFormulatorError.fromError(err));
         }
     }
 
@@ -25,7 +25,7 @@ export class DietGroupRouter {
 
             res.json(result);
         } catch (err) {
-            res.status(500).json(WorldOfRationsError.fromError(err));
+            res.status(500).json(DietFormulatorError.fromError(err));
         }
     }
 
@@ -35,7 +35,7 @@ export class DietGroupRouter {
 
             res.json(result);
         } catch (err) {
-            res.status(500).json(WorldOfRationsError.fromError(err));
+            res.status(500).json(DietFormulatorError.fromError(err));
         }
     }
 
@@ -45,7 +45,7 @@ export class DietGroupRouter {
 
             res.json(result);
         } catch (err) {
-            res.status(500).json(WorldOfRationsError.fromError(err));
+            res.status(500).json(DietFormulatorError.fromError(err));
         }
     }
 
@@ -59,7 +59,7 @@ export class DietGroupRouter {
 
             res.json(result);
         } catch (err) {
-            res.status(500).json(WorldOfRationsError.fromError(err));
+            res.status(500).json(DietFormulatorError.fromError(err));
         }
     }
 }

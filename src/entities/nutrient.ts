@@ -1,3 +1,6 @@
+import { ErrorField } from "../models/error-field";
+import { ValidationError } from "../errors/validation-error";
+
 export class Nutrient {
     constructor(
         public id: number,
@@ -12,30 +15,30 @@ export class Nutrient {
     }
 
     public validate(): void {
-        const messages: string[] = [];
-
+        const errorFields: ErrorField[] = [];
+        
         if (!this.name) {
-            messages.push('Name cannot be empty');
+          errorFields.push(new ErrorField('nutrient.name', 'Name cannot be empty'));
         }
 
         if (!this.code) {
-            messages.push('Code cannot be empty');
+            errorFields.push(new ErrorField('nutrient.code', 'Code cannot be empty'));
         }
 
         if (!this.abbreviation) {
-            messages.push('Abbreviation cannot be empty');
+            errorFields.push(new ErrorField('nutrient.abbreviation', 'Abbreviation cannot be empty'));
         }
 
         if (!this.unit) {
-            messages.push('Unit cannot be empty');
+            errorFields.push(new ErrorField('nutrient.unit', 'Unit cannot be empty'));
         }
 
         if (!this.sortOrder) {
-            messages.push('Sort Order cannot be empty');
+            errorFields.push(new ErrorField('nutrient.sortOrder', 'Sort Order cannot be empty'));
         }
 
-        if (messages.length > 0) {
-            throw new Error(messages.join(';'));
+        if (errorFields.length > 0) {
+            throw new ValidationError('invalid_ingredient', 'Ingredient is invalid', errorFields);
         }
     }
 }

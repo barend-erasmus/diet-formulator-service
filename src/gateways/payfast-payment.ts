@@ -3,7 +3,7 @@ import 'reflect-metadata';
 import * as uuid from 'uuid';
 import { Payment } from '../entities/payment';
 import { User } from '../entities/user';
-import { WorldOfRationsError } from '../errors/world-of-rations-error';
+import { DietFormulatorError } from '../errors/diet-formulator-error';
 import { IPaymentGateway } from '../interfaces/payment-gateway';
 import { IPaymentNotificationRepository } from '../repositories/payment-notification';
 
@@ -94,7 +94,7 @@ export class PayFastPaymentGateway implements IPaymentGateway {
         const defaultCurrency: string = await this.defaultCurrency();
 
         if (payment.currency !== defaultCurrency) {
-            throw new WorldOfRationsError('invalid_currency', 'Invalid Currency');
+            throw new DietFormulatorError('invalid_currency', 'Invalid Currency');
         }
     }
 }

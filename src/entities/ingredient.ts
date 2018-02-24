@@ -1,5 +1,7 @@
 import { IngredientGroup } from './ingredient-group';
 import { IngredientValue } from './ingredient-value';
+import { ErrorField } from '../models/error-field';
+import { ValidationError } from '../errors/validation-error';
 
 export class Ingredient {
     constructor(
@@ -18,18 +20,18 @@ export class Ingredient {
     }
 
     public validate(): void {
-        const messages: string[] = [];
+        const errorFields: ErrorField[] = [];
 
         if (!this.name) {
-            messages.push('Name cannot be empty');
+            errorFields.push(new ErrorField('ingredient.name', 'Name cannot be empty'));
         }
 
         if (!this.group) {
-            messages.push('Group cannot be empty');
+            errorFields.push(new ErrorField('ingredient.group', 'Name cannot be empty'));
         }
 
-        if (messages.length > 0) {
-            throw new Error(messages.join(';'));
+        if (errorFields.length > 0) {
+            throw new ValidationError('invalid_ingredient', 'Ingredient is invalid', errorFields);
         }
     }
 }

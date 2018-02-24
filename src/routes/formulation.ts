@@ -6,7 +6,7 @@ import { FormulationCompositionValue } from '../entities/formulation-composition
 import { FormulationIngredient } from '../entities/formulation-ingredient';
 import { Ingredient } from '../entities/ingredient';
 import { Supplement } from '../entities/supplement';
-import { WorldOfRationsError } from '../errors/world-of-rations-error';
+import { DietFormulatorError } from '../errors/diet-formulator-error';
 import { ICache } from '../interfaces/cache';
 import { container } from '../ioc';
 import { FormulationService } from '../services/formulation';
@@ -27,7 +27,7 @@ export class FormulationRouter {
                 id: result.id,
             });
         } catch (err) {
-            res.status(500).json(WorldOfRationsError.fromError(err));
+            res.status(500).json(DietFormulatorError.fromError(err));
         }
     }
 
@@ -49,7 +49,7 @@ export class FormulationRouter {
 
             res.json(result);
         } catch (err) {
-            res.status(500).json(WorldOfRationsError.fromError(err));
+            res.status(500).json(DietFormulatorError.fromError(err));
         }
     }
 
@@ -59,7 +59,7 @@ export class FormulationRouter {
 
             res.json(result);
         } catch (err) {
-            res.status(500).json(WorldOfRationsError.fromError(err));
+            res.status(500).json(DietFormulatorError.fromError(err));
         }
     }
 
@@ -81,7 +81,7 @@ export class FormulationRouter {
 
             res.json(result);
         } catch (err) {
-            res.status(500).json(WorldOfRationsError.fromError(err));
+            res.status(500).json(DietFormulatorError.fromError(err));
         }
     }
 
@@ -103,7 +103,7 @@ export class FormulationRouter {
 
             res.json(result);
         } catch (err) {
-            res.status(500).json(WorldOfRationsError.fromError(err));
+            res.status(500).json(DietFormulatorError.fromError(err));
         }
     }
 }

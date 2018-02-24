@@ -10,7 +10,7 @@ import { FormulationIngredient } from '../entities/formulation-ingredient';
 import { Ingredient } from '../entities/ingredient';
 import { Supplement } from '../entities/supplement';
 import { SupplementIngredient } from '../entities/supplement-ingredient';
-import { WorldOfRationsError } from '../errors/world-of-rations-error';
+import { DietFormulatorError } from '../errors/diet-formulator-error';
 import { IFormulator } from '../interfaces/formulator';
 import { IDietRepository } from '../repositories/diet';
 import { IFormulationRepository } from '../repositories/formulation';
@@ -179,7 +179,7 @@ export class FormulationService extends BaseService {
 
     private async loadIngredientForFormulationIngredient(formulationIngredient: FormulationIngredient, userName: string): Promise<FormulationIngredient> {
         if (formulationIngredient.ingredient.userName && formulationIngredient.ingredient.userName !== userName) {
-            throw new WorldOfRationsError('mismatched_userName', `Cannot use other user's ingredients in your formulation`);
+            throw new DietFormulatorError('mismatched_userName', `Cannot use other user's ingredients in your formulation`);
         }
 
         formulationIngredient.ingredient = await this.ingredientRepository.find(formulationIngredient.ingredient.id);
@@ -197,7 +197,7 @@ export class FormulationService extends BaseService {
 
     private throwIfComparisonDietNull(comparisonDiet: Diet): void {
         if (!comparisonDiet) {
-            throw new WorldOfRationsError('no_comparison_diet', 'Diet does not have a comparison diet');
+            throw new DietFormulatorError('no_comparison_diet', 'Diet does not have a comparison diet');
         }
     }
 }

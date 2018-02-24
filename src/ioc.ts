@@ -1,6 +1,7 @@
 import { Container, interfaces } from 'inversify';
 import * as path from 'path';
 import 'reflect-metadata';
+import * as yargs from 'yargs';
 import { DietGroupEventBus } from './bus/diet-group-event';
 import { EventBus } from './bus/event';
 import { IngredientEventBus } from './bus/ingredient-event';
@@ -72,15 +73,17 @@ import { SubscriptionService } from './services/subscription';
 import { SuggestedValueService } from './services/suggested-value';
 import { UserService } from './services/user';
 
+const argv = yargs.argv;
+
 const container: Container = new Container();
 
 const cryptographyAlgorithm: ICryptographyAlgorithm = new AES128CTRCryptographyAlgorithm(config.cryptography.password);
 
 const databaseConfig = {
-    host: config.database.host,
-    password: cryptographyAlgorithm.decrypt(config.database.password),
-    superUserPassword: cryptographyAlgorithm.decrypt(config.database.superUserPassword),
-    userName: config.database.userName,
+    host: argv.dev? 'localhost' : config.database.host,
+    password: argv.dev? 'password' : cryptographyAlgorithm.decrypt(config.database.password),
+    superUserPassword: argv.dev? 'password' : cryptographyAlgorithm.decrypt(config.database.superUserPassword),
+    userName: argv.dev? 'postgres' : config.database.userName,
 };
 
 const emailConfig = {
@@ -223,6 +226,8 @@ container.bind<ILogger>('EventLogger').toConstantValue(new WinstonLogger('event'
 container.bind<ILogger>('SQLLogger').toConstantValue(new WinstonLogger('sql'));
 
 container.bind<IMailSender>('IMailSender').toConstantValue(new SendGridMailSender(emailConfig.sendgrid.apiKey));
+
+container.rebind<ICache>('ICache').to(MemoryCache);
 
 function configureForTesting(): void {
     container.rebind<ICache>('ICache').to(MemoryCache);

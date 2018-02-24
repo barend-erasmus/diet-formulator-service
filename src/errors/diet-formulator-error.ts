@@ -1,4 +1,4 @@
-export class WorldOfRationsError extends Error {
+export class DietFormulatorError extends Error {
     constructor(
         public code: string,
         public detailedMessage: string,
@@ -6,9 +6,9 @@ export class WorldOfRationsError extends Error {
         super(detailedMessage);
     }
 
-    public static fromError(err): WorldOfRationsError {
+    public static fromError(err): DietFormulatorError {
         if (!err.detailedMessage) {
-            return new WorldOfRationsError('system_error', err.message);
+            return new DietFormulatorError('system_error', err.message);
         }
 
         return err;

@@ -1,5 +1,5 @@
 import * as express from 'express';
-import { WorldOfRationsError } from '../errors/world-of-rations-error';
+import { DietFormulatorError } from '../errors/diet-formulator-error';
 import { IMailSender } from '../interfaces/mail-sender';
 import { container } from '../ioc';
 
@@ -13,7 +13,7 @@ export class MailRouter {
 
             res.json('OK');
         } catch (err) {
-            res.status(500).json(WorldOfRationsError.fromError(err));
+            res.status(500).json(DietFormulatorError.fromError(err));
         }
     }
 }

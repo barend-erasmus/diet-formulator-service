@@ -4,7 +4,7 @@ import * as request from 'request-promise';
 import * as yargs from 'yargs';
 import { Payment } from '../entities/payment';
 import { User } from '../entities/user';
-import { WorldOfRationsError } from '../errors/world-of-rations-error';
+import { DietFormulatorError } from '../errors/diet-formulator-error';
 import { IPaymentGateway } from '../interfaces/payment-gateway';
 
 @injectable()
@@ -122,7 +122,7 @@ export class PayPalPaymentGateway implements IPaymentGateway {
         const defaultCurrency: string = await this.defaultCurrency();
 
         if (payment.currency !== defaultCurrency) {
-            throw new WorldOfRationsError('invalid_currency', 'Invalid Currency');
+            throw new DietFormulatorError('invalid_currency', 'Invalid Currency');
         }
     }
 }
