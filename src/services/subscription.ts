@@ -23,13 +23,13 @@ export class SubscriptionService extends BaseService {
         @inject('SubscriptionEventBus')
         private subscriptionEventBus: EventBus<SubscriptionEvent>,
         @inject('ISubscriptionRepository')
-        subscriptionRepository: ISubscriptionRepository,
+        private subscriptionRepository: ISubscriptionRepository,
         @inject('ISubscriptionFactory')
         private subscriptionFactory: ISubscriptionFactory,
         @inject('IUserRepository')
-        userRepository: IUserRepository,
+        private userRepository: IUserRepository,
     ) {
-        super(subscriptionRepository, userRepository);
+        super();
     }
 
     public async change(subscription: string, userName: string): Promise<Subscription> {
@@ -52,7 +52,7 @@ export class SubscriptionService extends BaseService {
         const user: User = await this.userRepository.findByUserName(userName);
 
         if (user.isSuperAdmin) {
-            return this.subscriptionFactory.create(true, null, new Date(), 'super-admin');
+            return this.subscriptionFactory.create(true, null, null, 'super-admin');
         }
 
         return this.subscriptionRepository.find(userName);

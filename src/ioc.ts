@@ -227,8 +227,6 @@ container.bind<ILogger>('SQLLogger').toConstantValue(new WinstonLogger('sql'));
 
 container.bind<IMailSender>('IMailSender').toConstantValue(new SendGridMailSender(emailConfig.sendgrid.apiKey));
 
-container.rebind<ICache>('ICache').to(MemoryCache);
-
 function configureForTesting(): void {
     container.rebind<ICache>('ICache').to(MemoryCache);
 

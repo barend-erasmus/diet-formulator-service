@@ -159,4 +159,27 @@ export class SuggestedValueRepository extends BaseRepository implements ISuggest
 
         return suggestedValues;
     }
+
+    public async update(suggestedValue: SuggestedValue): Promise<SuggestedValue> {
+        const result: any = await BaseRepository.models.SuggestedValue.find({
+            where: {
+                id: {
+                    [Sequelize.Op.eq]: suggestedValue.id,
+                },
+            },
+        });
+
+        if (!result) {
+            return null;
+        }
+
+        result.dietGroupId = suggestedValue.dietGroup.id;
+        result.ingredientId = suggestedValue.ingredient.id;
+        result.maximum = suggestedValue.maximum;
+        result.minimum = suggestedValue.minimum;
+
+        await result.save();
+
+        return suggestedValue;
+    }
 }

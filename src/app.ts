@@ -72,6 +72,7 @@ app.get('/api/formulation/supplement', AuthenticationMiddleware.shouldBeAuthenti
 app.get('/api/suggestedvalue/find', AuthenticationMiddleware.shouldBeAuthenticated, SuggestedValueRouter.find);
 app.get('/api/suggestedvalue/findById', AuthenticationMiddleware.shouldBeAuthenticated, SuggestedValueRouter.findById);
 app.get('/api/suggestedvalue/list', AuthenticationMiddleware.shouldBeAuthenticated, SuggestedValueRouter.list);
+app.post('/api/suggestedvalue/update', AuthenticationMiddleware.shouldBeAuthenticated, SuggestedValueRouter.update);
 
 app.post('/api/mail/send', MailRouter.send);
 

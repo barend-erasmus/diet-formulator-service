@@ -6,7 +6,7 @@ export class DietFormulatorError extends Error {
         super(detailedMessage);
     }
 
-    public static fromError(err): DietFormulatorError {
+    public static fromError(err: any | Error): DietFormulatorError {
         if (!err.detailedMessage) {
             return new DietFormulatorError('system_error', err.message);
         }

@@ -15,18 +15,12 @@ import { IFormulator } from '../interfaces/formulator';
 import { IDietRepository } from '../repositories/diet';
 import { IFormulationRepository } from '../repositories/formulation';
 import { IIngredientRepository } from '../repositories/ingredient';
-import { ISubscriptionRepository } from '../repositories/subscription';
-import { IUserRepository } from '../repositories/user';
 import { BaseService } from './base';
 
 @injectable()
 export class FormulationService extends BaseService {
 
     constructor(
-        @inject('ISubscriptionRepository')
-        subscriptionRepository: ISubscriptionRepository,
-        @inject('IUserRepository')
-        userRepository: IUserRepository,
         @inject('IDietRepository')
         private dietRepository: IDietRepository,
         @inject('IIngredientRepository')
@@ -36,7 +30,7 @@ export class FormulationService extends BaseService {
         @inject('IFormulator')
         private formulator: IFormulator,
     ) {
-        super(subscriptionRepository, userRepository);
+        super();
     }
 
     public async create(diet: Diet, formulationIngredients: FormulationIngredient[], mixWeight: number, userName: string): Promise<Formulation> {

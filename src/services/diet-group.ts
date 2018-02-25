@@ -6,8 +6,6 @@ import { DietGroupEvent } from '../events/diet-group';
 import { DietGroupCreatedEvent } from '../events/diet-group-created';
 import { DietGroupUpdatedEvent } from '../events/diet-group-updated';
 import { IDietGroupRepository } from '../repositories/diet-group';
-import { ISubscriptionRepository } from '../repositories/subscription';
-import { IUserRepository } from '../repositories/user';
 import { BaseService } from './base';
 
 @injectable()
@@ -16,14 +14,10 @@ export class DietGroupService extends BaseService {
     constructor(
         @inject('DietGroupEventBus')
         private dietGroupEventBus: EventBus<DietGroupEvent>,
-        @inject('ISubscriptionRepository')
-        subscriptionRepository: ISubscriptionRepository,
-        @inject('IUserRepository')
-        userRepository: IUserRepository,
         @inject('IDietGroupRepository')
         private dietGroupRepository: IDietGroupRepository,
     ) {
-        super(subscriptionRepository, userRepository);
+        super();
     }
 
     public async create(

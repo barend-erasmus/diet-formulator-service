@@ -2,22 +2,16 @@ import { inject, injectable } from 'inversify';
 import 'reflect-metadata';
 import { Nutrient } from '../entities/nutrient';
 import { INutrientRepository } from '../repositories/nutrient';
-import { ISubscriptionRepository } from '../repositories/subscription';
-import { IUserRepository } from '../repositories/user';
 import { BaseService } from './base';
 
 @injectable()
 export class NutrientService extends BaseService {
 
     constructor(
-        @inject('ISubscriptionRepository')
-        subscriptionRepository: ISubscriptionRepository,
-        @inject('IUserRepository')
-        userRepository: IUserRepository,
         @inject('INutrientRepository')
         private nutrientRepository: INutrientRepository,
     ) {
-        super(subscriptionRepository, userRepository);
+        super();
     }
 
     public async create(

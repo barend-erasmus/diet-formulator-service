@@ -28,7 +28,7 @@ export class SubscriptionFactory implements ISubscriptionFactory {
                 subscription = new PremiumSubscription(active, [], expiryTimestamp, startTimestamp);
                 break;
             case 'super-admin':
-                subscription = new SuperAdminSubscription(active, [], expiryTimestamp, startTimestamp);
+                subscription = new SuperAdminSubscription(active, [], null, null);
                 break;
         }
 

@@ -4,25 +4,19 @@ import { Diet } from '../entities/diet';
 import { DietGroup } from '../entities/diet-group';
 import { SuggestedValue } from '../entities/suggested-value';
 import { IDietRepository } from '../repositories/diet';
-import { ISubscriptionRepository } from '../repositories/subscription';
 import { ISuggestedValueRepository } from '../repositories/suggested-value';
-import { IUserRepository } from '../repositories/user';
 import { BaseService } from './base';
 
 @injectable()
 export class SuggestedValueService extends BaseService {
 
     constructor(
-        @inject('ISubscriptionRepository')
-        subscriptionRepository: ISubscriptionRepository,
-        @inject('IUserRepository')
-        userRepository: IUserRepository,
         @inject('IDietRepository')
         private dietRepository: IDietRepository,
         @inject('ISuggestedValueRepository')
         private suggestedValueRepository: ISuggestedValueRepository,
     ) {
-        super(subscriptionRepository, userRepository);
+        super();
     }
 
     public async find(dietId: number, ingredientId: number, userName: string): Promise<SuggestedValue> {
@@ -64,6 +58,21 @@ export class SuggestedValueService extends BaseService {
         result = await this.cleanList(result, userName, this.cleanSuggestedValue);
 
         return result;
+    }
+
+    public async update(
+        suggestedValue: SuggestedValue,
+        userName: string,
+    ): Promise<SuggestedValue> {
+        await this.throwIfDoesNotHavePermission(userName, 'update-suggested-value');
+
+        suggestedValue.validate();
+
+        suggestedValue = await this.suggestedValueRepository.update(suggestedValue);
+
+        suggestedValue = await this.cleanSuggestedValue(suggestedValue, userName);
+
+        return suggestedValue;
     }
 
     private sortSuggestedValue(a: SuggestedValue, b: SuggestedValue) {

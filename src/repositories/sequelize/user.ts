@@ -87,6 +87,7 @@ export class UserRepository extends BaseRepository implements IUserRepository {
         result.locale = user.locale;
         result.picture = user.picture;
         result.verified = user.verified;
+        result.isSuperAdmin = user.isSuperAdmin;
 
         result.expiryTimestamp = new Date().getTime() + 3600000;
         result.token = token;

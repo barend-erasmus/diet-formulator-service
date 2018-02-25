@@ -5,24 +5,18 @@ import { Ingredient } from '../entities/ingredient';
 import { IngredientEvent } from '../events/ingredient';
 import { IngredientCreatedEvent } from '../events/ingredient-created';
 import { IIngredientRepository } from '../repositories/ingredient';
-import { ISubscriptionRepository } from '../repositories/subscription';
-import { IUserRepository } from '../repositories/user';
 import { BaseService } from './base';
 
 @injectable()
 export class IngredientService extends BaseService {
 
     constructor(
-        @inject('ISubscriptionRepository')
-        subscriptionRepository: ISubscriptionRepository,
-        @inject('IUserRepository')
-        userRepository: IUserRepository,
         @inject('IIngredientRepository')
         private ingredientRepository: IIngredientRepository,
         @inject('IngredientEventBus')
         private ingredientEventBus: EventBus<IngredientEvent>,
     ) {
-        super(subscriptionRepository, userRepository);
+        super();
     }
 
     public async create(

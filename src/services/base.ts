@@ -5,24 +5,32 @@ import { DietGroup } from '../entities/diet-group';
 import { Ingredient } from '../entities/ingredient';
 import { Subscription } from '../entities/subscription';
 import { SuggestedValue } from '../entities/suggested-value';
+import { User } from '../entities/user';
 import { InsufficientPermissionsError } from '../errors/insufficient-permissions-error';
+import { ISubscriptionFactory } from '../interfaces/subscription-factory';
+import { container } from '../ioc';
 import { ISubscriptionRepository } from '../repositories/subscription';
 import { IUserRepository } from '../repositories/user';
 
 @injectable()
 export class BaseService {
 
-    constructor(
-        @unmanaged()
-        protected subscriptionRepository: ISubscriptionRepository,
-        @unmanaged()
-        protected userRepository: IUserRepository,
-    ) {
+    private SubscriptionFactory: ISubscriptionFactory = null;
+    private SubscriptionRepository: ISubscriptionRepository = null;
+    private UserRepository: IUserRepository = null;
 
+    constructor() {
+        this.SubscriptionFactory = container.get<ISubscriptionFactory>('ISubscriptionFactory');
+        this.SubscriptionRepository = container.get<ISubscriptionRepository>('ISubscriptionRepository');
+        this.UserRepository = container.get<IUserRepository>('IUserRepository');
     }
 
     protected async hasPermission(userName: string, permission: string): Promise<boolean> {
-        const subscription: Subscription = await this.subscriptionRepository.find(userName);
+        const user: User = await this.UserRepository.findByUserName(userName);
+
+        const subscription: Subscription = user.isSuperAdmin ?
+            await this.SubscriptionFactory.create(true, null, null, 'super-admin') :
+            await this.SubscriptionRepository.find(userName);
 
         return subscription.hasPermission(permission);
     }

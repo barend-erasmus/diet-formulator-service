@@ -7,7 +7,6 @@ import { User } from '../entities/user';
 import { UserEvent } from '../events/user';
 import { UserCreatedEvent } from '../events/user-created';
 import { UserUpdatedEvent } from '../events/user-updated';
-import { ISubscriptionRepository } from '../repositories/subscription';
 import { IUserRepository } from '../repositories/user';
 import { BaseService } from './base';
 
@@ -15,14 +14,12 @@ import { BaseService } from './base';
 export class UserService extends BaseService {
 
     constructor(
-        @inject('ISubscriptionRepository')
-        subscriptionRepository: ISubscriptionRepository,
         @inject('UserEventBus')
         private userEventBus: EventBus<UserEvent>,
         @inject('IUserRepository')
-        userRepository: IUserRepository,
+        private userRepository: IUserRepository,
     ) {
-        super(subscriptionRepository, userRepository);
+        super();
     }
 
     public async login(user: User, token: string): Promise<User> {
@@ -33,7 +30,9 @@ export class UserService extends BaseService {
 
             await this.userEventBus.publish(new UserCreatedEvent(user.email));
         } else {
+            result.isSuperAdmin = user.isSuperAdmin;
             result.verified = user.verified;
+
             result = await this.userRepository.update(result, token);
 
             await this.userEventBus.publish(new UserUpdatedEvent(user.email));

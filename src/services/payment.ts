@@ -6,7 +6,6 @@ import { DietFormulatorError } from '../errors/diet-formulator-error';
 import { IForeignExchangeGateway } from '../interfaces/foreign-exchange-gateway';
 import { IPaymentGateway } from '../interfaces/payment-gateway';
 import { IPaymentRepository } from '../repositories/payment';
-import { ISubscriptionRepository } from '../repositories/subscription';
 import { IUserRepository } from '../repositories/user';
 import { BaseService } from './base';
 
@@ -20,12 +19,10 @@ export class PaymentService extends BaseService {
         private paymentRepository: IPaymentRepository,
         @inject('IPaymentGateway')
         private paymentGateway: IPaymentGateway,
-        @inject('ISubscriptionRepository')
-        subscriptionRepository: ISubscriptionRepository,
         @inject('IUserRepository')
-        userRepository: IUserRepository,
+        private userRepository: IUserRepository,
     ) {
-        super(subscriptionRepository, userRepository);
+        super();
     }
 
     public async createRedirectUrl(subscription: string, userName: string): Promise<string> {

@@ -5,31 +5,24 @@ import { DietGroup } from '../entities/diet-group';
 import { InsufficientPermissionsError } from '../errors/insufficient-permissions-error';
 import { IDietRepository } from '../repositories/diet';
 import { IDietGroupRepository } from '../repositories/diet-group';
-import { ISubscriptionRepository } from '../repositories/subscription';
-import { IUserRepository } from '../repositories/user';
 import { BaseService } from './base';
 
 @injectable()
 export class DietService extends BaseService {
 
     constructor(
-        @inject('ISubscriptionRepository')
-        subscriptionRepository: ISubscriptionRepository,
-        @inject('IUserRepository')
-        userRepository: IUserRepository,
         @inject('IDietRepository')
         private dietRepository: IDietRepository,
         @inject('IDietGroupRepository')
         private dietGroupRepository: IDietGroupRepository,
     ) {
-        super(subscriptionRepository, userRepository);
+        super();
     }
 
     public async create(
         diet: Diet,
         userName: string,
     ): Promise<Diet> {
-
         await this.throwIfDoesNotHavePermission(userName, 'create-diet');
 
         diet.setUserName(userName);
