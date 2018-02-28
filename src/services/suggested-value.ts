@@ -19,6 +19,21 @@ export class SuggestedValueService extends BaseService {
         super();
     }
 
+    public async create(
+        suggestedValue: SuggestedValue,
+        userName: string,
+    ): Promise<SuggestedValue> {
+        await this.throwIfDoesNotHavePermission(userName, 'create-suggested-value');
+
+        suggestedValue.validate();
+
+        suggestedValue = await this.suggestedValueRepository.create(suggestedValue);
+
+        suggestedValue = await this.cleanSuggestedValue(suggestedValue, userName);
+
+        return suggestedValue;
+    }
+
     public async find(dietId: number, ingredientId: number, userName: string): Promise<SuggestedValue> {
         await this.throwIfDoesNotHavePermission(userName, 'view-suggested-value');
 

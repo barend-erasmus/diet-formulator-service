@@ -69,6 +69,7 @@ app.get('/api/formulation/list', AuthenticationMiddleware.shouldBeAuthenticated,
 app.get('/api/formulation/composition', AuthenticationMiddleware.shouldBeAuthenticated, FormulationRouter.composition);
 app.get('/api/formulation/supplement', AuthenticationMiddleware.shouldBeAuthenticated, FormulationRouter.supplement);
 
+app.post('/api/suggestedvalue/create', AuthenticationMiddleware.shouldBeAuthenticated, SuggestedValueRouter.create);
 app.get('/api/suggestedvalue/find', AuthenticationMiddleware.shouldBeAuthenticated, SuggestedValueRouter.find);
 app.get('/api/suggestedvalue/findById', AuthenticationMiddleware.shouldBeAuthenticated, SuggestedValueRouter.findById);
 app.get('/api/suggestedvalue/list', AuthenticationMiddleware.shouldBeAuthenticated, SuggestedValueRouter.list);

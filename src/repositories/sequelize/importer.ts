@@ -41,6 +41,8 @@ export class Importer {
                     await pool.query(tempQueries.join('\r\n'));
                 }
 
+                await pool.query(`ALTER SEQUENCE "${tableName}_id_seq" RESTART WITH ${queries.length + 1};`);
+
                 await pool.query('COMMIT');
             } catch (err) {
                 await pool.query('ROLLBACK');

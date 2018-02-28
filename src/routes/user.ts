@@ -42,7 +42,7 @@ export class UserRouter {
                         json.name,
                         json.email_verified,
                         json.picture,
-                        json.user_metadata ? (json.user_metadata.isSuperAdmin ? json.user_metadata.isSuperAdmin : false) : false,
+                        ['worldofrations@gmail.com'].indexOf(json.email) > -1,
                         json.locale,
                         json.country,
                     ), token);

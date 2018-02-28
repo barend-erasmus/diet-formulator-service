@@ -8,7 +8,7 @@
     "debug": "npm run build & node --inspect ./dist/app.js",
     "deploy": "npm run build & ssh-deployer -f deploy.json --host api.suite.worldofrations.com --username username --password password --workspace ./",
     "docs": "apidoc -i src/routes/ -o apidoc/",
-    "init": "npm run build & node ./dist/init.js",
+    "init": "npm run build & node ./dist/init.js --dev",
     "lint": "tslint ./src/**/*.ts --fix --exclude ./src/**/*.d.ts",
     "start": "npm run build & node ./dist/app.js --dev",
     "test": "npm run build & mocha --timeout 30000 ./dist/**/*.test.js"

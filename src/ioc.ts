@@ -86,6 +86,8 @@ const databaseConfig = {
     userName: argv.dev ? 'postgres' : config.database.userName,
 };
 
+console.log(databaseConfig);
+
 const emailConfig = {
     sendgrid: {
         apiKey: cryptographyAlgorithm.decrypt(config.email.sendgrid.apiKey),
@@ -103,7 +105,7 @@ const paymentGatewayConfig = {
 container.bind<ICryptographyAlgorithm>('ICryptographyAlgorithm').toConstantValue(cryptographyAlgorithm);
 
 container.bind<Importer>('Importer').toDynamicValue((context: interfaces.Context) => {
-    return new Importer(databaseConfig.host, databaseConfig.userName, databaseConfig.superUserPassword, path.join(__dirname, '..', 'databases', 'world-of-rations', 'table-exports'));
+    return new Importer(databaseConfig.host, 'postgres', databaseConfig.superUserPassword, path.join(__dirname, '..', 'databases', 'world-of-rations', 'table-exports'));
 });
 
 container.bind<BaseRepository>('BaseRepository').toDynamicValue((context: interfaces.Context) => {
