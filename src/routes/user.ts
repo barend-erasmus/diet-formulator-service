@@ -4,6 +4,8 @@ import { CacheKeys } from '../constants/cache-keys';
 import { User } from '../entities/user';
 import { DietFormulatorError } from '../errors/diet-formulator-error';
 import { ICache } from '../interfaces/cache';
+import { IGeoGateway } from '../interfaces/geo-gateway';
+import { IOAuth2Gateway } from '../interfaces/oauth2-gateway';
 import { container } from '../ioc';
 import { UserService } from '../services/user';
 
@@ -29,22 +31,18 @@ export class UserRouter {
 
             if (!user) {
                 try {
-                    const json: any = await request({
-                        headers: {
-                            Authorization: req.get('Authorization'),
-                        },
-                        json: true,
-                        uri: 'https://worldofrations.auth0.com/userinfo',
-                    });
+                    const userInfo: any = await container.get<IOAuth2Gateway>('IOAuth2Gateway').getUserInfo(req.get('Authorization'));
+
+                    const geoCode: string = await container.get<IGeoGateway>('IGeoGateway').getGeoCodeFromIPAddress(req.get('X-Real-IP'));
 
                     user = await container.get<UserService>('UserService').login(new User(
-                        json.email,
-                        json.name,
-                        json.email_verified,
-                        json.picture,
-                        ['worldofrations@gmail.com'].indexOf(json.email) > -1,
-                        json.locale,
-                        json.country,
+                        userInfo.email,
+                        userInfo.name,
+                        userInfo.email_verified,
+                        userInfo.picture,
+                        ['worldofrations@gmail.com'].indexOf(userInfo.email) > -1,
+                        userInfo.locale,
+                        geoCode,
                     ), token);
 
                     res.json(user);

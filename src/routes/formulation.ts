@@ -39,7 +39,7 @@ export class FormulationRouter {
             }, req['user'].email);
 
             if (!result) {
-                result = await container.get<FormulationService>('FormulationService').find(req.query.id, req['user'].email);
+                result = await container.get<FormulationService>('FormulationService').find(req.query.formulationId, req['user'].email);
 
                 await container.get<ICache>('ICache').addUsingObjectKey({
                     id: req.query.id,
@@ -71,7 +71,7 @@ export class FormulationRouter {
             }, req['user'].email);
 
             if (!result) {
-                result = await container.get<FormulationService>('FormulationService').supplement(req.query.id, req['user'].email);
+                result = await container.get<FormulationService>('FormulationService').supplement(req.query.formulationId, req['user'].email);
 
                 await container.get<ICache>('ICache').addUsingObjectKey({
                     id: req.query.id,
@@ -93,7 +93,7 @@ export class FormulationRouter {
             }, req['user'].email);
 
             if (!result) {
-                result = await container.get<FormulationService>('FormulationService').composition(req.query.id, req['user'].email);
+                result = await container.get<FormulationService>('FormulationService').composition(req.query.formulationId, req['user'].email);
 
                 await container.get<ICache>('ICache').addUsingObjectKey({
                     id: req.query.id,

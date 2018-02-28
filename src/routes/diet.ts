@@ -24,7 +24,7 @@ export class DietRouter {
 
     public static async find(req: express.Request, res: express.Response) {
         try {
-            const result: Diet = await container.get<DietService>('DietService').find(req.query.id, req['user'].email);
+            const result: Diet = await container.get<DietService>('DietService').find(req.query.dietId, req['user'].email);
 
             res.json(result);
         } catch (err) {

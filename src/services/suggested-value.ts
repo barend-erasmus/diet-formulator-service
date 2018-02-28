@@ -75,6 +75,12 @@ export class SuggestedValueService extends BaseService {
         return result;
     }
 
+    public async remove(suggestedValueId: number, userName: string): Promise<void> {
+        await this.throwIfDoesNotHavePermission(userName, 'remove-suggested-value');
+
+        this.suggestedValueRepository.remove(suggestedValueId);
+    }
+
     public async update(
         suggestedValue: SuggestedValue,
         userName: string,

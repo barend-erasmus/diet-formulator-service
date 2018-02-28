@@ -58,6 +58,16 @@ export class SuggestedValueRouter {
         }
     }
 
+    public static async remove(req: express.Request, res: express.Response) {
+        try {
+            await container.get<SuggestedValueService>('SuggestedValueService').remove(req.query.suggestedValueId, req['user'].email);
+
+            res.json();
+        } catch (err) {
+            res.status(500).json(DietFormulatorError.fromError(err));
+        }
+    }
+
     public static async update(req: express.Request, res: express.Response) {
         try {
             const result: SuggestedValue = await container.get<SuggestedValueService>('SuggestedValueService').update(

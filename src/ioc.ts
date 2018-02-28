@@ -19,7 +19,9 @@ import { SubscriptionEvent } from './events/subscription';
 import { UserEvent } from './events/user';
 import { SubscriptionFactory } from './factories/subscription';
 import { LeastCostRationFormulator } from './formulators/least-cost-ration';
+import { Auth0OAuth2Gateway } from './gateways/auth0-oauth2';
 import { FixerForeignExchangeGateway } from './gateways/fixer-foreign-exchange';
+import { FreeGeoGateway } from './gateways/free-geo';
 import { PayFastPaymentGateway } from './gateways/payfast-payment';
 import { DietGroupEventHandler } from './handlers/diet-group-event';
 import { IngredientEventHandler } from './handlers/ingredient-event';
@@ -31,8 +33,10 @@ import { ICryptographyAlgorithm } from './interfaces/cryptography';
 import { IEventHandler } from './interfaces/event-handler';
 import { IForeignExchangeGateway } from './interfaces/foreign-exchange-gateway';
 import { IFormulator } from './interfaces/formulator';
+import { IGeoGateway } from './interfaces/geo-gateway';
 import { ILogger } from './interfaces/logger';
 import { IMailSender } from './interfaces/mail-sender';
+import { IOAuth2Gateway } from './interfaces/oauth2-gateway';
 import { IPaymentGateway } from './interfaces/payment-gateway';
 import { ISubscriptionFactory } from './interfaces/subscription-factory';
 import { NullLogger } from './loggers/null';
@@ -210,6 +214,10 @@ container.bind<IEventHandler<SubscriptionEvent>>('SubscriptionEventHandler').to(
 container.bind<IEventHandler<UserEvent>>('UserEventHandler').to(UserEventHandler);
 
 container.bind<IForeignExchangeGateway>('IForeignExchangeGateway').to(FixerForeignExchangeGateway);
+
+container.bind<IGeoGateway>('IGeoGateway').to(FreeGeoGateway);
+
+container.bind<IOAuth2Gateway>('IOAuth2Gateway').to(Auth0OAuth2Gateway);
 
 container.bind<IPaymentGateway>('IPaymentGateway').toDynamicValue((context: interfaces.Context) => {
     const paymentNotificationRepository: IPaymentNotificationRepository = context.container.get<IPaymentNotificationRepository>('IPaymentNotificationRepository');

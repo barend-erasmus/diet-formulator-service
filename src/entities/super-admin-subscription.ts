@@ -16,6 +16,7 @@ export class SuperAdminSubscription extends PremiumSubscription {
             'create-ingredient',
             'update-ingredient',
             'create-suggested-value',
+            'remove-suggested-value',
             'update-suggested-value',
             'view-diet-values',
             'view-ingedient-values',

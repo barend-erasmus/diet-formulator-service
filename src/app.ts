@@ -34,7 +34,7 @@ app.use(expressWinston.logger({
 }));
 
 app.get('/api/user/info', UserRouter.info);
-app.post('/api/user/update', UserRouter.update);
+app.put('/api/user/update', UserRouter.update);
 
 app.get('/api/subscription/change', AuthenticationMiddleware.shouldBeAuthenticated, SubscriptionRouter.change);
 app.get('/api/subscription/find', AuthenticationMiddleware.shouldBeAuthenticated, SubscriptionRouter.find);
@@ -47,18 +47,18 @@ app.get('/api/payment/verify', AuthenticationMiddleware.shouldBeAuthenticated, P
 app.post('/api/nutrient/create', AuthenticationMiddleware.shouldBeAuthenticated, NutrientRouter.create);
 app.get('/api/nutrient/find', AuthenticationMiddleware.shouldBeAuthenticated, NutrientRouter.find);
 app.get('/api/nutrient/list', AuthenticationMiddleware.shouldBeAuthenticated, NutrientRouter.list);
-app.post('/api/nutrient/update', AuthenticationMiddleware.shouldBeAuthenticated, NutrientRouter.update);
+app.put('/api/nutrient/update', AuthenticationMiddleware.shouldBeAuthenticated, NutrientRouter.update);
 
 app.post('/api/dietgroup/create', AuthenticationMiddleware.shouldBeAuthenticated, DietGroupRouter.create);
 app.get('/api/dietgroup/find', AuthenticationMiddleware.shouldBeAuthenticated, DietGroupRouter.find);
 app.get('/api/dietgroup/list', AuthenticationMiddleware.shouldBeAuthenticated, DietGroupRouter.list);
 app.get('/api/dietgroup/listAll', AuthenticationMiddleware.shouldBeAuthenticated, DietGroupRouter.listAll);
-app.post('/api/dietgroup/update', AuthenticationMiddleware.shouldBeAuthenticated, DietGroupRouter.update);
+app.put('/api/dietgroup/update', AuthenticationMiddleware.shouldBeAuthenticated, DietGroupRouter.update);
 
 app.post('/api/diet/create', AuthenticationMiddleware.shouldBeAuthenticated, DietRouter.create);
 app.get('/api/diet/find', AuthenticationMiddleware.shouldBeAuthenticated, DietRouter.find);
 app.get('/api/diet/list', AuthenticationMiddleware.shouldBeAuthenticated, DietRouter.list);
-app.post('/api/diet/update', AuthenticationMiddleware.shouldBeAuthenticated, DietRouter.update);
+app.put('/api/diet/update', AuthenticationMiddleware.shouldBeAuthenticated, DietRouter.update);
 
 app.post('/api/ingredient/create', AuthenticationMiddleware.shouldBeAuthenticated, IngredientRouter.create);
 app.get('/api/ingredient/list', AuthenticationMiddleware.shouldBeAuthenticated, IngredientRouter.list);
@@ -73,12 +73,13 @@ app.post('/api/suggestedvalue/create', AuthenticationMiddleware.shouldBeAuthenti
 app.get('/api/suggestedvalue/find', AuthenticationMiddleware.shouldBeAuthenticated, SuggestedValueRouter.find);
 app.get('/api/suggestedvalue/findById', AuthenticationMiddleware.shouldBeAuthenticated, SuggestedValueRouter.findById);
 app.get('/api/suggestedvalue/list', AuthenticationMiddleware.shouldBeAuthenticated, SuggestedValueRouter.list);
-app.post('/api/suggestedvalue/update', AuthenticationMiddleware.shouldBeAuthenticated, SuggestedValueRouter.update);
+app.delete('/api/suggestedvalue/remove', AuthenticationMiddleware.shouldBeAuthenticated, SuggestedValueRouter.remove);
+app.put('/api/suggestedvalue/update', AuthenticationMiddleware.shouldBeAuthenticated, SuggestedValueRouter.update);
 
 app.post('/api/mail/send', MailRouter.send);
 
-app.use('/api/docs', express.static(path.join(__dirname, './../apidoc')));
-app.use('/api/coverage', express.static(path.join(__dirname, './../coverage/lcov-report')));
+// app.use('/api/docs', express.static(path.join(__dirname, './../apidoc')));
+// app.use('/api/coverage', express.static(path.join(__dirname, './../coverage/lcov-report')));
 
 app.listen(argv.port || 3000, () => {
     console.log(`listening on port ${argv.port || 3000}`);

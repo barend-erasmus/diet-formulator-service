@@ -6,5 +6,6 @@ export interface ISuggestedValueRepository extends IBaseRepository {
     find(dietGroupId: number, ingredientId: number): Promise<SuggestedValue>;
     findById(suggestedValueId: number): Promise<SuggestedValue>;
     list(): Promise<SuggestedValue[]>;
+    remove(suggestedValueId: number): Promise<void>;
     update(suggestedValue: SuggestedValue): Promise<SuggestedValue>;
 }

@@ -160,6 +160,16 @@ export class SuggestedValueRepository extends BaseRepository implements ISuggest
         return suggestedValues;
     }
 
+    public async remove(suggestedValueId: number): Promise<void> {
+        await BaseRepository.models.SuggestedValue.destroy({
+            where: {
+                id: {
+                    [Sequelize.Op.eq]: suggestedValueId,
+                },
+            },
+        });
+    }
+
     public async update(suggestedValue: SuggestedValue): Promise<SuggestedValue> {
         const result: any = await BaseRepository.models.SuggestedValue.find({
             where: {

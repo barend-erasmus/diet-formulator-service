@@ -21,7 +21,7 @@ export class DietGroupRouter {
 
     public static async find(req: express.Request, res: express.Response) {
         try {
-            const result: DietGroup = await container.get<DietGroupService>('DietGroupService').find(req.query.id, req['user'].email);
+            const result: DietGroup = await container.get<DietGroupService>('DietGroupService').find(req.query.dietGroupId, req['user'].email);
 
             res.json(result);
         } catch (err) {
