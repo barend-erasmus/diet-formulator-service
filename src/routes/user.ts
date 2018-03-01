@@ -33,14 +33,14 @@ export class UserRouter {
                 try {
                     const userInfo: any = await container.get<IOAuth2Gateway>('IOAuth2Gateway').getUserInfo(req.get('Authorization'));
 
-                    const geoCode: string = await container.get<IGeoGateway>('IGeoGateway').getGeoCodeFromIPAddress(req.get('X-Real-IP'));
+                    const geoCode: string = req.get('X-Real-IP') ? await container.get<IGeoGateway>('IGeoGateway').getGeoCodeFromIPAddress(req.get('X-Real-IP')) : null;
 
                     user = await container.get<UserService>('UserService').login(new User(
                         userInfo.email,
                         userInfo.name,
                         userInfo.email_verified,
                         userInfo.picture,
-                        ['worldofrations@gmail.com'].indexOf(userInfo.email) > -1,
+                        ['worldofrations@gmail.com'].indexOf(userInfo.email) > -1 ? true : false,
                         userInfo.locale,
                         geoCode,
                     ), token);

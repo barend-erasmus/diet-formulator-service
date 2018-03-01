@@ -10,6 +10,7 @@ import { SubscriptionEventBus } from './bus/subscription-event';
 import { UserEventBus } from './bus/user-event';
 import { MemcachedCache } from './caches/memcached';
 import { MemoryCache } from './caches/memory';
+import { NullCache } from './caches/null';
 import { config } from './config';
 import { AES128CTRCryptographyAlgorithm } from './cryptography-algorithms/aes-256-ctr';
 import { DietGroupEvent } from './events/diet-group';
@@ -89,8 +90,6 @@ const databaseConfig = {
     superUserPassword: argv.dev ? 'password' : cryptographyAlgorithm.decrypt(config.database.superUserPassword),
     userName: argv.dev ? 'postgres' : config.database.userName,
 };
-
-console.log(databaseConfig);
 
 const emailConfig = {
     sendgrid: {
@@ -237,6 +236,8 @@ container.bind<ILogger>('SQLLogger').toConstantValue(new WinstonLogger('sql'));
 
 container.bind<IMailSender>('IMailSender').toConstantValue(new SendGridMailSender(emailConfig.sendgrid.apiKey));
 
+// container.rebind<ICache>('ICache').to(NullCache);
+
 function configureForTesting(): void {
     container.rebind<ICache>('ICache').to(MemoryCache);
 
@@ -244,6 +245,7 @@ function configureForTesting(): void {
     container.rebind<ILogger>('EventLogger').toConstantValue(new NullLogger());
     container.rebind<ILogger>('SQLLogger').toConstantValue(new NullLogger());
 }
+
 export {
     configureForTesting,
     container,
