@@ -40,6 +40,9 @@ export class PayFastPaymentGateway implements IPaymentGateway {
             notify_url: 'https://api.suite.worldofrations.com/api/payment/notify',
             payment_method: 'cc',
             return_url: `https://suite.worldofrations.com/billing?paymentId=${paymentId}`,
+            subscription_type: 1,
+            frequency: 3,
+            cycles: 2,
         };
 
         const sortedKeys: string[] = Object.keys(params);
