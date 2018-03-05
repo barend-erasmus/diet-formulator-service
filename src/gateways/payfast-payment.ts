@@ -30,7 +30,9 @@ export class PayFastPaymentGateway implements IPaymentGateway {
         const params: any = {
             amount: payment.amount.toString(),
             cancel_url: `https://suite.worldofrations.com/billing?paymentId=${paymentId}`,
+            cycles: 2,
             email_address: user.email,
+            frequency: 3,
             item_description: `${payment.subscription.toUpperCase()} Subscription for ${payment.period} Days`,
             item_name: 'World of Rations Suite Subscription',
             m_payment_id: paymentId,
@@ -41,8 +43,6 @@ export class PayFastPaymentGateway implements IPaymentGateway {
             payment_method: 'cc',
             return_url: `https://suite.worldofrations.com/billing?paymentId=${paymentId}`,
             subscription_type: 1,
-            frequency: 3,
-            cycles: 2,
         };
 
         const sortedKeys: string[] = Object.keys(params);
