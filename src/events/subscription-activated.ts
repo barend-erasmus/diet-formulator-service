@@ -1,9 +1,9 @@
 import { SubscriptionEvent } from './subscription';
 
-export class SubscriptionChangedEvent extends SubscriptionEvent {
+export class SubscriptionActivatedEvent extends SubscriptionEvent {
     constructor(
         userName: string,
     ) {
-        super('changed', userName);
+        super('activated', userName);
     }
 }

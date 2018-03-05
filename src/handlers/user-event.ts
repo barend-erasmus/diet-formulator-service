@@ -31,7 +31,7 @@ export class UserEventHandler implements IEventHandler<UserEvent> {
             const subscription: Subscription = await this.subscriptionService.find(event.userName);
 
             if (!subscription) {
-                await this.subscriptionService.change('trial', event.userName);
+                await this.subscriptionService.create('trial', event.userName);
             }
         } else if (event.type === 'updated') {
             this.logger.info(`User Updated: ${event.userName}`);

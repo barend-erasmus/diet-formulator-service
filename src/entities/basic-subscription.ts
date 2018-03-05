@@ -5,7 +5,8 @@ export class BasicSubscription extends Subscription {
     constructor(
         active: boolean,
         additionalPermissions: string[],
-        expiryTimestamp: Date,
+        endTimestamp: Date,
+        id: number,
         startTimestamp: Date,
     ) {
         super(active,
@@ -23,7 +24,8 @@ export class BasicSubscription extends Subscription {
                 'view-suggested-value',
                 'view-billing',
             ].concat(additionalPermissions),
-            expiryTimestamp,
+            endTimestamp,
+            id,
             startTimestamp,
         );
 

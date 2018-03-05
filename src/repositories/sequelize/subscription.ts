@@ -25,11 +25,13 @@ export class SubscriptionRepository extends BaseRepository implements ISubscript
     public async create(subscription: Subscription, userName: string): Promise<Subscription> {
         const result: any = await BaseRepository.models.Subscription.create({
             active: subscription.active,
-            expiryTimestamp: subscription.expiryTimestamp ? subscription.expiryTimestamp.getTime() : null,
+            endTimestamp: subscription.endTimestamp ? subscription.endTimestamp.getTime() : null,
             startTimestamp: subscription.startTimestamp.getTime(),
             type: subscription.type,
             userName,
         });
+
+        subscription.id = result.id;
 
         return subscription;
     }
@@ -50,7 +52,35 @@ export class SubscriptionRepository extends BaseRepository implements ISubscript
             return null;
         }
 
-        return this.subscriptionFactory.create(result.active, new Date(parseInt(result.expiryTimestamp, undefined)), new Date(parseInt(result.startTimestamp, undefined)), result.type);
+        return this.subscriptionFactory.create(
+            result.active,
+            new Date(parseInt(result.endTimestamp, undefined)),
+            result.id,
+            new Date(parseInt(result.startTimestamp, undefined)),
+            result.type,
+        );
+    }
+
+    public async findById(subscriptionId: number): Promise<Subscription> {
+        const result: any = await BaseRepository.models.Subscription.find({
+            where: {
+                id: {
+                    [Sequelize.Op.eq]: subscriptionId,
+                },
+            },
+        });
+
+        if (!result) {
+            return null;
+        }
+
+        return this.subscriptionFactory.create(
+            result.active,
+            new Date(parseInt(result.endTimestamp, undefined)),
+            result.id,
+            new Date(parseInt(result.startTimestamp, undefined)),
+            result.type,
+        );
     }
 
     public async update(subscription: Subscription, userName: string): Promise<Subscription> {
@@ -66,6 +96,7 @@ export class SubscriptionRepository extends BaseRepository implements ISubscript
         });
 
         result.active = subscription.active;
+        result.endTimestamp = subscription.endTimestamp;
 
         await result.save();
 

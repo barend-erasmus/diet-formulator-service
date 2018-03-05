@@ -2,14 +2,13 @@ export class Subscription {
 
     private permissions: string[] = [];
 
-    public expired: boolean = false;
-
     public type: string = null;
 
     constructor(
         public active: boolean,
         additionalPermissions: string[],
-        public expiryTimestamp: Date,
+        public endTimestamp: Date,
+        public id: number,
         public startTimestamp: Date,
 
     ) {

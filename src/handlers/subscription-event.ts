@@ -19,8 +19,8 @@ export class SubscriptionEventHandler implements IEventHandler<SubscriptionEvent
     }
 
     public async handle(event: SubscriptionEvent): Promise<SubscriptionEvent> {
-        if (event.type === 'changed') {
-            this.logger.info(`Subscription Changed: ${event.userName}`);
+        if (event.type === 'activated') {
+            this.logger.info(`Subscription Activated: ${event.userName}`);
 
             await this.cache.clearAllByUserName(CacheKeys.SUBSCRIPTION_ROUTER_FIND, event.userName);
         }

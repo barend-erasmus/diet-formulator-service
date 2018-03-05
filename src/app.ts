@@ -13,7 +13,6 @@ import { FormulationRouter } from './routes/formulation';
 import { IngredientRouter } from './routes/ingredients';
 import { MailRouter } from './routes/mail';
 import { NutrientRouter } from './routes/nutrient';
-import { PaymentRouter } from './routes/payment';
 import { SubscriptionRouter } from './routes/subscription';
 import { SuggestedValueRouter } from './routes/suggested-value';
 import { UserRouter } from './routes/user';
@@ -36,13 +35,9 @@ app.use(expressWinston.logger({
 app.get('/api/user/info', UserRouter.info);
 app.put('/api/user/update', UserRouter.update);
 
-app.get('/api/subscription/change', AuthenticationMiddleware.shouldBeAuthenticated, SubscriptionRouter.change);
+app.post('/api/subscription/create', AuthenticationMiddleware.shouldBeAuthenticated, SubscriptionRouter.create);
 app.get('/api/subscription/find', AuthenticationMiddleware.shouldBeAuthenticated, SubscriptionRouter.find);
-
-app.get('/api/payment/create', AuthenticationMiddleware.shouldBeAuthenticated, PaymentRouter.create);
-app.get('/api/payment/list', AuthenticationMiddleware.shouldBeAuthenticated, PaymentRouter.list);
-app.post('/api/payment/notify', PaymentRouter.notify);
-app.get('/api/payment/verify', AuthenticationMiddleware.shouldBeAuthenticated, PaymentRouter.verify);
+app.post('/api/subscription/notify', SubscriptionRouter.notify);
 
 app.post('/api/nutrient/create', AuthenticationMiddleware.shouldBeAuthenticated, NutrientRouter.create);
 app.get('/api/nutrient/find', AuthenticationMiddleware.shouldBeAuthenticated, NutrientRouter.find);

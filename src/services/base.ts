@@ -29,7 +29,7 @@ export class BaseService {
         const user: User = await this.UserRepository.findByUserName(userName);
 
         const subscription: Subscription = user.isSuperAdmin ?
-            await this.SubscriptionFactory.create(true, null, null, 'super-admin') :
+            await this.SubscriptionFactory.create(true, null, null, null, 'super-admin') :
             await this.SubscriptionRepository.find(userName);
 
         return subscription.hasPermission(permission);

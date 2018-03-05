@@ -63,7 +63,7 @@ export class Models {
                 allowNull: false,
                 type: Sequelize.BOOLEAN,
             },
-            expiryTimestamp: {
+            endTimestamp: {
                 allowNull: true,
                 type: Sequelize.NUMERIC,
             },

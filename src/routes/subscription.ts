@@ -8,9 +8,9 @@ import { SubscriptionService } from '../services/subscription';
 
 export class SubscriptionRouter {
 
-    public static async change(req: express.Request, res: express.Response) {
+    public static async create(req: express.Request, res: express.Response) {
         try {
-            const result: Subscription = await container.get<SubscriptionService>('SubscriptionService').change(req.query.subscription, req['user'].email);
+            const result: string = await container.get<SubscriptionService>('SubscriptionService').create(req.body.type, req['user'].email);
 
             res.json(result);
         } catch (err) {
@@ -33,6 +33,16 @@ export class SubscriptionRouter {
             }
 
             res.json(result);
+        } catch (err) {
+            res.status(500).json(DietFormulatorError.fromError(err));
+        }
+    }
+
+    public static async notify(req: express.Request, res: express.Response) {
+        try {
+            // await container.get<PaymentNotificationService>('PaymentNotificationService').create(req.body.m_payment_id, req.body.payment_status, req.body);
+
+            res.json('OK');
         } catch (err) {
             res.status(500).json(DietFormulatorError.fromError(err));
         }
