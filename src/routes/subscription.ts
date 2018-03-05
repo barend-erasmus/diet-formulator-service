@@ -3,9 +3,9 @@ import { CacheKeys } from '../constants/cache-keys';
 import { Subscription } from '../entities/subscription';
 import { DietFormulatorError } from '../errors/diet-formulator-error';
 import { ICache } from '../interfaces/cache';
+import { ILogger } from '../interfaces/logger';
 import { container } from '../ioc';
 import { SubscriptionService } from '../services/subscription';
-import { ILogger } from '../interfaces/logger';
 
 export class SubscriptionRouter {
 
@@ -43,7 +43,7 @@ export class SubscriptionRouter {
         try {
             // await container.get<PaymentNotificationService>('PaymentNotificationService').create(req.body.m_payment_id, req.body.payment_status, req.body);
             container.get<ILogger>('RequestLogger').info('SubscriptionRouter.notify', req.body);
-            
+
             res.json('OK');
         } catch (err) {
             res.status(500).json(DietFormulatorError.fromError(err));

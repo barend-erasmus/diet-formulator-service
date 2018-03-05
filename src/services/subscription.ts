@@ -7,12 +7,12 @@ import { User } from '../entities/user';
 import { DietFormulatorError } from '../errors/diet-formulator-error';
 import { SubscriptionEvent } from '../events/subscription';
 import { SubscriptionActivatedEvent } from '../events/subscription-activated';
+import { IForeignExchangeGateway } from '../interfaces/foreign-exchange-gateway';
 import { ISubscriptionFactory } from '../interfaces/subscription-factory';
 import { ISubscriptionGateway } from '../interfaces/subscription-gateway';
 import { ISubscriptionRepository } from '../repositories/subscription';
 import { IUserRepository } from '../repositories/user';
 import { BaseService } from './base';
-import { IForeignExchangeGateway } from '../interfaces/foreign-exchange-gateway';
 
 @injectable()
 export class SubscriptionService extends BaseService {
