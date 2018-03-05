@@ -1,5 +1,8 @@
+import * as crypto from 'crypto';
 import { inject, injectable } from 'inversify';
+import * as moment from 'moment';
 import 'reflect-metadata';
+import * as request from 'request-promise';
 import * as uuid from 'uuid';
 import { Payment } from '../entities/payment';
 import { Subscription } from '../entities/subscription';
@@ -20,6 +23,34 @@ export class PayFastSubscriptionGateway implements ISubscriptionGateway {
     }
 
     public async cancel(subscriptionId: string): Promise<boolean> {
+        const token: string = '';
+
+        const params = {
+            'merchant-id': this.merchantId,
+            'passphrase': this.merchantSecret,
+            'timestamp': moment().format('YYYY-MM-DDTHH:mm:ss[+02:00]'),
+            'version': 'v1',
+        };
+
+        const keys = Object.keys(params).sort();
+
+        const result = keys.map((key) => `${key}=${encodeURIComponent(params[key].replace(new RegExp('\\\\', 'g'), ''))}`).join('&');
+
+        const signature = crypto.createHash('md5').update(result).digest('hex');
+
+        const response = await request({
+            headers: {
+                'accept': 'application/json',
+                'merchant-id': params['merchant-id'],
+                'signature': signature,
+                'timestamp': params['timestamp'],
+                'version': params['version'],
+            },
+            json: true,
+            method: 'PUT',
+            uri: `https://api.payfast.co.za/subscriptions/${token}/cancel`,
+        });
+
         return true;
     }
 
