@@ -1,5 +1,7 @@
 export class Subscription {
 
+    public expired: boolean = false;
+
     private permissions: string[] = [];
 
     public type: string = null;

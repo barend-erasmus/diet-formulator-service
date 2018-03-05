@@ -27,8 +27,6 @@ export class BaseRepository {
         IngredientGroup: Sequelize.Model<{}, {}>,
         IngredientValue: Sequelize.Model<{}, {}>,
         Nutrient: Sequelize.Model<{}, {}>,
-        Payment: Sequelize.Model<{}, {}>,
-        PaymentNotification: Sequelize.Model<{}, {}>,
         Subscription: Sequelize.Model<{}, {}>,
         SuggestedValue: Sequelize.Model<{}, {}>,
         Supplement: Sequelize.Model<{}, {}>,

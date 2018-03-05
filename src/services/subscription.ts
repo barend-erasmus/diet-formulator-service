@@ -12,11 +12,14 @@ import { ISubscriptionGateway } from '../interfaces/subscription-gateway';
 import { ISubscriptionRepository } from '../repositories/subscription';
 import { IUserRepository } from '../repositories/user';
 import { BaseService } from './base';
+import { IForeignExchangeGateway } from '../interfaces/foreign-exchange-gateway';
 
 @injectable()
 export class SubscriptionService extends BaseService {
 
     constructor(
+        @inject('IForeignExchangeGateway')
+        private foreignExchangeGateway: IForeignExchangeGateway,
         @inject('SubscriptionEventBus')
         private subscriptionEventBus: EventBus<SubscriptionEvent>,
         @inject('ISubscriptionRepository')
@@ -48,14 +51,18 @@ export class SubscriptionService extends BaseService {
     public async create(type: string, userName: string): Promise<string> {
         const user: User = await this.userRepository.findByUserName(userName);
 
-        let subscription: Subscription = await this.subscriptionRepository.create(this.subscriptionFactory.create(false, null, null, new Date(), type), userName);
+        let subscription: Subscription = await this.subscriptionRepository.create(this.subscriptionFactory.create(false, this.getEndDateForSubscription(type, null), null, new Date(), type), userName);
 
         if (!this.requiresPayment(type)) {
             subscription = await this.activate(subscription.id, userName);
             return null;
         }
 
-        return this.subscriptionGateway.createRedirectURI(this.getAmountOfSubscription(type), subscription, user);
+        const usdAmount: number = this.getAmountOfSubscription(type);
+
+        const zarAmount: number = await this.foreignExchangeGateway.convert(usdAmount, 'USD', 'ZAR');
+
+        return this.subscriptionGateway.createRedirectURI(zarAmount, subscription, user);
     }
 
     public async find(userName: string): Promise<Subscription> {
@@ -94,6 +101,23 @@ export class SubscriptionService extends BaseService {
         }
 
         return amount;
+    }
+
+    private getEndDateForSubscription(type: string, period: number): Date {
+        if (period) {
+            return moment().add(period, 'days').toDate();
+        }
+
+        switch (type) {
+            case 'trial':
+                return moment().add(14, 'days').toDate();
+            case 'basic':
+                return null;
+            case 'standard':
+                return null;
+            case 'premium':
+                return null;
+        }
     }
 
     private requiresPayment(subscription: string): boolean {

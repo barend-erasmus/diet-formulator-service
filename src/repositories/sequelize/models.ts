@@ -12,8 +12,6 @@ export class Models {
         IngredientGroup: Sequelize.Model<{}, {}>,
         IngredientValue: Sequelize.Model<{}, {}>,
         Nutrient: Sequelize.Model<{}, {}>,
-        Payment: Sequelize.Model<{}, {}>,
-        PaymentNotification: Sequelize.Model<{}, {}>,
         Subscription: Sequelize.Model<{}, {}>,
         SuggestedValue: Sequelize.Model<{}, {}>,
         Supplement: Sequelize.Model<{}, {}>,
@@ -76,60 +74,6 @@ export class Models {
                 type: Sequelize.STRING,
             },
             userName: {
-                allowNull: false,
-                type: Sequelize.STRING,
-            },
-        });
-
-        const PaymentModel = sequelize.define('payment', {
-            amount: {
-                allowNull: false,
-                type: Sequelize.NUMERIC,
-            },
-            assigned: {
-                allowNull: false,
-                type: Sequelize.BOOLEAN,
-            },
-            currency: {
-                allowNull: false,
-                type: Sequelize.STRING,
-            },
-            paid: {
-                allowNull: false,
-                type: Sequelize.BOOLEAN,
-            },
-            paidTimestamp: {
-                allowNull: true,
-                type: Sequelize.NUMERIC,
-            },
-            paymentId: {
-                allowNull: false,
-                type: Sequelize.STRING,
-            },
-            paymentUri: {
-                allowNull: false,
-                type: Sequelize.TEXT,
-            },
-            period: {
-                allowNull: false,
-                type: Sequelize.NUMERIC,
-            },
-            subscription: {
-                allowNull: false,
-                type: Sequelize.STRING,
-            },
-            userName: {
-                allowNull: false,
-                type: Sequelize.STRING,
-            },
-        });
-
-        const PaymentNotificationModel = sequelize.define('paymentNotification', {
-            paymentId: {
-                allowNull: false,
-                type: Sequelize.STRING,
-            },
-            status: {
                 allowNull: false,
                 type: Sequelize.STRING,
             },
@@ -356,8 +300,6 @@ export class Models {
             IngredientGroup: IngredientGroupModel,
             IngredientValue: IngredientValueModel,
             Nutrient: NutrientModel,
-            Payment: PaymentModel,
-            PaymentNotification: PaymentNotificationModel,
             Subscription: SubscriptionModel,
             SuggestedValue: SuggestedValueModel,
             Supplement: SupplementModel,

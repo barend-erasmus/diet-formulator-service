@@ -205,6 +205,7 @@ container.bind<ICache>('ICache').toDynamicValue((context: interfaces.Context) =>
 
 container.bind<ILogger>('CacheLogger').toConstantValue(new WinstonLogger('cache'));
 container.bind<ILogger>('EventLogger').toConstantValue(new WinstonLogger('event'));
+container.bind<ILogger>('RequestLogger').toConstantValue(new WinstonLogger('request'));
 container.bind<ILogger>('SQLLogger').toConstantValue(new WinstonLogger('sql'));
 
 container.bind<IMailSender>('IMailSender').toConstantValue(new SendGridMailSender(emailConfig.sendgrid.apiKey));

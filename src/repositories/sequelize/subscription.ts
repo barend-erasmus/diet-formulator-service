@@ -54,7 +54,7 @@ export class SubscriptionRepository extends BaseRepository implements ISubscript
 
         return this.subscriptionFactory.create(
             result.active,
-            new Date(parseInt(result.endTimestamp, undefined)),
+            result.endTimestamp ? new Date(parseInt(result.endTimestamp, undefined)) : null,
             result.id,
             new Date(parseInt(result.startTimestamp, undefined)),
             result.type,
@@ -76,7 +76,7 @@ export class SubscriptionRepository extends BaseRepository implements ISubscript
 
         return this.subscriptionFactory.create(
             result.active,
-            new Date(parseInt(result.endTimestamp, undefined)),
+            result.endTimestamp ? new Date(parseInt(result.endTimestamp, undefined)) : null,
             result.id,
             new Date(parseInt(result.startTimestamp, undefined)),
             result.type,
@@ -86,11 +86,8 @@ export class SubscriptionRepository extends BaseRepository implements ISubscript
     public async update(subscription: Subscription, userName: string): Promise<Subscription> {
         const result: any = await BaseRepository.models.Subscription.find({
             where: {
-                active: {
-                    [Sequelize.Op.eq]: true,
-                },
-                userName: {
-                    [Sequelize.Op.eq]: userName,
+                id: {
+                    [Sequelize.Op.eq]: subscription.id,
                 },
             },
         });

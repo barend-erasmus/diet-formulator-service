@@ -32,15 +32,29 @@ export class SubscriptionFactory implements ISubscriptionFactory {
                 break;
         }
 
-        if (!subscription.active) {
+        if (!this.validSubscription(subscription)) {
             subscription.setPermissions([
                 'view-profile',
                 'update-profile',
                 'view-formulation',
                 'view-billing',
             ]);
+
+            subscription.expired = true;
         }
 
         return subscription;
+    }
+
+    private validSubscription(subscription: Subscription): boolean {
+        if (subscription.endTimestamp && subscription.endTimestamp.getTime() < new Date().getTime()) {
+            return false;
+        }
+
+        if (subscription.startTimestamp && subscription.startTimestamp.getTime() >= new Date().getTime()) {
+            return false;
+        }
+
+        return true;
     }
 }
