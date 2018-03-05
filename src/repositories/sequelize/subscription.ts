@@ -93,7 +93,7 @@ export class SubscriptionRepository extends BaseRepository implements ISubscript
         });
 
         result.active = subscription.active;
-        result.endTimestamp = subscription.endTimestamp;
+        result.endTimestamp = subscription.endTimestamp ? subscription.endTimestamp.getTime() : null;
 
         await result.save();
 
