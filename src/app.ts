@@ -38,6 +38,7 @@ app.put('/api/user/update', UserRouter.update);
 app.post('/api/subscription/create', AuthenticationMiddleware.shouldBeAuthenticated, SubscriptionRouter.create);
 app.get('/api/subscription/find', AuthenticationMiddleware.shouldBeAuthenticated, SubscriptionRouter.find);
 app.post('/api/subscription/notify', SubscriptionRouter.notify);
+app.post('/api/payment/notify', SubscriptionRouter.notify);
 
 app.post('/api/nutrient/create', AuthenticationMiddleware.shouldBeAuthenticated, NutrientRouter.create);
 app.get('/api/nutrient/find', AuthenticationMiddleware.shouldBeAuthenticated, NutrientRouter.find);
