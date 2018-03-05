@@ -7,7 +7,7 @@ import { ILogger } from '../interfaces/logger';
 @injectable()
 export class WinstonLogger implements ILogger {
 
-    public logger: any;
+    public logger: winston.LoggerInstance;
 
     constructor(name: string) {
         this.logger = new (winston.Logger)({
@@ -20,18 +20,18 @@ export class WinstonLogger implements ILogger {
     }
 
     public debug(message: string, metaData?: any): void {
-        this.logger.debug(message);
+        this.logger.debug(message, metaData);
     }
 
     public error(error: Error, metaData?: any): void {
-        this.logger.error(error);
+        this.logger.error(error.message, error);
     }
 
     public info(message: string, metaData?: any): void {
-        this.logger.info(message);
+        this.logger.info(message, metaData);
     }
 
     public warning(message: string, metaData?: any): void {
-        this.logger.warn(message);
+        this.logger.warn(message, metaData);
     }
 }
