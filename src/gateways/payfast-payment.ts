@@ -10,7 +10,7 @@ import { IPaymentNotificationRepository } from '../repositories/payment-notifica
 @injectable()
 export class PayFastPaymentGateway implements IPaymentGateway {
 
-    private sandbox: boolean = true;
+    private sandbox: boolean = false;
 
     constructor(
         private merchantId: string,
