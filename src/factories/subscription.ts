@@ -14,7 +14,7 @@ export class SubscriptionFactory implements ISubscriptionFactory {
     public create(active: boolean, endTimestamp: Date, id: number, startTimestamp: Date, token: string, type: string): Subscription {
         let subscription: Subscription = null;
 
-        switch (type) {
+        switch (type.toLowerCase()) {
             case 'trial':
                 subscription = new TrialSubscription(active, [], endTimestamp, false, id, startTimestamp, token);
                 break;
