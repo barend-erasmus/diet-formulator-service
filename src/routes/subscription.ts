@@ -69,8 +69,7 @@ export class SubscriptionRouter {
             //     "signature":"a3096732ad440365b850403f512fa919"
             //  }
 
-            // await container.get<PaymentNotificationService>('PaymentNotificationService').create(req.body.m_payment_id, req.body.payment_status, req.body);
-            container.get<ILogger>('RequestLogger').info('SubscriptionRouter.notify', req.body);
+            await container.get<SubscriptionService>('SubscriptionService').activate(parseInt(req.body.m_payment_id, undefined), req.body.token, req.body.name_first);
 
             res.json('OK');
         } catch (err) {

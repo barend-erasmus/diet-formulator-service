@@ -6,13 +6,25 @@ export class PremiumSubscription extends StandardSubscription {
         active: boolean,
         additionalPermissions: string[],
         endTimestamp: Date,
+        expired: boolean,
         id: number,
         startTimestamp: Date,
+        token: string,
     ) {
-        const permissions: string[]  = ['view-formulation-supplement'].concat(additionalPermissions);
+        const permissions: string[] = ['view-formulation-supplement'].concat(additionalPermissions);
 
-        super(active, permissions, endTimestamp, id, startTimestamp);
+        super(
+            active,
+            permissions,
+            endTimestamp,
+            expired,
+            id,
+            startTimestamp,
+            token,
+        );
+    }
 
-        this.type = 'premium';
+    public toString(): string {
+        return 'Premium';
     }
 }

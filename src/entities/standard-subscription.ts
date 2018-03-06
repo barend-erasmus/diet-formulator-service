@@ -6,13 +6,25 @@ export class StandardSubscription extends BasicSubscription {
         active: boolean,
         additionalPermissions: string[],
         endTimestamp: Date,
+        expired: boolean,
         id: number,
         startTimestamp: Date,
+        token: string,
     ) {
-        const permissions: string[]  = ['view-formulation-composition'].concat(additionalPermissions);
+        const permissions: string[] = ['view-formulation-composition'].concat(additionalPermissions);
 
-        super(active, permissions, endTimestamp, id, startTimestamp);
+        super(
+            active,
+            permissions,
+            endTimestamp,
+            expired,
+            id,
+            startTimestamp,
+            token,
+        );
+    }
 
-        this.type = 'standard';
+    public toString(): string {
+        return 'Standard';
     }
 }

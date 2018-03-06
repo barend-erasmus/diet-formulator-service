@@ -6,17 +6,22 @@ export class TrialSubscription extends PremiumSubscription {
         active: boolean,
         additionalPermissions: string[],
         endTimestamp: Date,
+        expired: boolean,
         id: number,
         startTimestamp: Date,
+        token: string,
     ) {
         super(active,
             additionalPermissions,
             endTimestamp,
+            expired,
             id,
             startTimestamp,
+            token,
         );
-
-        this.type = 'trial';
     }
 
+    public toString(): string {
+        return 'Trial';
+    }
 }

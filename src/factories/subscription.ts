@@ -11,24 +11,24 @@ import { ISubscriptionFactory } from '../interfaces/subscription-factory';
 @injectable()
 export class SubscriptionFactory implements ISubscriptionFactory {
 
-    public create(active: boolean, endTimestamp: Date, id: number, startTimestamp: Date, type: string): Subscription {
+    public create(active: boolean, endTimestamp: Date, id: number, startTimestamp: Date, token: string, type: string): Subscription {
         let subscription: Subscription = null;
 
         switch (type) {
             case 'trial':
-                subscription = new TrialSubscription(active, [], endTimestamp, id, startTimestamp);
+                subscription = new TrialSubscription(active, [], endTimestamp, false, id, startTimestamp, token);
                 break;
             case 'basic':
-                subscription = new BasicSubscription(active, [], endTimestamp, id, startTimestamp);
+                subscription = new BasicSubscription(active, [], endTimestamp, false, id, startTimestamp, token);
                 break;
             case 'standard':
-                subscription = new StandardSubscription(active, [], endTimestamp, id, startTimestamp);
+                subscription = new StandardSubscription(active, [], endTimestamp, false, id, startTimestamp, token);
                 break;
             case 'premium':
-                subscription = new PremiumSubscription(active, [], endTimestamp, id, startTimestamp);
+                subscription = new PremiumSubscription(active, [], endTimestamp, false, id, startTimestamp, token);
                 break;
             case 'super-admin':
-                subscription = new SuperAdminSubscription(active, [], null,  id, null);
+                subscription = new SuperAdminSubscription(active, [], null, false, id, null, null);
                 break;
         }
 

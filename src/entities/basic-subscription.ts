@@ -6,8 +6,10 @@ export class BasicSubscription extends Subscription {
         active: boolean,
         additionalPermissions: string[],
         endTimestamp: Date,
+        expired: boolean,
         id: number,
         startTimestamp: Date,
+        token: string,
     ) {
         super(active,
             [
@@ -25,10 +27,14 @@ export class BasicSubscription extends Subscription {
                 'view-billing',
             ].concat(additionalPermissions),
             endTimestamp,
+            expired,
             id,
             startTimestamp,
+            token,
         );
+    }
 
-        this.type = 'basic';
+    public toString(): string {
+        return 'Basic';
     }
 }

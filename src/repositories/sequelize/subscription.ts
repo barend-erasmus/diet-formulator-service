@@ -27,7 +27,8 @@ export class SubscriptionRepository extends BaseRepository implements ISubscript
             active: subscription.active,
             endTimestamp: subscription.endTimestamp ? subscription.endTimestamp.getTime() : null,
             startTimestamp: subscription.startTimestamp.getTime(),
-            type: subscription.type,
+            token: subscription.token,
+            type: subscription.toString(),
             userName,
         });
 
@@ -58,6 +59,7 @@ export class SubscriptionRepository extends BaseRepository implements ISubscript
             result.id,
             new Date(parseInt(result.startTimestamp, undefined)),
             result.type,
+            result.token,
         );
     }
 
@@ -80,6 +82,7 @@ export class SubscriptionRepository extends BaseRepository implements ISubscript
             result.id,
             new Date(parseInt(result.startTimestamp, undefined)),
             result.type,
+            result.token,
         );
     }
 
@@ -94,6 +97,7 @@ export class SubscriptionRepository extends BaseRepository implements ISubscript
 
         result.active = subscription.active;
         result.endTimestamp = subscription.endTimestamp ? subscription.endTimestamp.getTime() : null;
+        result.token = subscription.token;
 
         await result.save();
 

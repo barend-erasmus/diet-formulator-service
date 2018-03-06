@@ -34,12 +34,13 @@ export class SubscriptionService extends BaseService {
         super();
     }
 
-    public async activate(subscriptionId: number, userName: string): Promise<Subscription> {
+    public async activate(subscriptionId: number, token: string, userName: string): Promise<Subscription> {
         await this.deactivateCurrentSubscription(userName);
 
         let subscription: Subscription = await this.subscriptionRepository.findById(subscriptionId, userName);
 
         subscription.active = true;
+        subscription.token = token;
 
         subscription = await this.subscriptionRepository.update(subscription, userName);
 
@@ -51,10 +52,12 @@ export class SubscriptionService extends BaseService {
     public async create(type: string, userName: string): Promise<string> {
         const user: User = await this.userRepository.findByUserName(userName);
 
-        let subscription: Subscription = await this.subscriptionRepository.create(this.subscriptionFactory.create(false, this.getEndDateForSubscription(type, null), null, new Date(), type), userName);
+        let subscription: Subscription = this.subscriptionFactory.create(false, this.getEndDateForSubscription(type, null), null, new Date(), type, null);
+
+        subscription = await this.subscriptionRepository.create(subscription, userName);
 
         if (!this.requiresPayment(type)) {
-            subscription = await this.activate(subscription.id, userName);
+            subscription = await this.activate(subscription.id, null, userName);
             return null;
         }
 
@@ -69,7 +72,7 @@ export class SubscriptionService extends BaseService {
         const user: User = await this.userRepository.findByUserName(userName);
 
         if (user.isSuperAdmin) {
-            return this.subscriptionFactory.create(true, null, null, null, 'super-admin');
+            return this.subscriptionFactory.create(true, null, null, null, 'super-admin', null);
         }
 
         return this.subscriptionRepository.find(userName);

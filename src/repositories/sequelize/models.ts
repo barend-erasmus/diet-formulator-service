@@ -69,6 +69,10 @@ export class Models {
                 allowNull: false,
                 type: Sequelize.NUMERIC,
             },
+            token: {
+                allowNull: true,
+                type: Sequelize.STRING,
+            },
             type: {
                 allowNull: false,
                 type: Sequelize.STRING,

@@ -62,7 +62,7 @@ export class PayFastSubscriptionGateway implements ISubscriptionGateway {
             cycles: 0,
             email_address: user.email,
             frequency: 3,
-            item_description: `${subscription.type.toUpperCase()} Subscription`,
+            item_description: `${subscription.toString()} Subscription`,
             item_name: 'World of Rations Suite Subscription',
             m_payment_id: subscription.id,
             merchant_id: this.merchantId,
@@ -77,9 +77,5 @@ export class PayFastSubscriptionGateway implements ISubscriptionGateway {
         const sortedKeys: string[] = Object.keys(params);
 
         return `https://www.payfast.co.za/eng/process?${sortedKeys.map((key) => `${key}=${params[key]}`).join('&')}`;
-    }
-
-    public async notify(subscriptionId: string): Promise<boolean> {
-        return true;
     }
 }

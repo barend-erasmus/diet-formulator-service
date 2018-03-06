@@ -6,8 +6,10 @@ export class SuperAdminSubscription extends PremiumSubscription {
         active: boolean,
         additionalPermissions: string[],
         endTimestamp: Date,
+        expired: boolean,
         id: number,
         startTimestamp: Date,
+        token: string,
     ) {
         const permissions: string[] = [
             'create-nutrient',
@@ -26,8 +28,18 @@ export class SuperAdminSubscription extends PremiumSubscription {
             'super-user',
         ].concat(additionalPermissions);
 
-        super(active, permissions, endTimestamp, id, startTimestamp);
+        super(
+            active,
+            permissions,
+            endTimestamp,
+            expired,
+            id,
+            startTimestamp,
+            token,
+        );
+    }
 
-        this.type = 'super-admin';
+    public toString(): string {
+        return 'Super-Admin';
     }
 }
