@@ -1,5 +1,5 @@
 import { Subscription } from '../entities/subscription';
 
 export interface ISubscriptionFactory {
-    create(active: boolean, endTimestamp: Date, id: number, startTimestamp: Date, type: string, token: string): Subscription;
+    create(active: boolean, endTimestamp: Date, id: number, startTimestamp: Date, token: string, type: string): Subscription;
 }

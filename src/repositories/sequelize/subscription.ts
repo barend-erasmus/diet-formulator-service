@@ -58,8 +58,8 @@ export class SubscriptionRepository extends BaseRepository implements ISubscript
             result.endTimestamp ? new Date(parseInt(result.endTimestamp, undefined)) : null,
             result.id,
             new Date(parseInt(result.startTimestamp, undefined)),
-            result.type,
             result.token,
+            result.type,
         );
     }
 
@@ -81,8 +81,8 @@ export class SubscriptionRepository extends BaseRepository implements ISubscript
             result.endTimestamp ? new Date(parseInt(result.endTimestamp, undefined)) : null,
             result.id,
             new Date(parseInt(result.startTimestamp, undefined)),
-            result.type,
             result.token,
+            result.type,
         );
     }
 

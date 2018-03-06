@@ -52,7 +52,7 @@ export class SubscriptionService extends BaseService {
     public async create(type: string, userName: string): Promise<string> {
         const user: User = await this.userRepository.findByUserName(userName);
 
-        let subscription: Subscription = this.subscriptionFactory.create(false, this.getEndDateForSubscription(type, null), null, new Date(), type, null);
+        let subscription: Subscription = this.subscriptionFactory.create(false, this.getEndDateForSubscription(type, null), null, new Date(), null, type);
 
         subscription = await this.subscriptionRepository.create(subscription, userName);
 
@@ -72,7 +72,7 @@ export class SubscriptionService extends BaseService {
         const user: User = await this.userRepository.findByUserName(userName);
 
         if (user.isSuperAdmin) {
-            return this.subscriptionFactory.create(true, null, null, null, 'super-admin', null);
+            return this.subscriptionFactory.create(true, null, null, null, null, 'super-admin');
         }
 
         return this.subscriptionRepository.find(userName);
