@@ -65,7 +65,7 @@ export class UserRepository extends BaseRepository implements IUserRepository {
             },
         });
 
-        if (result) {
+        if (!result) {
             return null;
         }
 
