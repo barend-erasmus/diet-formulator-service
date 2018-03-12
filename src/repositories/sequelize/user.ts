@@ -57,7 +57,6 @@ export class UserRepository extends BaseRepository implements IUserRepository {
 
     public async findByUserName(userName: string): Promise<User> {
         const result: any = await BaseRepository.models.User.find({
-            limit: 1,
             where: {
                 email: {
                     [Sequelize.Op.eq]: userName,
