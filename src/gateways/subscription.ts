@@ -12,7 +12,7 @@ import { ISubscriptionGateway } from '../interfaces/subscription-gateway';
 @injectable()
 export class PayFastSubscriptionGateway implements ISubscriptionGateway {
 
-    private sandbox: boolean = true;
+    private sandbox: boolean = false;
 
     constructor(
         private merchantId: string,
