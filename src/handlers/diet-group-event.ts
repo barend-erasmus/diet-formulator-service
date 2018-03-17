@@ -2,8 +2,6 @@ import { inject, injectable } from 'inversify';
 import * as moment from 'moment';
 import 'reflect-metadata';
 import { CacheKeys } from '../constants/cache-keys';
-import { Subscription } from '../entities/subscription';
-import { TrialSubscription } from '../entities/trail-subscription';
 import { DietGroupEvent } from '../events/diet-group';
 import { ICache } from '../interfaces/cache';
 import { IEventHandler } from '../interfaces/event-handler';

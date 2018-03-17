@@ -3,7 +3,6 @@ import * as moment from 'moment';
 import 'reflect-metadata';
 import { CacheKeys } from '../constants/cache-keys';
 import { Subscription } from '../entities/subscription';
-import { TrialSubscription } from '../entities/trail-subscription';
 import { UserEvent } from '../events/user';
 import { ICache } from '../interfaces/cache';
 import { IEventHandler } from '../interfaces/event-handler';

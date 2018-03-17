@@ -1,5 +1,6 @@
 import { inject, injectable } from 'inversify';
 import 'reflect-metadata';
+
 import { SubscriptionEvent } from '../events/subscription';
 import { IEventHandler } from '../interfaces/event-handler';
 import { EventBus } from './event';

@@ -1,6 +1,7 @@
 import { injectable } from 'inversify';
 import * as Redis from 'ioredis';
 import 'reflect-metadata';
+
 import { ICache } from '../interfaces/cache';
 
 @injectable()

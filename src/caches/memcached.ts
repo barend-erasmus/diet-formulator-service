@@ -2,6 +2,7 @@ import { injectable } from 'inversify';
 import * as Memcached from 'memcached';
 import 'reflect-metadata';
 import * as zlib from 'zlib';
+
 import { ICache } from '../interfaces/cache';
 import { ILogger } from '../interfaces/logger';
 

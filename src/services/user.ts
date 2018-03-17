@@ -1,8 +1,6 @@
 import { inject, injectable } from 'inversify';
 import 'reflect-metadata';
 import { EventBus } from '../bus/event';
-import { SuperAdminSubscription } from '../entities/super-admin-subscription';
-import { TrialSubscription } from '../entities/trail-subscription';
 import { User } from '../entities/user';
 import { UserEvent } from '../events/user';
 import { UserCreatedEvent } from '../events/user-created';

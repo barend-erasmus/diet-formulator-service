@@ -1,4 +1,5 @@
 import * as crypto from 'crypto';
+
 import { ICryptographyAlgorithm } from '../interfaces/cryptography';
 
 export class AES128CTRCryptographyAlgorithm implements ICryptographyAlgorithm {

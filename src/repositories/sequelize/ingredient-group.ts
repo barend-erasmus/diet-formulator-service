@@ -1,6 +1,5 @@
 import { injectable } from 'inversify';
 import 'reflect-metadata';
-import * as Sequelize from 'sequelize';
 import { IngredientGroup } from '../../entities/ingredient-group';
 import { ICache } from '../../interfaces/cache';
 import { ILogger } from '../../interfaces/logger';

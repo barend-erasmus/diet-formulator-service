@@ -4,7 +4,6 @@ import 'reflect-metadata';
 import { EventBus } from '../bus/event';
 import { Subscription } from '../entities/subscription';
 import { User } from '../entities/user';
-import { DietFormulatorError } from '../errors/diet-formulator-error';
 import { SubscriptionEvent } from '../events/subscription';
 import { SubscriptionActivatedEvent } from '../events/subscription-activated';
 import { IForeignExchangeGateway } from '../interfaces/foreign-exchange-gateway';

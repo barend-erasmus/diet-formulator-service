@@ -3,7 +3,6 @@ import { CacheKeys } from '../constants/cache-keys';
 import { Subscription } from '../entities/subscription';
 import { DietFormulatorError } from '../errors/diet-formulator-error';
 import { ICache } from '../interfaces/cache';
-import { ILogger } from '../interfaces/logger';
 import { container } from '../ioc';
 import { SubscriptionService } from '../services/subscription';
 

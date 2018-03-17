@@ -1,5 +1,6 @@
 import { expect } from 'chai';
 import 'mocha';
+
 import { ICryptographyAlgorithm } from '../interfaces/cryptography';
 import { AES128CTRCryptographyAlgorithm } from './aes-256-ctr';
 
