@@ -1,5 +1,6 @@
-import {  injectable } from 'inversify';
+import { injectable } from 'inversify';
 import 'reflect-metadata';
+
 import { Diet } from '../entities/diet';
 import { DietGroup } from '../entities/diet-group';
 import { Ingredient } from '../entities/ingredient';

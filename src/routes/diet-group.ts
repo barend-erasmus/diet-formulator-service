@@ -1,4 +1,5 @@
 import * as express from 'express';
+
 import { DietGroup } from '../entities/diet-group';
 import { DietFormulatorError } from '../errors/diet-formulator-error';
 import { container } from '../ioc';

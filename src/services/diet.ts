@@ -1,5 +1,6 @@
 import { inject, injectable } from 'inversify';
 import 'reflect-metadata';
+
 import { Diet } from '../entities/diet';
 import { DietGroup } from '../entities/diet-group';
 import { InsufficientPermissionsError } from '../errors/insufficient-permissions-error';

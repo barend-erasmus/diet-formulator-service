@@ -1,5 +1,6 @@
 import { inject, injectable } from 'inversify';
 import 'reflect-metadata';
+
 import { EventBus } from '../bus/event';
 import { User } from '../entities/user';
 import { UserEvent } from '../events/user';

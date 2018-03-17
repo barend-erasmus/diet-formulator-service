@@ -5,6 +5,7 @@ import * as expressWinston from 'express-winston';
 import * as path from 'path';
 import * as winston from 'winston';
 import * as yargs from 'yargs';
+
 import { AuthenticationMiddleware } from './middleware/authentication';
 import { DietRouter } from './routes/diet';
 import { DietGroupRouter } from './routes/diet-group';

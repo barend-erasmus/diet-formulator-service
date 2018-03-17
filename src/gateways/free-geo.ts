@@ -1,6 +1,7 @@
 import { injectable } from 'inversify';
 import 'reflect-metadata';
 import * as request from 'request-promise';
+
 import { IGeoGateway } from '../interfaces/geo-gateway';
 
 @injectable()

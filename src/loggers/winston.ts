@@ -2,6 +2,7 @@ import { injectable } from 'inversify';
 import * as path from 'path';
 import 'reflect-metadata';
 import * as winston from 'winston';
+
 import { ILogger } from '../interfaces/logger';
 
 @injectable()

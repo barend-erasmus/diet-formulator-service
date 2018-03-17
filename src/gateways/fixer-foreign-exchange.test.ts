@@ -1,5 +1,6 @@
 import { expect } from 'chai';
 import 'mocha';
+
 import { IForeignExchangeGateway } from '../interfaces/foreign-exchange-gateway';
 import { FixerForeignExchangeGateway } from './fixer-foreign-exchange';
 

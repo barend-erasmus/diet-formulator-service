@@ -1,4 +1,5 @@
 import * as sendGrid from '@sendgrid/mail';
+
 import { IMailSender } from '../interfaces/mail-sender';
 
 export class SendGridMailSender implements IMailSender {

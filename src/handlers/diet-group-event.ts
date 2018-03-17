@@ -1,6 +1,7 @@
 import { inject, injectable } from 'inversify';
 import * as moment from 'moment';
 import 'reflect-metadata';
+
 import { CacheKeys } from '../constants/cache-keys';
 import { DietGroupEvent } from '../events/diet-group';
 import { ICache } from '../interfaces/cache';

@@ -1,5 +1,6 @@
 import { expect } from 'chai';
 import 'mocha';
+
 import { Diet } from '../entities/diet';
 import { DietValue } from '../entities/diet-value';
 import { Formulation } from '../entities/formulation';

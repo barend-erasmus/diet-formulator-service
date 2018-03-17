@@ -1,6 +1,7 @@
 import { injectable } from 'inversify';
 import * as solver from 'javascript-lp-solver';
 import 'reflect-metadata';
+
 import { Diet } from '../entities/diet';
 import { Formulation } from '../entities/formulation';
 import { FormulationIngredient } from '../entities/formulation-ingredient';

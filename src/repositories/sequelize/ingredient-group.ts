@@ -1,5 +1,6 @@
 import { injectable } from 'inversify';
 import 'reflect-metadata';
+
 import { IngredientGroup } from '../../entities/ingredient-group';
 import { ICache } from '../../interfaces/cache';
 import { ILogger } from '../../interfaces/logger';

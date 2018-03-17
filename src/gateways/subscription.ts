@@ -1,9 +1,10 @@
 import * as crypto from 'crypto';
-import {  injectable } from 'inversify';
+import { injectable } from 'inversify';
 import * as moment from 'moment';
 import 'reflect-metadata';
 import * as request from 'request-promise';
 import * as uuid from 'uuid';
+
 import { Subscription } from '../entities/subscription';
 import { User } from '../entities/user';
 import { ISubscriptionGateway } from '../interfaces/subscription-gateway';

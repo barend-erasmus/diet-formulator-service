@@ -1,5 +1,6 @@
 import { inject, injectable } from 'inversify';
 import 'reflect-metadata';
+
 import { EventBus } from '../bus/event';
 import { DietGroup } from '../entities/diet-group';
 import { DietGroupEvent } from '../events/diet-group';

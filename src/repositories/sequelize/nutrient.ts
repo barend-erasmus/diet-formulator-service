@@ -1,6 +1,7 @@
 import { injectable } from 'inversify';
 import 'reflect-metadata';
 import * as Sequelize from 'sequelize';
+
 import { Nutrient } from '../../entities/nutrient';
 import { ICache } from '../../interfaces/cache';
 import { ILogger } from '../../interfaces/logger';

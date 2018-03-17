@@ -1,6 +1,7 @@
 import { injectable } from 'inversify';
 import 'reflect-metadata';
 import * as request from 'request-promise';
+
 import { IOAuth2Gateway } from '../interfaces/oauth2-gateway';
 
 @injectable()

@@ -1,6 +1,7 @@
 import { inject, injectable } from 'inversify';
 import * as moment from 'moment';
 import 'reflect-metadata';
+
 import { Diet } from '../entities/diet';
 import { DietGroup } from '../entities/diet-group';
 import { DietValue } from '../entities/diet-value';

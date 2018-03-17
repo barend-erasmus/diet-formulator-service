@@ -1,5 +1,6 @@
 import { expect } from 'chai';
 import 'mocha';
+
 import { Subscription } from '../entities/subscription';
 import { ISubscriptionFactory } from '../interfaces/subscription-factory';
 import { SubscriptionFactory } from './subscription';

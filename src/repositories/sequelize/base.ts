@@ -1,5 +1,6 @@
 import * as Sequelize from 'sequelize';
 import * as winston from 'winston';
+
 import { CacheKeys } from '../../constants/cache-keys';
 import { Diet } from '../../entities/diet';
 import { DietGroup } from '../../entities/diet-group';

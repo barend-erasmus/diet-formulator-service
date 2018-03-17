@@ -1,4 +1,5 @@
 import * as express from 'express';
+
 import { DietFormulatorError } from '../errors/diet-formulator-error';
 import { IMailSender } from '../interfaces/mail-sender';
 import { container } from '../ioc';

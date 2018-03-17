@@ -2,6 +2,7 @@ import { Container, interfaces } from 'inversify';
 import * as path from 'path';
 import 'reflect-metadata';
 import * as yargs from 'yargs';
+
 import { DietGroupEventBus } from './bus/diet-group-event';
 import { EventBus } from './bus/event';
 import { IngredientEventBus } from './bus/ingredient-event';

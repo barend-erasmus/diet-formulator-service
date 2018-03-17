@@ -1,6 +1,7 @@
 import { inject, injectable } from 'inversify';
 import * as moment from 'moment';
 import 'reflect-metadata';
+
 import { EventBus } from '../bus/event';
 import { Subscription } from '../entities/subscription';
 import { User } from '../entities/user';

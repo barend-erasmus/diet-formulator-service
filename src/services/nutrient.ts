@@ -1,5 +1,6 @@
 import { inject, injectable } from 'inversify';
 import 'reflect-metadata';
+
 import { Nutrient } from '../entities/nutrient';
 import { INutrientRepository } from '../repositories/nutrient';
 import { BaseService } from './base';
