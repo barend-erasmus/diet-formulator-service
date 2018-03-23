@@ -2,14 +2,14 @@ import { expect } from 'chai';
 import 'mocha';
 
 import { ICryptographyAlgorithm } from '../interfaces/cryptography';
-import { AES128CTRCryptographyAlgorithm } from './aes-256-ctr';
+import { AES256CTRCryptographyAlgorithm } from './aes-256-ctr';
 
 describe('AES128CTRCryptographyAlgorithm', () => {
 
     let crytographyAlgoritm: ICryptographyAlgorithm = null;
 
     before(async () => {
-        crytographyAlgoritm = new AES128CTRCryptographyAlgorithm('password');
+        crytographyAlgoritm = new AES256CTRCryptographyAlgorithm('password');
     });
 
     describe('decrypt', () => {

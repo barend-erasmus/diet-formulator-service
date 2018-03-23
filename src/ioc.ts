@@ -12,7 +12,7 @@ import { MemcachedCache } from './caches/memcached';
 import { MemoryCache } from './caches/memory';
 import { NullCache } from './caches/null';
 import { config } from './config';
-import { AES128CTRCryptographyAlgorithm } from './cryptography-algorithms/aes-256-ctr';
+import { AES256CTRCryptographyAlgorithm } from './cryptography-algorithms/aes-256-ctr';
 import { DietGroupEvent } from './events/diet-group';
 import { IngredientEvent } from './events/ingredient';
 import { SubscriptionEvent } from './events/subscription';
@@ -74,7 +74,7 @@ const argv = yargs.argv;
 
 const container: Container = new Container();
 
-const cryptographyAlgorithm: ICryptographyAlgorithm = new AES128CTRCryptographyAlgorithm(config.cryptography.password);
+const cryptographyAlgorithm: ICryptographyAlgorithm = new AES256CTRCryptographyAlgorithm(config.cryptography.password);
 
 const databaseConfig = {
     host: argv.dev ? 'localhost' : config.database.host,
