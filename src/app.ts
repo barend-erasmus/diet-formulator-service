@@ -7,6 +7,7 @@ import * as winston from 'winston';
 import * as yargs from 'yargs';
 
 import { AuthenticationMiddleware } from './middleware/authentication';
+import { RateLimitingMiddleware } from './middleware/rate-limiting/rate-limiting';
 import { DietRouter } from './routes/diet';
 import { DietGroupRouter } from './routes/diet-group';
 import { FormulationRouter } from './routes/formulation';
@@ -32,47 +33,47 @@ app.use(expressWinston.logger({
       ],
 }));
 
-app.get('/api/user/info', UserRouter.info);
-app.put('/api/user/update', UserRouter.update);
+app.get('/api/user/info', RateLimitingMiddleware.limit, UserRouter.info);
+app.put('/api/user/update', RateLimitingMiddleware.limit, UserRouter.update);
 
-app.post('/api/subscription/create', AuthenticationMiddleware.shouldBeAuthenticated, SubscriptionRouter.create);
-app.get('/api/subscription/find', AuthenticationMiddleware.shouldBeAuthenticated, SubscriptionRouter.find);
-app.post('/api/subscription/notify', SubscriptionRouter.notify);
-app.post('/api/payment/notify', SubscriptionRouter.notify);
+app.post('/api/subscription/create', RateLimitingMiddleware.limit, AuthenticationMiddleware.shouldBeAuthenticated, SubscriptionRouter.create);
+app.get('/api/subscription/find', RateLimitingMiddleware.limit, AuthenticationMiddleware.shouldBeAuthenticated, SubscriptionRouter.find);
+app.post('/api/subscription/notify', RateLimitingMiddleware.limit, SubscriptionRouter.notify);
+app.post('/api/payment/notify', RateLimitingMiddleware.limit, SubscriptionRouter.notify);
 
-app.post('/api/nutrient/create', AuthenticationMiddleware.shouldBeAuthenticated, NutrientRouter.create);
-app.get('/api/nutrient/find', AuthenticationMiddleware.shouldBeAuthenticated, NutrientRouter.find);
-app.get('/api/nutrient/list', AuthenticationMiddleware.shouldBeAuthenticated, NutrientRouter.list);
-app.put('/api/nutrient/update', AuthenticationMiddleware.shouldBeAuthenticated, NutrientRouter.update);
+app.post('/api/nutrient/create', RateLimitingMiddleware.limit, AuthenticationMiddleware.shouldBeAuthenticated, NutrientRouter.create);
+app.get('/api/nutrient/find', RateLimitingMiddleware.limit, AuthenticationMiddleware.shouldBeAuthenticated, NutrientRouter.find);
+app.get('/api/nutrient/list', RateLimitingMiddleware.limit, AuthenticationMiddleware.shouldBeAuthenticated, NutrientRouter.list);
+app.put('/api/nutrient/update', RateLimitingMiddleware.limit, AuthenticationMiddleware.shouldBeAuthenticated, NutrientRouter.update);
 
-app.post('/api/dietgroup/create', AuthenticationMiddleware.shouldBeAuthenticated, DietGroupRouter.create);
-app.get('/api/dietgroup/find', AuthenticationMiddleware.shouldBeAuthenticated, DietGroupRouter.find);
-app.get('/api/dietgroup/list', AuthenticationMiddleware.shouldBeAuthenticated, DietGroupRouter.list);
-app.get('/api/dietgroup/listAll', AuthenticationMiddleware.shouldBeAuthenticated, DietGroupRouter.listAll);
-app.put('/api/dietgroup/update', AuthenticationMiddleware.shouldBeAuthenticated, DietGroupRouter.update);
+app.post('/api/dietgroup/create', RateLimitingMiddleware.limit, AuthenticationMiddleware.shouldBeAuthenticated, DietGroupRouter.create);
+app.get('/api/dietgroup/find', RateLimitingMiddleware.limit, AuthenticationMiddleware.shouldBeAuthenticated, DietGroupRouter.find);
+app.get('/api/dietgroup/list', RateLimitingMiddleware.limit, AuthenticationMiddleware.shouldBeAuthenticated, DietGroupRouter.list);
+app.get('/api/dietgroup/listAll', RateLimitingMiddleware.limit, AuthenticationMiddleware.shouldBeAuthenticated, DietGroupRouter.listAll);
+app.put('/api/dietgroup/update', RateLimitingMiddleware.limit, AuthenticationMiddleware.shouldBeAuthenticated, DietGroupRouter.update);
 
-app.post('/api/diet/create', AuthenticationMiddleware.shouldBeAuthenticated, DietRouter.create);
-app.get('/api/diet/find', AuthenticationMiddleware.shouldBeAuthenticated, DietRouter.find);
-app.get('/api/diet/list', AuthenticationMiddleware.shouldBeAuthenticated, DietRouter.list);
-app.put('/api/diet/update', AuthenticationMiddleware.shouldBeAuthenticated, DietRouter.update);
+app.post('/api/diet/create', RateLimitingMiddleware.limit, AuthenticationMiddleware.shouldBeAuthenticated, DietRouter.create);
+app.get('/api/diet/find', RateLimitingMiddleware.limit, AuthenticationMiddleware.shouldBeAuthenticated, DietRouter.find);
+app.get('/api/diet/list', RateLimitingMiddleware.limit, AuthenticationMiddleware.shouldBeAuthenticated, DietRouter.list);
+app.put('/api/diet/update', RateLimitingMiddleware.limit, AuthenticationMiddleware.shouldBeAuthenticated, DietRouter.update);
 
-app.post('/api/ingredient/create', AuthenticationMiddleware.shouldBeAuthenticated, IngredientRouter.create);
-app.get('/api/ingredient/list', AuthenticationMiddleware.shouldBeAuthenticated, IngredientRouter.list);
+app.post('/api/ingredient/create', RateLimitingMiddleware.limit, AuthenticationMiddleware.shouldBeAuthenticated, IngredientRouter.create);
+app.get('/api/ingredient/list', RateLimitingMiddleware.limit, AuthenticationMiddleware.shouldBeAuthenticated, IngredientRouter.list);
 
-app.post('/api/formulation/create', AuthenticationMiddleware.shouldBeAuthenticated, FormulationRouter.create);
-app.get('/api/formulation/find', AuthenticationMiddleware.shouldBeAuthenticated, FormulationRouter.find);
-app.get('/api/formulation/list', AuthenticationMiddleware.shouldBeAuthenticated, FormulationRouter.list);
-app.get('/api/formulation/composition', AuthenticationMiddleware.shouldBeAuthenticated, FormulationRouter.composition);
-app.get('/api/formulation/supplement', AuthenticationMiddleware.shouldBeAuthenticated, FormulationRouter.supplement);
+app.post('/api/formulation/create', RateLimitingMiddleware.limit, AuthenticationMiddleware.shouldBeAuthenticated, FormulationRouter.create);
+app.get('/api/formulation/find', RateLimitingMiddleware.limit, AuthenticationMiddleware.shouldBeAuthenticated, FormulationRouter.find);
+app.get('/api/formulation/list', RateLimitingMiddleware.limit, AuthenticationMiddleware.shouldBeAuthenticated, FormulationRouter.list);
+app.get('/api/formulation/composition', RateLimitingMiddleware.limit, AuthenticationMiddleware.shouldBeAuthenticated, FormulationRouter.composition);
+app.get('/api/formulation/supplement', RateLimitingMiddleware.limit, AuthenticationMiddleware.shouldBeAuthenticated, FormulationRouter.supplement);
 
-app.post('/api/suggestedvalue/create', AuthenticationMiddleware.shouldBeAuthenticated, SuggestedValueRouter.create);
-app.get('/api/suggestedvalue/find', AuthenticationMiddleware.shouldBeAuthenticated, SuggestedValueRouter.find);
-app.get('/api/suggestedvalue/findById', AuthenticationMiddleware.shouldBeAuthenticated, SuggestedValueRouter.findById);
-app.get('/api/suggestedvalue/list', AuthenticationMiddleware.shouldBeAuthenticated, SuggestedValueRouter.list);
-app.delete('/api/suggestedvalue/remove', AuthenticationMiddleware.shouldBeAuthenticated, SuggestedValueRouter.remove);
-app.put('/api/suggestedvalue/update', AuthenticationMiddleware.shouldBeAuthenticated, SuggestedValueRouter.update);
+app.post('/api/suggestedvalue/create', RateLimitingMiddleware.limit, AuthenticationMiddleware.shouldBeAuthenticated, SuggestedValueRouter.create);
+app.get('/api/suggestedvalue/find', RateLimitingMiddleware.limit, AuthenticationMiddleware.shouldBeAuthenticated, SuggestedValueRouter.find);
+app.get('/api/suggestedvalue/findById', RateLimitingMiddleware.limit, AuthenticationMiddleware.shouldBeAuthenticated, SuggestedValueRouter.findById);
+app.get('/api/suggestedvalue/list', RateLimitingMiddleware.limit, AuthenticationMiddleware.shouldBeAuthenticated, SuggestedValueRouter.list);
+app.delete('/api/suggestedvalue/remove', RateLimitingMiddleware.limit, AuthenticationMiddleware.shouldBeAuthenticated, SuggestedValueRouter.remove);
+app.put('/api/suggestedvalue/update', RateLimitingMiddleware.limit, AuthenticationMiddleware.shouldBeAuthenticated, SuggestedValueRouter.update);
 
-app.post('/api/mail/send', MailRouter.send);
+app.post('/api/mail/send', RateLimitingMiddleware.limit, MailRouter.send);
 
 // app.use('/api/docs', express.static(path.join(__dirname, './../apidoc')));
 // app.use('/api/coverage', express.static(path.join(__dirname, './../coverage/lcov-report')));
