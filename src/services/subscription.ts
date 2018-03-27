@@ -87,7 +87,9 @@ export class SubscriptionService extends BaseService {
 
             await this.subscriptionRepository.update(subscription, userName);
 
-            await this.subscriptionGateway.cancel(subscription.token);
+            if (subscription.token) {
+                await this.subscriptionGateway.cancel(subscription.token);
+            }
         }
     }
 
