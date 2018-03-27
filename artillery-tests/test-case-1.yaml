@@ -1,0 +1,18 @@
+config:
+  target: "https://api.suite.worldofrations.com/api"
+  phases:
+    - arrivalCount: 50 
+      duration: 60
+      name: "Average Load"
+    - arrivalCount: 100
+      duration: 60
+      name: "Above Average Load"
+scenarios:
+  - name: "User - Info"
+    flow:
+      - loop:
+        - get:
+            url: "/user/info"
+            headers:
+              Authorization: "Bearer 99gKD7m3P7Oh4rRMmDMMQKPAEa92Dze-"
+        count: 50
