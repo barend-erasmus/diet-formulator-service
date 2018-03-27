@@ -11,7 +11,7 @@
     "init": "npm run build & node ./dist/init.js --dev",
     "lint": "tslint ./src/**/*.ts --fix --exclude ./src/**/*.d.ts",
     "start": "npm run build & node ./dist/app.js --dev",
-    "test": "npm run build & mocha --timeout 30000 ./dist/**/*.test.js"
+    "test": "snyk test && npm run build & mocha --timeout 30000 ./dist/**/*.test.js"
   },
   "repository": {
     "type": "git",
@@ -29,7 +29,7 @@
     "change-case": "^3.0.1",
     "cors": "^2.8.4",
     "express": "^4.16.2",
-    "express-winston": "^2.4.0",
+    "express-winston": "^2.5.0",
     "inversify": "^4.10.0",
     "ioredis": "^3.2.2",
     "javascript-lp-solver": "^0.4.5",
@@ -41,7 +41,7 @@
     "reflect-metadata": "^0.1.12",
     "request": "^2.83.0",
     "request-promise": "^4.2.2",
-    "sequelize": "^4.16.0",
+    "sequelize": "^4.19.0",
     "title-case": "^2.1.1",
     "winston": "^2.4.0",
     "yargs": "^9.0.1"
@@ -61,6 +61,7 @@
     "sinon": "^4.2.2",
     "supertest": "^3.0.0",
     "tslint": "^5.9.1",
-    "typescript": "^2.6.2"
+    "typescript": "^2.6.2",
+    "snyk": "^1.70.3"
   }
 }
