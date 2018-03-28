@@ -78,4 +78,5 @@ export class PayFastSubscriptionGateway implements ISubscriptionGateway {
 
         return `https://www.payfast.co.za/eng/process?${sortedKeys.map((key) => `${key}=${params[key]}`).join('&')}`;
     }
+
 }

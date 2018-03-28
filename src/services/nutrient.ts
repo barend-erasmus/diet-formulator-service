@@ -67,4 +67,5 @@ export class NutrientService extends BaseService {
 
         return this.nutrientRepository.update(nutrient);
     }
+
 }

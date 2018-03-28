@@ -111,4 +111,5 @@ export class Importer {
     },                 columnIndex: number, value: any): string {
         return value === '' ? 'NULL' : (isNaN(value) ? `'${value.replace(new RegExp(`'`, 'g'), `''`)}'` : value);
     }
+
 }

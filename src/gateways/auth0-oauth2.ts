@@ -18,4 +18,5 @@ export class Auth0OAuth2Gateway implements IOAuth2Gateway {
 
         return response;
     }
+
 }

@@ -104,4 +104,5 @@ export class SubscriptionRepository extends BaseRepository implements ISubscript
 
         return subscription;
     }
+
 }

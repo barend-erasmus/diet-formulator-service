@@ -32,4 +32,5 @@ export class IngredientEventHandler implements IEventHandler<IngredientEvent> {
 
         return event;
     }
+
 }

@@ -1,6 +1,7 @@
 import { Ingredient } from './ingredient';
 
 export class SupplementIngredient {
+
     constructor(
         public ingredient: Ingredient,
         public weight: number,
@@ -11,4 +12,5 @@ export class SupplementIngredient {
     public removeValues(): void {
         this.ingredient.removeValues();
     }
+
 }

@@ -84,4 +84,5 @@ export class UserRouter {
 
         return splittedAuthorizationHeader[1];
     }
+
 }

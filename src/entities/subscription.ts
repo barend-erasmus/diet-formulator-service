@@ -32,4 +32,5 @@ export abstract class Subscription {
     }
 
     public abstract toString(): string;
+
 }

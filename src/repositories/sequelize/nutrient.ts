@@ -98,4 +98,5 @@ export class NutrientRepository extends BaseRepository implements INutrientRepos
 
         return nutrient;
     }
+
 }

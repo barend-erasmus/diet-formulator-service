@@ -193,4 +193,5 @@ export class SuggestedValueRepository extends BaseRepository implements ISuggest
 
         return suggestedValue;
     }
+
 }

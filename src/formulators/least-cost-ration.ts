@@ -81,4 +81,5 @@ export class LeastCostRationFormulator implements IFormulator {
 
         return variables;
     }
+
 }

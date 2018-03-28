@@ -42,4 +42,5 @@ export class SuperAdminSubscription extends PremiumSubscription {
     public toString(): string {
         return 'Super-Admin';
     }
+
 }

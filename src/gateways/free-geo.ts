@@ -26,4 +26,5 @@ export class FreeGeoGateway implements IGeoGateway {
 
         return `${response.country_code} - ${response.region_code} - ${response.city}`;
     }
+
 }

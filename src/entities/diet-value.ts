@@ -1,6 +1,7 @@
 import { Nutrient } from './nutrient';
 
 export class DietValue {
+
     constructor(
         public id: number,
         public minimum: number,
@@ -9,4 +10,5 @@ export class DietValue {
     ) {
 
     }
+
 }

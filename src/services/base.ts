@@ -95,4 +95,5 @@ export class BaseService {
             throw new InsufficientPermissionsError('insufficient_permissions', 'Insufficient permissions', permission, userName);
         }
     }
+
 }

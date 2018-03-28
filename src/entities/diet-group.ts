@@ -2,6 +2,7 @@ import { ValidationError } from '../errors/validation-error';
 import { ErrorField } from '../models/error-field';
 
 export class DietGroup {
+
     constructor(
         public id: number,
         public name: string,

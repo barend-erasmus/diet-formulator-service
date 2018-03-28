@@ -131,4 +131,5 @@ export class IngredientRepository extends BaseRepository implements IIngredientR
 
         return result.map((x) => this.mapToIngredient(x.ingredient));
     }
+
 }

@@ -40,4 +40,5 @@ export class IngredientGroupRepository extends BaseRepository implements IIngred
 
         return result.map((x) => this.mapToIngredientGroup(x));
     }
+
 }

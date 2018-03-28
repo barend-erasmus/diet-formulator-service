@@ -95,4 +95,5 @@ export class UserRepository extends BaseRepository implements IUserRepository {
 
         return user;
     }
+
 }

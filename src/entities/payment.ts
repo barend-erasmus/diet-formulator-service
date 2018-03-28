@@ -1,4 +1,5 @@
 export class Payment {
+
     constructor(
         public amount: number,
         public assigned: boolean,
@@ -12,4 +13,5 @@ export class Payment {
     ) {
 
     }
+
 }

@@ -24,4 +24,5 @@ export class TrialSubscription extends PremiumSubscription {
     public toString(): string {
         return 'Trial';
     }
+
 }

@@ -1,7 +1,7 @@
-export class ErrorField {
+export class ValidationMessage {
 
     constructor(
-        public name: string,
+        public field: string,
         public message: string,
     ) {
 

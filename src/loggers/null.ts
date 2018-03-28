@@ -23,4 +23,5 @@ export class NullLogger implements ILogger {
     public warning(message: string, metaData?: any): void {
 
     }
+
 }

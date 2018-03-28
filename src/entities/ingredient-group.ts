@@ -2,6 +2,7 @@ import { ValidationError } from '../errors/validation-error';
 import { ErrorField } from '../models/error-field';
 
 export class IngredientGroup {
+
     constructor(
         public id: number,
         public name: string,
@@ -21,4 +22,5 @@ export class IngredientGroup {
             throw new ValidationError('invalid_ingredient_group', 'Ingredient Group is invalid', errorFields);
         }
     }
+
 }

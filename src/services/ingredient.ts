@@ -46,4 +46,5 @@ export class IngredientService extends BaseService {
 
         return this.ingredientRepository.list();
     }
+
 }

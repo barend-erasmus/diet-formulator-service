@@ -1,4 +1,5 @@
 export class DietFormulatorError extends Error {
+
     constructor(
         public code: string,
         public detailedMessage: string,
@@ -13,4 +14,5 @@ export class DietFormulatorError extends Error {
 
         return err;
     }
+
 }

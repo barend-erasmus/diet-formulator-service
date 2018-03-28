@@ -2,6 +2,7 @@ import { ErrorField } from '../models/error-field';
 import { DietFormulatorError } from './diet-formulator-error';
 
 export class ValidationError extends DietFormulatorError {
+
     constructor(
         code: string,
         detailedMessage: string,
@@ -9,4 +10,5 @@ export class ValidationError extends DietFormulatorError {
     ) {
         super(code, detailedMessage);
     }
+
 }

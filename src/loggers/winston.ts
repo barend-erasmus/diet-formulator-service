@@ -35,4 +35,5 @@ export class WinstonLogger implements ILogger {
     public warning(message: string, metaData?: any): void {
         this.logger.warn(message, metaData);
     }
+
 }

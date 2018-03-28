@@ -23,4 +23,5 @@ export class ConsoleLogger implements ILogger {
     public warning(message: string, metaData?: any): void {
         console.log(message);
     }
+
 }

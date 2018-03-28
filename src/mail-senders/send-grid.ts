@@ -20,4 +20,5 @@ export class SendGridMailSender implements IMailSender {
 
         const result: any = await sendGrid.send(msg);
     }
+
 }

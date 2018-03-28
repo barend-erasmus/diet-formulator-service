@@ -4,7 +4,7 @@ import 'mocha';
 import { ICryptographyAlgorithm } from '../interfaces/cryptography';
 import { AES256CTRCryptographyAlgorithm } from './aes-256-ctr';
 
-describe('AES128CTRCryptographyAlgorithm', () => {
+describe('AES256CTRCryptographyAlgorithm', () => {
 
     let crytographyAlgoritm: ICryptographyAlgorithm = null;
 
@@ -35,4 +35,5 @@ describe('AES128CTRCryptographyAlgorithm', () => {
         });
 
     });
+
 });

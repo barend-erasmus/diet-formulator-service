@@ -4,6 +4,7 @@ import { DietGroup } from './diet-group';
 import { DietValue } from './diet-value';
 
 export class Diet {
+
     constructor(
         public id: number,
         public name: string,
@@ -42,4 +43,5 @@ export class Diet {
             throw new ValidationError('invalid_diet', 'Diet is invalid', errorFields);
         }
     }
+
 }

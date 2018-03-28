@@ -27,4 +27,5 @@ export class StandardSubscription extends BasicSubscription {
     public toString(): string {
         return 'Standard';
     }
+
 }

@@ -55,4 +55,5 @@ export class DietRouter {
             res.status(500).json(DietFormulatorError.fromError(err));
         }
     }
+
 }

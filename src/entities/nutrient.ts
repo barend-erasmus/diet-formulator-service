@@ -2,6 +2,7 @@ import { ValidationError } from '../errors/validation-error';
 import { ErrorField } from '../models/error-field';
 
 export class Nutrient {
+
     constructor(
         public id: number,
         public name: string,
@@ -41,4 +42,5 @@ export class Nutrient {
             throw new ValidationError('invalid_ingredient', 'Ingredient is invalid', errorFields);
         }
     }
+
 }

@@ -108,4 +108,5 @@ export class SuggestedValueService extends BaseService {
 
         return 0;
     }
+
 }

@@ -25,4 +25,5 @@ export class AuthenticationMiddleware {
             res.status(401).end();
         }
     }
+
 }

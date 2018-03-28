@@ -1,6 +1,7 @@
 import { DietFormulatorError } from './diet-formulator-error';
 
 export class InsufficientPermissionsError extends DietFormulatorError {
+
     constructor(
         code: string,
         detailedMessage: string,
@@ -9,4 +10,5 @@ export class InsufficientPermissionsError extends DietFormulatorError {
     ) {
         super(code, detailedMessage);
     }
+
 }

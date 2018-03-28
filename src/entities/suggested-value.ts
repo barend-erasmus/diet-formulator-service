@@ -4,6 +4,7 @@ import { DietGroup } from './diet-group';
 import { Ingredient } from './ingredient';
 
 export class SuggestedValue {
+
     constructor(
         public id: number,
         public description: number,
@@ -30,4 +31,5 @@ export class SuggestedValue {
             throw new ValidationError('invalid_suggested_value', 'Suggested Value is invalid', errorFields);
         }
     }
+
 }

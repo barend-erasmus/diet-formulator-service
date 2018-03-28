@@ -1,6 +1,7 @@
 import { Ingredient } from './ingredient';
 
 export class FormulationIngredient {
+
     constructor(
         public id: number,
         public ingredient: Ingredient,
@@ -14,4 +15,5 @@ export class FormulationIngredient {
     public removeValues(): void {
         this.ingredient.removeValues();
     }
+
 }

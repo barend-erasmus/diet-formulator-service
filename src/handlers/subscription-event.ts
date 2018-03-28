@@ -28,4 +28,5 @@ export class SubscriptionEventHandler implements IEventHandler<SubscriptionEvent
 
         return event;
     }
+
 }

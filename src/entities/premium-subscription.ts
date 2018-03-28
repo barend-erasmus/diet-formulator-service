@@ -27,4 +27,5 @@ export class PremiumSubscription extends StandardSubscription {
     public toString(): string {
         return 'Premium';
     }
+
 }

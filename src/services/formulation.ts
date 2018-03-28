@@ -195,4 +195,5 @@ export class FormulationService extends BaseService {
             throw new DietFormulatorError('no_comparison_diet', 'Diet does not have a comparison diet');
         }
     }
+
 }

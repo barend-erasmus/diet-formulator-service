@@ -88,4 +88,5 @@ export class SuggestedValueRouter {
             res.status(500).json(DietFormulatorError.fromError(err));
         }
     }
+
 }

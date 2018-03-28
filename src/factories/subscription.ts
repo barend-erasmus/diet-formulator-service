@@ -58,4 +58,5 @@ export class SubscriptionFactory implements ISubscriptionFactory {
 
         return true;
     }
+
 }
