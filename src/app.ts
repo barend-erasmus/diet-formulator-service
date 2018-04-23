@@ -17,6 +17,8 @@ import { NutrientRouter } from './routes/nutrient';
 import { SubscriptionRouter } from './routes/subscription';
 import { SuggestedValueRouter } from './routes/suggested-value';
 import { UserRouter } from './routes/user';
+import { container } from './ioc';
+import { ILogger } from 'majuro';
 
 const argv = yargs.argv;
 const app = express();
@@ -79,6 +81,7 @@ app.post('/api/mail/send', RateLimitingMiddleware.limit, MailRouter.send);
 // app.use('/api/coverage', express.static(path.join(__dirname, './../coverage/lcov-report')));
 
 app.listen(argv.port || 3000, () => {
+    container.get<ILogger>('CommonLogger').info(`listening on port ${argv.port || 3000}`);
     console.log(`listening on port ${argv.port || 3000}`);
 });
 

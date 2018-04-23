@@ -1,9 +1,9 @@
 import { injectable } from 'inversify';
 import 'reflect-metadata';
 
+import { ILogger } from 'majuro';
 import { IngredientGroup } from '../../entities/ingredient-group';
 import { ICache } from '../../interfaces/cache';
-import { ILogger } from '../../interfaces/logger';
 import { IIngredientGroupRepository } from '../ingredient-group';
 import { BaseRepository } from './base';
 

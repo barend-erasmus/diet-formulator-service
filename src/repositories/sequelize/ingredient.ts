@@ -2,12 +2,12 @@ import { injectable } from 'inversify';
 import 'reflect-metadata';
 import * as Sequelize from 'sequelize';
 
+import { ILogger } from 'majuro';
 import { Ingredient } from '../../entities/ingredient';
 import { IngredientGroup } from '../../entities/ingredient-group';
 import { IngredientValue } from '../../entities/ingredient-value';
 import { Nutrient } from '../../entities/nutrient';
 import { ICache } from '../../interfaces/cache';
-import { ILogger } from '../../interfaces/logger';
 import { IIngredientRepository } from '../ingredient';
 import { BaseRepository } from './base';
 

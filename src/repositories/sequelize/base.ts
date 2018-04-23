@@ -1,6 +1,7 @@
 import * as Sequelize from 'sequelize';
 import * as winston from 'winston';
 
+import { ILogger } from 'majuro';
 import { CacheKeys } from '../../constants/cache-keys';
 import { Diet } from '../../entities/diet';
 import { DietGroup } from '../../entities/diet-group';
@@ -13,7 +14,6 @@ import { Payment } from '../../entities/payment';
 import { SuggestedValue } from '../../entities/suggested-value';
 import { User } from '../../entities/user';
 import { ICache } from '../../interfaces/cache';
-import { ILogger } from '../../interfaces/logger';
 import { Models } from './models';
 
 export class BaseRepository {

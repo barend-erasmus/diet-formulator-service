@@ -2,9 +2,9 @@ import { injectable } from 'inversify';
 import 'reflect-metadata';
 import * as Sequelize from 'sequelize';
 
+import { ILogger } from 'majuro';
 import { Nutrient } from '../../entities/nutrient';
 import { ICache } from '../../interfaces/cache';
-import { ILogger } from '../../interfaces/logger';
 import { INutrientRepository } from '../nutrient';
 import { BaseRepository } from './base';
 

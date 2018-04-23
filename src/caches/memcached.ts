@@ -3,8 +3,8 @@ import * as Memcached from 'memcached';
 import 'reflect-metadata';
 import * as zlib from 'zlib';
 
+import { ILogger } from 'majuro';
 import { ICache } from '../interfaces/cache';
-import { ILogger } from '../interfaces/logger';
 
 @injectable()
 export class MemcachedCache implements ICache {

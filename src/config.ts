@@ -18,6 +18,11 @@ export const config = {
             apiKey: '00261b8204768ee10b2a7032aee3c0a3c1697f421a9a2e0fb4b4d1f9b500ad5bc300d107736c1421410d8bfe2e4c8ba434c40406829dd89481de06a2bffbd7051133a5d95d',
         },
     },
+    logger: {
+        loggly: {
+            token: '898781b0-befb-48a2-a5f3-9ee51e393ab2',
+        },
+    },
     paymentGateway: {
         payfast: {
             merchantId: '11223714',

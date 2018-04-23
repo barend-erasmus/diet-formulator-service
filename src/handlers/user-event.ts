@@ -2,12 +2,12 @@ import { inject, injectable } from 'inversify';
 import * as moment from 'moment';
 import 'reflect-metadata';
 
+import { ILogger } from 'majuro';
 import { CacheKeys } from '../constants/cache-keys';
 import { Subscription } from '../entities/subscription';
 import { UserEvent } from '../events/user';
 import { ICache } from '../interfaces/cache';
 import { IEventHandler } from '../interfaces/event-handler';
-import { ILogger } from '../interfaces/logger';
 import { SubscriptionService } from '../services/subscription';
 
 @injectable()

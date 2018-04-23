@@ -1,11 +1,11 @@
 import { inject, injectable } from 'inversify';
 import 'reflect-metadata';
 
+import { ILogger } from 'majuro';
 import { CacheKeys } from '../constants/cache-keys';
 import { SubscriptionEvent } from '../events/subscription';
 import { ICache } from '../interfaces/cache';
 import { IEventHandler } from '../interfaces/event-handler';
-import { ILogger } from '../interfaces/logger';
 
 @injectable()
 export class SubscriptionEventHandler implements IEventHandler<SubscriptionEvent> {

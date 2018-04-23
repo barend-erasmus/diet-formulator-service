@@ -3,6 +3,7 @@ import * as path from 'path';
 import 'reflect-metadata';
 import * as yargs from 'yargs';
 
+import { ILogger, LogglyLogger } from 'majuro';
 import { DietGroupEventBus } from './bus/diet-group-event';
 import { EventBus } from './bus/event';
 import { IngredientEventBus } from './bus/ingredient-event';
@@ -33,13 +34,10 @@ import { IEventHandler } from './interfaces/event-handler';
 import { IForeignExchangeGateway } from './interfaces/foreign-exchange-gateway';
 import { IFormulator } from './interfaces/formulator';
 import { IGeoGateway } from './interfaces/geo-gateway';
-import { ILogger } from './interfaces/logger';
 import { IMailSender } from './interfaces/mail-sender';
 import { IOAuth2Gateway } from './interfaces/oauth2-gateway';
 import { ISubscriptionFactory } from './interfaces/subscription-factory';
 import { ISubscriptionGateway } from './interfaces/subscription-gateway';
-import { NullLogger } from './loggers/null';
-import { WinstonLogger } from './loggers/winston';
 import { SendGridMailSender } from './mail-senders/send-grid';
 import { IDietRepository } from './repositories/diet';
 import { IDietGroupRepository } from './repositories/diet-group';
@@ -204,9 +202,10 @@ container.bind<ICache>('ICache').toDynamicValue((context: interfaces.Context) =>
     return new MemcachedCache(logger, config.cache.memcached.uri);
 });
 
-container.bind<ILogger>('CacheLogger').toConstantValue(new WinstonLogger('cache'));
-container.bind<ILogger>('EventLogger').toConstantValue(new WinstonLogger('event'));
-container.bind<ILogger>('SQLLogger').toConstantValue(new WinstonLogger('sql'));
+container.bind<ILogger>('CacheLogger').toConstantValue(new LogglyLogger(['cache', 'diet-formulator-service'], config.logger.loggly.token));
+container.bind<ILogger>('CommonLogger').toConstantValue(new LogglyLogger(['common', 'diet-formulator-service'], config.logger.loggly.token));
+container.bind<ILogger>('EventLogger').toConstantValue(new LogglyLogger(['event', 'diet-formulator-service'], config.logger.loggly.token));
+container.bind<ILogger>('SQLLogger').toConstantValue(new LogglyLogger(['sql', 'diet-formulator-service'], config.logger.loggly.token));
 
 container.bind<IMailSender>('IMailSender').toConstantValue(new SendGridMailSender(emailConfig.sendgrid.apiKey));
 
@@ -214,10 +213,6 @@ container.bind<IMailSender>('IMailSender').toConstantValue(new SendGridMailSende
 
 function configureForTesting(): void {
     container.rebind<ICache>('ICache').to(MemoryCache);
-
-    container.rebind<ILogger>('CacheLogger').toConstantValue(new NullLogger());
-    container.rebind<ILogger>('EventLogger').toConstantValue(new NullLogger());
-    container.rebind<ILogger>('SQLLogger').toConstantValue(new NullLogger());
 }
 
 export {
